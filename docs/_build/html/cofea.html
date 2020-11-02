@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>cofea module &mdash; CoFEA 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> CoFEA
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About CoFEA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#first-steps-with-cofea">First steps with CoFEA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">CoFEA module implementation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CoFEA</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>cofea module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/cofea.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-cofea">
+<span id="cofea-module"></span><h1>cofea module<a class="headerlink" href="#module-cofea" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="cofea.Element">
+<em class="property">class </em><code class="descclassname">cofea.</code><code class="descname">Element</code><span class="sig-paren">(</span><em>elType</em>, <em>elLabel</em>, <em>elConnect</em>, <em>partAllNodes</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.Element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class used to store information about elements,
+theirs type, label, and connection to nodes</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>type</strong> (<em>str</em>) – element type (eg C3D4)</li>
+<li><strong>label</strong> (<em>int</em>) – element number</li>
+<li><strong>connectivity</strong> (<em>list</em>) – list of nodes that element is based on</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="cofea.Element.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>elType</em>, <em>elLabel</em>, <em>elConnect</em>, <em>partAllNodes</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.Element.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Element object constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>elType</strong> (<em>str</em>) – type of the element</li>
+<li><strong>elLabel</strong> (<em>int</em>) – element number</li>
+<li><strong>elConnect</strong> (<em>list</em>) – list of <strong>indices</strong> that will be used to retrieve
+Node objects from list of all nodes</li>
+<li><strong>partAllNodes</strong> (<em>list</em>) – list of all Node objects retrieved from the current part</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cofea.Element.getNodeLabels">
+<code class="descname">getNodeLabels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cofea.Element.getNodeLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function returns labels of nodes which building the element</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of integers describing node labels</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cofea.ExportMesh">
+<em class="property">class </em><code class="descclassname">cofea.</code><code class="descname">ExportMesh</code><span class="sig-paren">(</span><em>modelName</em>, <em>listOfParts</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.ExportMesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Mesh is the most general class used to import, store    and export mesh data. The idea is to initialise the constructor,    then import mesh from db file. Finally, the mesh can be    exported to an external format. For example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">importFromDbFile</span><span class="p">(</span><span class="n">pathToDbFile</span><span class="o">=</span><span class="s1">&#39;mesh.db&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">exportToCalculix</span><span class="p">(</span><span class="n">exportedFilename</span><span class="o">=</span><span class="s1">&#39;Calculix.inp&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>modelName</strong> (<em>string</em>) – name of imported model</li>
+<li><strong>parts</strong> (<em>list</em>) – list of imported parts</li>
+<li><strong>assemblyMesh</strong> (<em>dictionary</em>) – the dictionary contains parts, but those have renumbered        node and element labels, so that the labels are not        repeating</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="cofea.ExportMesh.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>modelName</em>, <em>listOfParts</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.ExportMesh.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>x.__init__(…) initializes x; see help(type(x)) for signature</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cofea.ExportMesh.computeAssemblyMesh">
+<code class="descname">computeAssemblyMesh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cofea.ExportMesh.computeAssemblyMesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function computes mesh at assembly level from list
+of Part objects. The returned dictionary contains
+parts with renumbered nodes and elements</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dictionary of parts</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">defaultdict(list)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cofea.ExportMesh.exportToCalculix">
+<code class="descname">exportToCalculix</code><span class="sig-paren">(</span><em>exportedFilename</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.ExportMesh.exportToCalculix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function used to generate input deck for Calculix software</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>exportedFilename</strong> (<em>str</em>) – name of the file to be created</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="cofea.ExportMesh.importFromAbaqus">
+<em class="property">classmethod </em><code class="descname">importFromAbaqus</code><span class="sig-paren">(</span><em>abqModelName</em>, <em>abqPartList</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.ExportMesh.importFromAbaqus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to initiate the ExportMesh object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>abqModelName</strong> (<em>str</em>) – name of the Abaqus model</li>
+<li><strong>abqPartList</strong> (<em>list</em>) – list of Abaqus Parts to export mesh from</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">object containing model mesh definition</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#cofea.ExportMesh" title="cofea.ExportMesh">ExportMesh</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="cofea.ExportMesh.importFromDbFile">
+<em class="property">classmethod </em><code class="descname">importFromDbFile</code><span class="sig-paren">(</span><em>pathToDbFile</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.ExportMesh.importFromDbFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to initiate the ExportMesh object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pathToDbFile</strong> (<em>str</em>) – path to the db file</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">object containing model mesh definition</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#cofea.ExportMesh" title="cofea.ExportMesh">ExportMesh</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cofea.ExportMesh.saveToDbFile">
+<code class="descname">saveToDbFile</code><span class="sig-paren">(</span><em>nameOfDbFile</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.ExportMesh.saveToDbFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to save model data to db file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nameOfDbFile</strong> (<em>str</em>) – name of the file that will be used to store data</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cofea.Node">
+<em class="property">class </em><code class="descclassname">cofea.</code><code class="descname">Node</code><span class="sig-paren">(</span><em>nLabel</em>, <em>nCoords</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.Node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Used to create node objects from external data</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>label</strong> (<em>int</em>) – Node number</li>
+<li><strong>coordinates</strong> (<em>tuple</em>) – Node coordinates</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="cofea.Node.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>nLabel</em>, <em>nCoords</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.Node.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Node class constructor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>nLabel</strong> (<em>int</em>) – Node number</li>
+<li><strong>nCoords</strong> (<em>tuple</em>) – Node coordinates (x,y,z)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cofea.Node.changeLabel">
+<code class="descname">changeLabel</code><span class="sig-paren">(</span><em>newLabel</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.Node.changeLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to change node label</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>newLabel</strong> (<em>int</em>) – new node number</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cofea.PartMesh">
+<em class="property">class </em><code class="descclassname">cofea.</code><code class="descname">PartMesh</code><span class="sig-paren">(</span><em>partName</em>, <em>partNodes</em>, <em>partElements</em>, <em>elementSets=None</em>, <em>nodeSets=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.PartMesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>PartMesh is an object used to store mesh properties for a given part.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – name of the part</li>
+<li><strong>nodes</strong> (<em>list of Node objects</em>) – list of the Node objects</li>
+<li><strong>elements</strong> (<em>list</em>) – list of the Element objects</li>
+<li><strong>elementsByType</strong> (<em>defaultdict</em><em>(</em><em>list</em><em>)</em>) – dictionary of elements grouped by element type</li>
+<li><strong>elSet</strong> (<em>defaultdict</em><em>(</em><em>list</em><em>)</em>) – dictionary of element sets grouped by element set name</li>
+<li><strong>nSet</strong> (<em>defaultdict</em><em>(</em><em>list</em><em>)</em>) – dictionary of node sets grouped by node set name</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="cofea.PartMesh.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>partName</em>, <em>partNodes</em>, <em>partElements</em>, <em>elementSets=None</em>, <em>nodeSets=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.PartMesh.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>PartMesh constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>partName</strong> (<em>str</em>) – name of the part</li>
+<li><strong>partNodes</strong> (<em>list</em>) – list of Node objects</li>
+<li><strong>partElements</strong> (<em>list</em>) – list of Element objects</li>
+<li><strong>elementSets</strong> (<em>defaultdict(list), optional</em>) – dictionary of elements sets {setName: list of set elements},
+by default None</li>
+<li><strong>nodeSets</strong> (<em>defaultdict(list), optional</em>) – dictionary of node sets {setName: list of set nodes},
+by default None</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="cofea.PartMesh.fromAbaqus">
+<em class="property">classmethod </em><code class="descname">fromAbaqus</code><span class="sig-paren">(</span><em>abqPart</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.PartMesh.fromAbaqus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to initiate object from Abaqus part.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>abqPart</strong> (<em>abqPart</em>) – Abaqus part object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">object containing part mesh definition</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#cofea.PartMesh" title="cofea.PartMesh">PartMesh</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cofea.PartMesh.getElementsByType">
+<code class="descname">getElementsByType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cofea.PartMesh.getElementsByType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function used to create a dictionary of elements with
+element types used as keys</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dictionary of elements with elementtypes used as keys</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">defaultdict(list)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cofea.PartMesh.getElementsFromLabelList">
+<code class="descname">getElementsFromLabelList</code><span class="sig-paren">(</span><em>labelList</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.PartMesh.getElementsFromLabelList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to retreive the elements from list of
+elements labels.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>labelList</strong> (<em>list</em>) – list of integers referring to element labels</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of Element objects</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cofea.PartMesh.getNodesFromLabelList">
+<code class="descname">getNodesFromLabelList</code><span class="sig-paren">(</span><em>labelList</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.PartMesh.getNodesFromLabelList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to retrieve the nodes from list of node labels</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>labelList</strong> (<em>list</em>) – list of integers describing node labes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of Node objects</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, spolanski
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
