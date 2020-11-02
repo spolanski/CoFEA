@@ -12,6 +12,7 @@ Welcome to CoFEA's documentation!
 
    about
    api
+   modules
 
 Index
 =====
