@@ -7,12 +7,9 @@ Welcome to CoFEA's documentation!
 =================================
 
 .. toctree::
-   :caption: Contents:
-   :maxdepth: 2
 
    about
    api
-   modules
 
 Index
 =====
