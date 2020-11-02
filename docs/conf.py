@@ -14,14 +14,14 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath('../CoFEA'))
 
 
 # -- Project information -----------------------------------------------------
 
 project = u'CoFEA'
-copyright = u'2020, spolanski'
-author = u'spolanski'
+copyright = u'2020, Slawomir Polanski'
+author = u'Slawomir Polanski'
 
 # The short X.Y version
 version = u''
