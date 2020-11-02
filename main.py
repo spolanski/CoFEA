@@ -1,3 +1,6 @@
+"""
+:noindex:
+"""
 import cofea
 
 def main():
@@ -8,7 +11,7 @@ def main():
     n3 = cofea.Node(nLabel=3, nCoords=(0.0, 0.0, 1.0))
     # put nodes into the list
     nodeList = [n1, n2, n3]
-    # prepare element
+    # prepare elements
     e1 = cofea.Element(elType='C3D4', elLabel=1,
                        elConnect=(0, 1, 2),
                        partAllNodes=nodeList)

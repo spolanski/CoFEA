@@ -1,7 +1,7 @@
 CoFEA module implementation
 =============================
 
-The following section contains a decofeaion of CoFEA module implementation.
+The following section contains a documentation of the CoFEA module implementation.
 
 .. autoclass:: cofea.ExportMesh
    :members:

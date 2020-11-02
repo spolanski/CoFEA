@@ -67,7 +67,7 @@ class Element(object):
         Parameters
         ----------
         elType: str
-            type of the element (eg C3D8R)
+            type of the element
         elLabel: int
             element number
         elConnect: list
