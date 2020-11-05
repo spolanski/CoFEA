@@ -7,9 +7,10 @@ from collections import defaultdict
 import pickle
 import pprint
 
+
 class Node(object):
     """Used to create node objects from external data
-    
+
     Attributes
     ----------
     label: int
@@ -45,6 +46,7 @@ class Node(object):
             new node number
         """
         self.label = newLabel
+
 
 class Element(object):
     """Class used to store information about elements,
@@ -175,22 +177,25 @@ class PartMesh(object):
 
         for setName, setValues in dict(abqPart.sets).iteritems():
             nodeLabelList = [n.label for n in setValues.nodes]
-            listOfNodes = cls.getNodesFromLabelList(nodeLabelList)
+            currentLabels = [n.label for n in nodes]
+            listOfIndices = [currentLabels.index(lab) for lab in nodeLabelList]
+            listOfNodes = [nodes[i] for i in listOfIndices]
             nSet['N_' + setName] = listOfNodes
 
             elementLabelList = [el.label for el in setValues.elements]
-            listOfElements = cls.getElementsFromLabelList(elementLabelList)
+            currentLabels = [e.label for e in elements]
+            listOfIndices = [currentLabels.index(lab) for lab in elementLabelList]
+            listOfElements = [elements[i] for i in listOfIndices]
             elSet['EL_' + setName] = listOfElements
         
-        return cls(partName=name, partNodes=nodes,
-                   partElements=elements, createElSet=elSet,
-                   createNSet=nSet)
+        return cls(partName=name, partNodes=nodes, partElements=elements,
+                   elementSets=elSet, nodeSets=nSet)
         
     def __str__(self):
         return pprint.pformat(self.__dict__, width=2)
     
     def __repr__(self):
-        return 'PART-%s' % self.name
+        return 'PART-%s' % self.namez
             
     def getNodesFromLabelList(self, labelList):
         """Function to retrieve the nodes from list of node labels

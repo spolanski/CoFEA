@@ -35,7 +35,6 @@ def main():
     # example: load mesh from db file
     m = cofea.ExportMesh.importFromDbFile(pathToDbFile='dbFile.db')
     m.exportToCalculix(exportedFilename='test.inp')
-    print 'sd'
 
 if __name__ == '__main__':
     main()
