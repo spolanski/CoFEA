@@ -6,6 +6,16 @@
 from collections import defaultdict
 import pickle
 import pprint
+import jinja2
+
+import os 
+filePath = os.path.dirname(os.path.realpath(__file__))
+
+def getChunks(itemsToChunk, numOfChunks):
+    # if type(itemsToChunk[0])
+    temp = [itemsToChunk[i:i + numOfChunks]
+            for i in xrange(0, len(itemsToChunk), numOfChunks)]
+    return temp
 
 
 class Node(object):
@@ -249,6 +259,35 @@ class PartMesh(object):
         
         return elementByType
     
+    def getCalculixFormat(self):
+        # prepare elements to be saved to input deck
+        self.ccxElements = defaultdict(list)
+        for eType, elements in self.elementsByType.iteritems():
+            for el in elements:
+                # create text line with element label and node labels 
+                temp = [el.label, ]
+                temp.extend(el.getNodeLabels())
+                # getChunk - get list of list with max 10 items
+                temp = getChunks(temp, 10)
+                # create list of strings which are exactly one line
+                temp = [', '.join([str(i) for i in ch]) + '\n' for ch in temp]
+                self.ccxElements[eType].append(temp)
+
+        # prepare element sets to save
+        self.ccxElSet = defaultdict(list)
+        for elSetName, elSet in self.elSet.iteritems():
+            temp = [e.label for e in elSet]
+            temp = getChunks(temp, 10)
+            temp = [', '.join([str(i) for i in ch]) + '\n' for ch in temp]
+            self.ccxElSet[elSetName].append(temp)
+
+        # prepare node sets to save
+        self.ccxNSet = defaultdict(list)
+        for nSetName, nSet in self.nSet.iteritems():
+            temp = [n.label for n in nSet]
+            temp = getChunks(temp, 10)
+            temp = [', '.join([str(i) for i in ch]) + '\n' for ch in temp]
+            self.ccxNSet[nSetName].append(temp)
 
 class ExportMesh(object):
     """Mesh is the most general class used to import, store\
@@ -358,7 +397,7 @@ class ExportMesh(object):
         
         return assembly
         
-    def exportToCalculix(self, exportedFilename):
+    def _exportToCalculix(self, exportedFilename):
         """Function used to generate input deck for Calculix software
 
         Parameters
@@ -441,3 +480,30 @@ class ExportMesh(object):
         with open('{0}'.format(exportedFilename), 'w') as f:
             f.write(deck)
         print 'Calculix deck was written into {0}'.format(exportedFilename)
+    
+    def exportToCalculix(self, exportedFilename):
+        # get calculix format for each part
+        for p in self.parts:
+            p.getCalculixFormat()
+        # prepare a dict which will be used to render
+        # things in template
+        renderDict = {'modelName': self.modelName,
+                      'parts': self.parts}
+        # load jinja template from file
+        # https://stackoverflow.com/a/38642558
+        templateLoader = jinja2.FileSystemLoader(searchpath=filePath)
+        templateEnv = jinja2.Environment(loader=templateLoader)
+        template = templateEnv.get_template("calculix.tmplt")
+        # render template with dict
+        outputText = template.render(renderDict)
+        # remove all empty lines
+        outputText = '\n'.join([i for i in outputText.split('\n') if len(i)])
+        # save input deck
+        with open(exportedFilename, 'w') as f:
+            f.write(outputText)
+        print 'Mesh exported to {0}'.format(exportedFilename)
+
+
+if __name__ == '__main__':
+    m = ExportMesh.importFromDbFile(pathToDbFile='Abaqus.db')
+    m.exportToCalculix('calculix.inp')

@@ -1,0 +1,39 @@
+{# HEADING #}
+*HEADING
+{{ modelName }}
+{# FOR LOOP OVER PARTS #}
+{% for part in parts -%}
+*NODE, NSET={{ part.name }}-ALL
+{# FOR LOOP OVER PART NODES #}
+{% for node in part.nodes-%}
+{{node.label}}, {{"%.6f"|format(node.coordinates[0])}}, {{"%.6f"|format(node.coordinates[1])}}, {{"%.6f"|format(node.coordinates[2])}}
+{% endfor %}
+{# FOR LOOP OVER PART ELEMENTS #}
+{% for elType, elementList in part.ccxElements.items() -%}
+*ELEMENT, TYPE={{ elType }}, ELSET={{ part.name }}-{{ elType }}-ALL
+{% for element in elementList -%}
+{% for line in element -%}
+{{line}}
+{%- endfor %}
+{%- endfor %}
+{%- endfor %}
+{# FOR LOOP OVER PART ELEMENT SETS #}
+{% for elSetName, elementSetList in part.ccxElSet.items() -%}
+*ELSET, ELSET={{ part.name }}-{{ elSetName }}
+{% for element in elementSetList -%}
+{% for line in element -%}
+{{line}}
+{%- endfor %}
+{%- endfor %}
+{%- endfor %}
+{# FOR LOOP OVER PART NODE SETS #}
+{% for nSetName, nodeSetList in part.ccxNSet.items() -%}
+*NSET, NSET={{ part.name }}-{{ nSetName }}
+{% for node in nodeSetList -%}
+{% for line in node -%}
+{{line}}
+{%- endfor %}
+{%- endfor %}
+{%- endfor %}
+{%- endfor %}
+
