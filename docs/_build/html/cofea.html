@@ -260,12 +260,12 @@ parts with renumbered nodes and elements</p>
 <dl class="method">
 <dt id="cofea.ExportMesh.exportToCalculix">
 <code class="descname">exportToCalculix</code><span class="sig-paren">(</span><em>exportedFilename</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.ExportMesh.exportToCalculix" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function used to generate input deck for Calculix software</p>
+<dd><p>Function to export mesh to Calculix format</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>exportedFilename</strong> (<em>str</em>) – name of the file to be created</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>exportedFilename</strong> (<em>str</em>) – name of the file to export mesh (eg ‘calculix.inp’)</td>
 </tr>
 </tbody>
 </table>
@@ -443,6 +443,11 @@ by default None</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="cofea.PartMesh.getCalculixFormat">
+<code class="descname">getCalculixFormat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cofea.PartMesh.getCalculixFormat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="cofea.PartMesh.getElementsByType">
 <code class="descname">getElementsByType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cofea.PartMesh.getElementsByType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function used to create a dictionary of elements with
@@ -497,6 +502,11 @@ elements labels.</p>
 </dd></dl>
 
 </dd></dl>
+
+<dl class="function">
+<dt id="cofea.getChunks">
+<code class="descclassname">cofea.</code><code class="descname">getChunks</code><span class="sig-paren">(</span><em>itemsToChunk</em>, <em>numOfChunks</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.getChunks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 
