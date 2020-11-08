@@ -482,6 +482,13 @@ class ExportMesh(object):
         print 'Calculix deck was written into {0}'.format(exportedFilename)
     
     def exportToCalculix(self, exportedFilename):
+        """Function to export mesh to Calculix format
+
+        Parameters
+        ----------
+        exportedFilename : str
+            name of the file to export mesh (eg 'calculix.inp')
+        """
         # get calculix format for each part
         for p in self.parts:
             p.getCalculixFormat()
