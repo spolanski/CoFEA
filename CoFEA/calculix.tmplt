@@ -1,39 +1,39 @@
-{# HEADING #}
+{#- HEADING -#}
 *HEADING
 {{ modelName }}
 {# FOR LOOP OVER PARTS #}
-{% for part in parts -%}
+{%- for part in parts -%}
 *NODE, NSET={{ part.name }}-ALL
 {# FOR LOOP OVER PART NODES #}
-{% for node in part.nodes-%}
-{{node.label}}, {{"%.6f"|format(node.coordinates[0])}}, {{"%.6f"|format(node.coordinates[1])}}, {{"%.6f"|format(node.coordinates[2])}}
-{% endfor %}
+{%- for node in part.nodes -%}
+{{ '{:>10}, '.format(node.label) -}}
+{{- '{:>6.6f}, '.format(node.coordinates[0]) -}}
+{{ '{:>6.6f}, '.format(node.coordinates[1]) -}}
+{{ '{:>6.6f}'.format(node.coordinates[2]) }}
+{% endfor -%}
 {# FOR LOOP OVER PART ELEMENTS #}
-{% for elType, elementList in part.ccxElements.items() -%}
+{%- for elType, elementList in part.elementsByType.items() -%}
 *ELEMENT, TYPE={{ elType }}, ELSET={{ part.name }}-{{ elType }}-ALL
 {% for element in elementList -%}
-{% for line in element -%}
-{{line}}
-{%- endfor %}
+{{ '{:>8},'.format(element.label) }}{% if loop.index % 8 == 0 %}{{"\n"}}{% endif %}
 {%- endfor %}
 {%- endfor %}
 {# FOR LOOP OVER PART ELEMENT SETS #}
-{% for elSetName, elementSetList in part.ccxElSet.items() -%}
+{%- for elSetName, elementSetList in part.elSet.items() -%}
 *ELSET, ELSET={{ part.name }}-{{ elSetName }}
 {% for element in elementSetList -%}
-{% for line in element -%}
-{{line}}
-{%- endfor %}
+{{ '{:>8},'.format(element.label) -}}
+{% if loop.index % 8 == 0 %}{{"\n"}}
+{%- endif %}
 {%- endfor %}
 {%- endfor %}
 {# FOR LOOP OVER PART NODE SETS #}
-{% for nSetName, nodeSetList in part.ccxNSet.items() -%}
+{%- for nSetName, nodeSetList in part.nSet.items() -%}
 *NSET, NSET={{ part.name }}-{{ nSetName }}
 {% for node in nodeSetList -%}
-{% for line in node -%}
-{{line}}
+{{ '{:>8},'.format(node.label) -}}
+{% if loop.index % 8 == 0 %}{{"\n"}}
+{%- endif %}
 {%- endfor %}
 {%- endfor %}
-{%- endfor %}
-{%- endfor %}
-
+{%- endfor -%}

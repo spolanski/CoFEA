@@ -214,6 +214,20 @@ parts with renumbered nodes and elements</p>
 </table>
 </dd></dl>
 
+<dl class="method">
+<dt id="cofea.ExportMesh.exportToUnvFormat">
+<code class="descname">exportToUnvFormat</code><span class="sig-paren">(</span><em>exportedFilename</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.ExportMesh.exportToUnvFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to export to UNV format</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>exportedFilename</strong> (<em>str</em>) – name of the file to export mesh (eg ‘salome.unv’)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="classmethod">
 <dt id="cofea.ExportMesh.importFromAbaqus">
 <em class="property">classmethod </em><code class="descname">importFromAbaqus</code><span class="sig-paren">(</span><em>abqModelName</em>, <em>abqPartList</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.ExportMesh.importFromAbaqus" title="Permalink to this definition">¶</a></dt>
@@ -334,6 +348,36 @@ by default None</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="cofea.PartMesh.getDiffFormatForElType">
+<code class="descname">getDiffFormatForElType</code><span class="sig-paren">(</span><em>oldElType</em>, <em>newMeshFormat</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.PartMesh.getDiffFormatForElType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to retrieve name of element type for a
+specific software</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>oldElType</strong> (<em>str</em>) – name of the element type that needs to be
+converted (eg ‘C3D8R’)</li>
+<li><strong>newMeshFormat</strong> (<em>str</em>) – new mesh format (eg ‘UNV’)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">name of the element type in new format</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">str</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – error appears when the specific element type
+is not implemented</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="cofea.PartMesh.getElementsByType">
 <code class="descname">getElementsByType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cofea.PartMesh.getElementsByType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function used to create a dictionary of elements with
@@ -382,6 +426,21 @@ elements labels.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of Node objects</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cofea.PartMesh.setElementTypeFormat">
+<code class="descname">setElementTypeFormat</code><span class="sig-paren">(</span><em>newFormat</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.PartMesh.setElementTypeFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to change element types in dictionary
+elementsByType</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>newFormat</strong> (<em>str</em>) – new format (eg ‘UNV’)</td>
 </tr>
 </tbody>
 </table>

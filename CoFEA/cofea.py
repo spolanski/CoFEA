@@ -11,8 +11,21 @@ import jinja2
 import os 
 filePath = os.path.dirname(os.path.realpath(__file__))
 
-def getChunks(itemsToChunk, numOfChunks):
-    # if type(itemsToChunk[0])
+def _getChunks(itemsToChunk, numOfChunks):
+    """Useful function to create lists of lists from list
+
+    Parameters
+    ----------
+    itemsToChunk : list
+        list of objects
+    numOfChunks : int
+        length of internal list
+
+    Returns
+    -------
+    list
+        list of lists
+    """
     temp = [itemsToChunk[i:i + numOfChunks]
             for i in xrange(0, len(itemsToChunk), numOfChunks)]
     return temp
@@ -261,43 +274,6 @@ class PartMesh(object):
             elementByType[e.type].append(e)
         
         return elementByType
-    
-    def getCalculixFormat(self):
-        """Function used to get specific format for elements, nodes
-        and sets for Calculix input
-        """
-        # prepare elements to be saved to input deck
-        self.ccxElements = defaultdict(list)
-        for eType, elements in self.elementsByType.iteritems():
-            for el in elements:
-                # create text line with element label and node labels 
-                temp = [el.label, ]
-                temp.extend(el.getNodeLabels())
-                # get correct format
-                temp = ['{:>8}'.format(i) for i in temp]
-                # getChunk - get list of list with max 10 items
-                temp = getChunks(temp, 8)
-                # create list of strings which are exactly one line
-                temp = [', '.join([str(i) for i in ch]) + ',\n' for ch in temp]
-                self.ccxElements[eType].append(temp)
-
-        # prepare element sets to save
-        self.ccxElSet = defaultdict(list)
-        for elSetName, elSet in self.elSet.iteritems():
-            temp = [e.label for e in elSet]
-            temp = ['{:>8}'.format(i) for i in temp]
-            temp = getChunks(temp, 8)
-            temp = [', '.join([str(i) for i in ch]) + ',\n' for ch in temp]
-            self.ccxElSet[elSetName].append(temp)
-
-        # prepare node sets to save
-        self.ccxNSet = defaultdict(list)
-        for nSetName, nSet in self.nSet.iteritems():
-            temp = [n.label for n in nSet]
-            temp = ['{:>8}'.format(i) for i in temp]
-            temp = getChunks(temp, 8)
-            temp = [', '.join([str(i) for i in ch]) + ',\n' for ch in temp]
-            self.ccxNSet[nSetName].append(temp)
 
     def getDiffFormatForElType(self, oldElType, newMeshFormat):
         """Function to retrieve name of element type for a
@@ -333,13 +309,24 @@ class PartMesh(object):
         
         return newElType
 
-    def getUnvFormat(self):
+    def setElementTypeFormat(self, newFormat):
+        """Function to change element types in dictionary
+        elementsByType
+
+        Parameters
+        ----------
+        newFormat : str
+            new format (eg 'UNV')
+        """
+        # create a temporary dict
         tempElementByType = defaultdict(list)
+        # iterate over all element types in the dict
         for elTypeName, elValues in self.elementsByType.iteritems():
+            # get new format for each type fo element
             newElType = self.getDiffFormatForElType(oldElType=elTypeName,
-                                                    newMeshFormat='UNV')
+                                                    newMeshFormat=newFormat)
             tempElementByType[newElType] = elValues
-        
+        # swap temporary dict with dict with new formats
         self.elementsByType = tempElementByType
 
 class ExportMesh(object):
@@ -368,7 +355,7 @@ class ExportMesh(object):
     def __init__(self, modelName, listOfParts):
         self.modelName = modelName
         self.parts = listOfParts
-        # computeAssemblyMesh function needs to be finished
+        # TODO computeAssemblyMesh function needs to be finished
         self.assemblyMesh = self.computeAssemblyMesh()
 
     @classmethod
@@ -449,91 +436,7 @@ class ExportMesh(object):
             assembly[part.name] = part
         
         return assembly
-        
-    def _exportToCalculix(self, exportedFilename):
-        """Function used to generate input deck for Calculix software
 
-        Parameters
-        ----------
-        exportedFilename: str
-            name of the file to be created
-        """
-        deck = '*HEADING\nModel name: {0}\n'.format(self.modelName)
-        
-        def getChunkStrFromList(itemList, itemsInChunk=10, tab=True):
-            partOfDeck = ''
-            if len(itemList) <= itemsInChunk:
-                temp = len(itemList) * '{:>6},'
-                partOfDeck += temp.format(*elInput)
-                partOfDeck += '\n'
-            else:
-                # Split into chunks
-                # https://stackoverflow.com/a/312464
-                chunks = [itemList[i:i + itemsInChunk]
-                          for i in xrange(0, len(itemList), itemsInChunk)]
-                
-                temp = len(chunks[0]) * '{:>6},'
-                partOfDeck = temp.format(*chunks[0])
-                partOfDeck += '\n'
-                
-                if tab is True:
-                    tabCharacter = '\t'
-                else:
-                    tabCharacter = ''
-                    
-                for ch in chunks[1:]:
-                    temp = tabCharacter + len(ch) * '{:>6},' + '\n'
-                    partOfDeck += temp.format(*ch)
-            
-            return partOfDeck
-
-        for partName, partObject in self.assemblyMesh.iteritems():
-            deck += '*NODE, NSET={0}-NALL\n'.format(partName)
-            # https://stackoverflow.com/a/8234511
-            # TODO: assembly mesh not part
-            for node in partObject.nodes:
-                nInput = (node.label, node.coordinates[0],
-                          node.coordinates[1], node.coordinates[2])
-                deck += '{:>8}, {:>12.6},{:>12.6},{:>12.6}\n'.format(*nInput)
-            # prepare elements to write them into input deck
-            for elType, elementList in partObject.elementsByType.iteritems():
-                deck += '*ELEMENT, TYPE={0}, ELSET={1}-ALL\n'.format(elType,
-                                                                     partName)
-                for element in elementList:
-                    connectivityIndices = element.getNodeLabels()
-                    elInput = [element.label]
-                    elInput.extend(connectivityIndices)
-                    # I have implemented 10 entries max in if-else
-                    # statement and getChunkStrFromList() function
-                    chunkedDeck = getChunkStrFromList(itemList=elInput,
-                                                      itemsInChunk=10,
-                                                      tab=True)
-                    deck += chunkedDeck
-            if len(partObject.nSet.keys()):
-                # prepare node sets to write to input deck
-                for nSetName, nodeSetValue in partObject.nSet.iteritems():
-                    deck += '*NSET, NSET={0}-{1}\n'.format(partName, nSetName)
-                    nodeSetLabels = [n.label for n in nodeSetValue]
-                    chunkedDeck = getChunkStrFromList(itemList=nodeSetLabels,
-                                                      itemsInChunk=10,
-                                                      tab=False)
-                    deck += chunkedDeck
-            if len(partObject.elSet.keys()):
-                # prepare element sets to write to input deck
-                for elSetName, elSetValue in partObject.elSet.iteritems():
-                    deck += '*ELSET, ELSET={0}-{1}\n'.format(partName,
-                                                             elSetName)
-                    elSetLabels = [e.label for e in elSetValue]
-                    chunkedDeck = getChunkStrFromList(itemList=elSetLabels,
-                                                      itemsInChunk=10,
-                                                      tab=False)
-                    
-                    deck += chunkedDeck
-        # write Calculix input deck
-        with open('{0}'.format(exportedFilename), 'w') as f:
-            f.write(deck)
-        print 'Calculix deck was written into {0}'.format(exportedFilename)
-    
     def exportToCalculix(self, exportedFilename):
         """Function to export mesh to Calculix format
 
@@ -542,11 +445,10 @@ class ExportMesh(object):
         exportedFilename : str
             name of the file to export mesh (eg 'calculix.inp')
         """
-        # get calculix format for each part
+        # get calculix/abaqus element format for each part
         for p in self.parts:
-            p.getCalculixFormat()
-        # prepare a dict which will be used to render
-        # things in template
+            p.setElementTypeFormat(newFormat='ABQ')
+        # prepare a dict which will be used to render things in template
         renderDict = {'modelName': self.modelName,
                       'parts': self.parts}
         # load jinja template from file
@@ -564,12 +466,17 @@ class ExportMesh(object):
         print 'Mesh exported to {0}'.format(exportedFilename)
 
     def exportToUnvFormat(self, exportedFilename):
-        # get calculix format for each part
-        # for p in self.parts:
-            # p.getCalculixFormat()
-        # prepare a dict which will be used to render
-        # things in template
-        for p in self.parts: p.getUnvFormat()
+        """Function to export to UNV format
+
+        Parameters
+        ----------
+        exportedFilename : str
+            name of the file to export mesh (eg 'salome.unv')
+        """
+        # get unv format for each part
+        for p in self.parts:
+            p.setElementTypeFormat(newFormat='UNV')
+        # prepare a dict which will be used to render things in template
         renderDict = {'parts': self.parts}
         # load jinja template from file
         # https://stackoverflow.com/a/38642558
@@ -583,8 +490,9 @@ class ExportMesh(object):
         # save input deck
         with open(exportedFilename, 'w') as f:
             f.write(outputText)
+        print 'Mesh exported to {0}'.format(exportedFilename)
 
 if __name__ == '__main__':
     m = ExportMesh.importFromDbFile(pathToDbFile='Abaqus.db')
-    # m.exportToCalculix('calculix.inp')
+    m.exportToCalculix('calculix.inp')
     m.exportToUnvFormat('salome.unv')
