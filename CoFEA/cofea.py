@@ -3,7 +3,7 @@
 .. moduleauthor:: Slawomir Polanski
 
 """
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 import pickle
 import pprint
 import jinja2
@@ -126,7 +126,10 @@ class PartMesh(object):
     nSet: defaultdict(list)
         dictionary of node sets grouped by node set name
     """
-
+    _elementTypes = (
+        OrderedDict([('ABQ', 'C3D8R'), ('UNV', '115')]),
+    )
+    
     def __init__(self, partName, partNodes, partElements,
                  elementSets=None, nodeSets=None):
         """PartMesh constructor
@@ -260,6 +263,9 @@ class PartMesh(object):
         return elementByType
     
     def getCalculixFormat(self):
+        """Function used to get specific format for elements, nodes
+        and sets for Calculix input
+        """
         # prepare elements to be saved to input deck
         self.ccxElements = defaultdict(list)
         for eType, elements in self.elementsByType.iteritems():
@@ -267,27 +273,74 @@ class PartMesh(object):
                 # create text line with element label and node labels 
                 temp = [el.label, ]
                 temp.extend(el.getNodeLabels())
+                # get correct format
+                temp = ['{:>8}'.format(i) for i in temp]
                 # getChunk - get list of list with max 10 items
-                temp = getChunks(temp, 10)
+                temp = getChunks(temp, 8)
                 # create list of strings which are exactly one line
-                temp = [', '.join([str(i) for i in ch]) + '\n' for ch in temp]
+                temp = [', '.join([str(i) for i in ch]) + ',\n' for ch in temp]
                 self.ccxElements[eType].append(temp)
 
         # prepare element sets to save
         self.ccxElSet = defaultdict(list)
         for elSetName, elSet in self.elSet.iteritems():
             temp = [e.label for e in elSet]
-            temp = getChunks(temp, 10)
-            temp = [', '.join([str(i) for i in ch]) + '\n' for ch in temp]
+            temp = ['{:>8}'.format(i) for i in temp]
+            temp = getChunks(temp, 8)
+            temp = [', '.join([str(i) for i in ch]) + ',\n' for ch in temp]
             self.ccxElSet[elSetName].append(temp)
 
         # prepare node sets to save
         self.ccxNSet = defaultdict(list)
         for nSetName, nSet in self.nSet.iteritems():
             temp = [n.label for n in nSet]
-            temp = getChunks(temp, 10)
-            temp = [', '.join([str(i) for i in ch]) + '\n' for ch in temp]
+            temp = ['{:>8}'.format(i) for i in temp]
+            temp = getChunks(temp, 8)
+            temp = [', '.join([str(i) for i in ch]) + ',\n' for ch in temp]
             self.ccxNSet[nSetName].append(temp)
+
+    def getDiffFormatForElType(self, oldElType, newMeshFormat):
+        """Function to retrieve name of element type for a
+        specific software
+
+        Parameters
+        ----------
+        oldElType : str
+            name of the element type that needs to be
+            converted (eg 'C3D8R')
+        newMeshFormat : str
+            new mesh format (eg 'UNV')
+
+        Returns
+        -------
+        str
+            name of the element type in new format
+
+        Raises
+        ------
+        ValueError
+            error appears when the specific element type
+            is not implemented
+        """
+        
+        newElType = False
+        for elTypes in self._elementTypes:
+            if oldElType in elTypes.values():
+                newElType = elTypes[newMeshFormat]
+        if newElType is False:
+            raise ValueError('The format for element might not be\
+                implemented yet')
+        
+        return newElType
+
+    def getUnvFormat(self):
+        tempElementByType = defaultdict(list)
+        for elTypeName, elValues in self.elementsByType.iteritems():
+            newElType = self.getDiffFormatForElType(oldElType=elTypeName,
+                                                    newMeshFormat='UNV')
+            tempElementByType[newElType] = elValues
+        
+        self.elementsByType = tempElementByType
 
 class ExportMesh(object):
     """Mesh is the most general class used to import, store\
@@ -510,7 +563,28 @@ class ExportMesh(object):
             f.write(outputText)
         print 'Mesh exported to {0}'.format(exportedFilename)
 
+    def exportToUnvFormat(self, exportedFilename):
+        # get calculix format for each part
+        # for p in self.parts:
+            # p.getCalculixFormat()
+        # prepare a dict which will be used to render
+        # things in template
+        for p in self.parts: p.getUnvFormat()
+        renderDict = {'parts': self.parts}
+        # load jinja template from file
+        # https://stackoverflow.com/a/38642558
+        templateLoader = jinja2.FileSystemLoader(searchpath=filePath)
+        templateEnv = jinja2.Environment(loader=templateLoader)
+        template = templateEnv.get_template("unv.tmplt")
+        # render template with dict
+        outputText = template.render(renderDict)
+        # remove all empty lines
+        outputText = '\n'.join([i for i in outputText.split('\n') if len(i)])
+        # save input deck
+        with open(exportedFilename, 'w') as f:
+            f.write(outputText)
 
 if __name__ == '__main__':
     m = ExportMesh.importFromDbFile(pathToDbFile='Abaqus.db')
-    m.exportToCalculix('calculix.inp')
+    # m.exportToCalculix('calculix.inp')
+    m.exportToUnvFormat('salome.unv')

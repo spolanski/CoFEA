@@ -1,0 +1,42 @@
+{# NODE FORMAT #}
+{# ------------------- #}
+{{ '{:>6}'.format(-1) }}
+{{ '{:>6}'.format(2411) }}
+{% for part in parts -%}
+{% for node in part.nodes -%}
+{{ '{:>10}'.format(node.label) -}}
+{{ '{:>10}'.format(0) -}}
+{{ '{:>10}'.format(0) -}}
+{{ '{:>10}'.format(11) }}
+{{ '   {:.16E}'.format(node.coordinates[0])|replace("E","D") -}}
+{{ '   {:.16E}'.format(node.coordinates[1])|replace("E","D") -}}
+{{ '   {:.16E}'.format(node.coordinates[2])|replace("E","D") }}
+{% endfor -%}
+{% endfor -%}
+{{ '{:>6}'.format(-1) }}
+{# ELEMENTS FORMAT #}
+{# ------------------- #}
+{{ '{:>6}'.format(-1) }}
+{{ '{:>6}'.format(2412) }}
+{# FOR EACH PART IN ALL PARTS #}
+{# ------------------- #}
+{% for part in parts -%}
+{# FOR EACH ELEMENT IN DICTIONARY OF ELEMENTS #}
+{# ------------------- #}
+{% for elType, elementList in part.elementsByType.items() -%}
+{% for element in elementList -%}
+{# GET LABEL, TYPE, PROPERTY TABLE NUMBER, MATERIAL TABLE NUMBER, COLOR, NUMBER OF NODES #}
+{{ '{:>10}'.format(element.label) -}}
+{{ '{:>10}'.format(elType) -}}
+{{ '{:>10}'.format(1) -}}
+{{ '{:>10}'.format(1) -}}
+{{ '{:>10}'.format(7) -}}
+{{ '{:>10}'.format(element.connectivity|length) }}
+{# GET ALL NODES BUT BREAK THE LINE AFTER EACH 8TH #}
+{% for node in element.connectivity -%}
+{{ '{:>10}'.format(node.label) }}{% if loop.index % 8 == 0 %}{{"\n"}}{% endif %}
+{%- endfor %}
+{% endfor -%}
+{% endfor -%}
+{% endfor -%}
+{{ '{:>6}'.format(-1) }}
