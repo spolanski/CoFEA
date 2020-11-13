@@ -139,8 +139,18 @@ class PartMesh(object):
     nSet: defaultdict(list)
         dictionary of node sets grouped by node set name
     """
+    # UNV element types
+    # http://victorsndvg.github.io/FEconv/formats/unv.xhtml
+    # implemented:
+    # - linear tet, wedge, hex
+    # - quadratic tet, wedge, hex
     _elementTypes = (
-        OrderedDict([('ABQ', 'C3D8R'), ('UNV', '115')]),
+        OrderedDict([('ABQ', 'C3D4'), ('UNV', '111')]),
+        OrderedDict([('ABQ', 'C3D6'), ('UNV', '112')]),
+        OrderedDict([('ABQ', 'C3D8'), ('ABQ', 'C3D8R'), ('UNV', '115')]),
+        OrderedDict([('ABQ', 'C3D10'), ('UNV', '118')]),
+        OrderedDict([('ABQ', 'C3D15'), ('UNV', '113')]),
+        OrderedDict([('ABQ', 'C3D20R'), ('ABQ', 'C3D20R'), ('UNV', '116')]),
     )
     
     def __init__(self, partName, partNodes, partElements,
@@ -221,7 +231,7 @@ class PartMesh(object):
         return pprint.pformat(self.__dict__, width=2)
     
     def __repr__(self):
-        return 'PART-%s' % self.namez
+        return 'PART-%s' % self.name
             
     def getNodesFromLabelList(self, labelList):
         """Function to retrieve the nodes from list of node labels
@@ -304,8 +314,7 @@ class PartMesh(object):
             if oldElType in elTypes.values():
                 newElType = elTypes[newMeshFormat]
         if newElType is False:
-            raise ValueError('The format for element might not be\
-                implemented yet')
+            raise ValueError("The format for element might not be implemented yet")
         
         return newElType
 
@@ -459,7 +468,7 @@ class ExportMesh(object):
         # render template with dict
         outputText = template.render(renderDict)
         # remove all empty lines
-        outputText = '\n'.join([i for i in outputText.split('\n') if len(i)])
+        # outputText = '\n'.join([i for i in outputText.split('\n') if len(i)])
         # save input deck
         with open(exportedFilename, 'w') as f:
             f.write(outputText)
@@ -473,6 +482,7 @@ class ExportMesh(object):
         exportedFilename : str
             name of the file to export mesh (eg 'salome.unv')
         """
+        # TODO: Prepare UNV template for beam elements
         # get unv format for each part
         for p in self.parts:
             p.setElementTypeFormat(newFormat='UNV')
@@ -492,7 +502,7 @@ class ExportMesh(object):
             f.write(outputText)
         print 'Mesh exported to {0}'.format(exportedFilename)
 
-if __name__ == '__main__':
-    m = ExportMesh.importFromDbFile(pathToDbFile='Abaqus.db')
-    m.exportToCalculix('calculix.inp')
-    m.exportToUnvFormat('salome.unv')
+# if __name__ == '__main__':
+#     m = ExportMesh.importFromDbFile(pathToDbFile='Abaqus.db')
+#     m.exportToCalculix('calculix.inp')
+#     m.exportToUnvFormat('salome.unv')

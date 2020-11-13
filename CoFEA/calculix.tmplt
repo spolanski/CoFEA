@@ -6,7 +6,7 @@
 *NODE, NSET={{ part.name }}-ALL
 {# FOR LOOP OVER PART NODES #}
 {%- for node in part.nodes -%}
-{{ '{:>10}, '.format(node.label) -}}
+{{ '{:>8}, '.format(node.label) -}}
 {{- '{:>6.6f}, '.format(node.coordinates[0]) -}}
 {{ '{:>6.6f}, '.format(node.coordinates[1]) -}}
 {{ '{:>6.6f}'.format(node.coordinates[2]) }}
@@ -15,15 +15,19 @@
 {%- for elType, elementList in part.elementsByType.items() -%}
 *ELEMENT, TYPE={{ elType }}, ELSET={{ part.name }}-{{ elType }}-ALL
 {% for element in elementList -%}
-{{ '{:>8},'.format(element.label) }}{% if loop.index % 8 == 0 %}{{"\n"}}{% endif %}
+{{ '{:>8},'.format(element.label) -}}
+{% for connectedNode in element.connectivity %}
+{{- '{:>8}, '.format(connectedNode.label) }}
+{%- if loop.index % 9 == 0 %}{{"\n"}}{% endif %}
 {%- endfor %}
+{% endfor %}
 {%- endfor %}
 {# FOR LOOP OVER PART ELEMENT SETS #}
 {%- for elSetName, elementSetList in part.elSet.items() -%}
 *ELSET, ELSET={{ part.name }}-{{ elSetName }}
 {% for element in elementSetList -%}
 {{ '{:>8},'.format(element.label) -}}
-{% if loop.index % 8 == 0 %}{{"\n"}}
+{% if loop.index % 6 == 0 %}{{"\n"}}
 {%- endif %}
 {%- endfor %}
 {%- endfor %}
@@ -32,7 +36,7 @@
 *NSET, NSET={{ part.name }}-{{ nSetName }}
 {% for node in nodeSetList -%}
 {{ '{:>8},'.format(node.label) -}}
-{% if loop.index % 8 == 0 %}{{"\n"}}
+{% if loop.index % 6 == 0 %}{{"\n"}}
 {%- endif %}
 {%- endfor %}
 {%- endfor %}

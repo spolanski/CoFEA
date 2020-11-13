@@ -2,6 +2,8 @@
 :noindex:
 """
 import cofea
+import os 
+filePath = os.path.dirname(os.path.realpath(__file__))
 
 def main():
     # example: prepare db file from scratch
@@ -34,7 +36,8 @@ def main():
     
     # example: load mesh from db file
     m = cofea.ExportMesh.importFromDbFile(pathToDbFile='dbFile.db')
-    m.exportToCalculix(exportedFilename='test.inp')
+    m.exportToCalculix(exportedFilename='ccx.inp')
+    m.exportToUnvFormat(exportedFilename='salome.unv')
 
 if __name__ == '__main__':
     main()
