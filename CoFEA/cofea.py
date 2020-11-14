@@ -145,12 +145,14 @@ class PartMesh(object):
     # - linear tet, wedge, hex
     # - quadratic tet, wedge, hex
     _elementTypes = (
-        OrderedDict([('ABQ', 'C3D4'), ('UNV', '111')]),
-        OrderedDict([('ABQ', 'C3D6'), ('UNV', '112')]),
-        OrderedDict([('ABQ', 'C3D8'), ('ABQ', 'C3D8R'), ('UNV', '115')]),
-        OrderedDict([('ABQ', 'C3D10'), ('UNV', '118')]),
-        OrderedDict([('ABQ', 'C3D15'), ('UNV', '113')]),
-        OrderedDict([('ABQ', 'C3D20R'), ('ABQ', 'C3D20R'), ('UNV', '116')]),
+        OrderedDict([('ABQ', 'S3'), ('CCX', 'S3'), ('UNV', '91')]),
+        OrderedDict([('ABQ', 'STRI65'), ('CCX', 'S6'), ('UNV', '92')]),
+        OrderedDict([('ABQ', 'S4'), ('CCX', 'S4'), ('UNV', '94')]),
+        OrderedDict([('ABQ', 'S4R'), ('CCX', 'S4R'), ('UNV', '94')]),
+        OrderedDict([('ABQ', 'C3D4'), ('CCX', 'C3D4'), ('UNV', '111')]),
+        OrderedDict([('ABQ', 'C3D6'), ('CCX', 'C3D6'), ('UNV', '112')]),
+        OrderedDict([('ABQ', 'C3D8'), ('CCX', 'C3D8'), ('UNV', '115')]),
+        OrderedDict([('ABQ', 'C3D8R'), ('CCX', 'C3D8R'), ('UNV', '115')]),
     )
     
     def __init__(self, partName, partNodes, partElements,
@@ -308,13 +310,13 @@ class PartMesh(object):
             error appears when the specific element type
             is not implemented
         """
-        
         newElType = False
         for elTypes in self._elementTypes:
             if oldElType in elTypes.values():
                 newElType = elTypes[newMeshFormat]
         if newElType is False:
-            raise ValueError("The format for element might not be implemented yet")
+            er = "Element type {0} in not implemented yet".format(oldElType)
+            raise ValueError(er)
         
         return newElType
 
@@ -456,7 +458,7 @@ class ExportMesh(object):
         """
         # get calculix/abaqus element format for each part
         for p in self.parts:
-            p.setElementTypeFormat(newFormat='ABQ')
+            p.setElementTypeFormat(newFormat='CCX')
         # prepare a dict which will be used to render things in template
         renderDict = {'modelName': self.modelName,
                       'parts': self.parts}
@@ -502,7 +504,7 @@ class ExportMesh(object):
             f.write(outputText)
         print 'Mesh exported to {0}'.format(exportedFilename)
 
-# if __name__ == '__main__':
-#     m = ExportMesh.importFromDbFile(pathToDbFile='Abaqus.db')
-#     m.exportToCalculix('calculix.inp')
-#     m.exportToUnvFormat('salome.unv')
+if __name__ == '__main__':
+    m = ExportMesh.importFromDbFile(pathToDbFile='Abaqus.db')
+    m.exportToCalculix('calculix.inp')
+    m.exportToUnvFormat('salome.unv')
