@@ -65,14 +65,14 @@ astk
 in the terminal. The ASTK Window should appear with the job progress window.
 [<img
   src="png/first.png"
-  width="600"
+  width="1000"
   title="ASTK Window">
 ](png)
 
 In the Base path select your working directory, then add *.comm file, mesh file, *.rmed and *.mess to run the simulation with the blue, open folder icon.
 [<img
   src="/png/second.png"
-  width="600"
-  title="ASTK Window">
+  width="1000"
+  title="ASTK Window_1">
 ](png)
 Happy meshing!
