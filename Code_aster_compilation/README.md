@@ -71,8 +71,8 @@ in the terminal. The ASTK Window should appear with the job progress window.
 
 In the Base path select your working directory, then add *.comm file, mesh file, *.rmed and *.mess to run the simulation with the blue, open folder icon.
 [<img
-  src="Code_aster_compilation/png/second.png"
+  src="CoFEA/Code_aster_compilation/png/second.png"
   width="200"
   title="ASTK Window">
-](Code_aster_compilation/png)
+](CoFEA/Code_aster_compilation/png)
 Happy meshing!
