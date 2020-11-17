@@ -74,4 +74,3 @@ In the Base path select your working directory, then add *.comm file, mesh file,
   src="png/second.png"
   title="ASTK Window_1">
 ](png)
-Happy meshing!
