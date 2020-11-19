@@ -6,7 +6,11 @@
 from collections import defaultdict, OrderedDict
 import pickle
 import pprint
-import jinja2
+try:
+    import jinja2
+except ImportError as e:
+    print 'WARNING!: ', e, '\n'
+
 
 import os 
 filePath = os.path.dirname(os.path.realpath(__file__))
@@ -153,6 +157,7 @@ class PartMesh(object):
         OrderedDict([('ABQ', 'C3D6'), ('CCX', 'C3D6'), ('UNV', '112')]),
         OrderedDict([('ABQ', 'C3D8'), ('CCX', 'C3D8'), ('UNV', '115')]),
         OrderedDict([('ABQ', 'C3D10'), ('CCX', 'C3D10'), ('UNV', '118')]),
+        OrderedDict([('ABQ', 'C3D15'), ('CCX', 'C3D15'), ('UNV', '113')]),
         OrderedDict([('ABQ', 'C3D8R'), ('CCX', 'C3D8R'), ('UNV', '115')]),
         OrderedDict([('ABQ', 'C3D20R'), ('CCX', 'C3D20R'), ('UNV', '116')]),
     )
@@ -209,21 +214,8 @@ class PartMesh(object):
         # create list of all nodes
         nodes = [Node(n.label, n.coordinates) for n in abqPart.nodes]
         # create list of all elements
-        elements = []
-        for e in abqPart.elements:
-            if not(e.type in ('C3D20R, ')):
-                elements.append(Element(e.type, e.label,
-                                        e.connectivity,
-                                        nodes))
-            elif e.type is 'C3D20R':
-                order = [7, 6, 5, 4, 3, 2, 1, 0, 8, 9, 10,
-                         11, 12, 13, 14, 15, 16, 17, 18, 19]
-                
-                elConnectivity = [el.connectivity[i] for i in order]
-                elements.append(Element(e.type, e.label,
-                                        elConnectivity,
-                                        nodes))
-                
+        elements = [Element(e.type, e.label, e.connectivity,
+                            nodes) for e in abqPart.elements]
         nSet = defaultdict(list)
         elSet = defaultdict(list)
 
@@ -394,14 +386,14 @@ class Mesh(object):
         self.meshFormat = meshFormat
 
     @classmethod
-    def importFromAbaqusCae(cls, abqModelName, abqPartList):
+    def importFromAbaqusCae(cls, abqModelName, abqInstanceList):
         """Function to initiate the Mesh object
 
         Parameters
         ----------
         abqModelName : str
             name of the Abaqus model
-        abqPartList : list
+        abqInstanceList : list
             list of Abaqus Parts to export mesh from
 
         Returns
@@ -409,7 +401,8 @@ class Mesh(object):
         Mesh
             object containing model mesh definition
         """
-        parts = [PartMesh.fromAbaqusCae(p) for p in abqPartList]
+        # [mdb.models['Model-1'].rootAssembly.allInstances['C3D20R-1'], ]
+        parts = [PartMesh.fromAbaqusCae(p) for p in abqInstanceList]
         return cls(modelName=abqModelName, listOfParts=parts,
                    meshFormat='ABQ')
 
