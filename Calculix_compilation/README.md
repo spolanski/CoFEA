@@ -91,7 +91,7 @@ tar xvf patch.tar.gz
     -   `FFLAGS = -O -cg89` to `FFLAGS = -O2`
     -   `MAKE = /bin/make` to `MAKE = make`
     -   `SHELL = /bin/sh` to `SHELL = shell`
-- In `ARPACK/UTIL/second.f` change: `EXTERNAL ETIME` to `*EXTERNAL ETIME`
+- In `ARPACK/UTIL/second.f` change: `EXTERNAL ETIME` to `*EXTERNAL ETIME`. This line should be commented.
 
 Then mowe to ARPACK directory and run:
 
