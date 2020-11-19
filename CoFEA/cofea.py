@@ -152,7 +152,9 @@ class PartMesh(object):
         OrderedDict([('ABQ', 'C3D4'), ('CCX', 'C3D4'), ('UNV', '111')]),
         OrderedDict([('ABQ', 'C3D6'), ('CCX', 'C3D6'), ('UNV', '112')]),
         OrderedDict([('ABQ', 'C3D8'), ('CCX', 'C3D8'), ('UNV', '115')]),
+        OrderedDict([('ABQ', 'C3D10'), ('CCX', 'C3D10'), ('UNV', '118')]),
         OrderedDict([('ABQ', 'C3D8R'), ('CCX', 'C3D8R'), ('UNV', '115')]),
+        OrderedDict([('ABQ', 'C3D20R'), ('CCX', 'C3D20R'), ('UNV', '116')]),
     )
     
     def __init__(self, partName, partNodes, partElements,
@@ -189,7 +191,7 @@ class PartMesh(object):
             self.nSet = nodeSets
 
     @classmethod
-    def fromAbaqus(cls, abqPart):
+    def fromAbaqusCae(cls, abqPart):
         """Function to initiate object from Abaqus part.
 
         Parameters
@@ -207,9 +209,21 @@ class PartMesh(object):
         # create list of all nodes
         nodes = [Node(n.label, n.coordinates) for n in abqPart.nodes]
         # create list of all elements
-        elements = [Element(e.type, e.label, e.connectivity,
-                            nodes) for e in abqPart.elements]
-        
+        elements = []
+        for e in abqPart.elements:
+            if not(e.type in ('C3D20R, ')):
+                elements.append(Element(e.type, e.label,
+                                        e.connectivity,
+                                        nodes))
+            elif e.type is 'C3D20R':
+                order = [7, 6, 5, 4, 3, 2, 1, 0, 8, 9, 10,
+                         11, 12, 13, 14, 15, 16, 17, 18, 19]
+                
+                elConnectivity = [el.connectivity[i] for i in order]
+                elements.append(Element(e.type, e.label,
+                                        elConnectivity,
+                                        nodes))
+                
         nSet = defaultdict(list)
         elSet = defaultdict(list)
 
@@ -339,8 +353,17 @@ class PartMesh(object):
             tempElementByType[newElType] = elValues
         # swap temporary dict with dict with new formats
         self.elementsByType = tempElementByType
+    
+    def reorderNodesInElType(self):
+        order = [7, 6, 5, 4, 3, 2, 1, 0, 8, 9, 10,
+                 11, 12, 13, 14, 15, 16, 17, 18, 19]
+        # temp = self.elements[0].connectivity
+        for el in self.elements:
+            el.connectivity = [el.connectivity[i] for i in order]
+            
+        # self.elements[0] = temp
 
-class ExportMesh(object):
+class Mesh(object):
     """Mesh is the most general class used to import, store\
     and export mesh data. The idea is to initialise the constructor,\
     then import mesh from db file. Finally, the mesh can be\
@@ -363,15 +386,16 @@ class ExportMesh(object):
     
     """
 
-    def __init__(self, modelName, listOfParts):
+    def __init__(self, modelName, listOfParts, meshFormat='custom'):
         self.modelName = modelName
         self.parts = listOfParts
         # TODO computeAssemblyMesh function needs to be finished
         self.assemblyMesh = self.computeAssemblyMesh()
+        self.meshFormat = meshFormat
 
     @classmethod
-    def importFromAbaqus(cls, abqModelName, abqPartList):
-        """Function to initiate the ExportMesh object
+    def importFromAbaqusCae(cls, abqModelName, abqPartList):
+        """Function to initiate the Mesh object
 
         Parameters
         ----------
@@ -382,15 +406,16 @@ class ExportMesh(object):
 
         Returns
         -------
-        ExportMesh
+        Mesh
             object containing model mesh definition
         """
-        parts = [PartMesh.fromAbaqus(p) for p in abqPartList]
-        return cls(modelName=abqModelName, listOfParts=parts)
+        parts = [PartMesh.fromAbaqusCae(p) for p in abqPartList]
+        return cls(modelName=abqModelName, listOfParts=parts,
+                   meshFormat='ABQ')
 
     @classmethod
     def importFromDbFile(cls, pathToDbFile):
-        """Function to initiate the ExportMesh object
+        """Function to initiate the Mesh object
 
         Parameters
         ----------
@@ -399,16 +424,17 @@ class ExportMesh(object):
 
         Returns
         -------
-        ExportMesh
+        Mesh
             object containing model mesh definition
         """
         with open(pathToDbFile, 'rb') as handle:
             mesh = pickle.load(handle)
         
         return cls(modelName=mesh['modelName'],
-                   listOfParts=mesh['partList'])
+                   listOfParts=mesh['partList'],
+                   meshFormat=mesh['meshFormat'])
     
-    def saveToDbFile(self, nameOfDbFile):
+    def saveToDbFile(self, nameOfDbFile, exportedFrom):
         """Function to save model data to db file
 
         Parameters
@@ -417,7 +443,9 @@ class ExportMesh(object):
             name of the file that will be used to store data
         """
         dictToSave = {'modelName': self.modelName,
-                      'partList': self.parts}
+                      'partList': self.parts,
+                      'meshFormat': self.meshFormat
+                      }
         
         with open(nameOfDbFile, 'wb') as handle:
             pickle.dump(dictToSave, handle,
@@ -470,7 +498,7 @@ class ExportMesh(object):
         # render template with dict
         outputText = template.render(renderDict)
         # remove all empty lines
-        # outputText = '\n'.join([i for i in outputText.split('\n') if len(i)])
+        outputText = '\n'.join([i for i in outputText.split('\n') if len(i)])
         # save input deck
         with open(exportedFilename, 'w') as f:
             f.write(outputText)
@@ -505,6 +533,6 @@ class ExportMesh(object):
         print 'Mesh exported to {0}'.format(exportedFilename)
 
 if __name__ == '__main__':
-    m = ExportMesh.importFromDbFile(pathToDbFile='Abaqus.db')
+    m = Mesh.importFromDbFile(pathToDbFile='Abaqus.db')
     m.exportToCalculix('calculix.inp')
     m.exportToUnvFormat('salome.unv')

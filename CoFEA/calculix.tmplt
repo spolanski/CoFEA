@@ -39,5 +39,5 @@
 {% if loop.index % 6 == 0 %}{{"\n"}}
 {%- endif %}
 {%- endfor %}
-{%- endfor %}
+{% endfor %}
 {%- endfor -%}
