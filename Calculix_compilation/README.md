@@ -126,4 +126,16 @@ Then it is possible to compile Calculix with:
 ```example
 make
 ```
+# Calculix compilation
+
+After compilation the ccx_2.17.1_MT should be obtained. To use Calculix globally please move executable to /usr/local/bin. Additionally some privileges should be added to the file. If system ask for root priveleges please add sudo to the commands.
+
+```example
+cp ccx_2.17.1_MT /ur/local/bin
+chmod a+rx ccx_2.17.1_MT
+```
+
+
+
+
 Happy meshing!
