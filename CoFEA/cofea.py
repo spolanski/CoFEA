@@ -6,11 +6,7 @@
 from collections import defaultdict, OrderedDict
 import pickle
 import pprint
-try:
-    import jinja2
-except ImportError as e:
-    print 'WARNING!: ', e, '\n'
-
+import jinja2
 
 import os 
 filePath = os.path.dirname(os.path.realpath(__file__))
@@ -156,9 +152,9 @@ class PartMesh(object):
         OrderedDict([('ABQ', 'C3D4'), ('CCX', 'C3D4'), ('UNV', '111')]),
         OrderedDict([('ABQ', 'C3D6'), ('CCX', 'C3D6'), ('UNV', '112')]),
         OrderedDict([('ABQ', 'C3D8'), ('CCX', 'C3D8'), ('UNV', '115')]),
+        OrderedDict([('ABQ', 'C3D8R'), ('CCX', 'C3D8R'), ('UNV', '115')]),
         OrderedDict([('ABQ', 'C3D10'), ('CCX', 'C3D10'), ('UNV', '118')]),
         OrderedDict([('ABQ', 'C3D15'), ('CCX', 'C3D15'), ('UNV', '113')]),
-        OrderedDict([('ABQ', 'C3D8R'), ('CCX', 'C3D8R'), ('UNV', '115')]),
         OrderedDict([('ABQ', 'C3D20R'), ('CCX', 'C3D20R'), ('UNV', '116')]),
     )
     
@@ -214,8 +210,21 @@ class PartMesh(object):
         # create list of all nodes
         nodes = [Node(n.label, n.coordinates) for n in abqPart.nodes]
         # create list of all elements
-        elements = [Element(e.type, e.label, e.connectivity,
-                            nodes) for e in abqPart.elements]
+        elements = []
+        for e in abqPart.elements:
+            if not(e.type in ('C3D20R, ')):
+                elements.append(Element(e.type, e.label,
+                                        e.connectivity,
+                                        nodes))
+            elif e.type is 'C3D20R':
+                order = [7, 6, 5, 4, 3, 2, 1, 0, 8, 9, 10,
+                         11, 12, 13, 14, 15, 16, 17, 18, 19]
+                
+                elConnectivity = [el.connectivity[i] for i in order]
+                elements.append(Element(e.type, e.label,
+                                        elConnectivity,
+                                        nodes))
+                
         nSet = defaultdict(list)
         elSet = defaultdict(list)
 
@@ -347,8 +356,10 @@ class PartMesh(object):
         self.elementsByType = tempElementByType
     
     def reorderNodesInElType(self):
-        order = [7, 6, 5, 4, 3, 2, 1, 0, 8, 9, 10,
-                 11, 12, 13, 14, 15, 16, 17, 18, 19]
+        # reorder only for C3D20R for the moment!
+        order = [0, 8, 1, 9, 2, 10, 3, 11,
+                 16, 17, 18, 19, 4, 12, 5,
+                 13, 6, 14, 7, 15]
         # temp = self.elements[0].connectivity
         for el in self.elements:
             el.connectivity = [el.connectivity[i] for i in order]
@@ -386,14 +397,14 @@ class Mesh(object):
         self.meshFormat = meshFormat
 
     @classmethod
-    def importFromAbaqusCae(cls, abqModelName, abqInstanceList):
+    def importFromAbaqusCae(cls, abqModelName, abqPartList):
         """Function to initiate the Mesh object
 
         Parameters
         ----------
         abqModelName : str
             name of the Abaqus model
-        abqInstanceList : list
+        abqPartList : list
             list of Abaqus Parts to export mesh from
 
         Returns
@@ -401,8 +412,7 @@ class Mesh(object):
         Mesh
             object containing model mesh definition
         """
-        # [mdb.models['Model-1'].rootAssembly.allInstances['C3D20R-1'], ]
-        parts = [PartMesh.fromAbaqusCae(p) for p in abqInstanceList]
+        parts = [PartMesh.fromAbaqusCae(p) for p in abqPartList]
         return cls(modelName=abqModelName, listOfParts=parts,
                    meshFormat='ABQ')
 
@@ -480,6 +490,7 @@ class Mesh(object):
         # get calculix/abaqus element format for each part
         for p in self.parts:
             p.setElementTypeFormat(newFormat='CCX')
+            # p.reorderNodesInElType()
         # prepare a dict which will be used to render things in template
         renderDict = {'modelName': self.modelName,
                       'parts': self.parts}
@@ -492,6 +503,7 @@ class Mesh(object):
         outputText = template.render(renderDict)
         # remove all empty lines
         outputText = '\n'.join([i for i in outputText.split('\n') if len(i)])
+        outputText += '\n'
         # save input deck
         with open(exportedFilename, 'w') as f:
             f.write(outputText)
@@ -509,6 +521,7 @@ class Mesh(object):
         # get unv format for each part
         for p in self.parts:
             p.setElementTypeFormat(newFormat='UNV')
+            p.reorderNodesInElType()
         # prepare a dict which will be used to render things in template
         renderDict = {'parts': self.parts}
         # load jinja template from file

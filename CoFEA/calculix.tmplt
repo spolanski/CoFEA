@@ -2,7 +2,7 @@
 *HEADING
 {{ modelName }}
 {# FOR LOOP OVER PARTS #}
-{%- for part in parts -%}
+{% for part in parts -%}
 *NODE, NSET={{ part.name }}-ALL
 {# FOR LOOP OVER PART NODES #}
 {%- for node in part.nodes -%}
@@ -17,7 +17,7 @@
 {% for element in elementList -%}
 {{ '{:>8},'.format(element.label) -}}
 {% for connectedNode in element.connectivity %}
-{{- '{:>8}, '.format(connectedNode.label) }}
+{{- '{:>8},'.format(connectedNode.label) }}
 {%- if loop.index % 9 == 0 %}{{"\n"}}{% endif %}
 {%- endfor %}
 {% endfor %}
