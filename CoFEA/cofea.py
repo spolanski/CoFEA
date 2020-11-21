@@ -8,7 +8,7 @@ import pickle
 import pprint
 import jinja2
 
-import os 
+import os
 filePath = os.path.dirname(os.path.realpath(__file__))
 
 def _getChunks(itemsToChunk, numOfChunks):
@@ -73,7 +73,7 @@ class Node(object):
 
 class Element(object):
     """Class used to store information about elements,
-    theirs type, label, and connection to nodes
+    theirs type, label and connection to nodes
     
     Attributes
     ----------
@@ -188,6 +188,12 @@ class PartMesh(object):
         else:
             self.nSet = nodeSets
 
+    def __str__(self):
+        return pprint.pformat(self.__dict__, width=2)
+    
+    def __repr__(self):
+        return 'PART-%s' % self.name
+
     @classmethod
     def fromAbaqusCae(cls, abqPart):
         """Function to initiate object from Abaqus part.
@@ -213,7 +219,7 @@ class PartMesh(object):
         nSet = defaultdict(list)
         elSet = defaultdict(list)
 
-        for setName, setValues in dict(abqPart.sets).iteritems():
+        for setName, setValues in dict(abqPart.sets).items():
             nodeLabelList = [n.label for n in setValues.nodes]
             currentLabels = [n.label for n in nodes]
             listOfIndices = [currentLabels.index(lab) for lab in nodeLabelList]
@@ -222,19 +228,14 @@ class PartMesh(object):
 
             elementLabelList = [el.label for el in setValues.elements]
             currentLabels = [e.label for e in elements]
-            listOfIndices = [currentLabels.index(lab) for lab in elementLabelList]
+            listOfIndices = [currentLabels.index(lab)
+                             for lab in elementLabelList]
             listOfElements = [elements[i] for i in listOfIndices]
             elSet['EL_' + setName] = listOfElements
         
         return cls(partName=name, partNodes=nodes, partElements=elements,
                    elementSets=elSet, nodeSets=nSet)
-        
-    def __str__(self):
-        return pprint.pformat(self.__dict__, width=2)
-    
-    def __repr__(self):
-        return 'PART-%s' % self.name
-            
+
     def getNodesFromLabelList(self, labelList):
         """Function to retrieve the nodes from list of node labels
 
@@ -332,7 +333,7 @@ class PartMesh(object):
         # create a temporary dict
         tempElementByType = defaultdict(list)
         # iterate over all element types in the dict
-        for elTypeName, elValues in self.elementsByType.iteritems():
+        for elTypeName, elValues in self.elementsByType.items():
             # get new format for each type fo element
             newElType = self.getDiffFormatForElType(oldElType=elTypeName,
                                                     newMeshFormat=newFormat)
@@ -350,8 +351,10 @@ class PartMesh(object):
             Format of mesh to be converted to
         """
         # C3D20R
-        # abq = [5, 6, 8, 7, 1, 2, 4, 3, 12, 11, 10, 9, 13, 14, 15, 16, 18, 17, 19, 20]
-        # unv = [5, 12, 6, 11, 8, 10, 7, 9, 18, 17, 19, 20, 1, 13, 2, 14, 4, 15, 3, 16]
+        # abq = [5, 6, 8, 7, 1, 2, 4, 3, 12, 11,
+        #        10, 9, 13, 14, 15, 16, 18, 17, 19, 20]
+        # unv = [5, 12, 6, 11, 8, 10, 7, 9, 18, 17, 19,
+        #        20, 1, 13, 2, 14, 4, 15, 3, 16]
         # C3D10
         # abq = [4, 3, 1, 2, 7, 6, 5, 9, 8, 10]
         # unv = [4, 7, 3, 6, 1, 5, 9, 8, 10, 2]
@@ -363,16 +366,16 @@ class PartMesh(object):
         def changeOrder(elements, order):
             for el in elements:
                 el.connectivity = [el.connectivity[i] for i in order]
-        if meshFormat is 'UNV':
-            for elType, elements in self.elementsByType.iteritems():
-                if '118' is elType:
+        if meshFormat == 'UNV':
+            for elType, elements in self.elementsByType.items():
+                if '118' == elType:
                     order = [0, 4, 1, 5, 2, 6, 7, 8, 9, 3]
                     changeOrder(elements, order)
-                elif '113' is elType:
+                elif '113' == elType:
                     order = [0, 6, 1, 7, 2, 8, 12, 13, 14,
                              3, 9, 4, 10, 5, 11]
                     changeOrder(elements, order)
-                elif '116' is elType:
+                elif '116' == elType:
                     order = [0, 8, 1, 9, 2, 10, 3, 11,
                              16, 17, 18, 19, 4, 12, 5,
                              13, 6, 14, 7, 15]
@@ -401,12 +404,16 @@ class Mesh(object):
         repeating
     """
 
-    def __init__(self, modelName, listOfParts, meshFormat='custom'):
+    def __init__(self, modelName, listOfParts):
         self.modelName = modelName
         self.parts = listOfParts
         # TODO computeAssemblyMesh function needs to be finished
         self.assemblyMesh = self.computeAssemblyMesh()
-        self.meshFormat = meshFormat
+
+    def __str__(self):
+        if len(self.__dict__.keys()) == 0:
+            return 'Mesh object is empty. Data needs to be loaded first'
+        return pprint.pformat(self.__dict__, width=2)
 
     @classmethod
     def importFromAbaqusCae(cls, abqModelName, abqPartList):
@@ -425,8 +432,7 @@ class Mesh(object):
             object containing model mesh definition
         """
         parts = [PartMesh.fromAbaqusCae(p) for p in abqPartList]
-        return cls(modelName=abqModelName, listOfParts=parts,
-                   meshFormat='ABQ')
+        return cls(modelName=abqModelName, listOfParts=parts)
 
     @classmethod
     def importFromDbFile(cls, pathToDbFile):
@@ -446,8 +452,7 @@ class Mesh(object):
             mesh = pickle.load(handle)
         
         return cls(modelName=mesh['modelName'],
-                   listOfParts=mesh['partList'],
-                   meshFormat=mesh['meshFormat'])
+                   listOfParts=mesh['partList'])
     
     def saveToDbFile(self, nameOfDbFile, exportedFrom):
         """Function to save model data to db file
@@ -458,20 +463,13 @@ class Mesh(object):
             name of the file that will be used to store data
         """
         dictToSave = {'modelName': self.modelName,
-                      'partList': self.parts,
-                      'meshFormat': self.meshFormat
+                      'partList': self.parts
                       }
         
         with open(nameOfDbFile, 'wb') as handle:
             pickle.dump(dictToSave, handle,
                         protocol=pickle.HIGHEST_PROTOCOL)
-        print 'Mesh has been written into {0} file'.format(nameOfDbFile)
-            
-    def __str__(self):
-        if len(self.__dict__.keys()) == 0:
-            return 'Mesh object is empty. Data needs to be loaded first'
-        
-        return pprint.pformat(self.__dict__, width=2)
+        print('Mesh has been written into {0} file'.format(nameOfDbFile))
 
     def computeAssemblyMesh(self):
         """Function computes mesh at assembly level from list
@@ -519,7 +517,7 @@ class Mesh(object):
         # save input deck
         with open(exportedFilename, 'w') as f:
             f.write(outputText)
-        print 'Mesh exported to {0}'.format(exportedFilename)
+        print('Mesh exported to {0}'.format(exportedFilename))
 
     def exportToUnvFormat(self, exportedFilename):
         """Function to export to UNV format
@@ -547,7 +545,7 @@ class Mesh(object):
         # save input deck
         with open(exportedFilename, 'w') as f:
             f.write(outputText)
-        print 'Mesh exported to {0}'.format(exportedFilename)
+        print('Mesh exported to {0}'.format(exportedFilename))
 
 # if __name__ == '__main__':
 #     m = Mesh.importFromDbFile(pathToDbFile='Abaqus.db')
