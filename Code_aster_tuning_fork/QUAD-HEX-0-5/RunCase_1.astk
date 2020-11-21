@@ -1,7 +1,7 @@
 etude,fich,3,FR F
 opt_val,rep_dex _VIDE
-etude,fich,3,UL 6
-etude,fich,2,type rmed
+etude,fich,3,UL 80
+etude,fich,2,type mess
 option,ORBInitRef 0
 option,nbmaxnook 1
 etude,fich,2,resultat 1
@@ -19,7 +19,7 @@ etude,fich,3,resultat 1
 option,cpresok 1
 etude,fich,1,FR F
 etude,fich,1,serv Local
-memoire 6128
+memoire 10000
 etude,fich,1,UL 20
 onglet_actif etude
 asquit non
@@ -36,7 +36,7 @@ pre_eda non
 path_sources _VIDE
 option,multiple 1
 opt_val,only_nook _VIDE
-etude,fich,3,nom ./error.mess
+etude,fich,3,nom ./results.rmed
 option,mpi_nbcpu 1
 serv_tests -1
 make_etude run
@@ -63,12 +63,12 @@ serv_etude -1
 etude,fich,2,FR F
 M_3 non
 opt_val,rep_outils _VIDE
-etude,fich,2,UL 80
+etude,fich,2,UL 6
 M_4 non
 consult non
 path_surcharge _VIDE
 asno non
-etude,fich,3,type mess
+etude,fich,3,type rmed
 etude,fich,1,compress 0
 opt_val,ncpus _VIDE
 serveur maciej-ThinkPad-T440p
@@ -98,7 +98,7 @@ etude,fich,2,serv Local
 etude,fich,0,nom ./RunCase_1.comm
 option,exectool 1
 asverif non
-etude,fich,2,nom ./results.rmed
+etude,fich,2,nom ./error.mess
 option,after_job 1
 opt_val,depart _VIDE
 opt_val,mpi_nbnoeud 1

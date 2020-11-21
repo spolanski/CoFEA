@@ -27,12 +27,21 @@ ASSEMBLAGE(CHAM_MATER=fieldmat,
            MODELE=model,
            NUME_DDL=CO('ndl'))
 
+load0 = AFFE_CHAR_MECA(
+  LIAISON_SOLIDE=_F(
+    GROUP_MA=('EL_Section', )
+  ), 
+  MODELE=model
+) 
+
+
+
 modes = CALC_MODES(CALC_FREQ=_F(FREQ=(400, 3000.0)),
                    MATR_MASS=MASS,
                    MATR_RIGI=RIGI,
                    OPTION='BANDE',
                    SOLVEUR_MODAL=_F(METHODE='TRI_DIAG',
-                                    MODE_RIGIDE='OUI'),
+                    MODE_RIGIDE='OUI'),
                    TYPE_RESU='DYNAMIQUE')
 
 IMPR_RESU(FORMAT='MED',

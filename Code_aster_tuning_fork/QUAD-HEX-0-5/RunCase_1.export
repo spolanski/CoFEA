@@ -27,9 +27,9 @@ P nomjob RunCase_1
 P origine ASTK 2020.0.final
 P display maciej-ThinkPad-T440p:0
 A args 
-A memjeveux 766.0
+A memjeveux 1250.0
 A tpmax 900
-P memjob 6275072
+P memjob 10240000
 P tpsjob 15
 P nbmaxnook 5
 P cpresok RESNOOK
@@ -38,8 +38,8 @@ P facmtps 1
 P corefilesize unlimited
 F comm /home/maciej/github/CoFEA/Code_aster_tuning_fork/QUAD-HEX-0-5/RunCase_1.comm D 1
 F mmed /home/maciej/github/CoFEA/Code_aster_tuning_fork/QUAD-HEX-0-5/QUAD-HEX-0-5.med D 20
-F rmed /home/maciej/github/CoFEA/Code_aster_tuning_fork/QUAD-HEX-0-5/results.rmed R 80
 F mess /home/maciej/github/CoFEA/Code_aster_tuning_fork/QUAD-HEX-0-5/error.mess R 6
+F rmed /home/maciej/github/CoFEA/Code_aster_tuning_fork/QUAD-HEX-0-5/results.rmed R 80
 P consbtc oui
 P soumbtc oui
 P actions make_etude
