@@ -141,10 +141,7 @@ class PartMesh(object):
     """
     # UNV element types
     # http://victorsndvg.github.io/FEconv/formats/unv.xhtml
-    # implemented:
-    # - linear tet, wedge, hex
-    # - quadratic tet, wedge, hex
-    _elementTypes = (
+    __elementTypes = (
         OrderedDict([('ABQ', 'S3'), ('CCX', 'S3'), ('UNV', '91')]),
         OrderedDict([('ABQ', 'STRI65'), ('CCX', 'S6'), ('UNV', '92')]),
         OrderedDict([('ABQ', 'S4'), ('CCX', 'S4'), ('UNV', '94')]),
@@ -326,7 +323,7 @@ class PartMesh(object):
             is not implemented
         """
         newElType = False
-        for elTypes in self._elementTypes:
+        for elTypes in self.__elementTypes:
             if oldElType in elTypes.values():
                 newElType = elTypes[newMeshFormat]
         if newElType is False:
@@ -337,7 +334,7 @@ class PartMesh(object):
 
     def setElementTypeFormat(self, newFormat):
         """Function to change element types in dictionary
-        elementsByType
+        elementsByType (for example from C3D20R to )
 
         Parameters
         ----------
@@ -355,26 +352,54 @@ class PartMesh(object):
         # swap temporary dict with dict with new formats
         self.elementsByType = tempElementByType
     
-    def reorderNodesInElType(self):
-        # reorder only for C3D20R for the moment!
-        order = [0, 8, 1, 9, 2, 10, 3, 11,
-                 16, 17, 18, 19, 4, 12, 5,
-                 13, 6, 14, 7, 15]
-        # temp = self.elements[0].connectivity
-        for el in self.elements:
-            el.connectivity = [el.connectivity[i] for i in order]
-            
-        # self.elements[0] = temp
+    def reorderNodesInElType(self, meshFormat):
+        """Function used to reoder nodes. By default the node
+        order is the same as in Abaqus.
+
+        Parameters
+        ----------
+        meshFormat : str
+            Format of mesh to be converted to
+        """
+        # C3D20R
+        # abq = [5, 6, 8, 7, 1, 2, 4, 3, 12, 11, 10, 9, 13, 14, 15, 16, 18, 17, 19, 20]
+        # unv = [5, 12, 6, 11, 8, 10, 7, 9, 18, 17, 19, 20, 1, 13, 2, 14, 4, 15, 3, 16]
+        # C3D10
+        # abq = [4, 3, 1, 2, 7, 6, 5, 9, 8, 10]
+        # unv = [4, 7, 3, 6, 1, 5, 9, 8, 10, 2]
+        # C3D15
+        # abq = [3, 2, 1, 6, 5, 4, 9, 8, 7, 10, 11, 12, 14, 13, 15]
+        # unv = [3, 9, 2, 8, 1, 7, 14, 13, 15, 6, 10, 5, 11, 4, 12]
+        # idx - order to be used in function
+        # idx = [abq.index(i) for i in unv]
+        def changeOrder(elements, order):
+            for el in elements:
+                el.connectivity = [el.connectivity[i] for i in order]
+        if meshFormat is 'UNV':
+            for elType, elements in self.elementsByType.iteritems():
+                if '118' is elType:
+                    order = [0, 4, 1, 5, 2, 6, 7, 8, 9, 3]
+                    changeOrder(elements, order)
+                elif '113' is elType:
+                    order = [0, 6, 1, 7, 2, 8, 12, 13, 14,
+                             3, 9, 4, 10, 5, 11]
+                    changeOrder(elements, order)
+                elif '116' is elType:
+                    order = [0, 8, 1, 9, 2, 10, 3, 11,
+                             16, 17, 18, 19, 4, 12, 5,
+                             13, 6, 14, 7, 15]
+                    changeOrder(elements, order)
 
 class Mesh(object):
-    """Mesh is the most general class used to import, store\
-    and export mesh data. The idea is to initialise the constructor,\
-    then import mesh from db file. Finally, the mesh can be\
+    """Mesh is the most general class used to import, store
+    and export mesh data. The idea is to initialise the constructor,
+    then import mesh from db file. Finally, the mesh can be
     exported to an external format. For example
     
     >>> mesh = Mesh()
     >>> mesh.importFromDbFile(pathToDbFile='mesh.db')
     >>> mesh.exportToCalculix(exportedFilename='Calculix.inp')
+    >>> mesh.exportToUnvFormat(exportedFilename='Salome.unv')
     
     Attributes
     ----------
@@ -386,7 +411,6 @@ class Mesh(object):
         the dictionary contains parts, but those have renumbered\
         node and element labels, so that the labels are not\
         repeating
-    
     """
 
     def __init__(self, modelName, listOfParts, meshFormat='custom'):
@@ -517,11 +541,10 @@ class Mesh(object):
         exportedFilename : str
             name of the file to export mesh (eg 'salome.unv')
         """
-        # TODO: Prepare UNV template for beam elements
         # get unv format for each part
         for p in self.parts:
             p.setElementTypeFormat(newFormat='UNV')
-            p.reorderNodesInElType()
+            p.reorderNodesInElType(meshFormat='UNV')
         # prepare a dict which will be used to render things in template
         renderDict = {'parts': self.parts}
         # load jinja template from file
@@ -538,7 +561,7 @@ class Mesh(object):
             f.write(outputText)
         print 'Mesh exported to {0}'.format(exportedFilename)
 
-if __name__ == '__main__':
-    m = Mesh.importFromDbFile(pathToDbFile='Abaqus.db')
-    m.exportToCalculix('calculix.inp')
-    m.exportToUnvFormat('salome.unv')
+# if __name__ == '__main__':
+#     m = Mesh.importFromDbFile(pathToDbFile='Abaqus.db')
+#     m.exportToCalculix('calculix.inp')
+#     m.exportToUnvFormat('salome.unv')
