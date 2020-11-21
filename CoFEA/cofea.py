@@ -207,21 +207,9 @@ class PartMesh(object):
         # create list of all nodes
         nodes = [Node(n.label, n.coordinates) for n in abqPart.nodes]
         # create list of all elements
-        elements = []
-        for e in abqPart.elements:
-            if not(e.type in ('C3D20R, ')):
-                elements.append(Element(e.type, e.label,
-                                        e.connectivity,
-                                        nodes))
-            elif e.type is 'C3D20R':
-                order = [7, 6, 5, 4, 3, 2, 1, 0, 8, 9, 10,
-                         11, 12, 13, 14, 15, 16, 17, 18, 19]
-                
-                elConnectivity = [el.connectivity[i] for i in order]
-                elements.append(Element(e.type, e.label,
-                                        elConnectivity,
-                                        nodes))
-                
+        elements = [Element(e.type, e.label, e.connectivity,
+                            nodes) for e in abqPart.elements]
+        
         nSet = defaultdict(list)
         elSet = defaultdict(list)
 
