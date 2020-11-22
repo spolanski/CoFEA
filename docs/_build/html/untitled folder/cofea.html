@@ -1,0 +1,695 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cofea module &#8212; CoFEA Initiative</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cofea.readthedocs.io/en/latest/untitled folder/cofea.html" />
+    <link rel="shortcut icon" href="../_static/cofea-black.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cofea.readthedocs.io/en/latest/untitled folder/cofea.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="cofea module" />
+<meta property="og:description" content="cofea module      class cofea.Element(elType, elLabel, elConnect, partAllNodes)[source]  Bases: object  Class used to store information about elements, theirs t" />
+<meta property="og:image"       content="https://cofea.readthedocs.io/en/latest/_static/cofea-black.png" />
+
+<meta name="twitter:card" content="summary" />
+
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../reference/blog/atom.xml"
+  title="Blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/cofea-black.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CoFEA Initiative</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/untitled folder/cofea.rst"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/spolanski/CoFEA"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/spolanski/CoFEA/issues/new?title=Issue%20on%20page%20%2Funtitled folder/cofea.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/spolanski/CoFEA/edit/master/docs/untitled folder/cofea.rst"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                 <div class="section" id="module-cofea">
+<span id="cofea-module"></span><h1>cofea module<a class="headerlink" href="#module-cofea" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="cofea.Element">
+<em class="property">class </em><code class="sig-prename descclassname">cofea.</code><code class="sig-name descname">Element</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">elType</span></em>, <em class="sig-param"><span class="n">elLabel</span></em>, <em class="sig-param"><span class="n">elConnect</span></em>, <em class="sig-param"><span class="n">partAllNodes</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#Element"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.Element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class used to store information about elements,
+theirs type, label and connection to nodes</p>
+<dl class="py attribute">
+<dt id="cofea.Element.type">
+<code class="sig-name descname">type</code><a class="headerlink" href="#cofea.Element.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>element type (eg C3D4)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="cofea.Element.label">
+<code class="sig-name descname">label</code><a class="headerlink" href="#cofea.Element.label" title="Permalink to this definition">¶</a></dt>
+<dd><p>element number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="cofea.Element.connectivity">
+<code class="sig-name descname">connectivity</code><a class="headerlink" href="#cofea.Element.connectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of nodes that element is based on</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cofea.Element.getNodeLabels">
+<code class="sig-name descname">getNodeLabels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#Element.getNodeLabels"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.Element.getNodeLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function returns labels of nodes which building the element</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of integers describing node labels</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="cofea.Mesh">
+<em class="property">class </em><code class="sig-prename descclassname">cofea.</code><code class="sig-name descname">Mesh</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">modelName</span></em>, <em class="sig-param"><span class="n">listOfParts</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#Mesh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.Mesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Mesh is the most general class used to import, store
+and export mesh data. The idea is to initialise the constructor,
+then import mesh from db file. Finally, the mesh can be
+exported to an external format. For example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">importFromDbFile</span><span class="p">(</span><span class="n">pathToDbFile</span><span class="o">=</span><span class="s1">&#39;mesh.db&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">exportToCalculix</span><span class="p">(</span><span class="n">exportedFilename</span><span class="o">=</span><span class="s1">&#39;Calculix.inp&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">exportToUnvFormat</span><span class="p">(</span><span class="n">exportedFilename</span><span class="o">=</span><span class="s1">&#39;Salome.unv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt id="cofea.Mesh.modelName">
+<code class="sig-name descname">modelName</code><a class="headerlink" href="#cofea.Mesh.modelName" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of imported model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="cofea.Mesh.parts">
+<code class="sig-name descname">parts</code><a class="headerlink" href="#cofea.Mesh.parts" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of imported parts</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="cofea.Mesh.assemblyMesh">
+<code class="sig-name descname">assemblyMesh</code><a class="headerlink" href="#cofea.Mesh.assemblyMesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>the dictionary contains parts, but those have renumbered        node and element labels, so that the labels are not        repeating</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cofea.Mesh.computeAssemblyMesh">
+<code class="sig-name descname">computeAssemblyMesh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#Mesh.computeAssemblyMesh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.Mesh.computeAssemblyMesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function computes mesh at assembly level from list
+of Part objects. The returned dictionary contains
+parts with renumbered nodes and elements</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dictionary of parts</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>defaultdict(<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cofea.Mesh.exportToCalculix">
+<code class="sig-name descname">exportToCalculix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">exportedFilename</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#Mesh.exportToCalculix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.Mesh.exportToCalculix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to export mesh to Calculix format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>exportedFilename</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – name of the file to export mesh (eg ‘calculix.inp’)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cofea.Mesh.exportToUnvFormat">
+<code class="sig-name descname">exportToUnvFormat</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">exportedFilename</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#Mesh.exportToUnvFormat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.Mesh.exportToUnvFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to export to UNV format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>exportedFilename</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – name of the file to export mesh (eg ‘salome.unv’)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cofea.Mesh.importFromAbaqusCae">
+<em class="property">classmethod </em><code class="sig-name descname">importFromAbaqusCae</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">abqModelName</span></em>, <em class="sig-param"><span class="n">abqPartList</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#Mesh.importFromAbaqusCae"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.Mesh.importFromAbaqusCae" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to initiate the Mesh object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>abqModelName</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – name of the Abaqus model</p></li>
+<li><p><strong>abqPartList</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of Abaqus Parts to export mesh from</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>object containing model mesh definition</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#cofea.Mesh" title="cofea.Mesh">Mesh</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cofea.Mesh.importFromDbFile">
+<em class="property">classmethod </em><code class="sig-name descname">importFromDbFile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pathToDbFile</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#Mesh.importFromDbFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.Mesh.importFromDbFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to initiate the Mesh object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pathToDbFile</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – path to the db file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>object containing model mesh definition</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#cofea.Mesh" title="cofea.Mesh">Mesh</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cofea.Mesh.saveToDbFile">
+<code class="sig-name descname">saveToDbFile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nameOfDbFile</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#Mesh.saveToDbFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.Mesh.saveToDbFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to save model data to db file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nameOfDbFile</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – name of the file that will be used to store data</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="cofea.Node">
+<em class="property">class </em><code class="sig-prename descclassname">cofea.</code><code class="sig-name descname">Node</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nLabel</span></em>, <em class="sig-param"><span class="n">nCoords</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#Node"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.Node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Used to create node objects from external data</p>
+<dl class="py attribute">
+<dt id="cofea.Node.label">
+<code class="sig-name descname">label</code><a class="headerlink" href="#cofea.Node.label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Node number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="cofea.Node.coordinates">
+<code class="sig-name descname">coordinates</code><a class="headerlink" href="#cofea.Node.coordinates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Node coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#tuple" title="(in Python v3.8)">tuple</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cofea.Node.changeLabel">
+<code class="sig-name descname">changeLabel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">newLabel</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#Node.changeLabel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.Node.changeLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to change node label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>newLabel</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – new node number</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="cofea.PartMesh">
+<em class="property">class </em><code class="sig-prename descclassname">cofea.</code><code class="sig-name descname">PartMesh</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">partName</span></em>, <em class="sig-param"><span class="n">partNodes</span></em>, <em class="sig-param"><span class="n">partElements</span></em>, <em class="sig-param"><span class="n">elementSets</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">nodeSets</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#PartMesh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.PartMesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>PartMesh is an object used to store mesh properties for a given part.</p>
+<dl class="py attribute">
+<dt id="cofea.PartMesh.name">
+<code class="sig-name descname">name</code><a class="headerlink" href="#cofea.PartMesh.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the part</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="cofea.PartMesh.nodes">
+<code class="sig-name descname">nodes</code><a class="headerlink" href="#cofea.PartMesh.nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of the Node objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of Node objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="cofea.PartMesh.elements">
+<code class="sig-name descname">elements</code><a class="headerlink" href="#cofea.PartMesh.elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of the Element objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="cofea.PartMesh.elementsByType">
+<code class="sig-name descname">elementsByType</code><a class="headerlink" href="#cofea.PartMesh.elementsByType" title="Permalink to this definition">¶</a></dt>
+<dd><p>dictionary of elements grouped by element type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>defaultdict(<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="cofea.PartMesh.elSet">
+<code class="sig-name descname">elSet</code><a class="headerlink" href="#cofea.PartMesh.elSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>dictionary of element sets grouped by element set name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>defaultdict(<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="cofea.PartMesh.nSet">
+<code class="sig-name descname">nSet</code><a class="headerlink" href="#cofea.PartMesh.nSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>dictionary of node sets grouped by node set name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>defaultdict(<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cofea.PartMesh.fromAbaqusCae">
+<em class="property">classmethod </em><code class="sig-name descname">fromAbaqusCae</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">abqPart</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#PartMesh.fromAbaqusCae"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.PartMesh.fromAbaqusCae" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to initiate object from Abaqus part.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>abqPart</strong> (<em>abqPart</em>) – Abaqus part object</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>object containing part mesh definition</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#cofea.PartMesh" title="cofea.PartMesh">PartMesh</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cofea.PartMesh.getDiffFormatForElType">
+<code class="sig-name descname">getDiffFormatForElType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">oldElType</span></em>, <em class="sig-param"><span class="n">newMeshFormat</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#PartMesh.getDiffFormatForElType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.PartMesh.getDiffFormatForElType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to retrieve name of element type for a
+specific software</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oldElType</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – name of the element type that needs to be
+converted (eg ‘C3D8R’)</p></li>
+<li><p><strong>newMeshFormat</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – new mesh format (eg ‘UNV’)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>name of the element type in new format</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#ValueError" title="(in Python v3.8)"><strong>ValueError</strong></a> – error appears when the specific element type
+    is not implemented</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cofea.PartMesh.getElementsByType">
+<code class="sig-name descname">getElementsByType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#PartMesh.getElementsByType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.PartMesh.getElementsByType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function used to create a dictionary of elements with
+element types used as keys</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dictionary of elements with elementtypes used as keys</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>defaultdict(<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cofea.PartMesh.getElementsFromLabelList">
+<code class="sig-name descname">getElementsFromLabelList</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">labelList</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#PartMesh.getElementsFromLabelList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.PartMesh.getElementsFromLabelList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to retreive the elements from list of
+elements labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>labelList</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of integers referring to element labels</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of Element objects</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cofea.PartMesh.getNodesFromLabelList">
+<code class="sig-name descname">getNodesFromLabelList</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">labelList</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#PartMesh.getNodesFromLabelList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.PartMesh.getNodesFromLabelList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to retrieve the nodes from list of node labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>labelList</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of integers describing node labes</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of Node objects</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cofea.PartMesh.reorderNodesInElType">
+<code class="sig-name descname">reorderNodesInElType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">meshFormat</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#PartMesh.reorderNodesInElType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.PartMesh.reorderNodesInElType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function used to reoder nodes. By default the node
+order is the same as in Abaqus.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>meshFormat</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Format of mesh to be converted to</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cofea.PartMesh.setElementTypeFormat">
+<code class="sig-name descname">setElementTypeFormat</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">newFormat</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cofea.html#PartMesh.setElementTypeFormat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cofea.PartMesh.setElementTypeFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to change element types in dictionary
+elementsByType (for example from C3D20R to )</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>newFormat</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – new format (eg ‘UNV’)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./untitled folder"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+<div class="section">
+   
+</div>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By BlogTechniczny.pl<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
