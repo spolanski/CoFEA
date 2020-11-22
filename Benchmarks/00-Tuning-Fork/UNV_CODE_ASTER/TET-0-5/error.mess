@@ -1,0 +1,912 @@
+# ------------------------------------------------------------------------------------------
+# Impression du contenu du fichier de commandes à exécuter :
+# ------------------------------------------------------------------------------------------
+DEBUT()
+
+
+mesh = LIRE_MAILLAGE(FORMAT='MED',
+                     UNITE=20,
+                     VERI_MAIL=_F())
+
+model = AFFE_MODELE(AFFE=_F(MODELISATION=('3D', ),
+                            PHENOMENE='MECANIQUE',
+                            TOUT='OUI'),
+                    MAILLAGE=mesh)
+
+mater = DEFI_MATERIAU(ELAS=_F(E=207000.0,
+                              NU=0.33,
+                              RHO=7.298e-09))
+
+fieldmat = AFFE_MATERIAU(AFFE=_F(MATER=(mater, ),
+                                 TOUT='OUI'),
+                         MAILLAGE=mesh,
+                         MODELE=model)
+
+ASSEMBLAGE(CHAM_MATER=fieldmat,
+           MATR_ASSE=(_F(MATRICE=CO('MASS'),
+                         OPTION='MASS_MECA'),
+                      _F(MATRICE=CO('RIGI'),
+                         OPTION='RIGI_MECA')),
+           MODELE=model,
+           NUME_DDL=CO('ndl'))
+
+modes = CALC_MODES(CALC_FREQ=_F(FREQ=(-1.0, 3000.0)),
+                   MATR_MASS=MASS,
+                   MATR_RIGI=RIGI,
+                   OPTION='BANDE',
+                   SOLVEUR_MODAL=_F(METHODE='TRI_DIAG',
+                                    MODE_RIGIDE='OUI'),
+                   TYPE_RESU='DYNAMIQUE')
+
+IMPR_RESU(FORMAT='MED',
+          RESU=_F(MAILLAGE=mesh,
+                  RESULTAT=modes),
+          UNITE=80)
+
+FIN()
+# ------------------------------------------------------------------------------------------
+
+  Ouverture en écriture du fichier ./vola.1
+
+ <INFO> Démarrage de l'exécution.
+                                                                                
+                                                                                
+              -- CODE_ASTER -- VERSION : EXPLOITATION (stable) --               
+                                                                                
+                     Version 14.6.0 modifiée le 11/06/2020                      
+                     révision b3490fa3b76c - branche 'v14'                      
+                         Copyright EDF R&D 1991 - 2020                          
+                                                                                
+                    Exécution du : Sun Nov 15 20:24:33 2020                     
+                   Nom de la machine : maciej-ThinkPad-T440p                    
+                              Architecture : 64bit                              
+                          Type de processeur : x86_64                           
+Système d'exploitation : Linux-5.4.0-53-generic-x86_64-with-Ubuntu-18.04-bionic 
+                        Langue des messages : en (UTF-8)                        
+                                                                                
+                           Version de Python : 3.6.9                            
+                           Version de NumPy : 1.19.4                            
+                           Parallélisme MPI : inactif                           
+                          Parallélisme OpenMP : actif                           
+                        Nombre de processus utilisés : 4                        
+                     Version de la librairie HDF5 : 1.10.3                      
+                      Version de la librairie MED : 4.0.0                       
+                       Librairie MFront : non disponible                        
+                     Version de la librairie MUMPS : 5.1.2                      
+                        Librairie PETSc : non disponible                        
+                     Version de la librairie SCOTCH : 6.0.4                     
+
+                  Mémoire limite pour l'exécution : 762.00 Mo                   
+                   consommée par l'initialisation : 381.82 Mo                   
+                  par les objets du jeu de commandes : 3.92 Mo                  
+                 reste pour l'allocation dynamique : 376.27 Mo                  
+                Taille limite des fichiers d'échange : 48.00 Go                 
+                                                                                
+
+.. __stg1_txt1
+  # ------------------------------------------------------------------------------------------
+  # Commande No :  0001            Concept de type : -
+  # ------------------------------------------------------------------------------------------
+  DEBUT(PAR_LOT='OUI',
+        IMPR_MACRO='NON',
+        DEBUG=_F(JXVERI='NON',
+                 SDVERI='NON',
+                 JEVEUX='NON',
+                 HIST_ETAPE='NON',),
+        MESURE_TEMPS=_F(NIVE_DETAIL=1,
+                        MOYENNE='NON',),
+        MEMOIRE=_F(TAILLE_BLOC=800.0,
+                   TAILLE_GROUP_ELEM=1000,),
+        RESERVE_CPU=_F(BORNE=900,),
+        INFO=1,)
+
+
+  Valeur initiale du temps CPU maximum =   900 secondes
+  Valeur du temps CPU maximum passé aux commandes =   810 secondes
+  Réserve CPU prévue = 90 secondes
+
+  Ouverture en écriture du fichier ./glob.1
+
+  Ouverture en écriture du fichier ./vola.1
+
+  Ouverture en lecture du fichier /home/maciej/salome_meca/code_aster/14.6/lib/aster/elem.1
+
+     Nom de la base                          :  ELEMBASE
+     Créée avec la version                   :  14.06.00
+     Nombre d'enregistrements utilisés       :  43
+     Nombre d'enregistrements maximum        :  512
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre d'identificateurs utilisés       :  123
+     Taille maximum du répertoire            :  300
+     Pourcentage d'utilisation du répertoire :  41 %
+
+  Ouverture en lecture du fichier /home/maciej/salome_meca/code_aster/14.6/lib/aster/elem.1
+
+
+     Nom de la base                          :  ELEMBASE
+     Nombre d'enregistrements utilisés       :  43
+     Nombre d'enregistrements maximum        :  512
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre total d'accès en lecture         :  60
+     Volume des accès en lecture             :         46.88 Mo.
+     Nombre total d'accès en écriture        :  0
+     Volume des accès en écriture            :          0.00 Mo.
+     Nombre d'identificateurs utilisés       :  123
+     Taille maximum du répertoire            :  300
+     Pourcentage d'utilisation du répertoire :  41 %
+
+  Relecture des catalogues des éléments faite.
+
+  Fin de lecture (durée  0.024658  s.) 
+  # Mémoire (Mo) :   430.38 /   422.63 /    44.29 /    22.92 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin commande No : 0001   user+syst:        0.04s (syst:        0.01s, elaps:        0.04s)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt6
+  # ------------------------------------------------------------------------------------------
+  # Commande No :  0002            Concept de type : maillage_sdaster
+  # ------------------------------------------------------------------------------------------
+  mesh = LIRE_MAILLAGE(FORMAT='MED',
+                       VERI_MAIL=_F(VERIF='OUI',
+                                    APLAT=1.E-3,),
+                       UNITE=20,
+                       INFO_MED=1,
+                       INFO=1,)
+
+Vérification du maillage.
+
+------------ MAILLAGE mesh     - IMPRESSIONS NIVEAU  1 ------------
+
+DI-15-NOVE-2020 20:24:33                                                        
+
+NOMBRE DE NOEUDS                       18852
+
+NOMBRE DE MAILLES                      85806
+                              TETRA4              85806
+
+NOMBRE DE GROUPES DE NOEUDS                2
+                              N_Section                        18852
+                              Fix                                 49
+
+NOMBRE DE GROUPES DE MAILLES               1
+                              EL_Section                       85806
+
+--------------------------------------------------------------------------------
+
+  # Mémoire (Mo) :   437.59 /   432.00 /    50.69 /    22.92 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin commande No : 0002   user+syst:        0.19s (syst:        0.01s, elaps:        0.20s)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt11
+  # ------------------------------------------------------------------------------------------
+  # Commande No :  0004            Concept de type : modele_sdaster
+  # ------------------------------------------------------------------------------------------
+  model = AFFE_MODELE(MAILLAGE=mesh,
+                      AFFE=_F(TOUT='OUI',
+                              PHENOMENE='MECANIQUE',
+                              MODELISATION=('3D', ),),
+                      INFO=1,
+                      DISTRIBUTION=_F(PARTITIONNEUR='METIS',
+                                      METHODE='SOUS_DOMAINE',),
+                      VERI_JACOBIEN='OUI',)
+
+
+Sur les 85806 mailles du maillage mesh, on a demandé l'affectation de 85806, on a pu en affecter 85806
+ Modélisation     Type maille  Élément fini     Nombre
+ 3D               TETRA4       MECA_TETRA4      85806
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):      0.14      0.05      0.03
+  # Mémoire (Mo) :   472.77 /   468.73 /    52.41 /    44.97 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin commande No : 0004   user+syst:        0.29s (syst:        0.09s, elaps:        0.08s)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt15
+  # ------------------------------------------------------------------------------------------
+  # Commande No :  0005            Concept de type : mater_sdaster
+  # ------------------------------------------------------------------------------------------
+  mater = DEFI_MATERIAU(ELAS=_F(E=2.07000E5,
+                                NU=0.33,
+                                RHO=7.298E-09,
+                                COEF_AMOR=1.0,),
+                        INFO=1,)
+
+Propriétés définies dans le matériau: ELAS.
+  # Mémoire (Mo) :   472.77 /   468.73 /    52.41 /    44.97 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin commande No : 0005   user+syst:        0.02s (syst:        0.01s, elaps:        0.00s)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt20
+  # ------------------------------------------------------------------------------------------
+  # Commande No :  0006            Concept de type : cham_mater
+  # ------------------------------------------------------------------------------------------
+  fieldmat = AFFE_MATERIAU(MAILLAGE=mesh,
+                           MODELE=model,
+                           AFFE=_F(TOUT='OUI',
+                                   MATER=(mater, ),),
+                           INFO=1,)
+
+  # Mémoire (Mo) :   472.77 /   468.73 /    52.41 /    44.97 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin commande No : 0006   user+syst:        0.02s (syst:        0.01s, elaps:        0.00s)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt28
+  # ------------------------------------------------------------------------------------------
+  # Commande No :  0007            Concept de type : -
+  # ------------------------------------------------------------------------------------------
+  ASSEMBLAGE(MODELE=model,
+             CHAM_MATER=fieldmat,
+             NUME_DDL=CO(ndl),
+             MATR_ASSE=(_F(MATRICE=CO(MASS),
+                           OPTION='MASS_MECA',),
+                        _F(MATRICE=CO(RIGI),
+                           OPTION='RIGI_MECA',
+                           MODE_FOURIER=0,),
+                        ),
+             INST=0.0,
+             INFO=1,)
+
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):      0.64      0.18      0.32
+  Le système linéaire à résoudre a 56556 degrés de liberté:
+   - 56556 sont des degrés de liberté physiques
+     (ils sont portés par 18852 noeuds du maillage)
+   - 0 sont les couples de paramètres de Lagrange associés
+     aux 0 relations linéaires dualisées.
+  La matrice est de taille 56556 équations.
+  Elle contient 1132938 termes non nuls si elle est symétrique et 2209320 termes non nuls si elle n'est pas symétrique.
+  Soit un taux de remplissage de   0.069 %.
+#1      Resolution des systemes lineaires                 CPU (USER+SYST/SYST/ELAPS):      0.30      0.01      0.30
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):      0.31      0.01      0.30
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):      0.68      0.16      0.36
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):      0.31      0.01      0.30
+  # Mémoire (Mo) :   599.59 /   599.53 /   175.29 /    47.66 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin commande No : 0007   user+syst:        2.25s (syst:        0.37s, elaps:        1.60s)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt36
+  # ------------------------------------------------------------------------------------------
+  # Commande No :  0013            Concept de type : mode_meca
+  # ------------------------------------------------------------------------------------------
+  modes = CALC_MODES(TYPE_RESU='DYNAMIQUE',
+                     OPTION='BANDE',
+                     SOLVEUR_MODAL=_F(METHODE='TRI_DIAG',
+                                      MODE_RIGIDE='OUI',
+                                      PREC_ORTHO=1.E-12,
+                                      NMAX_ITER_ORTHO=5,
+                                      PREC_LANCZOS=1.E-08,
+                                      NMAX_ITER_QR=30,
+                                      APPROCHE='REEL',),
+                     MATR_RIGI=RIGI,
+                     MATR_MASS=MASS,
+                     CALC_FREQ=_F(FREQ=(-1.0, 3000.0),
+                                  NMAX_ITER_SHIFT=3,
+                                  PREC_SHIFT=0.05,
+                                  SEUIL_FREQ=1.E-2,),
+                     SOLVEUR=_F(RENUM='AUTO',
+                                NPREC=8,
+                                ELIM_LAGR='LAGR2',
+                                TYPE_RESOL='AUTO',
+                                ACCELERATION='AUTO',
+                                LOW_RANK_SEUIL=0.0,
+                                PRETRAITEMENTS='AUTO',
+                                POSTTRAITEMENTS='AUTO',
+                                PCENT_PIVOT=20,
+                                RESI_RELA=-1.0,
+                                GESTION_MEMOIRE='AUTO',
+                                METHODE='MUMPS',),
+                     VERI_MODE=_F(STOP_ERREUR='OUI',
+                                  SEUIL=1.E-06,
+                                  PREC_SHIFT=5.E-3,
+                                  STURM='GLOBAL',),
+                     STOP_BANDE_VIDE='OUI',
+                     AMELIORATION='NON',
+                     INFO=1,)
+
+  Le nombre total de DDL est       :      56556
+  Le nombre de DDL de Lagrange est :          0
+  Le nombre de DDL actifs est      :      56556
+
+6 modes de corps rigide ont été détectés.
+  L'option choisie est : BANDE
+
+  La mémoire consommée actuellement hors JEVEUX est de 571.36 Mo.
+  La limite de l'allocation dynamique JEVEUX est fixée à 190.64 Mo.
+  Cette valeur limite a été réactualisée lors de la mise en oeuvre d'un processus de libération
+
+  Degré de liberté physique associé au noeud N17 et à la composante DZ.
+
+Problème : la matrice est singulière ou presque singulière :
+  Lors de la factorisation de la matrice, on a rencontré un problème
+  (pivot nul ou presque nul) à la ligne 51 qui correspond au degré de liberté donné ci-dessus.
+
+Risques et conseils :
+   * Si la ligne correspond a un degré de liberté physique, il s'agit probablement d'un mouvement
+     de corps rigide mal bloqué.
+     Vérifiez les conditions aux limites.
+     Si vous faites du contact, il ne faut pas que la structure ne "tienne" que par le contact.
+     Vérifiez également les caractéristiques matériaux (module d'Young, ...).
+
+   * Si la ligne correspond a un degré de liberté de Lagrange, il s'agit sans doute d'une condition
+     limite redondante.
+     En particulier, il se peut que la relation linéaire surabondante provienne des conditions de contact.
+     Peut-être devriez vous exclure certains noeuds des conditions de contact
+     (mots clés SANS_NOEUD et SANS_GROUP_NO).
+
+   * Si le solveur utilisé est LDLT ou MULT_FRONT, vous pouvez utiliser le solveur MUMPS
+     car celui-ci est le seul à pouvoir factoriser les matrices qui ne sont pas définies positives.
+
+   * Parfois, en parallèle, le critère de détection de singularité de MUMPS est trop pessimiste ! Il reste néanmoins souvent
+     possible de faire passer le calcul complet en relaxant ce critère (augmenter de 1 ou 2 la valeur du mot-clé NPREC) ou
+     en le débranchant (valeur du mot-clé NPREC=-1) ou en relançant le calcul sur moins de processeurs.
+
+   * Il se peut aussi que ce phénomène soit tout à fait normal avec X-FEM si la fissure passe
+     très près d'un noeud.
+     Si le nombre de décimales perdues n'est pas trop grand (max 10 décimales),
+     vous pouvez relancer le calcul en augmentant le nombre de décimales perdues autorisé :
+     mot-clé NPREC du mot clé facteur SOLVEUR.
+     Sinon, contactez l'équipe de développement.
+
+  On diminue la valeur minimale de  5.00000E+00 %.
+  La valeur minimale devient : -1.02470E+00
+
+  Degré de liberté physique associé au noeud N17 et à la composante DZ.
+
+Problème : la matrice est singulière ou presque singulière :
+  Lors de la factorisation de la matrice, on a rencontré un problème
+  (pivot nul ou presque nul) à la ligne 51 qui correspond au degré de liberté donné ci-dessus.
+
+Risques et conseils :
+   * Si la ligne correspond a un degré de liberté physique, il s'agit probablement d'un mouvement
+     de corps rigide mal bloqué.
+     Vérifiez les conditions aux limites.
+     Si vous faites du contact, il ne faut pas que la structure ne "tienne" que par le contact.
+     Vérifiez également les caractéristiques matériaux (module d'Young, ...).
+
+   * Si la ligne correspond a un degré de liberté de Lagrange, il s'agit sans doute d'une condition
+     limite redondante.
+     En particulier, il se peut que la relation linéaire surabondante provienne des conditions de contact.
+     Peut-être devriez vous exclure certains noeuds des conditions de contact
+     (mots clés SANS_NOEUD et SANS_GROUP_NO).
+
+   * Si le solveur utilisé est LDLT ou MULT_FRONT, vous pouvez utiliser le solveur MUMPS
+     car celui-ci est le seul à pouvoir factoriser les matrices qui ne sont pas définies positives.
+
+   * Parfois, en parallèle, le critère de détection de singularité de MUMPS est trop pessimiste ! Il reste néanmoins souvent
+     possible de faire passer le calcul complet en relaxant ce critère (augmenter de 1 ou 2 la valeur du mot-clé NPREC) ou
+     en le débranchant (valeur du mot-clé NPREC=-1) ou en relançant le calcul sur moins de processeurs.
+
+   * Il se peut aussi que ce phénomène soit tout à fait normal avec X-FEM si la fissure passe
+     très près d'un noeud.
+     Si le nombre de décimales perdues n'est pas trop grand (max 10 décimales),
+     vous pouvez relancer le calcul en augmentant le nombre de décimales perdues autorisé :
+     mot-clé NPREC du mot clé facteur SOLVEUR.
+     Sinon, contactez l'équipe de développement.
+
+  On diminue la valeur minimale de  1.00000E+01 %.
+  La valeur minimale devient : -1.07471E+00
+
+  Degré de liberté physique associé au noeud N17 et à la composante DZ.
+
+Problème : la matrice est singulière ou presque singulière :
+  Lors de la factorisation de la matrice, on a rencontré un problème
+  (pivot nul ou presque nul) à la ligne 51 qui correspond au degré de liberté donné ci-dessus.
+
+Risques et conseils :
+   * Si la ligne correspond a un degré de liberté physique, il s'agit probablement d'un mouvement
+     de corps rigide mal bloqué.
+     Vérifiez les conditions aux limites.
+     Si vous faites du contact, il ne faut pas que la structure ne "tienne" que par le contact.
+     Vérifiez également les caractéristiques matériaux (module d'Young, ...).
+
+   * Si la ligne correspond a un degré de liberté de Lagrange, il s'agit sans doute d'une condition
+     limite redondante.
+     En particulier, il se peut que la relation linéaire surabondante provienne des conditions de contact.
+     Peut-être devriez vous exclure certains noeuds des conditions de contact
+     (mots clés SANS_NOEUD et SANS_GROUP_NO).
+
+   * Si le solveur utilisé est LDLT ou MULT_FRONT, vous pouvez utiliser le solveur MUMPS
+     car celui-ci est le seul à pouvoir factoriser les matrices qui ne sont pas définies positives.
+
+   * Parfois, en parallèle, le critère de détection de singularité de MUMPS est trop pessimiste ! Il reste néanmoins souvent
+     possible de faire passer le calcul complet en relaxant ce critère (augmenter de 1 ou 2 la valeur du mot-clé NPREC) ou
+     en le débranchant (valeur du mot-clé NPREC=-1) ou en relançant le calcul sur moins de processeurs.
+
+   * Il se peut aussi que ce phénomène soit tout à fait normal avec X-FEM si la fissure passe
+     très près d'un noeud.
+     Si le nombre de décimales perdues n'est pas trop grand (max 10 décimales),
+     vous pouvez relancer le calcul en augmentant le nombre de décimales perdues autorisé :
+     mot-clé NPREC du mot clé facteur SOLVEUR.
+     Sinon, contactez l'équipe de développement.
+
+  On diminue la valeur minimale de  2.00000E+01 %.
+  La valeur minimale devient : -1.17729E+00
+
+  Degré de liberté physique associé au noeud N17 et à la composante DZ.
+
+Problème : la matrice est singulière ou presque singulière :
+  Lors de la factorisation de la matrice, on a rencontré un problème
+  (pivot nul ou presque nul) à la ligne 51 qui correspond au degré de liberté donné ci-dessus.
+
+Risques et conseils :
+   * Si la ligne correspond a un degré de liberté physique, il s'agit probablement d'un mouvement
+     de corps rigide mal bloqué.
+     Vérifiez les conditions aux limites.
+     Si vous faites du contact, il ne faut pas que la structure ne "tienne" que par le contact.
+     Vérifiez également les caractéristiques matériaux (module d'Young, ...).
+
+   * Si la ligne correspond a un degré de liberté de Lagrange, il s'agit sans doute d'une condition
+     limite redondante.
+     En particulier, il se peut que la relation linéaire surabondante provienne des conditions de contact.
+     Peut-être devriez vous exclure certains noeuds des conditions de contact
+     (mots clés SANS_NOEUD et SANS_GROUP_NO).
+
+   * Si le solveur utilisé est LDLT ou MULT_FRONT, vous pouvez utiliser le solveur MUMPS
+     car celui-ci est le seul à pouvoir factoriser les matrices qui ne sont pas définies positives.
+
+   * Parfois, en parallèle, le critère de détection de singularité de MUMPS est trop pessimiste ! Il reste néanmoins souvent
+     possible de faire passer le calcul complet en relaxant ce critère (augmenter de 1 ou 2 la valeur du mot-clé NPREC) ou
+     en le débranchant (valeur du mot-clé NPREC=-1) ou en relançant le calcul sur moins de processeurs.
+
+   * Il se peut aussi que ce phénomène soit tout à fait normal avec X-FEM si la fissure passe
+     très près d'un noeud.
+     Si le nombre de décimales perdues n'est pas trop grand (max 10 décimales),
+     vous pouvez relancer le calcul en augmentant le nombre de décimales perdues autorisé :
+     mot-clé NPREC du mot clé facteur SOLVEUR.
+     Sinon, contactez l'équipe de développement.
+
+   
+   !-------------------------------------------------------------------------------------------!
+   ! <A> <ALGELINE3_82>                                                                        !
+   !                                                                                           !
+   !   Cette borne minimale de la bande de recherche est une valeur propre !                   !
+   !                                                                                           !
+   !   Malgré la stratégie de décalage, la matrice dynamique reste numériquement               !
+   !   singulière.                                                                             !
+   !                                                                                           !
+   !   -> Risque :                                                                             !
+   !   Le test de Sturm qui sert à évaluer le nombre de modes présents dans l'intervalle       !
+   !   peut être faussé.                                                                       !
+   !                                                                                           !
+   !   -> Conseils :                                                                           !
+   !   Vous pouvez modifier les paramètres du solveur linéaire (par exemple METHODE ou NPREC), !
+   !   ou ceux de l'algorithme de décalage (PREC_SHIFT, NMAX_ITER_SHIFT et SEUIL_FREQ) pour    !
+   !   vérifiez qu'il s'agit bien d'une singularité et non d'un problème numérique ponctuel.   !
+   !                                                                                           !
+   !   S'il ne s'agit pas d'un test de vérification ('VERIFICATION A POSTERIORI DES MODES'),   !
+   !   vous pouvez aussi relancer un autre calcul en décalant les bornes de l'intervalle de    !
+   !   recherche pour éviter cette fréquence.                                                  !
+   !                                                                                           !
+   !                                                                                           !
+   ! Ceci est une alarme. Si vous ne comprenez pas le sens de cette                            !
+   ! alarme, vous pouvez obtenir des résultats inattendus !                                    !
+   !-------------------------------------------------------------------------------------------!
+   
+------------------------------------------------------------------------
+
+  Vérification du spectre de fréquences (Méthode de Sturm)
+
+  Nombre de fréquences dans la bande numéro 1 de bornes (-1.177E+00 , 3.000E+03 ) : 11
+------------------------------------------------------------------------
+
+  La valeur minimale en fréquence est : -1.17729E+00
+  La valeur maximale en fréquence est :  3.00000E+03
+  La valeur de décalage en fréquence est :  2.12132E+03
+------------------------------------------------------------------------
+
+      Informations sur le calcul demandé:
+
+  Nombre de modes recherchés  : 11
+
+  La dimension de l'espace réduit est : 0
+  Elle est inférieure au nombre de modes, on la prend égale à : 44
+------------------------------------------------------------------------
+  Les fréquences calculées sont comprises entre :
+      Fréquence inférieure :  0.00000E+00
+      Fréquence supérieure :  2.97782E+03
+
+  La première fréquence supérieure non retenue est :  3.92608E+03
+------------------------------------------------------------------------
+     Calcul modal : Méthode d'itération simultanée
+                    Méthode de Lanczos
+
+numéro    fréquence (HZ)     norme d'erreur    ITER_QR
+    6      0.00000E+00        0.00000E+00        4
+    5      0.00000E+00        0.00000E+00        4
+    4      0.00000E+00        0.00000E+00        4
+    3      0.00000E+00        0.00000E+00        4
+    2      0.00000E+00        0.00000E+00        4
+    1      0.00000E+00        0.00000E+00        4
+    7      4.71922E+02        8.44484E-08        4
+    8      7.28265E+02        3.10386E-08        4
+    9      1.80886E+03        2.55274E-09        4
+   10      1.96085E+03        1.14377E-09        4
+   11      2.97782E+03        4.62912E-09        4
+
+  Norme d'erreur moyenne   :  1.12557E-08
+------------------------------------------------------------------------
+
+         Vérification à posteriori des modes
+
+
+  Degré de liberté physique associé au noeud N4309 et à la composante DX.
+
+Problème : la matrice est singulière ou presque singulière :
+  Lors de la factorisation de la matrice, on a rencontré un problème
+  (pivot nul ou presque nul) à la ligne 12925 qui correspond au degré de liberté donné ci-dessus.
+
+Risques et conseils :
+   * Si la ligne correspond a un degré de liberté physique, il s'agit probablement d'un mouvement
+     de corps rigide mal bloqué.
+     Vérifiez les conditions aux limites.
+     Si vous faites du contact, il ne faut pas que la structure ne "tienne" que par le contact.
+     Vérifiez également les caractéristiques matériaux (module d'Young, ...).
+
+   * Si la ligne correspond a un degré de liberté de Lagrange, il s'agit sans doute d'une condition
+     limite redondante.
+     En particulier, il se peut que la relation linéaire surabondante provienne des conditions de contact.
+     Peut-être devriez vous exclure certains noeuds des conditions de contact
+     (mots clés SANS_NOEUD et SANS_GROUP_NO).
+
+   * Si le solveur utilisé est LDLT ou MULT_FRONT, vous pouvez utiliser le solveur MUMPS
+     car celui-ci est le seul à pouvoir factoriser les matrices qui ne sont pas définies positives.
+
+   * Parfois, en parallèle, le critère de détection de singularité de MUMPS est trop pessimiste ! Il reste néanmoins souvent
+     possible de faire passer le calcul complet en relaxant ce critère (augmenter de 1 ou 2 la valeur du mot-clé NPREC) ou
+     en le débranchant (valeur du mot-clé NPREC=-1) ou en relançant le calcul sur moins de processeurs.
+
+   * Il se peut aussi que ce phénomène soit tout à fait normal avec X-FEM si la fissure passe
+     très près d'un noeud.
+     Si le nombre de décimales perdues n'est pas trop grand (max 10 décimales),
+     vous pouvez relancer le calcul en augmentant le nombre de décimales perdues autorisé :
+     mot-clé NPREC du mot clé facteur SOLVEUR.
+     Sinon, contactez l'équipe de développement.
+
+  On diminue la valeur minimale de  5.00000E+00 %.
+  La valeur minimale devient : -1.41421E-02
+
+  Degré de liberté physique associé au noeud N4309 et à la composante DX.
+
+Problème : la matrice est singulière ou presque singulière :
+  Lors de la factorisation de la matrice, on a rencontré un problème
+  (pivot nul ou presque nul) à la ligne 12925 qui correspond au degré de liberté donné ci-dessus.
+
+Risques et conseils :
+   * Si la ligne correspond a un degré de liberté physique, il s'agit probablement d'un mouvement
+     de corps rigide mal bloqué.
+     Vérifiez les conditions aux limites.
+     Si vous faites du contact, il ne faut pas que la structure ne "tienne" que par le contact.
+     Vérifiez également les caractéristiques matériaux (module d'Young, ...).
+
+   * Si la ligne correspond a un degré de liberté de Lagrange, il s'agit sans doute d'une condition
+     limite redondante.
+     En particulier, il se peut que la relation linéaire surabondante provienne des conditions de contact.
+     Peut-être devriez vous exclure certains noeuds des conditions de contact
+     (mots clés SANS_NOEUD et SANS_GROUP_NO).
+
+   * Si le solveur utilisé est LDLT ou MULT_FRONT, vous pouvez utiliser le solveur MUMPS
+     car celui-ci est le seul à pouvoir factoriser les matrices qui ne sont pas définies positives.
+
+   * Parfois, en parallèle, le critère de détection de singularité de MUMPS est trop pessimiste ! Il reste néanmoins souvent
+     possible de faire passer le calcul complet en relaxant ce critère (augmenter de 1 ou 2 la valeur du mot-clé NPREC) ou
+     en le débranchant (valeur du mot-clé NPREC=-1) ou en relançant le calcul sur moins de processeurs.
+
+   * Il se peut aussi que ce phénomène soit tout à fait normal avec X-FEM si la fissure passe
+     très près d'un noeud.
+     Si le nombre de décimales perdues n'est pas trop grand (max 10 décimales),
+     vous pouvez relancer le calcul en augmentant le nombre de décimales perdues autorisé :
+     mot-clé NPREC du mot clé facteur SOLVEUR.
+     Sinon, contactez l'équipe de développement.
+
+  On diminue la valeur minimale de  1.00000E+01 %.
+  La valeur minimale devient : -1.73205E-02
+
+  Degré de liberté physique associé au noeud N4309 et à la composante DX.
+
+Problème : la matrice est singulière ou presque singulière :
+  Lors de la factorisation de la matrice, on a rencontré un problème
+  (pivot nul ou presque nul) à la ligne 12925 qui correspond au degré de liberté donné ci-dessus.
+
+Risques et conseils :
+   * Si la ligne correspond a un degré de liberté physique, il s'agit probablement d'un mouvement
+     de corps rigide mal bloqué.
+     Vérifiez les conditions aux limites.
+     Si vous faites du contact, il ne faut pas que la structure ne "tienne" que par le contact.
+     Vérifiez également les caractéristiques matériaux (module d'Young, ...).
+
+   * Si la ligne correspond a un degré de liberté de Lagrange, il s'agit sans doute d'une condition
+     limite redondante.
+     En particulier, il se peut que la relation linéaire surabondante provienne des conditions de contact.
+     Peut-être devriez vous exclure certains noeuds des conditions de contact
+     (mots clés SANS_NOEUD et SANS_GROUP_NO).
+
+   * Si le solveur utilisé est LDLT ou MULT_FRONT, vous pouvez utiliser le solveur MUMPS
+     car celui-ci est le seul à pouvoir factoriser les matrices qui ne sont pas définies positives.
+
+   * Parfois, en parallèle, le critère de détection de singularité de MUMPS est trop pessimiste ! Il reste néanmoins souvent
+     possible de faire passer le calcul complet en relaxant ce critère (augmenter de 1 ou 2 la valeur du mot-clé NPREC) ou
+     en le débranchant (valeur du mot-clé NPREC=-1) ou en relançant le calcul sur moins de processeurs.
+
+   * Il se peut aussi que ce phénomène soit tout à fait normal avec X-FEM si la fissure passe
+     très près d'un noeud.
+     Si le nombre de décimales perdues n'est pas trop grand (max 10 décimales),
+     vous pouvez relancer le calcul en augmentant le nombre de décimales perdues autorisé :
+     mot-clé NPREC du mot clé facteur SOLVEUR.
+     Sinon, contactez l'équipe de développement.
+
+  On diminue la valeur minimale de  2.00000E+01 %.
+  La valeur minimale devient : -2.00000E-02
+
+  Degré de liberté physique associé au noeud N4309 et à la composante DX.
+
+Problème : la matrice est singulière ou presque singulière :
+  Lors de la factorisation de la matrice, on a rencontré un problème
+  (pivot nul ou presque nul) à la ligne 12925 qui correspond au degré de liberté donné ci-dessus.
+
+Risques et conseils :
+   * Si la ligne correspond a un degré de liberté physique, il s'agit probablement d'un mouvement
+     de corps rigide mal bloqué.
+     Vérifiez les conditions aux limites.
+     Si vous faites du contact, il ne faut pas que la structure ne "tienne" que par le contact.
+     Vérifiez également les caractéristiques matériaux (module d'Young, ...).
+
+   * Si la ligne correspond a un degré de liberté de Lagrange, il s'agit sans doute d'une condition
+     limite redondante.
+     En particulier, il se peut que la relation linéaire surabondante provienne des conditions de contact.
+     Peut-être devriez vous exclure certains noeuds des conditions de contact
+     (mots clés SANS_NOEUD et SANS_GROUP_NO).
+
+   * Si le solveur utilisé est LDLT ou MULT_FRONT, vous pouvez utiliser le solveur MUMPS
+     car celui-ci est le seul à pouvoir factoriser les matrices qui ne sont pas définies positives.
+
+   * Parfois, en parallèle, le critère de détection de singularité de MUMPS est trop pessimiste ! Il reste néanmoins souvent
+     possible de faire passer le calcul complet en relaxant ce critère (augmenter de 1 ou 2 la valeur du mot-clé NPREC) ou
+     en le débranchant (valeur du mot-clé NPREC=-1) ou en relançant le calcul sur moins de processeurs.
+
+   * Il se peut aussi que ce phénomène soit tout à fait normal avec X-FEM si la fissure passe
+     très près d'un noeud.
+     Si le nombre de décimales perdues n'est pas trop grand (max 10 décimales),
+     vous pouvez relancer le calcul en augmentant le nombre de décimales perdues autorisé :
+     mot-clé NPREC du mot clé facteur SOLVEUR.
+     Sinon, contactez l'équipe de développement.
+
+   
+   !-------------------------------------------------------------------------------------------!
+   ! <A> <ALGELINE3_82>                                                                        !
+   !                                                                                           !
+   !   Cette borne minimale de la bande de recherche est une valeur propre !                   !
+   !                                                                                           !
+   !   Malgré la stratégie de décalage, la matrice dynamique reste numériquement               !
+   !   singulière.                                                                             !
+   !                                                                                           !
+   !   -> Risque :                                                                             !
+   !   Le test de Sturm qui sert à évaluer le nombre de modes présents dans l'intervalle       !
+   !   peut être faussé.                                                                       !
+   !                                                                                           !
+   !   -> Conseils :                                                                           !
+   !   Vous pouvez modifier les paramètres du solveur linéaire (par exemple METHODE ou NPREC), !
+   !   ou ceux de l'algorithme de décalage (PREC_SHIFT, NMAX_ITER_SHIFT et SEUIL_FREQ) pour    !
+   !   vérifiez qu'il s'agit bien d'une singularité et non d'un problème numérique ponctuel.   !
+   !                                                                                           !
+   !   S'il ne s'agit pas d'un test de vérification ('VERIFICATION A POSTERIORI DES MODES'),   !
+   !   vous pouvez aussi relancer un autre calcul en décalant les bornes de l'intervalle de    !
+   !   recherche pour éviter cette fréquence.                                                  !
+   !                                                                                           !
+   !                                                                                           !
+   ! Ceci est une alarme. Si vous ne comprenez pas le sens de cette                            !
+   ! alarme, vous pouvez obtenir des résultats inattendus !                                    !
+   !-------------------------------------------------------------------------------------------!
+   
+  Dans l'intervalle (-2.00000E-02 , 3.48436E+03 ) il y a bien 11 fréquence(s).
+------------------------------------------------------------------------
+
+#1      Resolution des systemes lineaires                 CPU (USER+SYST/SYST/ELAPS):     71.46     13.63     17.18
+#3      Dechargement de la memoire sur disque             CPU (USER+SYST/SYST/ELAPS):      0.13      0.12      0.13
+  # Mémoire (Mo) :   853.59 /   580.34 /   307.78 /    65.37 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin commande No : 0013   user+syst:       76.78s (syst:       14.55s, elaps:       21.04s)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt41
+  # ------------------------------------------------------------------------------------------
+  # Commande No :  0015            Concept de type : -
+  # ------------------------------------------------------------------------------------------
+  IMPR_RESU(FORMAT='MED',
+            UNITE=80,
+            VERSION_MED='3.3.1',
+            RESU=_F(MAILLAGE=mesh,
+                    RESULTAT=modes,
+                    INFO_MAILLAGE='NON',
+                    IMPR_NOM_VARI='OUI',),
+            PROC0='OUI',
+            INFO=1,)
+
+
+Création du fichier au format MED 3.3.1.
+  # Mémoire (Mo) :   853.59 /   588.30 /   307.78 /    65.37 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin commande No : 0015   user+syst:        0.43s (syst:        0.18s, elaps:        0.14s)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt43
+  # ------------------------------------------------------------------------------------------
+  # Commande No :  0016            Concept de type : -
+  # ------------------------------------------------------------------------------------------
+  FIN(FORMAT_HDF='NON',
+      RETASSAGE='NON',
+      INFO_RESU='OUI',
+      PROC0='OUI',
+      )
+
+   
+   !-------------------------------------------------------------------------!
+   ! <I> <CATAMESS_89>                                                       !
+   !                                                                         !
+   !     Liste des alarmes émises lors de l'exécution du calcul.             !
+   !                                                                         !
+   !     Les alarmes que vous avez choisies d'ignorer sont précédées de (*). !
+   !     Nombre d'occurrences pour chacune des alarmes :                     !
+   !            ALGELINE3_82         émise    2 fois                         !
+   !-------------------------------------------------------------------------!
+   
+
+ ======>
+
+ STRUCTURE DU CONCEPT modes    CALCULE POUR         11 NUMEROS D'ORDRE
+
+ LISTE DES NOMS SYMBOLIQUES:
+ ! ---------- !----------------!
+ ! NUME_ORDRE !      DEPL      !
+ ! ---------- !----------------!
+ !          1 !     DEPL_R     !
+ !        ... !      ...       !
+ !         11 !     DEPL_R     !
+ ! ---------- !----------------!
+
+ LISTE DES NOMS DE VARIABLES D'ACCES:
+                                      FREQ             DE TYPE  R
+                                      NUME_MODE        DE TYPE  I
+                                      NOEUD_CMP        DE TYPE  K16
+
+ LISTE DES NOMS DE PARAMETRES:
+ ! ---------- !----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!
+ ! NUME_ORDRE !   AMOR_GENE    !  AMOR_REDUIT   !    CARAELEM    !    CHAMPMAT    !     EXCIT      !FACT_PARTICI_DX !FACT_PARTICI_DY !FACT_PARTICI_DZ !  MASS_EFFE_DX  !  MASS_EFFE_DY  !  MASS_EFFE_DZ  !   MASS_GENE    !     MODELE     !     NORME      !    NUME_DDL    !     OMEGA2     !   RIGI_GENE    !   TYPE_DEFO    !   TYPE_MODE    !
+ ! ---------- !----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!
+ !          1 !       R        !       R        !       K8       !       K8       !      K24       !       R        !       R        !       R        !       R        !       R        !       R        !       R        !       K8       !      K24       !       I        !       R        !       R        !      K16       !      K16       !
+ !        ... !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !
+ !         11 !       R        !       R        !       K8       !       K8       !      K24       !       R        !       R        !       R        !       R        !       R        !       R        !       R        !       K8       !      K24       !       I        !       R        !       R        !      K16       !      K16       !
+ ! ---------- !----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!
+ ---------------------------------------------------------------------------
+ Concepts de la base: G
+    Nom       Type                 Taille (Mo)         Nombre      Nombre de
+                                                     d'objets       segments
+    TOTAL                               204.91            198            504
+  
+    mesh       MAILLAGE_SDASTER           8.44             36             60
+    model      MODELE_SDASTER             3.34              8             13
+    mater      MATER_SDASTER              0.00              5              5
+    fieldmat   CHAM_MATER                 0.00              6             11
+    _9000000   MATR_ELEM_DEPL_R          51.07              6            100
+    ndl        NUME_DDL_SDASTER          24.33             31             36
+    RIGI       MATR_ASSE_DEPL_R          17.29              4             10
+    _9000001   MATR_ELEM_DEPL_R          51.07              6            100
+    MASS       MATR_ASSE_DEPL_R          17.29              4             10
+    modes      MODE_MECA                  4.80             47             53
+    &FOZERO                               0.00              2              2
+    &&_NUM_C                              0.00              1              1
+    &CATA.AC                              0.00              2              4
+    &CATA.CL                              0.60              1              3
+    &CATA.GD                              0.14              4             11
+    &CATA.ME                              0.20              2              4
+    &CATA.OP                              0.30              4             19
+    &CATA.PH                              0.00              1              1
+    &CATA.PR                              0.00              2              4
+    &CATA.TE                             26.03             17             42
+    &CATA.TH                              0.01              2              4
+    &CATA.TM                              0.01              7             11
+ ---------------------------------------------------------------------------
+
+
+     Nom de la base                          :  GLOBALE
+     Nombre d'enregistrements utilisés       :  311
+     Nombre d'enregistrements maximum        :  62914
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre total d'accès en lecture         :  235
+     Volume des accès en lecture             :        183.59 Mo.
+     Nombre total d'accès en écriture        :  327
+     Volume des accès en écriture            :        255.47 Mo.
+     Nombre d'identificateurs utilisés       :  349
+     Taille maximum du répertoire            :  2000
+     Pourcentage d'utilisation du répertoire :  17 %
+
+
+     Nom de la base                          :  VOLATILE
+     Nombre d'enregistrements utilisés       :  19
+     Nombre d'enregistrements maximum        :  62914
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre total d'accès en lecture         :  124
+     Volume des accès en lecture             :         96.88 Mo.
+     Nombre total d'accès en écriture        :  142
+     Volume des accès en écriture            :        110.94 Mo.
+     Nombre d'identificateurs utilisés       :  353
+     Taille maximum du répertoire            :  2000
+     Pourcentage d'utilisation du répertoire :  17 %
+
+ <FIN> Arrêt normal dans "FIN".
+ <I> <FIN> ARRET NORMAL DANS "FIN" PAR APPEL A "JEFINI".
+
+ La mémoire demandée au lancement est sous estimée, elle est de 762.00 Mo.
+ Le pic mémoire utilisée est de 853.59 Mo.
+
+
+
+     Nom de la base                          :  ELEMBASE
+     Nombre d'enregistrements utilisés       :  43
+     Nombre d'enregistrements maximum        :  512
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre total d'accès en lecture         :  60
+     Volume des accès en lecture             :         46.88 Mo.
+     Nombre total d'accès en écriture        :  0
+     Volume des accès en écriture            :          0.00 Mo.
+     Nombre d'identificateurs utilisés       :  123
+     Taille maximum du répertoire            :  300
+     Pourcentage d'utilisation du répertoire :  41 %
+  
+ <I> <FIN> MEMOIRE JEVEUX MINIMALE REQUISE POUR L'EXECUTION :                      65.37 Mo
+ <I> <FIN> MEMOIRE JEVEUX OPTIMALE REQUISE POUR L'EXECUTION :                     307.78 Mo
+ <I> <FIN> MAXIMUM DE MEMOIRE UTILISEE PAR LE PROCESSUS LORS DE L'EXECUTION :     853.59 Mo
+  
+ <I>       FERMETURE DES BASES EFFECTUEE
+  
+   STATISTIQUES CONCERNANT L'ALLOCATION DYNAMIQUE :
+     TAILLE CUMULEE MAXIMUM            :                  308  Mo.
+     TAILLE CUMULEE LIBEREE            :                  126  Mo.
+     NOMBRE TOTAL D'ALLOCATIONS        :                23263
+     NOMBRE TOTAL DE LIBERATIONS       :                23243
+     APPELS AU MECANISME DE LIBERATION :                    2
+     TAILLE MEMOIRE CUMULEE RECUPEREE  :                  328  Mo.
+     VOLUME DES LECTURES               :                    0  Mo.
+     VOLUME DES ECRITURES              :                  338  Mo.
+  
+   MEMOIRE JEVEUX MINIMALE REQUISE POUR L'EXECUTION :      65.37 Mo
+     - IMPOSE DE NOMBREUX ACCES DISQUE
+     - RALENTIT LA VITESSE D'EXECUTION
+   MEMOIRE JEVEUX OPTIMALE REQUISE POUR L'EXECUTION :     307.78 Mo
+     - LIMITE LES ACCES DISQUE
+     - AMELIORE LA VITESSE D'EXECUTION
+   MAXIMUM DE MEMOIRE UTILISEE PAR LE PROCESSUS     :     853.59 Mo
+     - COMPREND LA MEMOIRE CONSOMMEE PAR  JEVEUX, 
+       LE SUPERVISEUR PYTHON, LES LIBRAIRIES EXTERNES
+  
+ <I>       FIN D'EXECUTION LE : DI-15-NOVE-2020 20:24:56
+
+
+  <I> Informations sur les temps d'exécution
+      Temps cpu user total                   65.09 s
+      Temps cpu systeme total                15.24 s
+      Temps elapsed total                    23.42 s
+      Temps restant                         786.58 s
+
+
+  La signature de la base sauvegardée est (à l'adresse 0) :
+    be1dd87cbe905605c52be2e12252cfb804066de5
+
+ ********************************************************************************
+ * COMMAND                  :       USER :     SYSTEM :   USER+SYS :    ELAPSED *
+ ********************************************************************************
+ * init (jdc)               :       0.28 :       0.01 :       0.29 :       0.29 *
+ *  . compile               :       0.00 :       0.00 :       0.00 :       0.00 *
+ *  . exec_compile          :       0.06 :       0.00 :       0.06 :       0.06 *
+ *  . report                :       0.01 :       0.00 :       0.01 :       0.01 *
+ *  . build                 :       0.00 :       0.00 :       0.00 :       0.00 *
+ * DEBUT                    :       0.03 :       0.01 :       0.04 :       0.04 *
+ * LIRE_MAILLAGE            :       0.18 :       0.01 :       0.19 :       0.20 *
+ * AFFE_MODELE              :       0.20 :       0.09 :       0.29 :       0.08 *
+ * DEFI_MATERIAU            :       0.01 :       0.01 :       0.02 :       0.00 *
+ * AFFE_MATERIAU            :       0.01 :       0.01 :       0.02 :       0.00 *
+ * ASSEMBLAGE               :       1.88 :       0.37 :       2.25 :       1.60 *
+ * CALC_MODES               :      62.23 :      14.55 :      76.78 :      21.04 *
+ * IMPR_RESU                :       0.25 :       0.18 :       0.43 :       0.14 *
+ * FIN                      :       0.03 :       0.00 :       0.03 :       0.04 *
+ *  . part Superviseur      :       0.35 :       0.03 :       0.38 :       0.33 *
+ *  . part Fortran          :      64.75 :      15.21 :      79.96 :      23.10 *
+ ********************************************************************************
+ * TOTAL_JOB                :      65.09 :      15.24 :      80.33 :      23.42 *
+ ********************************************************************************
+
+EXECUTION_CODE_ASTER_EXIT_7043-maciej-ThinkPad-T440p=0

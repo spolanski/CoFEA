@@ -157,7 +157,7 @@
 <em class="property">class </em><code class="descclassname">cofea.</code><code class="descname">Element</code><span class="sig-paren">(</span><em>elType</em>, <em>elLabel</em>, <em>elConnect</em>, <em>partAllNodes</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.Element" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class used to store information about elements,
-theirs type, label, and connection to nodes</p>
+theirs type, label and connection to nodes</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -211,13 +211,17 @@ Node objects from list of all nodes</li>
 </dd></dl>
 
 <dl class="class">
-<dt id="cofea.ExportMesh">
-<em class="property">class </em><code class="descclassname">cofea.</code><code class="descname">ExportMesh</code><span class="sig-paren">(</span><em>modelName</em>, <em>listOfParts</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.ExportMesh" title="Permalink to this definition">¶</a></dt>
+<dt id="cofea.Mesh">
+<em class="property">class </em><code class="descclassname">cofea.</code><code class="descname">Mesh</code><span class="sig-paren">(</span><em>modelName</em>, <em>listOfParts</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.Mesh" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Mesh is the most general class used to import, store    and export mesh data. The idea is to initialise the constructor,    then import mesh from db file. Finally, the mesh can be    exported to an external format. For example</p>
+<p>Mesh is the most general class used to import, store
+and export mesh data. The idea is to initialise the constructor,
+then import mesh from db file. Finally, the mesh can be
+exported to an external format. For example</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">importFromDbFile</span><span class="p">(</span><span class="n">pathToDbFile</span><span class="o">=</span><span class="s1">&#39;mesh.db&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">exportToCalculix</span><span class="p">(</span><span class="n">exportedFilename</span><span class="o">=</span><span class="s1">&#39;Calculix.inp&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">exportToUnvFormat</span><span class="p">(</span><span class="n">exportedFilename</span><span class="o">=</span><span class="s1">&#39;Salome.unv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -234,14 +238,14 @@ Node objects from list of all nodes</li>
 </tbody>
 </table>
 <dl class="method">
-<dt id="cofea.ExportMesh.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>modelName</em>, <em>listOfParts</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.ExportMesh.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="cofea.Mesh.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>modelName</em>, <em>listOfParts</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.Mesh.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>x.__init__(…) initializes x; see help(type(x)) for signature</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="cofea.ExportMesh.computeAssemblyMesh">
-<code class="descname">computeAssemblyMesh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cofea.ExportMesh.computeAssemblyMesh" title="Permalink to this definition">¶</a></dt>
+<dt id="cofea.Mesh.computeAssemblyMesh">
+<code class="descname">computeAssemblyMesh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cofea.Mesh.computeAssemblyMesh" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function computes mesh at assembly level from list
 of Part objects. The returned dictionary contains
 parts with renumbered nodes and elements</p>
@@ -258,8 +262,8 @@ parts with renumbered nodes and elements</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="cofea.ExportMesh.exportToCalculix">
-<code class="descname">exportToCalculix</code><span class="sig-paren">(</span><em>exportedFilename</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.ExportMesh.exportToCalculix" title="Permalink to this definition">¶</a></dt>
+<dt id="cofea.Mesh.exportToCalculix">
+<code class="descname">exportToCalculix</code><span class="sig-paren">(</span><em>exportedFilename</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.Mesh.exportToCalculix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to export mesh to Calculix format</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -272,8 +276,8 @@ parts with renumbered nodes and elements</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="cofea.ExportMesh.exportToUnvFormat">
-<code class="descname">exportToUnvFormat</code><span class="sig-paren">(</span><em>exportedFilename</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.ExportMesh.exportToUnvFormat" title="Permalink to this definition">¶</a></dt>
+<dt id="cofea.Mesh.exportToUnvFormat">
+<code class="descname">exportToUnvFormat</code><span class="sig-paren">(</span><em>exportedFilename</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.Mesh.exportToUnvFormat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to export to UNV format</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -286,9 +290,9 @@ parts with renumbered nodes and elements</p>
 </dd></dl>
 
 <dl class="classmethod">
-<dt id="cofea.ExportMesh.importFromAbaqus">
-<em class="property">classmethod </em><code class="descname">importFromAbaqus</code><span class="sig-paren">(</span><em>abqModelName</em>, <em>abqPartList</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.ExportMesh.importFromAbaqus" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function to initiate the ExportMesh object</p>
+<dt id="cofea.Mesh.importFromAbaqusCae">
+<em class="property">classmethod </em><code class="descname">importFromAbaqusCae</code><span class="sig-paren">(</span><em>abqModelName</em>, <em>abqPartList</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.Mesh.importFromAbaqusCae" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to initiate the Mesh object</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -302,7 +306,7 @@ parts with renumbered nodes and elements</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">object containing model mesh definition</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#cofea.ExportMesh" title="cofea.ExportMesh">ExportMesh</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#cofea.Mesh" title="cofea.Mesh">Mesh</a></p>
 </td>
 </tr>
 </tbody>
@@ -310,9 +314,9 @@ parts with renumbered nodes and elements</p>
 </dd></dl>
 
 <dl class="classmethod">
-<dt id="cofea.ExportMesh.importFromDbFile">
-<em class="property">classmethod </em><code class="descname">importFromDbFile</code><span class="sig-paren">(</span><em>pathToDbFile</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.ExportMesh.importFromDbFile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function to initiate the ExportMesh object</p>
+<dt id="cofea.Mesh.importFromDbFile">
+<em class="property">classmethod </em><code class="descname">importFromDbFile</code><span class="sig-paren">(</span><em>pathToDbFile</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.Mesh.importFromDbFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to initiate the Mesh object</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -321,15 +325,15 @@ parts with renumbered nodes and elements</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">object containing model mesh definition</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#cofea.ExportMesh" title="cofea.ExportMesh">ExportMesh</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#cofea.Mesh" title="cofea.Mesh">Mesh</a></td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
 <dl class="method">
-<dt id="cofea.ExportMesh.saveToDbFile">
-<code class="descname">saveToDbFile</code><span class="sig-paren">(</span><em>nameOfDbFile</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.ExportMesh.saveToDbFile" title="Permalink to this definition">¶</a></dt>
+<dt id="cofea.Mesh.saveToDbFile">
+<code class="descname">saveToDbFile</code><span class="sig-paren">(</span><em>nameOfDbFile</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.Mesh.saveToDbFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to save model data to db file</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -439,8 +443,8 @@ by default None</li>
 </dd></dl>
 
 <dl class="classmethod">
-<dt id="cofea.PartMesh.fromAbaqus">
-<em class="property">classmethod </em><code class="descname">fromAbaqus</code><span class="sig-paren">(</span><em>abqPart</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.PartMesh.fromAbaqus" title="Permalink to this definition">¶</a></dt>
+<dt id="cofea.PartMesh.fromAbaqusCae">
+<em class="property">classmethod </em><code class="descname">fromAbaqusCae</code><span class="sig-paren">(</span><em>abqPart</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.PartMesh.fromAbaqusCae" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to initiate object from Abaqus part.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -541,10 +545,25 @@ elements labels.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="cofea.PartMesh.reorderNodesInElType">
+<code class="descname">reorderNodesInElType</code><span class="sig-paren">(</span><em>meshFormat</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.PartMesh.reorderNodesInElType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function used to reoder nodes. By default the node
+order is the same as in Abaqus.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>meshFormat</strong> (<em>str</em>) – Format of mesh to be converted to</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="cofea.PartMesh.setElementTypeFormat">
 <code class="descname">setElementTypeFormat</code><span class="sig-paren">(</span><em>newFormat</em><span class="sig-paren">)</span><a class="headerlink" href="#cofea.PartMesh.setElementTypeFormat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to change element types in dictionary
-elementsByType</p>
+elementsByType (for example from C3D20R to )</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

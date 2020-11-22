@@ -454,7 +454,7 @@ class Mesh(object):
         return cls(modelName=mesh['modelName'],
                    listOfParts=mesh['partList'])
     
-    def saveToDbFile(self, nameOfDbFile, exportedFrom):
+    def saveToDbFile(self, nameOfDbFile):
         """Function to save model data to db file
 
         Parameters
