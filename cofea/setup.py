@@ -20,7 +20,11 @@ setup(name='cofea',
           'beautifulsoup4',
           'importlib-resources~=3.0.0; python_version < "3.7"',
           'myst-nb',
-          'sphinx-copybutton', ],
+          'sphinx-copybutton',
+          'sphinx-togglebutton',
+          'sphinxcontrib-bibtex',
+          'sphinx-thebe',
+          'ablog', ],
       extras_require={
           "code_style": ["pre-commit~=2.7.0"],
           "sphinx": [
