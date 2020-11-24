@@ -1,0 +1,12 @@
+version: 2
+
+python:
+  version: 3
+  install:
+      - method: setuptools
+        path: cofea
+
+sphinx:
+  configuration: docs/conf.py
+  builder: html
+  fail_on_warning: false
