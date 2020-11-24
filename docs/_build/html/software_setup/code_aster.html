@@ -128,7 +128,7 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <p class="caption collapsible-parent">
  <span class="caption-text">
-  Main docs
+  Documentation structure
  </span>
 </p>
 <ul class="current nav sidenav_l1">
@@ -138,6 +138,20 @@
    <i class="fas fa-external-link-alt">
    </i>
   </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../pyCofea/index.html">
+   CoFEA mesh converter
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pyCofea/api.html">
+     CoFEA module implementation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="index.html">
@@ -294,29 +308,29 @@
 </li>
 </ol>
 <p>using your package manager. For Ubuntu and Debian-oriented system the command should be like:</p>
-<div class="highlight-example notranslate"><div class="highlight"><pre><span></span>sudo apt-get install gfortran
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gfortran</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="compilation">
 <h2>Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h2>
 <p>In order to compile Code_aster please download the source code to the installation directory.</p>
-<div class="highlight-example notranslate"><div class="highlight"><pre><span></span>wget https://www.code-aster.org/FICHIERS/aster-full-src-14.6.0-1.noarch.tar.gz
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">code</span><span class="o">-</span><span class="n">aster</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">FICHIERS</span><span class="o">/</span><span class="n">aster</span><span class="o">-</span><span class="n">full</span><span class="o">-</span><span class="n">src</span><span class="o">-</span><span class="mf">14.6</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mf">1.</span><span class="n">noarch</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 <p>After downloading the file, please unpack it using the following commands:</p>
-<div class="highlight-example notranslate"><div class="highlight"><pre><span></span>gunzip aster-full-src-14.6.0-1.noarch.tar.gz
-tar -xvf aster-full-src-14.6.0-1.noarch.tar
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gunzip</span> <span class="n">aster</span><span class="o">-</span><span class="n">full</span><span class="o">-</span><span class="n">src</span><span class="o">-</span><span class="mf">14.6</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mf">1.</span><span class="n">noarch</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">xvf</span> <span class="n">aster</span><span class="o">-</span><span class="n">full</span><span class="o">-</span><span class="n">src</span><span class="o">-</span><span class="mf">14.6</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mf">1.</span><span class="n">noarch</span><span class="o">.</span><span class="n">tar</span>
 </pre></div>
 </div>
 <p>To compile the code. please use command:</p>
-<div class="highlight-example notranslate"><div class="highlight"><pre><span></span>python3 setup.py install --prefix=/your/installation/path/to/code/aster
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">your</span><span class="o">/</span><span class="n">installation</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">aster</span>
 </pre></div>
 </div>
 <p>To be able to use Code_aster and ASTK in every directory on your system you need to add line to .bashrc file</p>
-<div class="highlight-example notranslate"><div class="highlight"><pre><span></span>cd
-source /your/installation/path/to/code/aster/etc/codeaster/profile.sh &gt; .bashrc
-source .bashrc
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span>
+<span class="n">source</span> <span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">installation</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">aster</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">codeaster</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">sh</span> <span class="o">&gt;</span> <span class="o">.</span><span class="n">bashrc</span>
+<span class="n">source</span> <span class="o">.</span><span class="n">bashrc</span>
 </pre></div>
 </div>
 <p>Sometimes this operation need root privileges so add sudo at the beginnings of the commands.</p>
@@ -324,13 +338,13 @@ source .bashrc
 <div class="section" id="how-to-use-astk-with-code-aster">
 <h2>How to use ASTK with Code_aster<a class="headerlink" href="#how-to-use-astk-with-code-aster" title="Permalink to this headline">¶</a></h2>
 <p>Change your directory to the simulation directory. In this directory there should be solver input file (*.comm) and mesh file  Create two dummy files result.rmed (there will be the results of the simulation) and error.mess (logfile of the solver) and .astk file for ASTK enviroment. Use touch command:</p>
-<div class="highlight-example notranslate"><div class="highlight"><pre><span></span>touch result.rmed
-touch error.mess
-touch RunCase_1.astk
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">touch</span> <span class="n">result</span><span class="o">.</span><span class="n">rmed</span>
+<span class="n">touch</span> <span class="n">error</span><span class="o">.</span><span class="n">mess</span>
+<span class="n">touch</span> <span class="n">RunCase_1</span><span class="o">.</span><span class="n">astk</span>
 </pre></div>
 </div>
 <p>Type the</p>
-<div class="highlight-example notranslate"><div class="highlight"><pre><span></span>astk
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">astk</span>
 </pre></div>
 </div>
 <p>in the terminal. The ASTK Window should appear with the job progress window.</p>

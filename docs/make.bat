@@ -2,6 +2,8 @@
 
 pushd %~dp0
 
+@RD /S /Q "./_build/"
+
 REM Command file for Sphinx documentation
 
 if "%SPHINXBUILD%" == "" (

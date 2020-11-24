@@ -1,16 +1,8 @@
-## Simulation environment setup
+# Simulation environment setup
 
-This section describes how to set up simulation software
+There are number of open-source simulation codes, but it is not always easy to set it up correctly. This section describes how this can be done for some of the codes.
 
 ```{toctree}
 calculix
 code_aster
-```
-
-Here's a sample post list:
-
-```{postlist}
-:date: "%Y-%m-%d"
-:format: "{date} - {title}"
-:excerpts:
 ```
