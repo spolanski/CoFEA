@@ -3,11 +3,10 @@ version: 2
 python:
   version: 3
   install:
-      - method: pip
-        path: .
-        extra_requirements:
-          - sphinx
+      - method: setuptools
+        path: CoFEA
 
 sphinx:
+  configuration: docs/conf.py
   builder: html
   fail_on_warning: true
