@@ -19,7 +19,8 @@ setup(name='cofea',
           'pydata-sphinx-theme~=0.4.1',
           'beautifulsoup4',
           'importlib-resources~=3.0.0; python_version < "3.7"',
-          'myst-nb', ],
+          'myst-nb',
+          'sphinx-copybutton', ],
       extras_require={
           "code_style": ["pre-commit~=2.7.0"],
           "sphinx": [
