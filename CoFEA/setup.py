@@ -11,17 +11,14 @@ setup(name='cofea',
       packages=['cofea'],
       zip_safe=False,
       install_requires=[
-          'collections',
           'jinja2',
-          'pprint',
-          'pickle',
           'pyyaml',
           'docutils>=0.15',
           'sphinx',
           'click',
           'pydata-sphinx-theme~=0.4.1',
           'beautifulsoup4',
-          'importlib-resources~=3.0.0; python_version < "3.7'],
+          'importlib-resources~=3.0.0; python_version < "3.7"', ],
       extras_require={
           "code_style": ["pre-commit~=2.7.0"],
           "sphinx": [
