@@ -4,7 +4,7 @@ python:
   version: 3
   install:
       - method: setuptools
-        path: CoFEA
+        path: cofea
 
 sphinx:
   configuration: docs/conf.py
