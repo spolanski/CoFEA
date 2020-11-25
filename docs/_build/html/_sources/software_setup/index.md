@@ -5,4 +5,5 @@ There are number of open-source simulation codes, but it is not always easy to s
 ```{toctree}
 calculix
 code_aster
+elmer
 ```
