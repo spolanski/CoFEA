@@ -1,0 +1,45 @@
+P profastk maciej@maciej-ThinkPad-T440p:/home/maciej/github/CoFEA/Code_aster_tuning_fork/QUAD-HEX-1-0/RunCase_1.astk
+P serveur maciej-ThinkPad-T440p
+P username maciej
+P aster_root /home/maciej/salome_meca/code_aster
+P platform LINUX64
+P protocol_exec asrun.plugins.server.SSHServer
+P protocol_copyto asrun.plugins.server.SCPServer
+P protocol_copyfrom asrun.plugins.server.SCPServer
+P proxy_dir /tmp
+P noeud maciej-ThinkPad-T440p
+P mclient maciej-ThinkPad-T440p
+P uclient maciej
+P version stable
+P lang en
+P debug nodebug
+P mode interactif
+P ncpus 
+P mpi_nbcpu 1
+P mpi_nbnoeud 1
+P classe 
+P depart 
+P after_job 
+P distrib 
+P exectool 
+P multiple 
+P nomjob RunCase_1
+P origine ASTK 2020.0.final
+P display maciej-ThinkPad-T440p:0
+A args 
+A memjeveux 1250.0
+A tpmax 900
+P memjob 10240000
+P tpsjob 15
+P nbmaxnook 5
+P cpresok RESNOOK
+P only_nook 
+P facmtps 1
+P corefilesize unlimited
+F comm /home/maciej/github/CoFEA/Code_aster_tuning_fork/QUAD-HEX-1-0/RunCase_1.comm D 1
+F mmed /home/maciej/github/CoFEA/Code_aster_tuning_fork/QUAD-HEX-1-0/QUAD-HEX-1-0.med D 20
+F mess /home/maciej/github/CoFEA/Code_aster_tuning_fork/QUAD-HEX-1-0/error.mess R 6
+F rmed /home/maciej/github/CoFEA/Code_aster_tuning_fork/QUAD-HEX-1-0/results.rmed R 80
+P consbtc oui
+P soumbtc oui
+P actions make_etude

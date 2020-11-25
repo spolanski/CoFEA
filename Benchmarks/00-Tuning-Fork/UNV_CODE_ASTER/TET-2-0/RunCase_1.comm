@@ -30,9 +30,9 @@ ASSEMBLAGE(CHAM_MATER=fieldmat,
 load0 = AFFE_CHAR_MECA(
   LIAISON_SOLIDE=_F(
     GROUP_MA=('EL_Section', )
-  ), 
+  ),
   MODELE=model
-) 
+)
 
 
 modes = CALC_MODES(CALC_FREQ=_F(FREQ=(-1.0, 3000.0)),
