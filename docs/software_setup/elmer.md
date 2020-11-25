@@ -9,7 +9,7 @@ sudo apt-get update
 sudo apt-get install elmerfem-csc-eg
 ```
 
-# How  to use ElmerGUI with Benchmarks
+## How  to use ElmerGUI with Benchmarks
 
 Please start ElmerGUI with:
 
