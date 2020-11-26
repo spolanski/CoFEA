@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Drafts &#8212; CoFEA Initiative</title>
+    <title>Tuning fork benchmark &#8212; CoFEA Initiative</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -51,20 +51,21 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://cofea.readthedocs.io/en/latest/reference/blog/drafts.html" />
+    <link rel="canonical" href="https://cofea.readthedocs.io/en/latest/benchmarks/000-tuning-fork/index.html" />
     <link rel="shortcut icon" href="../../_static/cofea-black.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Code_Aster Compilation" href="../../software_setup/code_aster.html" /> 
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
 
 
 <!-- Opengraph tags -->
-<meta property="og:url"         content="https://cofea.readthedocs.io/en/latest/reference/blog/drafts.html" />
+<meta property="og:url"         content="https://cofea.readthedocs.io/en/latest/benchmarks/000-tuning-fork/index.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="CoFEA Initiative" />
-<meta property="og:description" content="" />
+<meta property="og:title"       content="Tuning fork benchmark" />
+<meta property="og:description" content="Tuning fork benchmark  Model definition  The aim of this study is to compare the results from a modal analysis performed in CalculiX, Code_Aster and Elmer Finit" />
 <meta property="og:image"       content="https://cofea.readthedocs.io/en/latest/_static/cofea-black.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -73,7 +74,7 @@
 <link
   rel="alternate"
   type="application/atom+xml"
-  href="../blog/atom.xml"
+  href="../../reference/blog/atom.xml"
   title="Blog"
 />
  
@@ -167,16 +168,6 @@
      Code_Aster Compilation
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../software_setup/elmer.html">
-     ElmerGUI
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../software_setup/sphinx.html">
-     Sphinx
-    </a>
-   </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
@@ -187,9 +178,9 @@
   Benchmarks
  </span>
 </p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../benchmarks/000-tuning-fork/index.html">
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Tuning fork benchmark
   </a>
  </li>
@@ -225,6 +216,23 @@
         </button>
         
         
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/benchmarks/000-tuning-fork/index.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
         <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
@@ -236,10 +244,12 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/spolanski/CoFEA/issues/new?title=Issue%20on%20page%20%2Freference/blog/drafts.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/spolanski/CoFEA/issues/new?title=Issue%20on%20page%20%2Fbenchmarks/000-tuning-fork/index.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
+        <a class="edit-button" href="https://github.com/spolanski/CoFEA/edit/master/docs/benchmarks/000-tuning-fork/index.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
 </div>
 
@@ -257,18 +267,59 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-definition">
+   Model definition
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
-                
+                 <div class="section" id="tuning-fork-benchmark">
+<h1>Tuning fork benchmark<a class="headerlink" href="#tuning-fork-benchmark" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="model-definition">
+<h2>Model definition<a class="headerlink" href="#model-definition" title="Permalink to this headline">¶</a></h2>
+<p>The aim of this study is to compare the results from a modal analysis performed in <a class="reference external" href="http://www.calculix.de/">CalculiX</a>, <a class="reference external" href="https://code-aster.org/">Code_Aster</a> and <a class="reference external" href="http://www.elmerfem.org/blog/">Elmer</a> Finite-Element codes. A tuning fork geometry will be used to measure the software performance. The model described in this report was created on a basis of the article found in this <a class="reference external" href="http://pubs.sciepub.com/ajme/4/7/16/index.html">link</a>.</p>
+<div class="figure align-default" id="fork-results">
+<a class="reference internal image-reference" href="../../_images/fork-geo-results.png"><img alt="Fork original Results" src="../../_images/fork-geo-results.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Tuning fork geometry and its’ vibration modes</span><a class="headerlink" href="#fork-results" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./benchmarks/000-tuning-fork"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 <div class="section">
-  <h1>
-       Drafts 
-  </h1>
-    
+   
 </div>
 
               </div>
@@ -279,6 +330,7 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="../../software_setup/code_aster.html" title="previous page">Code_Aster Compilation</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
