@@ -6,4 +6,5 @@ There are number of open-source simulation codes, but it is not always easy to s
 calculix
 code_aster
 elmer
+sphinx
 ```

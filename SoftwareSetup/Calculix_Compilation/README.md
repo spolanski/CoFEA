@@ -1,5 +1,5 @@
 # Calculix
-To use Calculix in multithreading mode it is needed to compile from source. In order to do so it is necessary to compile ARPACK and SPOOLES library nad install the required tools. The code which is presented here is already changed and ready for compilation. Please read the original documentation first from http://www.dhondt.de/ccx_2.17.README.INSTALL
+To use Calculix in multithreading mode it is needed to compile from source. In order to do so, it is necessary to compile ARPACK and SPOOLES library and install the required tools. The code, which is presented here, is already changed and ready for compilation. Please read the original documentation first from http://www.dhondt.de/ccx_2.17.README.INSTALL
 
 # Tools
 1. Install the required tools for Calculix:
@@ -31,7 +31,7 @@ SPOOLES library should be obtained from this site http://www.netlib.org/linalg/s
 wget http://www.netlib.org/linalg/spooles/spooles.2.2.tgz
 ```
 
-After downloading the file, it is mandatory to create folder SPOOLES.2.2. move the archive there and unpack it. It can be done with the following commands:
+After downloading the file, it is mandatory to create folder SPOOLES.2.2. Move the archive there and unpack it. It can be done with the following commands:
 
 ```example
 mkdir SPOOLES.2.2
@@ -45,7 +45,7 @@ Change directory to SPOOLES.2.2 with cd:
 cd SPOOLES.2.2
 ```
 
-Then  uncomment 14 line comment line 15 in Make.inc file with your text editor. It can be done by:
+Then uncomment 14 line, comment line 15 in Make.inc file with your text editor. It can be done by:
 
 ```example
 gedit Make.inc
