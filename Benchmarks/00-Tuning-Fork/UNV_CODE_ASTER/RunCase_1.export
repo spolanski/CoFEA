@@ -1,0 +1,40 @@
+P actions make_etude
+P aster_root /home/maciej/salome_meca/code_aster
+P consbtc oui
+P corefilesize unlimited
+P cpresok RESNOOK
+P debug nodebug
+P display maciej-ThinkPad-T440p:0
+P facmtps 1
+P lang en
+P mclient maciej-ThinkPad-T440p
+P memjob 6275072
+P memory_limit 6128.0
+P mode interactif
+P mpi_nbcpu 1
+P mpi_nbnoeud 1
+P nbmaxnook 5
+P noeud maciej-ThinkPad-T440p
+P nomjob RunCase_1
+P origine ASTK 2020.0.final
+P platform LINUX64
+P profastk maciej@maciej-ThinkPad-T440p:/home/maciej/github/CoFEA/Code_aster_tuning_fork/HEX-0-5/RunCase_1.astk
+P protocol_copyfrom asrun.plugins.server.SCPServer
+P protocol_copyto asrun.plugins.server.SCPServer
+P protocol_exec asrun.plugins.server.SSHServer
+P proxy_dir /tmp
+P rep_trav /tmp/maciej-maciej-ThinkPad-T440p-interactif_5494
+P serveur maciej-ThinkPad-T440p
+P soumbtc oui
+P time_limit 900.0
+P tpsjob 16
+P uclient maciej
+P username maciej
+P version stable
+A args 
+A memjeveux 766.0
+A tpmax 900.0
+F comm /home/maciej/github/CoFEA/Code_aster_tuning_fork/HEX-0-5/RunCase_1.comm D  1
+F mmed /home/maciej/github/CoFEA/Code_aster_tuning_fork/HEX-0-5/HEX-0-5.med D  20
+F mess /home/maciej/github/CoFEA/Code_aster_tuning_fork/HEX-0-5/error.mess R  6
+F rmed /home/maciej/github/CoFEA/Code_aster_tuning_fork/HEX-0-5/results.rmed R  80

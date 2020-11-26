@@ -91,7 +91,7 @@ tar xvf patch.tar.gz
     -   `FFLAGS = -O -cg89` to `FFLAGS = -O2`
     -   `MAKE = /bin/make` to `MAKE = make`
     -   `SHELL = /bin/sh` to `SHELL = shell`
-- In `ARPACK/UTIL/second.f` change: `EXTERNAL ETIME` to `*EXTERNAL ETIME`. This line should be commented.
+- In `ARPACK/UTIL/second.f` change: `EXTERNAL ETIME` to `*EXTERNAL ETIME`
 
 Then mowe to ARPACK directory and run:
 
@@ -126,16 +126,4 @@ Then it is possible to compile Calculix with:
 ```
 make
 ```
-# Calculix compilation
-
-After compilation the ccx_2.17.1_MT should be obtained. To use Calculix globally please move executable to /usr/local/bin. Additionally some privileges should be added to the file. If system ask for root priveleges please add sudo to the commands.
-
-```example
-cp ccx_2.17.1_MT /ur/local/bin
-chmod a+rx ccx_2.17.1_MT
-```
-
-
-
-
 Happy meshing!
