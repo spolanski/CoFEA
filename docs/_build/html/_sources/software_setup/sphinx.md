@@ -31,7 +31,7 @@ or if you are using anaconda just type:
 conda install -c anaconda jinja2
 ```
 
-## Converting *.md into html files
+## Converting .MD into HTML files
 
 Navigate to github CoFEA/docs directory in your terminal, then simply type:
 
