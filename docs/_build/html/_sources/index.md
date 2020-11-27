@@ -20,11 +20,11 @@ There are plenty of ways on how you could contribute:
 
 * if you know how to use simulation software then you can help to make models
 * if you posses programming skills then you can help to develop [CoFEA mesh converter](https://github.com/spolanski/CoFEA/tree/master/cofea)
-* if you are good at writing then you can help with writing the docs
+* if you are good at writing then you can help with [writing the docs](./cofea_docs_setup)
 * finally, if you don't think you have anything from the above, but you are eager to learn just let us know!
 
 :::{important}
-If you posses FEA/CFD models which are validated experimentally and it is possible to share them let us know too! We will give them another life by checking them once again in the open-source software.
+If you posses some old FEA models which are validated experimentally and you could share them - do let us know! We will give them another life by checking them once again in the open-source software.
 :::
 
 In any situation that you would like to contact us at cofea.project(at)gmail.com
@@ -35,8 +35,9 @@ In any situation that you would like to contact us at cofea.project(at)gmail.com
 :maxdepth: 1
 :caption: Documentation structure
 
-GitHub repository <https://github.com/spolanski/CoFEA>
+cofea_docs_setup
 pyCofea/index
+GitHub repository <https://github.com/spolanski/CoFEA>
 software_setup/index
 ```
 

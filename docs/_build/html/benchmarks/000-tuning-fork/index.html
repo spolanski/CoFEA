@@ -44,6 +44,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -55,7 +57,7 @@
     <link rel="shortcut icon" href="../../_static/cofea-black.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Code_Aster Compilation" href="../../software_setup/code_aster.html" /> 
+    <link rel="prev" title="ElmerGUI" href="../../software_setup/elmer.html" /> 
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -133,10 +135,8 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference external" href="https://github.com/spolanski/CoFEA">
-   GitHub repository
-   <i class="fas fa-external-link-alt">
-   </i>
+  <a class="reference internal" href="../../cofea_docs_setup.html">
+   CoFEA Documentation Setup
   </a>
  </li>
  <li class="toctree-l1 collapsible-parent">
@@ -153,6 +153,13 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/spolanski/CoFEA">
+   GitHub repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../../software_setup/index.html">
    Simulation environment setup
@@ -166,6 +173,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../../software_setup/code_aster.html">
      Code_Aster Compilation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../software_setup/elmer.html">
+     ElmerGUI
     </a>
    </li>
   </ul>
@@ -277,6 +289,16 @@
    Model definition
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#approximated-solution">
+   Approximated solution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#material-properties">
+   Material properties
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -296,6 +318,56 @@
 <a class="reference internal image-reference" href="../../_images/fork-geo-results.png"><img alt="Fork original Results" src="../../_images/fork-geo-results.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Tuning fork geometry and its’ vibration modes</span><a class="headerlink" href="#fork-results" title="Permalink to this image">¶</a></p>
 </div>
+</div>
+<div class="section" id="approximated-solution">
+<h2>Approximated solution<a class="headerlink" href="#approximated-solution" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to estimate the frequency of the fork using the fixed-free cantilever beam equation.</p>
+<div class="math notranslate nohighlight">
+\[
+   \begin{eqnarray}
+      f_{1} = \frac{1.875^{2}}{2 \pi L^{2}} \sqrt{\frac{E I}{\rho A}} = 495.11 [Hz]
+   \end{eqnarray}
+\]</div>
+<ul class="simple">
+<li><p>Length of the prong, <span class="math notranslate nohighlight">\(L=0.0709\)</span> [m]</p></li>
+<li><p>Young’s modulus, <span class="math notranslate nohighlight">\(E=207\)</span> [GPa]</p></li>
+<li><p>Material density, <span class="math notranslate nohighlight">\(\rho = 7829 \)</span> [kg/<span class="math notranslate nohighlight">\(m^{3}\)</span>]</p></li>
+<li><p>Moment of inertia <span class="math notranslate nohighlight">\(I = \frac{a^{4}}{12}\)</span> [<span class="math notranslate nohighlight">\(m^{4}\)</span>]</p></li>
+<li><p>Cross-sectional area of the prong, <span class="math notranslate nohighlight">\(A = a^{2}\)</span></p></li>
+</ul>
+<p>Based on the expected value of frequency <span class="math notranslate nohighlight">\(f=440\)</span> Hz, the relative error can be measured as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+   \begin{eqnarray}
+      Error = \frac{495.11 - 440.0}{440} \cdot 100 \% = 12.5 \%
+   \end{eqnarray}
+\]</div>
+</div>
+<div class="section" id="material-properties">
+<h2>Material properties<a class="headerlink" href="#material-properties" title="Permalink to this headline">¶</a></h2>
+<p>The table below presents all the material properties that were used in the study. These properties aim to reproduce the behaviour of steel material.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Density <span class="math notranslate nohighlight">\(\rho\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(7829.0\)</span></p></td>
+<td><p>kg/<span class="math notranslate nohighlight">\(m^{3}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Young’s modulus, E</p></td>
+<td><p><span class="math notranslate nohighlight">\(2.07 \cdot 10^{11}\)</span></p></td>
+<td><p>Pa</p></td>
+</tr>
+<tr class="row-even"><td><p>Poissons ratio, <span class="math notranslate nohighlight">\(\nu\)</span></p></td>
+<td><p>0.33</p></td>
+<td><p>-</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
@@ -330,7 +402,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../../software_setup/code_aster.html" title="previous page">Code_Aster Compilation</a>
+    <a class='left-prev' id="prev-link" href="../../software_setup/elmer.html" title="previous page">ElmerGUI</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

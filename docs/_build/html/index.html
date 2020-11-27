@@ -44,6 +44,8 @@
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -55,7 +57,7 @@
     <link rel="shortcut icon" href="_static/cofea-black.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="CoFEA mesh converter" href="pyCofea/index.html" /> 
+    <link rel="next" title="CoFEA Documentation Setup" href="cofea_docs_setup.html" /> 
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -133,10 +135,8 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference external" href="https://github.com/spolanski/CoFEA">
-   GitHub repository
-   <i class="fas fa-external-link-alt">
-   </i>
+  <a class="reference internal" href="cofea_docs_setup.html">
+   CoFEA Documentation Setup
   </a>
  </li>
  <li class="toctree-l1 collapsible-parent">
@@ -152,6 +152,13 @@
   </ul>
   <i class="fas fa-chevron-down">
   </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/spolanski/CoFEA">
+   GitHub repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="software_setup/index.html">
@@ -171,11 +178,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="software_setup/elmer.html">
      ElmerGUI
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="software_setup/sphinx.html">
-     Sphinx
     </a>
    </li>
   </ul>
@@ -330,12 +332,12 @@
 <ul class="simple">
 <li><p>if you know how to use simulation software then you can help to make models</p></li>
 <li><p>if you posses programming skills then you can help to develop <a class="reference external" href="https://github.com/spolanski/CoFEA/tree/master/cofea">CoFEA mesh converter</a></p></li>
-<li><p>if you are good at writing then you can help with writing the docs</p></li>
+<li><p>if you are good at writing then you can help with <a class="reference internal" href="cofea_docs_setup.html"><span class="doc std std-doc">writing the docs</span></a></p></li>
 <li><p>finally, if you don’t think you have anything from the above, but you are eager to learn just let us know!</p></li>
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>If you posses FEA/CFD models which are validated experimentally and it is possible to share them let us know too! We will give them another life by checking them once again in the open-source software.</p>
+<p>If you posses some old FEA models which are validated experimentally and you could share them - do let us know! We will give them another life by checking them once again in the open-source software.</p>
 </div>
 <p>In any situation that you would like to contact us at cofea.project(at)gmail.com</p>
 </div>
@@ -344,8 +346,9 @@
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Documentation structure</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/spolanski/CoFEA">GitHub repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cofea_docs_setup.html">CoFEA Documentation Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pyCofea/index.html">CoFEA mesh converter</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/spolanski/CoFEA">GitHub repository</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_setup/index.html">Simulation environment setup</a></li>
 </ul>
 </div>
@@ -388,7 +391,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='right-next' id="next-link" href="pyCofea/index.html" title="next page">CoFEA mesh converter</a>
+    <a class='right-next' id="next-link" href="cofea_docs_setup.html" title="next page">CoFEA Documentation Setup</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
