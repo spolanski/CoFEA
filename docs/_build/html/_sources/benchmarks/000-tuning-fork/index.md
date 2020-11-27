@@ -53,29 +53,6 @@ The table below presents all the material properties that were used in the study
 
 ## Visualization in ParaView
 
+.. raw:: htmll
 
-
-.. raw:: html
-   <!DOCTYPE html>
-   <html>
-
-     <head>
-        <title>Tuning fork</title>
-     </head>
-
-     <body>
-
-
-      <h1> 3D Tuning fork </h1>
-
-      <script>
-
-      var app =   "https://kitware.github.io/paraview-glance/app/"
-      var datadir = "https://github.com/spolanski/CoFEA/blob/master/Benchmarks/00-Tuning-Fork/Results/Fork.vtk"
-      var file = "Fork.vtk"
-      document.write("iframe src='" + app + "?name=" + file + "&url=" + datadir + file + "' id='frame' width = '1100' height='900'></iframe>");
-
-      <script>
-
-     </body>
-   </html>
+   <iframe width= "1920" height="1080" src="https://kitware.github.io/paraview-glance/app/" frameborder="0" allow="accelerometer; gyroscope"allowfullscreen></iframe>
