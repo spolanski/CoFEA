@@ -54,7 +54,7 @@ The table below presents all the material properties that were used in the study
 ## Visualization in ParaView
 
 
-.. raw:: html
+
 
    <!DOCTYPE html>
    <html>
