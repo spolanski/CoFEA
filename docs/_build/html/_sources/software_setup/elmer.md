@@ -18,3 +18,8 @@ Please start ElmerGUI with:
 ElmerGUI
 ```
 Please load .unv mesh with Open File icon, then generate .sif file (Ctrl+G) and save the project. Then replace the generated .sif and .xml files with ones uploaded on CoFEA github. Start ElmerGUI and click import project and navigate to the project directory and click open. The benchmarking files should import without troubles.
+
+..raw:: html
+
+<iframe width= "560"
+height="315" https://kitware.github.io/paraview-glance/app/</iframe>
