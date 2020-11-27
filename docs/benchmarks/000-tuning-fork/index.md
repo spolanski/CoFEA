@@ -56,4 +56,4 @@ The table below presents all the material properties that were used in the study
 
 .. raw:: htmll
 
-   <iframe width= "1280" height="720" src="https://kitware.github.io/paraview-glance/app/" frameborder="0" allow="accelerometer; gyroscope"allowfullscreen></iframe>
+   <iframe width= "1620" height="964" src="https://kitware.github.io/paraview-glance/app/" frameborder="0" allow="accelerometer; gyroscope"allowfullscreen></iframe>
