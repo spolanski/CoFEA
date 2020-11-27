@@ -15,7 +15,7 @@ Tuning fork geometry and its' vibration modes
 
 ## Approximated solution
 
-It is possible to estimate the frequency of the fork using the fixed-free cantilever beam equation. 
+It is possible to estimate the frequency of the fork using the fixed-free cantilever beam equation.
 
 $$
    \begin{eqnarray}
@@ -29,7 +29,7 @@ $$
 - Moment of inertia $I = \frac{a^{4}}{12}$ [$m^{4}$]
 - Cross-sectional area of the prong, $A = a^{2}$
 
-Based on the expected value of frequency $f=440$ Hz, the relative error can be measured as follows: 
+Based on the expected value of frequency $f=440$ Hz, the relative error can be measured as follows:
 
 $$
    \begin{eqnarray}
@@ -37,7 +37,7 @@ $$
    \end{eqnarray}
 $$
 
-## Material properties 
+## Material properties
 
 The table below presents all the material properties that were used in the study. These properties aim to reproduce the behaviour of steel material.
 
@@ -46,3 +46,14 @@ The table below presents all the material properties that were used in the study
 | Density $\rho$        | $7829.0$             | kg/$m^{3}$ |
 | Young's modulus, E    | $2.07 \cdot 10^{11}$ | Pa         |
 | Poissons ratio, $\nu$ | 0.33                 | -          |
+
+
+
+
+
+## Visualization in ParaView
+
+
+.. raw:: htmll
+
+   <iframe width= "1280" height="720" src="https://kitware.github.io/paraview-glance/app/" frameborder="0" allow="accelerometer; gyroscope"allowfullscreen></iframe>
