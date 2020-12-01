@@ -54,11 +54,3 @@ The table below presents all the material properties that were used in the study
 | Poissons ratio, $\nu$ | 0.33                 | -          |
 
 
-
-
-
-## Visualization in ParaView
-
-.. raw:: html
-
-   <iframe width= "1200" height="600" src="https://kitware.github.io/paraview-glance/app/"  allow="accelerometer; gyroscope"allowfullscreen></iframe>
