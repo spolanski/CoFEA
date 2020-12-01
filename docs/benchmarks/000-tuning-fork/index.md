@@ -8,7 +8,7 @@
    </script>
 
 <div id="myDiv">
-   <input width="100%" type="image" ID="Image1" onclick="showIframeMapOnClick();return false" src="../../_images/fork.png"  />
+   <input width="100%" type="image" ID="Image1" onclick="showIframeMapOnClick();return false" src="../../_static/fork.png"  />
 </div>
 
 ```{tip}
