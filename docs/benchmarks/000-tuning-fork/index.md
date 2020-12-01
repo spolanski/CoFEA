@@ -1,10 +1,15 @@
 # Tuning fork benchmark
 
-<a href="https://blogtechniczny.pl/paraview-glance/index.html?name=fork.vtk&url=https://blogtechniczny.pl/para-files/fork.vtk" target="_blank"><img src="./fork.png"
-alt="Fork Geometry" style = "width:100%" border="10" /></a>
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+   <script>
+      function showIframeMapOnClick() {
+         $("#myDiv").html("<iframe id='iFrameMap' src='https://blogtechniczny.pl/paraview-glance/index.html?name=fork.vtk&url=https://blogtechniczny.pl/para-files/fork.vtk' width='100%' height='550px' style=''></iframe>");
+      }
+   </script>
 
-
-[![Fork Geometry](./fork.png)](https://blogtechniczny.pl/paraview-glance/index.html?name=fork.vtk&url=https://blogtechniczny.pl/para-files/fork.vtk)
+<div id="myDiv">
+   <input width="100%" type="image" ID="Image1" onclick="showIframeMapOnClick();return false" src="../../_images/fork.png"  />
+</div>
 
 ```{tip}
 Click on the image above to play with 3D object in ParaView Glance!
