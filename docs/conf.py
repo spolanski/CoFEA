@@ -109,7 +109,7 @@ html_theme_options = {
     # "extra_footer": "<a href='https://google.com'>Test</a>",  # DEPRECATED KEY
     # "extra_navbar": "<a href='https://google.com'>Test</a>",
 }
-html_baseurl = "https://cofea.readthedocs.io/en/latest/"
+html_baseurl = "https://cofea.readthedocs.io/"
 
 # # -- ABlog config -------------------------------------------------
 blog_path = "reference/blog"
