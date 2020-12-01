@@ -1,5 +1,9 @@
 # Tuning fork benchmark
 
+<a href="https://blogtechniczny.pl/paraview-glance/index.html?name=fork.vtk&url=https://blogtechniczny.pl/para-files/fork.vtk" target="_blank"><img src="./fork.png"
+alt="Fork Geometry" style = "width:100%" border="10" /></a>
+
+
 [![Fork Geometry](./fork.png)](https://blogtechniczny.pl/paraview-glance/index.html?name=fork.vtk&url=https://blogtechniczny.pl/para-files/fork.vtk)
 
 ```{tip}
