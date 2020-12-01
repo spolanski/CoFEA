@@ -1,7 +1,10 @@
 # Tuning fork benchmark
 
-<iframe width="560" height="315" src="/home/spolanski/Desktop/Benchmarking/CoFEA/docs/benchmarks/000-tuning-fork/simple.html">
-</iframe>
+[![Fork Geometry](./fork.png)](https://blogtechniczny.pl/paraview-glance/index.html?name=fork.vtk&url=https://blogtechniczny.pl/para-files/fork.vtk)
+
+```{tip}
+Click on the image above to play with 3D object in ParaView Glance!
+```
 
 ## Model definition
 
