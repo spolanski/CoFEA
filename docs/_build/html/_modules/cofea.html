@@ -1,0 +1,859 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cofea &#8212; CoFEA Initiative</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cofea.readthedocs.io/_modules/cofea.html" />
+    <link rel="shortcut icon" href="../_static/cofea-black.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cofea.readthedocs.io/_modules/cofea.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="CoFEA Initiative" />
+<meta property="og:description" content="" />
+<meta property="og:image"       content="https://cofea.readthedocs.io/_static/cofea-black.png" />
+
+<meta name="twitter:card" content="summary" />
+
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../reference/blog/atom.xml"
+  title="Blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/cofea-black.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CoFEA Initiative</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Documentation structure
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../cofea_docs_setup.html">
+   CoFEA Documentation Setup
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../pyCofea/index.html">
+   CoFEA mesh converter
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pyCofea/api.html">
+     CoFEA module implementation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/spolanski/CoFEA">
+   GitHub repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../software_setup/index.html">
+   Simulation environment setup
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../software_setup/calculix.html">
+     Calculix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../software_setup/code_aster.html">
+     Code_Aster Compilation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../software_setup/elmer.html">
+     ElmerGUI
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Benchmarks
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../benchmarks/000-tuning-fork/index.html">
+   Tuning fork benchmark
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/spolanski/CoFEA"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/spolanski/CoFEA/issues/new?title=Issue%20on%20page%20%2F_modules/cofea.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                 <h1>Source code for cofea</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. moduleauthor:: Slawomir Polanski</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span><span class="p">,</span> <span class="n">OrderedDict</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+<span class="kn">import</span> <span class="nn">jinja2</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">filePath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">_getChunks</span><span class="p">(</span><span class="n">itemsToChunk</span><span class="p">,</span> <span class="n">numOfChunks</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Useful function to create lists of lists from list</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    itemsToChunk : list</span>
+<span class="sd">        list of objects</span>
+<span class="sd">    numOfChunks : int</span>
+<span class="sd">        length of internal list</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        list of lists</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="p">[</span><span class="n">itemsToChunk</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">numOfChunks</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">itemsToChunk</span><span class="p">),</span> <span class="n">numOfChunks</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">temp</span>
+
+
+<div class="viewcode-block" id="Node"><a class="viewcode-back" href="../pyCofea/api.html#cofea.Node">[docs]</a><span class="k">class</span> <span class="nc">Node</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Used to create node objects from external data</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    label: int</span>
+<span class="sd">        Node number</span>
+<span class="sd">    coordinates: tuple</span>
+<span class="sd">        Node coordinates</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nLabel</span><span class="p">,</span> <span class="n">nCoords</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Node class constructor.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        nLabel: int</span>
+<span class="sd">            Node number</span>
+<span class="sd">        nCoords: tuple</span>
+<span class="sd">            Node coordinates (x,y,z)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">nLabel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">nCoords</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="s1">&#39;ND-</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span>
+
+<div class="viewcode-block" id="Node.changeLabel"><a class="viewcode-back" href="../pyCofea/api.html#cofea.Node.changeLabel">[docs]</a>    <span class="k">def</span> <span class="nf">changeLabel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newLabel</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;A function to change node label</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        newLabel: int</span>
+<span class="sd">            new node number</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">newLabel</span></div></div>
+
+
+<div class="viewcode-block" id="Element"><a class="viewcode-back" href="../pyCofea/api.html#cofea.Element">[docs]</a><span class="k">class</span> <span class="nc">Element</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class used to store information about elements,</span>
+<span class="sd">    theirs type, label and connection to nodes</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    type: str</span>
+<span class="sd">        element type (eg C3D4)</span>
+<span class="sd">    label: int</span>
+<span class="sd">        element number</span>
+<span class="sd">    connectivity: list</span>
+<span class="sd">        list of nodes that element is based on</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elType</span><span class="p">,</span> <span class="n">elLabel</span><span class="p">,</span> <span class="n">elConnect</span><span class="p">,</span>
+                 <span class="n">partAllNodes</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Element object constructor</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        elType: str</span>
+<span class="sd">            type of the element</span>
+<span class="sd">        elLabel: int</span>
+<span class="sd">            element number</span>
+<span class="sd">        elConnect: list</span>
+<span class="sd">            list of **indices** that will be used to retrieve</span>
+<span class="sd">            Node objects from list of all nodes</span>
+<span class="sd">        partAllNodes: list</span>
+<span class="sd">            list of all Node objects retrieved from the current part</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">elType</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">elLabel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connectivity</span> <span class="o">=</span> <span class="p">[</span><span class="n">partAllNodes</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">elConnect</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="k">return</span> <span class="s1">&#39;EL-</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span>
+    
+<div class="viewcode-block" id="Element.getNodeLabels"><a class="viewcode-back" href="../pyCofea/api.html#cofea.Element.getNodeLabels">[docs]</a>    <span class="k">def</span> <span class="nf">getNodeLabels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function returns labels of nodes which building the element</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            list of integers describing node labels</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">connectivity</span><span class="p">]</span></div></div>
+
+        
+<div class="viewcode-block" id="PartMesh"><a class="viewcode-back" href="../pyCofea/api.html#cofea.PartMesh">[docs]</a><span class="k">class</span> <span class="nc">PartMesh</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;PartMesh is an object used to store mesh properties for a given part.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name: str</span>
+<span class="sd">        name of the part</span>
+<span class="sd">    nodes: list of Node objects</span>
+<span class="sd">        list of the Node objects</span>
+<span class="sd">    elements: list</span>
+<span class="sd">        list of the Element objects</span>
+<span class="sd">    elementsByType: defaultdict(list)</span>
+<span class="sd">        dictionary of elements grouped by element type</span>
+<span class="sd">    elSet: defaultdict(list)</span>
+<span class="sd">        dictionary of element sets grouped by element set name</span>
+<span class="sd">    nSet: defaultdict(list)</span>
+<span class="sd">        dictionary of node sets grouped by node set name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># UNV element types</span>
+    <span class="c1"># http://victorsndvg.github.io/FEconv/formats/unv.xhtml</span>
+    <span class="n">__elementTypes</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;ABQ&#39;</span><span class="p">,</span> <span class="s1">&#39;S3&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;CCX&#39;</span><span class="p">,</span> <span class="s1">&#39;S3&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;UNV&#39;</span><span class="p">,</span> <span class="s1">&#39;91&#39;</span><span class="p">)]),</span>
+        <span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;ABQ&#39;</span><span class="p">,</span> <span class="s1">&#39;STRI65&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;CCX&#39;</span><span class="p">,</span> <span class="s1">&#39;S6&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;UNV&#39;</span><span class="p">,</span> <span class="s1">&#39;92&#39;</span><span class="p">)]),</span>
+        <span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;ABQ&#39;</span><span class="p">,</span> <span class="s1">&#39;S4&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;CCX&#39;</span><span class="p">,</span> <span class="s1">&#39;S4&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;UNV&#39;</span><span class="p">,</span> <span class="s1">&#39;94&#39;</span><span class="p">)]),</span>
+        <span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;ABQ&#39;</span><span class="p">,</span> <span class="s1">&#39;S4R&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;CCX&#39;</span><span class="p">,</span> <span class="s1">&#39;S4R&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;UNV&#39;</span><span class="p">,</span> <span class="s1">&#39;94&#39;</span><span class="p">)]),</span>
+        <span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;ABQ&#39;</span><span class="p">,</span> <span class="s1">&#39;C3D4&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;CCX&#39;</span><span class="p">,</span> <span class="s1">&#39;C3D4&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;UNV&#39;</span><span class="p">,</span> <span class="s1">&#39;111&#39;</span><span class="p">)]),</span>
+        <span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;ABQ&#39;</span><span class="p">,</span> <span class="s1">&#39;C3D6&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;CCX&#39;</span><span class="p">,</span> <span class="s1">&#39;C3D6&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;UNV&#39;</span><span class="p">,</span> <span class="s1">&#39;112&#39;</span><span class="p">)]),</span>
+        <span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;ABQ&#39;</span><span class="p">,</span> <span class="s1">&#39;C3D8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;CCX&#39;</span><span class="p">,</span> <span class="s1">&#39;C3D8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;UNV&#39;</span><span class="p">,</span> <span class="s1">&#39;115&#39;</span><span class="p">)]),</span>
+        <span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;ABQ&#39;</span><span class="p">,</span> <span class="s1">&#39;C3D8R&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;CCX&#39;</span><span class="p">,</span> <span class="s1">&#39;C3D8R&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;UNV&#39;</span><span class="p">,</span> <span class="s1">&#39;115&#39;</span><span class="p">)]),</span>
+        <span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;ABQ&#39;</span><span class="p">,</span> <span class="s1">&#39;C3D10&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;CCX&#39;</span><span class="p">,</span> <span class="s1">&#39;C3D10&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;UNV&#39;</span><span class="p">,</span> <span class="s1">&#39;118&#39;</span><span class="p">)]),</span>
+        <span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;ABQ&#39;</span><span class="p">,</span> <span class="s1">&#39;C3D15&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;CCX&#39;</span><span class="p">,</span> <span class="s1">&#39;C3D15&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;UNV&#39;</span><span class="p">,</span> <span class="s1">&#39;113&#39;</span><span class="p">)]),</span>
+        <span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;ABQ&#39;</span><span class="p">,</span> <span class="s1">&#39;C3D20R&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;CCX&#39;</span><span class="p">,</span> <span class="s1">&#39;C3D20R&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;UNV&#39;</span><span class="p">,</span> <span class="s1">&#39;116&#39;</span><span class="p">)]),</span>
+    <span class="p">)</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">partName</span><span class="p">,</span> <span class="n">partNodes</span><span class="p">,</span> <span class="n">partElements</span><span class="p">,</span>
+                 <span class="n">elementSets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nodeSets</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;PartMesh constructor</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        partName : str</span>
+<span class="sd">            name of the part</span>
+<span class="sd">        partNodes : list</span>
+<span class="sd">            list of Node objects</span>
+<span class="sd">        partElements : list</span>
+<span class="sd">            list of Element objects</span>
+<span class="sd">        elementSets : defaultdict(list), optional</span>
+<span class="sd">            dictionary of elements sets {setName: list of set elements},</span>
+<span class="sd">            by default None</span>
+<span class="sd">        nodeSets : defaultdict(list), optional</span>
+<span class="sd">            dictionary of node sets {setName: list of set nodes},</span>
+<span class="sd">            by default None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">partName</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span> <span class="o">=</span> <span class="n">partNodes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elements</span> <span class="o">=</span> <span class="n">partElements</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elementsByType</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getElementsByType</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">elementSets</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">elSet</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">elSet</span> <span class="o">=</span> <span class="n">elementSets</span>
+        <span class="k">if</span> <span class="n">nodeSets</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nSet</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nSet</span> <span class="o">=</span> <span class="n">nodeSets</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pprint</span><span class="o">.</span><span class="n">pformat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;PART-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+<div class="viewcode-block" id="PartMesh.fromAbaqusCae"><a class="viewcode-back" href="../pyCofea/api.html#cofea.PartMesh.fromAbaqusCae">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">fromAbaqusCae</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">abqPart</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function to initiate object from Abaqus part.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        abqPart : abqPart</span>
+<span class="sd">            Abaqus part object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        PartMesh</span>
+<span class="sd">            object containing part mesh definition</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># define part name</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">abqPart</span><span class="o">.</span><span class="n">name</span>
+        <span class="c1"># create list of all nodes</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Node</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">n</span><span class="o">.</span><span class="n">coordinates</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">abqPart</span><span class="o">.</span><span class="n">nodes</span><span class="p">]</span>
+        <span class="c1"># create list of all elements</span>
+        <span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="n">Element</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">connectivity</span><span class="p">,</span>
+                            <span class="n">nodes</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">abqPart</span><span class="o">.</span><span class="n">elements</span><span class="p">]</span>
+        
+        <span class="n">nSet</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="n">elSet</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">setName</span><span class="p">,</span> <span class="n">setValues</span> <span class="ow">in</span> <span class="nb">dict</span><span class="p">(</span><span class="n">abqPart</span><span class="o">.</span><span class="n">sets</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">nodeLabelList</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">setValues</span><span class="o">.</span><span class="n">nodes</span><span class="p">]</span>
+            <span class="n">currentLabels</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">]</span>
+            <span class="n">listOfIndices</span> <span class="o">=</span> <span class="p">[</span><span class="n">currentLabels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">lab</span><span class="p">)</span> <span class="k">for</span> <span class="n">lab</span> <span class="ow">in</span> <span class="n">nodeLabelList</span><span class="p">]</span>
+            <span class="n">listOfNodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">listOfIndices</span><span class="p">]</span>
+            <span class="n">nSet</span><span class="p">[</span><span class="s1">&#39;N_&#39;</span> <span class="o">+</span> <span class="n">setName</span><span class="p">]</span> <span class="o">=</span> <span class="n">listOfNodes</span>
+
+            <span class="n">elementLabelList</span> <span class="o">=</span> <span class="p">[</span><span class="n">el</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">setValues</span><span class="o">.</span><span class="n">elements</span><span class="p">]</span>
+            <span class="n">currentLabels</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">]</span>
+            <span class="n">listOfIndices</span> <span class="o">=</span> <span class="p">[</span><span class="n">currentLabels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">lab</span><span class="p">)</span>
+                             <span class="k">for</span> <span class="n">lab</span> <span class="ow">in</span> <span class="n">elementLabelList</span><span class="p">]</span>
+            <span class="n">listOfElements</span> <span class="o">=</span> <span class="p">[</span><span class="n">elements</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">listOfIndices</span><span class="p">]</span>
+            <span class="n">elSet</span><span class="p">[</span><span class="s1">&#39;EL_&#39;</span> <span class="o">+</span> <span class="n">setName</span><span class="p">]</span> <span class="o">=</span> <span class="n">listOfElements</span>
+        
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">partName</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">partNodes</span><span class="o">=</span><span class="n">nodes</span><span class="p">,</span> <span class="n">partElements</span><span class="o">=</span><span class="n">elements</span><span class="p">,</span>
+                   <span class="n">elementSets</span><span class="o">=</span><span class="n">elSet</span><span class="p">,</span> <span class="n">nodeSets</span><span class="o">=</span><span class="n">nSet</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PartMesh.getNodesFromLabelList"><a class="viewcode-back" href="../pyCofea/api.html#cofea.PartMesh.getNodesFromLabelList">[docs]</a>    <span class="k">def</span> <span class="nf">getNodesFromLabelList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labelList</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function to retrieve the nodes from list of node labels</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        labelList: list</span>
+<span class="sd">            list of integers describing node labes</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            list of Node objects</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">currentLabels</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">]</span>
+        <span class="n">listOfIndices</span> <span class="o">=</span> <span class="p">[</span><span class="n">currentLabels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">lab</span><span class="p">)</span> <span class="k">for</span> <span class="n">lab</span> <span class="ow">in</span> <span class="n">labelList</span><span class="p">]</span>
+        <span class="n">listOfNodes</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">listOfIndices</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">listOfNodes</span></div>
+
+<div class="viewcode-block" id="PartMesh.getElementsFromLabelList"><a class="viewcode-back" href="../pyCofea/api.html#cofea.PartMesh.getElementsFromLabelList">[docs]</a>    <span class="k">def</span> <span class="nf">getElementsFromLabelList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labelList</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function to retreive the elements from list of</span>
+<span class="sd">        elements labels.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        labelList: list</span>
+<span class="sd">            list of integers referring to element labels</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            list of Element objects</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">currentLabels</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">elements</span><span class="p">]</span>
+        <span class="n">listOfIndices</span> <span class="o">=</span> <span class="p">[</span><span class="n">currentLabels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">lab</span><span class="p">)</span> <span class="k">for</span> <span class="n">lab</span> <span class="ow">in</span> <span class="n">labelList</span><span class="p">]</span>
+        <span class="n">listOfElements</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">elements</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">listOfIndices</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">listOfElements</span></div>
+    
+<div class="viewcode-block" id="PartMesh.getElementsByType"><a class="viewcode-back" href="../pyCofea/api.html#cofea.PartMesh.getElementsByType">[docs]</a>    <span class="k">def</span> <span class="nf">getElementsByType</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function used to create a dictionary of elements with</span>
+<span class="sd">        element types used as keys</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        defaultdict(list)</span>
+<span class="sd">            dictionary of elements with elementtypes used as keys</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">elementByType</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">elements</span><span class="p">:</span>
+            <span class="n">elementByType</span><span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">type</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">elementByType</span></div>
+
+<div class="viewcode-block" id="PartMesh.getDiffFormatForElType"><a class="viewcode-back" href="../pyCofea/api.html#cofea.PartMesh.getDiffFormatForElType">[docs]</a>    <span class="k">def</span> <span class="nf">getDiffFormatForElType</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">oldElType</span><span class="p">,</span> <span class="n">newMeshFormat</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function to retrieve name of element type for a</span>
+<span class="sd">        specific software</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        oldElType : str</span>
+<span class="sd">            name of the element type that needs to be</span>
+<span class="sd">            converted (eg &#39;C3D8R&#39;)</span>
+<span class="sd">        newMeshFormat : str</span>
+<span class="sd">            new mesh format (eg &#39;UNV&#39;)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            name of the element type in new format</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            error appears when the specific element type</span>
+<span class="sd">            is not implemented</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">newElType</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">elTypes</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__elementTypes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">oldElType</span> <span class="ow">in</span> <span class="n">elTypes</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="n">newElType</span> <span class="o">=</span> <span class="n">elTypes</span><span class="p">[</span><span class="n">newMeshFormat</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">newElType</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">er</span> <span class="o">=</span> <span class="s2">&quot;Element type </span><span class="si">{0}</span><span class="s2"> in not implemented yet&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">oldElType</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">er</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">newElType</span></div>
+
+<div class="viewcode-block" id="PartMesh.setElementTypeFormat"><a class="viewcode-back" href="../pyCofea/api.html#cofea.PartMesh.setElementTypeFormat">[docs]</a>    <span class="k">def</span> <span class="nf">setElementTypeFormat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newFormat</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function to change element types in dictionary</span>
+<span class="sd">        elementsByType (for example from C3D20R to )</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        newFormat : str</span>
+<span class="sd">            new format (eg &#39;UNV&#39;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># create a temporary dict</span>
+        <span class="n">tempElementByType</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="c1"># iterate over all element types in the dict</span>
+        <span class="k">for</span> <span class="n">elTypeName</span><span class="p">,</span> <span class="n">elValues</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">elementsByType</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># get new format for each type fo element</span>
+            <span class="n">newElType</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getDiffFormatForElType</span><span class="p">(</span><span class="n">oldElType</span><span class="o">=</span><span class="n">elTypeName</span><span class="p">,</span>
+                                                    <span class="n">newMeshFormat</span><span class="o">=</span><span class="n">newFormat</span><span class="p">)</span>
+            <span class="n">tempElementByType</span><span class="p">[</span><span class="n">newElType</span><span class="p">]</span> <span class="o">=</span> <span class="n">elValues</span>
+        <span class="c1"># swap temporary dict with dict with new formats</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elementsByType</span> <span class="o">=</span> <span class="n">tempElementByType</span></div>
+    
+<div class="viewcode-block" id="PartMesh.reorderNodesInElType"><a class="viewcode-back" href="../pyCofea/api.html#cofea.PartMesh.reorderNodesInElType">[docs]</a>    <span class="k">def</span> <span class="nf">reorderNodesInElType</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">meshFormat</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function used to reoder nodes. By default the node</span>
+<span class="sd">        order is the same as in Abaqus.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        meshFormat : str</span>
+<span class="sd">            Format of mesh to be converted to</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># C3D20R</span>
+        <span class="c1"># abq = [5, 6, 8, 7, 1, 2, 4, 3, 12, 11,</span>
+        <span class="c1">#        10, 9, 13, 14, 15, 16, 18, 17, 19, 20]</span>
+        <span class="c1"># unv = [5, 12, 6, 11, 8, 10, 7, 9, 18, 17, 19,</span>
+        <span class="c1">#        20, 1, 13, 2, 14, 4, 15, 3, 16]</span>
+        <span class="c1"># C3D10</span>
+        <span class="c1"># abq = [4, 3, 1, 2, 7, 6, 5, 9, 8, 10]</span>
+        <span class="c1"># unv = [4, 7, 3, 6, 1, 5, 9, 8, 10, 2]</span>
+        <span class="c1"># C3D15</span>
+        <span class="c1"># abq = [3, 2, 1, 6, 5, 4, 9, 8, 7, 10, 11, 12, 14, 13, 15]</span>
+        <span class="c1"># unv = [3, 9, 2, 8, 1, 7, 14, 13, 15, 6, 10, 5, 11, 4, 12]</span>
+        <span class="c1"># idx - order to be used in function</span>
+        <span class="c1"># idx = [abq.index(i) for i in unv]</span>
+        <span class="k">def</span> <span class="nf">changeOrder</span><span class="p">(</span><span class="n">elements</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">:</span>
+                <span class="n">el</span><span class="o">.</span><span class="n">connectivity</span> <span class="o">=</span> <span class="p">[</span><span class="n">el</span><span class="o">.</span><span class="n">connectivity</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">order</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">meshFormat</span> <span class="o">==</span> <span class="s1">&#39;UNV&#39;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">elType</span><span class="p">,</span> <span class="n">elements</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">elementsByType</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="s1">&#39;118&#39;</span> <span class="o">==</span> <span class="n">elType</span><span class="p">:</span>
+                    <span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+                    <span class="n">changeOrder</span><span class="p">(</span><span class="n">elements</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="s1">&#39;113&#39;</span> <span class="o">==</span> <span class="n">elType</span><span class="p">:</span>
+                    <span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span>
+                             <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+                    <span class="n">changeOrder</span><span class="p">(</span><span class="n">elements</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="s1">&#39;116&#39;</span> <span class="o">==</span> <span class="n">elType</span><span class="p">:</span>
+                    <span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span>
+                             <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span>
+                             <span class="mi">13</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+                    <span class="n">changeOrder</span><span class="p">(</span><span class="n">elements</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span></div></div>
+
+<div class="viewcode-block" id="Mesh"><a class="viewcode-back" href="../pyCofea/api.html#cofea.Mesh">[docs]</a><span class="k">class</span> <span class="nc">Mesh</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Mesh is the most general class used to import, store</span>
+<span class="sd">    and export mesh data. The idea is to initialise the constructor,</span>
+<span class="sd">    then import mesh from db file. Finally, the mesh can be</span>
+<span class="sd">    exported to an external format. For example</span>
+<span class="sd">    </span>
+<span class="sd">    &gt;&gt;&gt; mesh = Mesh()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.importFromDbFile(pathToDbFile=&#39;mesh.db&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; mesh.exportToCalculix(exportedFilename=&#39;Calculix.inp&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; mesh.exportToUnvFormat(exportedFilename=&#39;Salome.unv&#39;)</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    modelName : string</span>
+<span class="sd">        name of imported model</span>
+<span class="sd">    parts : list</span>
+<span class="sd">        list of imported parts</span>
+<span class="sd">    assemblyMesh: dictionary</span>
+<span class="sd">        the dictionary contains parts, but those have renumbered\</span>
+<span class="sd">        node and element labels, so that the labels are not\</span>
+<span class="sd">        repeating</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modelName</span><span class="p">,</span> <span class="n">listOfParts</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">modelName</span> <span class="o">=</span> <span class="n">modelName</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parts</span> <span class="o">=</span> <span class="n">listOfParts</span>
+        <span class="c1"># TODO computeAssemblyMesh function needs to be finished</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assemblyMesh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">computeAssemblyMesh</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;Mesh object is empty. Data needs to be loaded first&#39;</span>
+        <span class="k">return</span> <span class="n">pprint</span><span class="o">.</span><span class="n">pformat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Mesh.importFromAbaqusCae"><a class="viewcode-back" href="../pyCofea/api.html#cofea.Mesh.importFromAbaqusCae">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">importFromAbaqusCae</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">abqModelName</span><span class="p">,</span> <span class="n">abqPartList</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function to initiate the Mesh object</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        abqModelName : str</span>
+<span class="sd">            name of the Abaqus model</span>
+<span class="sd">        abqPartList : list</span>
+<span class="sd">            list of Abaqus Parts to export mesh from</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Mesh</span>
+<span class="sd">            object containing model mesh definition</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="n">PartMesh</span><span class="o">.</span><span class="n">fromAbaqusCae</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">abqPartList</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">modelName</span><span class="o">=</span><span class="n">abqModelName</span><span class="p">,</span> <span class="n">listOfParts</span><span class="o">=</span><span class="n">parts</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Mesh.importFromDbFile"><a class="viewcode-back" href="../pyCofea/api.html#cofea.Mesh.importFromDbFile">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">importFromDbFile</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">pathToDbFile</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function to initiate the Mesh object</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pathToDbFile : str</span>
+<span class="sd">            path to the db file</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Mesh</span>
+<span class="sd">            object containing model mesh definition</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pathToDbFile</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+            <span class="n">mesh</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">modelName</span><span class="o">=</span><span class="n">mesh</span><span class="p">[</span><span class="s1">&#39;modelName&#39;</span><span class="p">],</span>
+                   <span class="n">listOfParts</span><span class="o">=</span><span class="n">mesh</span><span class="p">[</span><span class="s1">&#39;partList&#39;</span><span class="p">])</span></div>
+    
+<div class="viewcode-block" id="Mesh.saveToDbFile"><a class="viewcode-back" href="../pyCofea/api.html#cofea.Mesh.saveToDbFile">[docs]</a>    <span class="k">def</span> <span class="nf">saveToDbFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nameOfDbFile</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function to save model data to db file</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        nameOfDbFile : str</span>
+<span class="sd">            name of the file that will be used to store data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dictToSave</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;modelName&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">modelName</span><span class="p">,</span>
+                      <span class="s1">&#39;partList&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts</span>
+                      <span class="p">}</span>
+        
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">nameOfDbFile</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+            <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">dictToSave</span><span class="p">,</span> <span class="n">handle</span><span class="p">,</span>
+                        <span class="n">protocol</span><span class="o">=</span><span class="n">pickle</span><span class="o">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mesh has been written into </span><span class="si">{0}</span><span class="s1"> file&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nameOfDbFile</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Mesh.computeAssemblyMesh"><a class="viewcode-back" href="../pyCofea/api.html#cofea.Mesh.computeAssemblyMesh">[docs]</a>    <span class="k">def</span> <span class="nf">computeAssemblyMesh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function computes mesh at assembly level from list</span>
+<span class="sd">        of Part objects. The returned dictionary contains</span>
+<span class="sd">        parts with renumbered nodes and elements</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        defaultdict(list)</span>
+<span class="sd">            dictionary of parts</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># TODO: Function is not finished</span>
+        <span class="n">assembly</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="p">:</span>
+            <span class="n">assembly</span><span class="p">[</span><span class="n">part</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">part</span>
+        
+        <span class="k">return</span> <span class="n">assembly</span></div>
+
+<div class="viewcode-block" id="Mesh.exportToCalculix"><a class="viewcode-back" href="../pyCofea/api.html#cofea.Mesh.exportToCalculix">[docs]</a>    <span class="k">def</span> <span class="nf">exportToCalculix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exportedFilename</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function to export mesh to Calculix format</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        exportedFilename : str</span>
+<span class="sd">            name of the file to export mesh (eg &#39;calculix.inp&#39;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># get calculix/abaqus element format for each part</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="p">:</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">setElementTypeFormat</span><span class="p">(</span><span class="n">newFormat</span><span class="o">=</span><span class="s1">&#39;CCX&#39;</span><span class="p">)</span>
+            <span class="c1"># p.reorderNodesInElType()</span>
+        <span class="c1"># prepare a dict which will be used to render things in template</span>
+        <span class="n">renderDict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;modelName&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">modelName</span><span class="p">,</span>
+                      <span class="s1">&#39;parts&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="p">}</span>
+        <span class="c1"># load jinja template from file</span>
+        <span class="c1"># https://stackoverflow.com/a/38642558</span>
+        <span class="n">templateLoader</span> <span class="o">=</span> <span class="n">jinja2</span><span class="o">.</span><span class="n">FileSystemLoader</span><span class="p">(</span><span class="n">searchpath</span><span class="o">=</span><span class="n">filePath</span><span class="p">)</span>
+        <span class="n">templateEnv</span> <span class="o">=</span> <span class="n">jinja2</span><span class="o">.</span><span class="n">Environment</span><span class="p">(</span><span class="n">loader</span><span class="o">=</span><span class="n">templateLoader</span><span class="p">)</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="n">templateEnv</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s2">&quot;calculix.tmplt&quot;</span><span class="p">)</span>
+        <span class="c1"># render template with dict</span>
+        <span class="n">outputText</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">renderDict</span><span class="p">)</span>
+        <span class="c1"># remove all empty lines</span>
+        <span class="n">outputText</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">outputText</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+        <span class="n">outputText</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="c1"># save input deck</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">exportedFilename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">outputText</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mesh exported to </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">exportedFilename</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Mesh.exportToUnvFormat"><a class="viewcode-back" href="../pyCofea/api.html#cofea.Mesh.exportToUnvFormat">[docs]</a>    <span class="k">def</span> <span class="nf">exportToUnvFormat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exportedFilename</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function to export to UNV format</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        exportedFilename : str</span>
+<span class="sd">            name of the file to export mesh (eg &#39;salome.unv&#39;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># get unv format for each part</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="p">:</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">setElementTypeFormat</span><span class="p">(</span><span class="n">newFormat</span><span class="o">=</span><span class="s1">&#39;UNV&#39;</span><span class="p">)</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">reorderNodesInElType</span><span class="p">(</span><span class="n">meshFormat</span><span class="o">=</span><span class="s1">&#39;UNV&#39;</span><span class="p">)</span>
+        <span class="c1"># prepare a dict which will be used to render things in template</span>
+        <span class="n">renderDict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;parts&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="p">}</span>
+        <span class="c1"># load jinja template from file</span>
+        <span class="c1"># https://stackoverflow.com/a/38642558</span>
+        <span class="n">templateLoader</span> <span class="o">=</span> <span class="n">jinja2</span><span class="o">.</span><span class="n">FileSystemLoader</span><span class="p">(</span><span class="n">searchpath</span><span class="o">=</span><span class="n">filePath</span><span class="p">)</span>
+        <span class="n">templateEnv</span> <span class="o">=</span> <span class="n">jinja2</span><span class="o">.</span><span class="n">Environment</span><span class="p">(</span><span class="n">loader</span><span class="o">=</span><span class="n">templateLoader</span><span class="p">)</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="n">templateEnv</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s2">&quot;unv.tmplt&quot;</span><span class="p">)</span>
+        <span class="c1"># render template with dict</span>
+        <span class="n">outputText</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">renderDict</span><span class="p">)</span>
+        <span class="c1"># remove all empty lines</span>
+        <span class="n">outputText</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">outputText</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+        <span class="c1"># save input deck</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">exportedFilename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">outputText</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mesh exported to </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">exportedFilename</span><span class="p">))</span></div></div>
+
+<span class="c1"># if __name__ == &#39;__main__&#39;:</span>
+<span class="c1">#     m = Mesh.importFromDbFile(pathToDbFile=&#39;Abaqus.db&#39;)</span>
+<span class="c1">#     m.exportToCalculix(&#39;calculix.inp&#39;)</span>
+<span class="c1">#     m.exportToUnvFormat(&#39;salome.unv&#39;)</span>
+</pre></div>
+<div class="section">
+   
+</div>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By BlogTechniczny.pl<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
