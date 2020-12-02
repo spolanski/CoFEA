@@ -6,52 +6,56 @@ import time
 import os
 
 
+ # Function changing input mesh inside the model.inp file
+def change_model_inp (input_file, change_mesh):
 
-def changeModelInp (inputFile, changeMesh):   # Function changing input mesh inside the model.inp file 
+    # Input mesh path
+    mesh_path = "*INCLUDE, INPUT="+ change_mesh + "\n"
 
-    meshPath = "*INCLUDE, INPUT="+ changeMesh + "\n"     # Input mesh path
-    ModelInp = open((inputFile + ".inp"),"r")            # Read model.np
+    # Read model.np
+    with open((input_file + ".inp"),"r") as model_inp:
 
-    listofLines = ModelInp.readlines()                   # Read all the lines of model.inp
-    listofLines[0] = meshPath                            # Change the first line of model.inp
+    # Read all the lines of model.inp
+        list_of_lines = model_inp.readlines()
+        list_of_lines[0] = mesh_path
 
-    ModelInp = open((inputFile + ".inp"),"w")
-    ModelInp.writelines(listofLines)
-    ModelInp.close()
+    with open((input_file + ".inp"),"w") as model_inp:
+    	model_inp.writelines(list_of_lines)
 
+# Function which starts ccx solver and copy results
+def run_calculix(input_file, mesh_files_inp):
 
-def runCalculix(inputFile, meshFilesInp):  # Function which starts ccx solver and copy results
+    name_fild_dir =  mesh_files_inp.replace('.inp','')
+    new_name_fil_dir =  name_fild_dir.replace('Mesh/','')
 
-    nameFilDir =  meshFilesInp.replace('.inp','')
-    newNameFilDir =  nameFilDir.replace('Mesh/','')
+    # Run the CalculiX solver with ccx_2.17_MT commnad
+    subprocess.run(["ccx_2.17_MT", input_file])
+    os.mkdir("Results/" + new_name_fil_dir)
 
-    subprocess.run(["ccx_2.17_MT", inputFile])      # Run the CalculiX solver with ccx_2.17_MT commnad
-    os.mkdir("Results/" + newNameFilDir)
+    #Variables for copying/saving files
+    frd_result_file = input_file + ".frd"
+    dat_result_file = input_file + ".dat"
 
-    frdResultFile = inputFile + ".frd"             #Variables for copying/saving files
-    datResultFile = inputFile + ".dat"
+    frd_new_name = new_name_fil_dir + ".frd"
+    dat_mew_name = new_name_fil_dir + ".dat"
 
-    frdNewName = newNameFilDir + ".frd"
-    datNewName = newNameFilDir + ".dat"
+    frd_dir = "Results/" + new_name_fil_dir + "/" + frd_new_name
+    dat_dir = "Results/" + new_name_fil_dir + "/" + dat_mew_name
 
-    frdDir = "Results/" + newNameFilDir + "/" + frdNewName
-    datDir = "Results/" + newNameFilDir + "/" + datNewName
-
-    shutil.copyfile(frdResultFile, frdDir)      # Copy the results files
-    shutil.copyfile(datResultFile, datDir)
-
-
+    # Copy the results files
+    shutil.copyfile(frd_result_file, frd_dir)
+    shutil.copyfile(dat_result_file, dat_dir)
 
 os.mkdir("Results")
-meshFileNames = gb.glob("Mesh/*.inp") # Check the meshes in Mesh folder
-ccxInputFile = ("model") # Name of the input inp file for CalculiX
+# Check the meshes in Mesh folder
+mesh_file_mames = gb.glob("Mesh/*.inp")
 
+# Name of the input inp file for CalculiX
+ccx_input_file = ("model")
 
+for mesh_file_mame in mesh_file_mames:
 
-for meshFileName in meshFileNames:
-
-    print("\n"+meshFileName+"\n")
-    changeModelInp(ccxInputFile, meshFileName)
-    runCalculix(ccxInputFile, meshFileName)
+    change_model_inp(ccx_input_file, mesh_file_mame)
+    run_calculix(ccx_input_file, mesh_file_mame)
 
 print ("All the simualations are done!")
