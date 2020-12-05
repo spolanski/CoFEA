@@ -62,4 +62,24 @@ The table below presents all the material properties that were used in the study
 | Young's modulus, E    | $2.07 \cdot 10^{11}$ | Pa         |
 | Poissons ratio, $\nu$ | 0.33                 | -          |
 
+## Boundary conditions
 
+It is a free body modal simulation therefore there is no boundary conditions assigned to the tuning fork.
+
+## Linear tetrahedral mesh
+
+| Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 1mm |
+|-----------------------|-----------------------  |-------------------------|-------------------------|
+| CalculiX              | $564.5516$ Hz           | $490.9231$ Hz           | $455.640$ Hz            |    
+| Code_Aster            | $564.4878$ Hz           | $490.9094$ Hz           | $455.6372$ Hz           |
+| Elmer                 | $564.4878$ Hz           | $490.9094$ Hz           | $455.6372$ Hz           |
+
+
+```{figure} ./Linear-tetrahedral-mesh.png
+---
+width: 200px
+alt: Linear tetrahedral mesh Results
+name: Liner tetrahedral mesh Fork Results
+---
+Chart representing results of the simulation with linear tetrahedral mesh
+```

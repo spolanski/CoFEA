@@ -12,7 +12,7 @@ model = AFFE_MODELE(AFFE=_F(MODELISATION=('3D', ),
 
 mater = DEFI_MATERIAU(ELAS=_F(E=207000.0,
                               NU=0.33,
-                              RHO=7.298e-09))
+                              RHO=7.829e-09))
 
 fieldmat = AFFE_MATERIAU(AFFE=_F(MATER=(mater, ),
                                  TOUT='OUI'),
@@ -28,25 +28,25 @@ ASSEMBLAGE(CHAM_MATER=fieldmat,
            NUME_DDL=CO('ndl'))
 
 
-load0 = AFFE_CHAR_MECA(
-  LIAISON_SOLIDE=_F(
-    GROUP_MA=('EL_Section', )
-  ), 
-  MODELE=model
-) 
 
 
-modes = CALC_MODES(CALC_FREQ=_F(FREQ=(-1.0, 3000.0)),
+modes = CALC_MODES(CALC_FREQ=_F(FREQ=(100.0, 3000.0)),
                    MATR_MASS=MASS,
                    MATR_RIGI=RIGI,
                    OPTION='BANDE',
                    SOLVEUR_MODAL=_F(METHODE='TRI_DIAG',
-                                    MODE_RIGIDE='OUI'),
+                                    ),
                    TYPE_RESU='DYNAMIQUE')
 
+
 IMPR_RESU(FORMAT='MED',
-          RESU=_F(MAILLAGE=mesh,
+          RESU=_F(INFO_MAILLAGE='OUI',
                   RESULTAT=modes),
           UNITE=80)
+
+IMPR_RESU(FORMAT='RESULTAT',
+          RESU=_F(RESULTAT=modes),
+          UNITE=8)
+
 
 FIN()
