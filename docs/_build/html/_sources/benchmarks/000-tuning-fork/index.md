@@ -48,7 +48,7 @@ Based on the expected value of frequency $f=440$ Hz, the relative error can be m
 
 $$
    \begin{eqnarray}
-      Error = \frac{495.11 - 440.0}{440} \cdot 100 \% = 12.5 \%
+      Error = \left\lvert \frac{495.11 - 440.0}{440} \cdot 100 \% \right\rvert = 12.5 \%
    \end{eqnarray}
 $$
 
@@ -68,18 +68,129 @@ It is a free body modal simulation therefore there is no boundary conditions ass
 
 ## Linear tetrahedral mesh
 
-| Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 1mm |
-|-----------------------|-----------------------  |-------------------------|-------------------------|
-| CalculiX              | $564.5516$ Hz           | $490.9231$ Hz           | $455.640$ Hz            |    
-| Code_Aster            | $564.4878$ Hz           | $490.9094$ Hz           | $455.6372$ Hz           |
-| Elmer                 | $564.4878$ Hz           | $490.9094$ Hz           | $455.6372$ Hz           |
+| Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
+|-----------------------|-----------------------  |-------------------------|---------------------------|
+| CalculiX              | $564.5516 Hz$           | $490.9231 Hz$           | $455.6400 Hz$             |    
+| Code_Aster            | $564.4878 Hz$           | $490.9094 Hz$           | $455.6372 Hz$             |
+| Elmer                 | $564.4878 Hz$           | $490.9094 Hz$           | $455.6372 Hz $            |
 
 
 ```{figure} ./Linear-tetrahedral-mesh.png
 ---
-width: 200px
+width: 400px
 alt: Linear tetrahedral mesh Results
 name: Liner tetrahedral mesh Fork Results
 ---
 Chart representing results of the simulation with linear tetrahedral mesh
 ```
+### Error obtained with linear tetrahedral mesh
+
+| Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
+|-----------------------|-----------------------  |-------------------------|---------------------------|
+| CalculiX              | $28.30%$                | $11.57 %$               | $3.55 %$                  |    
+| Code_Aster            | $28.29 %$               | $11.57 %$               | $3.55 %$                  |
+| Elmer                 | $28.29 %$               | $11.57 %$               | $3.55 %$                  |
+
+
+## Linear hexahedral mesh
+
+| Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
+|-----------------------|-----------------------  |-------------------------|---------------------------|
+| CalculiX              | $388.6797 Hz$           | $415.7952 Hz$           | $434.1767 Hz$             |    
+| Code_Aster            | $496.8798 Hz$           | $455.3461 Hz$           | $444.2280 Hz$             |
+| Elmer                 | $496.8798 Hz$           | $455.3461 Hz$           | $444.2280 Hz$             |
+
+```{figure} ./Linear-hexahedral-mesh.png
+---
+width: 400px
+alt: Linear hexahedral mesh Results
+name: Linear hexahedral mesh Fork Results
+---
+Chart representing results of the simulation with linear hexahedral mesh
+```
+### Error obtained with linear hexahedral mesh
+
+| Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
+|-----------------------|-----------------------  |-------------------------|---------------------------|
+| CalculiX              | $11.66 %$               | $5.50 %$                | $1.32 %$                  |    
+| Code_Aster            | $12.93 %$               | $3.49 %$                | $0.96 %$                  |
+| Elmer                 | $12.93 %$               | $3.49 %$                | $0.96 %$                  |
+
+## Quadratic tetrahedral mesh
+
+| Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
+|-----------------------|-----------------------  |-------------------------|---------------------------|
+| CalculiX              | $441.1400 Hz$           | $440.2912 Hz$           | $440.0088 Hz$             |    
+| Code_Aster            | $441.1663 Hz$           | $440.2958 Hz$           | $440.0092 Hz$             |
+| Elmer                 | $441.2618 Hz$           | $440.3014 Hz$           | $440.0094 Hz$             |
+
+```{figure} ./Quadratic-tetrahedral-mesh.png
+---
+width: 400px
+alt: Quadratic tetrahedral mesh Results
+name: Quadratic tetrahedral mesh Fork Results
+---
+Chart representing results of the simulation with quadratic tetrahedral mesh
+```
+### Error obtained with quadratic tetrahedral mesh
+
+| Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
+|-----------------------|-----------------------  |-------------------------|---------------------------|
+| CalculiX              | $0.26 %$                | $0.0662 %$              | $0.002 %$                 |    
+| Code_Aster            | $0.27 %$                | $0.0672 %$              | $0.002 %$                 |
+| Elmer                 | $0.29 %$                | $0.0685 %$              | $0.002 %$                 |
+
+
+## Quadratic hexahedral mesh
+
+| Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
+|-----------------------|-----------------------  |-------------------------|---------------------------|
+| CalculiX              | $440.5790 Hz$           | $440.3416 Hz$           | $440.0529 Hz$             |    
+| Code_Aster            | $441.1028 Hz$           | $440.4903 Hz$           | $440.0907 Hz$             |
+| Elmer                 | $441.1028 Hz$           | $440.4903 Hz$           | $440.0907 Hz$             |
+
+```{figure} ./Quadratic-hexahedral-mesh.png
+---
+width: 400px
+alt: Quadratic hexahedral mesh Results
+name: Quadratic hexahedral mesh Fork Results
+---
+Chart representing results of the simulation with quadratic hexahedral mesh
+```
+### Error obtained with quadratic hexahedral mesh
+
+| Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
+|-----------------------|-----------------------  |-------------------------|---------------------------|
+| CalculiX              | $0.13 %$                | $0.0776 %$              | $0.012 %$                 |    
+| Code_Aster            | $0.25 %$                | $0.1114 %$              | $0.021 %$                 |
+| Elmer                 | $0.25 %$                | $0.1114 %$              | $0.021 %$                 |
+
+
+## Quadratic wedge mesh
+
+| Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
+|-----------------------|-----------------------  |-------------------------|---------------------------|
+| CalculiX              | $441.1652 Hz$           | $440.3235 Hz$           | $440.0090 Hz$             |    
+| Code_Aster            | $441.3556 Hz$           | $440.3443 Hz$           | $440.0104 Hz$             |
+| Elmer                 | $441.3554 Hz$           | $440.3443 Hz$           | $440.0104 Hz$             |
+
+```{figure} ./Quadratic-wedge-mesh.png
+---
+width: 400px
+alt: Quadratic wedge mesh Results
+name: Quadratic wedge mesh Fork Results
+---
+Chart representing results of the simulation with quadratic wedge mesh
+```
+### Error obtained with quadratic wedge mesh
+
+| Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
+|-----------------------|-----------------------  |-------------------------|---------------------------|
+| CalculiX              | $0.26 %$                | $0.0735 %$              | $0.0020(45) %$            |    
+| Code_Aster            | $0.31 %$                | $0.0783 %$              | $0.0002(36) %$            |
+| Elmer                 | $0.31 %$                | $0.0783 %$              | $0.0002(36) %$            |
+
+
+## Conlusions
+
+From presented results it can be concluded that CalculiX is providing solution with the smallest error. Especially it is visible with the quadratic meshes. Probably CalculiX is using different algorythms than rest of the solver. The biggest difference in this comparison is seen with linear hexahedral mesh, where CalculiX is converging from lower values of frequency and rest of the solvers are obtaining highest values of frequency than the ideal one. Results obtained with the Code_Aster and Elmer are comparable.
