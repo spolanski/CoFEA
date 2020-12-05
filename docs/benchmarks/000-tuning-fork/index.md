@@ -77,7 +77,7 @@ It is a free body modal simulation therefore there is no boundary conditions ass
 
 ```{figure} ./Linear-tetrahedral-mesh.png
 ---
-width: 400px
+width: 500px
 alt: Linear tetrahedral mesh Results
 name: Liner tetrahedral mesh Fork Results
 ---
@@ -87,9 +87,9 @@ Chart representing results of the simulation with linear tetrahedral mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|
-| CalculiX              | $28.30%$                | $11.57 %$               | $3.55 %$                  |    
-| Code_Aster            | $28.29 %$               | $11.57 %$               | $3.55 %$                  |
-| Elmer                 | $28.29 %$               | $11.57 %$               | $3.55 %$                  |
+| CalculiX              | $28.30 \%$              | $11.57 \%$              | $3.55 \%$                 |    
+| Code_Aster            | $28.29 \%$              | $11.57 \%$              | $3.55 \%$                 |
+| Elmer                 | $28.29 \%$              | $11.57 \%$              | $3.55 \%$                 |
 
 
 ## Linear hexahedral mesh
@@ -102,7 +102,7 @@ Chart representing results of the simulation with linear tetrahedral mesh
 
 ```{figure} ./Linear-hexahedral-mesh.png
 ---
-width: 400px
+width: 500px
 alt: Linear hexahedral mesh Results
 name: Linear hexahedral mesh Fork Results
 ---
@@ -112,9 +112,9 @@ Chart representing results of the simulation with linear hexahedral mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|
-| CalculiX              | $11.66 %$               | $5.50 %$                | $1.32 %$                  |    
-| Code_Aster            | $12.93 %$               | $3.49 %$                | $0.96 %$                  |
-| Elmer                 | $12.93 %$               | $3.49 %$                | $0.96 %$                  |
+| CalculiX              | $11.66 \%$              | $5.50 \%$               | $1.32 \%$                 |    
+| Code_Aster            | $12.93 \%$              | $3.49 \%$               | $0.96 \%$                 |
+| Elmer                 | $12.93 \%$              | $3.49 \%$               | $0.96 \%$                 |
 
 ## Quadratic tetrahedral mesh
 
@@ -126,7 +126,7 @@ Chart representing results of the simulation with linear hexahedral mesh
 
 ```{figure} ./Quadratic-tetrahedral-mesh.png
 ---
-width: 400px
+width: 500px
 alt: Quadratic tetrahedral mesh Results
 name: Quadratic tetrahedral mesh Fork Results
 ---
@@ -136,9 +136,9 @@ Chart representing results of the simulation with quadratic tetrahedral mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|
-| CalculiX              | $0.26 %$                | $0.0662 %$              | $0.002 %$                 |    
-| Code_Aster            | $0.27 %$                | $0.0672 %$              | $0.002 %$                 |
-| Elmer                 | $0.29 %$                | $0.0685 %$              | $0.002 %$                 |
+| CalculiX              | $0.26 \%$               | $0.0662 \%$             | $0.002 \%$                |    
+| Code_Aster            | $0.27 \%$               | $0.0672 \%$             | $0.002 \%$                |
+| Elmer                 | $0.29 \%$               | $0.0685 \%$             | $0.002 \%$                |
 
 
 ## Quadratic hexahedral mesh
@@ -151,7 +151,7 @@ Chart representing results of the simulation with quadratic tetrahedral mesh
 
 ```{figure} ./Quadratic-hexahedral-mesh.png
 ---
-width: 400px
+width: 500px
 alt: Quadratic hexahedral mesh Results
 name: Quadratic hexahedral mesh Fork Results
 ---
@@ -161,9 +161,9 @@ Chart representing results of the simulation with quadratic hexahedral mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|
-| CalculiX              | $0.13 %$                | $0.0776 %$              | $0.012 %$                 |    
-| Code_Aster            | $0.25 %$                | $0.1114 %$              | $0.021 %$                 |
-| Elmer                 | $0.25 %$                | $0.1114 %$              | $0.021 %$                 |
+| CalculiX              | $0.13 \%$               | $0.0776 \%$             | $0.012 \%$                |    
+| Code_Aster            | $0.25 \%$               | $0.1114 \%$             | $0.021 \%$                |
+| Elmer                 | $0.25 \%$               | $0.1114 \%$             | $0.021 \%$                |
 
 
 ## Quadratic wedge mesh
@@ -176,7 +176,7 @@ Chart representing results of the simulation with quadratic hexahedral mesh
 
 ```{figure} ./Quadratic-wedge-mesh.png
 ---
-width: 400px
+width: 500px
 alt: Quadratic wedge mesh Results
 name: Quadratic wedge mesh Fork Results
 ---
@@ -186,9 +186,9 @@ Chart representing results of the simulation with quadratic wedge mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|
-| CalculiX              | $0.26 %$                | $0.0735 %$              | $0.0020(45) %$            |    
-| Code_Aster            | $0.31 %$                | $0.0783 %$              | $0.0002(36) %$            |
-| Elmer                 | $0.31 %$                | $0.0783 %$              | $0.0002(36) %$            |
+| CalculiX              | $0.26 \%$               | $0.0735 \%$             | $0.0020(45) \%$           |    
+| Code_Aster            | $0.31 \%$               | $0.0783 \%$             | $0.0002(36) \%$           |
+| Elmer                 | $0.31 \%$               | $0.0783 \%$             | $0.0002(36) \%$           |
 
 
 ## Conlusions
