@@ -47,3 +47,10 @@ software_setup/index
 
 benchmarks/000-tuning-fork/index
 ```
+
+```{toctree}
+:maxdepth: 1
+:caption: About us
+
+Aboutus/index
+```
