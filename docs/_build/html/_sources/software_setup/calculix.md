@@ -1,5 +1,5 @@
 # Calculix
-To use Calculix in multithreading mode it is needed to compile from source. In order to do so it is necessary to compile ARPACK and SPOOLES library and install the required tools. The code which is presented here is already changed and ready for compilation. Please read the original documentation first from [here] (http://www.dhondt.de/ccx_2.17.README.INSTALL).
+To use Calculix in multithreading mode it is needed to compile from source. In order to do so it is necessary to compile ARPACK and SPOOLES library and install the required tools. The code which is presented here is already changed and ready for compilation. Please read the original documentation first from [here](http://www.dhondt.de/ccx_2.17.README.INSTALL).
 
 ## Tools
 1. Install the required tools for Calculix:
@@ -25,7 +25,7 @@ sudo apt-get install gfortran make f2c liblapack3 liblapack-dev libexodusii-dev 
 
 ## SPOOLES
 
-SPOOLES library should be obtained from this [site] (http://www.netlib.org/linalg/spooles/spooles.2.2.tgz) using wget command.
+SPOOLES library should be obtained from this [site](http://www.netlib.org/linalg/spooles/spooles.2.2.tgz) using wget command.
 
 ```
 wget http://www.netlib.org/linalg/spooles/spooles.2.2.tgz
@@ -69,7 +69,7 @@ make
 ```
 ## ARPACK
 
-Next step is to compile ARPACK library. It is needed to download 2 seperate archives. Obtain it from (here)[https://www.caam.rice.edu/software/ARPACK/SRC/arpack96.tar.gz] and (here)[https://www.caam.rice.edu/software/ARPACK/SRC/patch.tar.gz].
+Next step is to compile ARPACK library. It is needed to download 2 seperate archives. Obtain it from [here](https://www.caam.rice.edu/software/ARPACK/SRC/arpack96.tar.gz) and [here](https://www.caam.rice.edu/software/ARPACK/SRC/patch.tar.gz).
 
 
 ```
@@ -100,7 +100,7 @@ make lib
 ```
 ## Calculix compilation
 
-Obtain Calculix (source code)[http://www.dhondt.de/ccx_2.17.src.tar.bz2] using wget to your Calculix directory.
+Obtain Calculix [source code](http://www.dhondt.de/ccx_2.17.src.tar.bz2) using wget to your Calculix directory.
 
 ```
 wget http://www.dhondt.de/ccx_2.17.src.tar.bz2
@@ -130,6 +130,6 @@ Happy meshing!
 
 ## Interesting projects with CalculiX
 
-(pycalculix)[https://github.com/spacether/pycalculix] is a Python 3 library to automate and build finite element analysis (FEA) models in Calculix.
+[pycalculix](https://github.com/spacether/pycalculix) is a Python 3 library to automate and build finite element analysis (FEA) models in Calculix.
 
-(CAE)[https://github.com/calculix/cae] is a software package mainly consisting of CalculiX GraphiX, CrunchiX and keyword editor.
+[CAE](https://github.com/calculix/cae) is a software package mainly consisting of CalculiX GraphiX, CrunchiX and keyword editor.

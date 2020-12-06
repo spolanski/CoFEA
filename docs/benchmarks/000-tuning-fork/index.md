@@ -16,7 +16,7 @@ Click on the image above to play with 3D object in ParaView Glance!
 ```
 
 ```{tip}
-Simulation input files can be found on our (GitHub)[https://github.com/spolanski/CoFEA/tree/master/Benchmarks/00-Tuning-Fork]!
+Simulation input files can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/Benchmarks/00-Tuning-Fork)!
 ```
 
 
