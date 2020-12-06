@@ -1,5 +1,5 @@
 # Calculix
-To use Calculix in multithreading mode it is needed to compile from source. In order to do so it is necessary to compile ARPACK and SPOOLES library nad install the required tools. The code which is presented here is already changed and ready for compilation. Please read the original documentation first from http://www.dhondt.de/ccx_2.17.README.INSTALL
+To use Calculix in multithreading mode it is needed to compile from source. In order to do so it is necessary to compile ARPACK and SPOOLES library and install the required tools. The code which is presented here is already changed and ready for compilation. Please read the original documentation first from [here] (http://www.dhondt.de/ccx_2.17.README.INSTALL).
 
 ## Tools
 1. Install the required tools for Calculix:
@@ -18,20 +18,20 @@ To use Calculix in multithreading mode it is needed to compile from source. In o
 using your package manager. For Ubuntu and Debian-oriented system the command should be like:
 
 
-``` 
+```
 sudo apt-get install gfortran make f2c liblapack3 liblapack-dev libexodusii-dev libgl1-mesa-dev libglu1-mesa-dev libxi-dev libxmu-dev
 ```
 
 
 ## SPOOLES
 
-SPOOLES library should be obtained from this site http://www.netlib.org/linalg/spooles/spooles.2.2.tgz using wget command.
+SPOOLES library should be obtained from this [site] (http://www.netlib.org/linalg/spooles/spooles.2.2.tgz) using wget command.
 
 ```
 wget http://www.netlib.org/linalg/spooles/spooles.2.2.tgz
 ```
 
-After downloading the file, it is mandatory to create folder SPOOLES.2.2. move the archive there and unpack it. It can be done with the following commands:
+After downloading the file, it is mandatory to create folder SPOOLES.2.2. Move the archive there and unpack it. It can be done with the following commands:
 
 ```
 mkdir SPOOLES.2.2
@@ -45,7 +45,7 @@ Change directory to SPOOLES.2.2 with cd:
 cd SPOOLES.2.2
 ```
 
-Then  uncomment 14 line comment line 15 in Make.inc file with your text editor. It can be done by:
+Then  uncomment 14 line and comment line 15 in Make.inc file with your text editor. It can be done by:
 
 ```
 gedit Make.inc
@@ -69,7 +69,7 @@ make
 ```
 ## ARPACK
 
-Next step is to compile ARPACK library. It is needed to download 2 seperate archives. Obtain it from https://www.caam.rice.edu/software/ARPACK/SRC/arpack96.tar.gz and https://www.caam.rice.edu/software/ARPACK/SRC/patch.tar.gz
+Next step is to compile ARPACK library. It is needed to download 2 seperate archives. Obtain it from (here)[https://www.caam.rice.edu/software/ARPACK/SRC/arpack96.tar.gz] and (here)[https://www.caam.rice.edu/software/ARPACK/SRC/patch.tar.gz].
 
 
 ```
@@ -100,7 +100,7 @@ make lib
 ```
 ## Calculix compilation
 
-Obtain Calculix source code from: http://www.dhondt.de/ccx_2.17.src.tar.bz2 using wget to your Calculix directory.
+Obtain Calculix (source code)[http://www.dhondt.de/ccx_2.17.src.tar.bz2] using wget to your Calculix directory.
 
 ```
 wget http://www.dhondt.de/ccx_2.17.src.tar.bz2
@@ -127,3 +127,9 @@ Then it is possible to compile Calculix with:
 make
 ```
 Happy meshing!
+
+## Interesting projects with CalculiX
+
+(pycalculix)[https://github.com/spacether/pycalculix] is a Python 3 library to automate and build finite element analysis (FEA) models in Calculix.
+
+(CAE)[https://github.com/calculix/cae] is a software package mainly consisting of CalculiX GraphiX, CrunchiX and keyword editor.

@@ -15,6 +15,14 @@
 Click on the image above to play with 3D object in ParaView Glance!
 ```
 
+```{tip}
+Simulation input files can be found on our (GitHub)[https://github.com/spolanski/CoFEA/tree/master/Benchmarks/00-Tuning-Fork]!
+```
+
+
+
+
+
 ## Model definition
 
 The aim of this study is to compare the results from a modal analysis performed in [CalculiX](http://www.calculix.de/), [Code_Aster](https://code-aster.org/) and [Elmer](http://www.elmerfem.org/blog/) Finite-Element codes. A tuning fork geometry will be used to measure the software performance. The model described in this report was created on a basis of the article found in this [link](http://pubs.sciepub.com/ajme/4/7/16/index.html).
@@ -193,4 +201,4 @@ Chart representing results of the simulation with quadratic wedge mesh
 
 ## Conlusions
 
-From presented results it can be concluded that CalculiX is providing solution with the smallest error. Especially it is visible with the quadratic meshes. Probably CalculiX is using different algorythms than rest of the solver. The biggest difference in this comparison is seen with linear hexahedral mesh, where CalculiX is converging from lower values of frequency and rest of the solvers are obtaining highest values of frequency than the ideal one. Results obtained with the Code_Aster and Elmer are comparable.
+From presented results it can be concluded that CalculiX is providing solution with the smallest error. Especially it is visible with the quadratic meshes. Probably CalculiX is using different algorithms than rest of the solvers. The biggest difference in this comparison is seen with linear hexahedral mesh, where CalculiX is converging from lower values of frequency and rest of the solvers are obtaining highest values of frequency than the ideal one. Results obtained with the Code_Aster and Elmer are comparable.

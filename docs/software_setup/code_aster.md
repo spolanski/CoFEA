@@ -1,5 +1,5 @@
 # Code_Aster Compilation
-To use Code_aster in multithreading mode on UBUNTU 18.04 it is needed to compile from source. In order to do so it is necessary to install required dependencies tools. The source code of Code_aster can be obtained from this repository or https://www.code-aster.org/spip.php?rubrique21
+To use Code_aster in multithreading mode on UBUNTU 18.04 it is needed to compile from source. In order to do so it is necessary to install required dependencies tools. The source code of Code_aster can be obtained from this repository or (link)[https://www.code-aster.org/spip.php?rubrique21].
 
 ## Prerequisities
 1. Install the required tools for Code_aster:
@@ -17,7 +17,7 @@ To use Code_aster in multithreading mode on UBUNTU 18.04 it is needed to compile
 
 using your package manager. For Ubuntu and Debian-oriented system the command should be like:
 
-``` 
+```
 sudo apt-get install gfortran
 ```
 ## Compilation
