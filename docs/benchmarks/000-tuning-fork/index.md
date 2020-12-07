@@ -21,7 +21,7 @@ Simulation input files can be found on our [GitHub](https://github.com/spolanski
 
 ```{figure} ./movie.gif
 ---
-width: 400px
+width: 600px
 alt: Fork gif
 name: Fork gif
 ---
