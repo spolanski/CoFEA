@@ -19,7 +19,14 @@ Click on the image above to play with 3D object in ParaView Glance!
 Simulation input files can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/Benchmarks/00-Tuning-Fork)!
 ```
 
-
+```{figure} ./movie.gif
+---
+width: 400px
+alt: Fork gif
+name: Fork gif
+---
+Tuning fork geometry and its' 1st vibration mode
+```
 
 
 
