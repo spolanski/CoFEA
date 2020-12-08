@@ -21,7 +21,7 @@ Simulation input files can be found on our [GitHub](https://github.com/spolanski
 
 ```{figure} ./movie.gif
 ---
-width: 400px
+width: 600px
 alt: Fork gif
 name: Fork gif
 ---
@@ -208,4 +208,4 @@ Chart representing results of the simulation with quadratic wedge mesh
 
 ## Conlusions
 
-From presented results it can be concluded that CalculiX is providing solution with the smallest error. Especially it is visible with the quadratic meshes. Probably CalculiX is using different algorithms than rest of the solvers. The biggest difference in this comparison is seen with linear hexahedral mesh, where CalculiX is converging from lower values of frequency and rest of the solvers are obtaining highest values of frequency than the ideal one. Results obtained with the Code_Aster and Elmer are comparable.
+From presented results it can be concluded that CalculiX is providing solution with the smallest error. Especially it is visible with the quadratic meshes. Probably CalculiX is using different algorithms than rest of the solvers. The biggest difference in this comparison is seen with linear hexahedral mesh, where CalculiX is converging from lower values of frequency and rest of the solvers are obtaining highest values of frequency than the ideal one. Results obtained with the Code_Aster and Elmer are comparable. Additionally we encountered problems with setting up the simulation in Code_Aster, special option called "Bande", which enables to probe the object between lower and upper limit of frequency, was used.  
