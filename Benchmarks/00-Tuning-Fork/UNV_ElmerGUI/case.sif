@@ -1,8 +1,8 @@
 Header
   CHECK KEYWORDS Warn
-  Mesh DB "." "."
+  Mesh DB "." "Mesh/QUAD-HEX-0-5"
   Include Path ""
-  Results Directory ""
+  Results Directory "Results"
 End
 
 Simulation
@@ -15,7 +15,7 @@ Simulation
   Timestepping Method = BDF
   BDF Order = 1
   Solver Input File = case.sif
-  Post File = case.vtu
+  Post File = case.ep
 End
 
 Constants
@@ -28,42 +28,53 @@ End
 
 Body 1
   Target Bodies(1) = 1
-  Name = "Body Property 1"
+  Name = "Body 1"
   Equation = 1
   Material = 1
 End
 
 Solver 1
   Equation = Linear elasticity
-  Variable = -dofs 3 Displacement
-  Eigen System Values = 10
   Procedure = "StressSolve" "StressSolver"
-  Eigen Analysis = True
   Eigen System Select = Smallest magnitude
+  Eigen System Values = 10
+  Variable = -dofs 3 Displacement
+  Eigen Analysis = True
   Exec Solver = Always
   Stabilize = True
   Bubbles = False
   Lumped Mass Matrix = False
   Optimize Bandwidth = True
+  Linear System Convergence Tolerance = 1.0e-3
   Steady State Convergence Tolerance = 1.0e-5
   Nonlinear System Convergence Tolerance = 1.0e-7
-  Nonlinear System Max Iterations = 20
+  Nonlinear System Max Iterations = 1
   Nonlinear System Newton After Iterations = 3
   Nonlinear System Newton After Tolerance = 1.0e-3
   Nonlinear System Relaxation Factor = 1
   Linear System Solver = Direct
-  Linear System Direct Method = Umfpack
+  Linear System Direct Method = MUMPS
+End
+
+Solver 2
+  Exec Solver = After Saving
+  Equation ="Equation 1"
+  Procedure = "SaveData" "SaveScalars"
+  Filename = "QUAD-HEX-0-5.dat"
+  Variable 1 = Displacement
+  Save Eigenfrequencies = Logical True
 End
 
 Equation 1
   Name = "Equation 1"
-  Active Solvers(1) = 1
+  Active Solvers(2) = 1 2
 End
 
 Material 1
-  Name = "Material 1"
+  Name = "Steel"
+  Mesh Poisson ratio = 0.33
   Youngs modulus = 207000
   Poisson ratio = 0.33
-  Density = 7.829e-9
   Porosity Model = Always saturated
+  Density = 7.829e-9
 End
