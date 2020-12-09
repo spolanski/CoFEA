@@ -15,24 +15,15 @@
 Click on the image above to play with 3D object in ParaView Glance!
 ```
 
-```{tip}
-Simulation input files can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/Benchmarks/00-Tuning-Fork)!
-```
 
-```{figure} ./movie.gif
----
-width: 600px
-alt: Fork gif
-name: Fork gif
----
-Tuning fork geometry and its' 1st vibration mode
-```
 
 
 
 ## Model definition
 
 The aim of this study is to compare the results from a modal analysis performed in [CalculiX](http://www.calculix.de/), [Code_Aster](https://code-aster.org/) and [Elmer](http://www.elmerfem.org/blog/) Finite-Element codes. A tuning fork geometry will be used to measure the software performance. The model described in this report was created on a basis of the article found in this [link](http://pubs.sciepub.com/ajme/4/7/16/index.html).
+
+Simulation input files used in this study can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/Benchmarks/00-Tuning-Fork)!
 
 ```{figure} ./fork-geo-results.png
 ---
@@ -42,6 +33,7 @@ name: Fork Results
 ---
 Tuning fork geometry and its' vibration modes
 ```
+
 
 ## Approximated solution
 
@@ -81,13 +73,14 @@ The table below presents all the material properties that were used in the study
 
 It is a free body modal simulation therefore there is no boundary conditions assigned to the tuning fork.
 
-## Linear tetrahedral mesh
+## Results
+### Linear tetrahedral mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|
-| CalculiX              | $564.5516 Hz$           | $490.9231 Hz$           | $455.6400 Hz$             |    
-| Code_Aster            | $564.4878 Hz$           | $490.9094 Hz$           | $455.6372 Hz$             |
-| Elmer                 | $564.4878 Hz$           | $490.9094 Hz$           | $455.6372 Hz $            |
+| CalculiX              | $564.55 Hz$             | $490.92 Hz$             | $455.64 Hz$               |    
+| Code_Aster            | $564.48 Hz$             | $490.90 Hz$             | $455.63 Hz$               |
+| Elmer                 | $564.48 Hz$             | $490.90 Hz$             | $455.63 Hz $              |
 
 
 ```{figure} ./Linear-tetrahedral-mesh.png
@@ -98,7 +91,7 @@ name: Liner tetrahedral mesh Fork Results
 ---
 Chart representing results of the simulation with linear tetrahedral mesh
 ```
-### Error obtained with linear tetrahedral mesh
+#### Error obtained with linear tetrahedral mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|
@@ -107,13 +100,13 @@ Chart representing results of the simulation with linear tetrahedral mesh
 | Elmer                 | $28.29 \%$              | $11.57 \%$              | $3.55 \%$                 |
 
 
-## Linear hexahedral mesh
+### Linear hexahedral mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|
-| CalculiX              | $388.6797 Hz$           | $415.7952 Hz$           | $434.1767 Hz$             |    
-| Code_Aster            | $496.8798 Hz$           | $455.3461 Hz$           | $444.2280 Hz$             |
-| Elmer                 | $496.8798 Hz$           | $455.3461 Hz$           | $444.2280 Hz$             |
+| CalculiX              | $388.67 Hz$             | $415.79 Hz$             | $434.17 Hz$               |    
+| Code_Aster            | $496.87 Hz$             | $455.34 Hz$             | $444.22 Hz$               |
+| Elmer                 | $496.87 Hz$             | $455.34 Hz$             | $444.22 Hz$               |
 
 ```{figure} ./Linear-hexahedral-mesh.png
 ---
@@ -123,7 +116,7 @@ name: Linear hexahedral mesh Fork Results
 ---
 Chart representing results of the simulation with linear hexahedral mesh
 ```
-### Error obtained with linear hexahedral mesh
+#### Error obtained with linear hexahedral mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|
@@ -131,13 +124,13 @@ Chart representing results of the simulation with linear hexahedral mesh
 | Code_Aster            | $12.93 \%$              | $3.49 \%$               | $0.96 \%$                 |
 | Elmer                 | $12.93 \%$              | $3.49 \%$               | $0.96 \%$                 |
 
-## Quadratic tetrahedral mesh
+### Quadratic tetrahedral mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|
-| CalculiX              | $441.1400 Hz$           | $440.2912 Hz$           | $440.0088 Hz$             |    
-| Code_Aster            | $441.1663 Hz$           | $440.2958 Hz$           | $440.0092 Hz$             |
-| Elmer                 | $441.2618 Hz$           | $440.3014 Hz$           | $440.0094 Hz$             |
+| CalculiX              | $441.14 Hz$             | $440.29 Hz$             | $440.0088 Hz$             |    
+| Code_Aster            | $441.16 Hz$             | $440.29 Hz$             | $440.0092 Hz$             |
+| Elmer                 | $441.26 Hz$             | $440.30 Hz$             | $440.0094 Hz$             |
 
 ```{figure} ./Quadratic-tetrahedral-mesh.png
 ---
@@ -147,7 +140,7 @@ name: Quadratic tetrahedral mesh Fork Results
 ---
 Chart representing results of the simulation with quadratic tetrahedral mesh
 ```
-### Error obtained with quadratic tetrahedral mesh
+#### Error obtained with quadratic tetrahedral mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|
@@ -156,13 +149,13 @@ Chart representing results of the simulation with quadratic tetrahedral mesh
 | Elmer                 | $0.29 \%$               | $0.0685 \%$             | $0.002 \%$                |
 
 
-## Quadratic hexahedral mesh
+### Quadratic hexahedral mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|
-| CalculiX              | $440.5790 Hz$           | $440.3416 Hz$           | $440.0529 Hz$             |    
-| Code_Aster            | $441.1028 Hz$           | $440.4903 Hz$           | $440.0907 Hz$             |
-| Elmer                 | $441.1028 Hz$           | $440.4903 Hz$           | $440.0907 Hz$             |
+| CalculiX              | $440.57 Hz$             | $440.34 Hz$             | $440.0529 Hz$             |    
+| Code_Aster            | $441.10 Hz$             | $440.49 Hz$             | $440.0907 Hz$             |
+| Elmer                 | $441.10 Hz$             | $440.49 Hz$             | $440.0907 Hz$             |
 
 ```{figure} ./Quadratic-hexahedral-mesh.png
 ---
@@ -172,7 +165,7 @@ name: Quadratic hexahedral mesh Fork Results
 ---
 Chart representing results of the simulation with quadratic hexahedral mesh
 ```
-### Error obtained with quadratic hexahedral mesh
+#### Error obtained with quadratic hexahedral mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|
@@ -181,13 +174,13 @@ Chart representing results of the simulation with quadratic hexahedral mesh
 | Elmer                 | $0.25 \%$               | $0.1114 \%$             | $0.021 \%$                |
 
 
-## Quadratic wedge mesh
+### Quadratic wedge mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|
-| CalculiX              | $441.1652 Hz$           | $440.3235 Hz$           | $440.0090 Hz$             |    
-| Code_Aster            | $441.3556 Hz$           | $440.3443 Hz$           | $440.0104 Hz$             |
-| Elmer                 | $441.3554 Hz$           | $440.3443 Hz$           | $440.0104 Hz$             |
+| CalculiX              | $441.16 Hz$             | $440.32 Hz$             | $440.0090 Hz$             |    
+| Code_Aster            | $441.35 Hz$             | $440.34 Hz$             | $440.0104 Hz$             |
+| Elmer                 | $441.35 Hz$             | $440.34 Hz$             | $440.0104 Hz$             |
 
 ```{figure} ./Quadratic-wedge-mesh.png
 ---
@@ -197,7 +190,7 @@ name: Quadratic wedge mesh Fork Results
 ---
 Chart representing results of the simulation with quadratic wedge mesh
 ```
-### Error obtained with quadratic wedge mesh
+#### Error obtained with quadratic wedge mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|
@@ -205,6 +198,15 @@ Chart representing results of the simulation with quadratic wedge mesh
 | Code_Aster            | $0.31 \%$               | $0.0783 \%$             | $0.0002(36) \%$           |
 | Elmer                 | $0.31 \%$               | $0.0783 \%$             | $0.0002(36) \%$           |
 
+
+```{figure} ./movie.gif
+---
+width: 600px
+alt: Fork gif
+name: Fork gif
+---
+Tuning fork geometry and its' 1st vibration mode
+```
 
 ## Conlusions
 
