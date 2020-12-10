@@ -70,6 +70,18 @@ The table below presents all the material properties that were used in the study
 It is a free body modal simulation therefore there is no boundary conditions assigned to the tuning fork.
 
 ## Results
+
+Number of simulations with different element types and mesh size have been performed for the tuning model. The animation below shows the results from the Calculix code.
+
+```{figure} ./movie.gif
+---
+width: 600px
+alt: Fork gif
+name: Fork gif
+---
+Tuning fork geometry and its' 1st vibration mode
+```
+
 ### Linear tetrahedral mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
@@ -186,7 +198,7 @@ name: Quadratic wedge mesh Fork Results
 ---
 Chart representing results of the simulation with quadratic wedge mesh
 ```
-#### Error obtained with quadratic wedge mesh
+> Error obtained with quadratic wedge mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|
@@ -194,17 +206,22 @@ Chart representing results of the simulation with quadratic wedge mesh
 | Code_Aster            | $0.31 \%$               | $0.0783 \%$             | $0.0002(36) \%$           |
 | Elmer                 | $0.31 \%$               | $0.0783 \%$             | $0.0002(36) \%$           |
 
+### Codes comparison
 
-```{figure} ./movie.gif
----
-width: 600px
-alt: Fork gif
-name: Fork gif
----
-Tuning fork geometry and its' 1st vibration mode
-```
+| Eigenfrequency | Commercial code | Calculix | Code Aster |  Elmer  |
+|----------------|:---------------:|:--------:|:----------:|:-------:|
+|              1 |      440.33     |  440.05  |   440.91   |  440.91 |
+|              2 |      675.80     |  673.51  |   673.57   |  673.57 |
+|              3 |     1689.51     |  1689.30 |   1689.37  | 1689.37 |
+|              4 |     1827.55     |  1825.55 |   1825.63  | 1825.63 |
+|              5 |     2788.66     |  2777.73 |   2777.56  | 2777.56 |
+
 
 ## Conclusions
 
-The presented study proved that Calculix, Code Aster and Elmer can 
-From presented results it can be concluded that CalculiX is providing solution with the smallest error. Especially it is visible with the quadratic meshes. Probably CalculiX is using different algorithms than rest of the solvers. The biggest difference in this comparison is seen with linear hexahedral mesh, where CalculiX is converging from lower values of frequency and rest of the solvers are obtaining highest values of frequency than the ideal one. Results obtained with the Code_Aster and Elmer are comparable. Additionally we encountered problems with setting up the simulation in Code_Aster, special option called "Bande", which enables to probe the object between lower and upper limit of frequency, was used.  
+A few conclusions can be derived from the presented study:
+
+1. It is possible to use open-source software and achieve correct solution. 
+2. Although all three solvers gave very similar response, it feels like Calculix and Elmer were the most straightforward to set up. They picked up rigid body modes without any additional settings. On the other hand, Code_Aster had to be set up so that it searches only for non-rigid body modes (this is possible with setting called 'Bande') or the model has to be constrained.
+3. Despite the mentioned difference in the solver setup, Code_Aster and Elmer seem to give almost the same answers.
+4. For the tuning fork model, the quadratic shape function give a lot more accurate answer than the linear one. The very fine linear hexahedral mesh achieve the same order of accuracy as the coarse quadratic tetrahedral mesh.
