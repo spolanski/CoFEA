@@ -20,7 +20,7 @@ There are plenty of ways on how you could contribute:
 
 * if you know how to use simulation software then you can help to make models
 * if you posses programming skills then you can help to develop [CoFEA mesh converter](https://github.com/spolanski/CoFEA/tree/master/cofea)
-* if you are good at writing then you can help with [writing the docs](./cofea_docs_setup)
+* if you are good at writing then you can help with [writing the docs](reference/cofeaDocsSetup)
 * finally, if you don't think you have anything from the above, but you are eager to learn just let us know!
 
 :::{important}
@@ -35,10 +35,12 @@ In any situation that you would like to contact us at cofea.project(at)gmail.com
 :maxdepth: 1
 :caption: Documentation structure
 
-cofea_docs_setup
+reference/blog
+reference/aboutUs
 pyCofea/index
+softwareSetup/index
 GitHub repository <https://github.com/spolanski/CoFEA>
-software_setup/index
+reference/cofeaDocsSetup
 ```
 
 ```{toctree}
@@ -48,9 +50,3 @@ software_setup/index
 benchmarks/000-tuning-fork/index
 ```
 
-```{toctree}
-:maxdepth: 1
-:caption: About us
-
-Aboutus/index
-```

@@ -57,8 +57,7 @@
     <link rel="shortcut icon" href="../../_static/cofea-black.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="CoFEA Team" href="../../Aboutus/index.html" />
-    <link rel="prev" title="ElmerGUI" href="../../software_setup/elmer.html" /> 
+    <link rel="prev" title="Documentation setup" href="../../reference/cofeaDocsSetup.html" /> 
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -136,18 +135,47 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../cofea_docs_setup.html">
-   CoFEA Documentation Setup
+  <a class="reference internal" href="../../reference/blog.html">
+   CoFEA Blog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/aboutUs.html">
+   CoFEA Team
   </a>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../../pyCofea/index.html">
-   CoFEA mesh converter
+   CoFEA Mesh Converter
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="../../pyCofea/api.html">
      CoFEA module implementation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../softwareSetup/index.html">
+   Simulation environment setup
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../softwareSetup/calculix.html">
+     Calculix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../softwareSetup/code_aster.html">
+     Code_Aster Compilation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../softwareSetup/elmer.html">
+     ElmerGUI
     </a>
    </li>
   </ul>
@@ -161,29 +189,10 @@
    </i>
   </a>
  </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../software_setup/index.html">
-   Simulation environment setup
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/cofeaDocsSetup.html">
+   Documentation setup
   </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../software_setup/calculix.html">
-     Calculix
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../software_setup/code_aster.html">
-     Code_Aster Compilation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../software_setup/elmer.html">
-     ElmerGUI
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
 <p class="caption collapsible-parent">
@@ -195,18 +204,6 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Tuning fork benchmark
-  </a>
- </li>
-</ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  About us
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../Aboutus/index.html">
-   CoFEA Team
   </a>
  </li>
 </ul>
@@ -843,7 +840,7 @@
 <p>A few conclusions can be derived from the presented study:</p>
 <ol class="simple">
 <li><p>It is possible to use open-source software and achieve correct solution.</p></li>
-<li><p>Although all three solvers gave very similar response, it feels like Calculix and Elmer were the most straightforward to set up. They picked up rigid body modes without any additional settings. On the other hand, Code_Aster had to be set up so that it searches only for non-rigid modes (this is possible with setting called ‘Bande’) or the model has to be constrained.</p></li>
+<li><p>Although all three solvers gave very similar response, it feels like Calculix and Elmer were the most straightforward to set up. They picked up rigid body modes without any additional settings. On the other hand, Code_Aster had to be set up so that it searches only for non-rigid body modes (this is possible with setting called ‘Bande’) or the model has to be constrained.</p></li>
 <li><p>Despite the mentioned difference in the solver setup, Code_Aster and Elmer seem to give almost the same answers.</p></li>
 <li><p>For the tuning fork model, the quadratic shape function give a lot more accurate answer than the linear one. The very fine linear hexahedral mesh achieve the same order of accuracy as the coarse quadratic tetrahedral mesh.</p></li>
 </ol>
@@ -881,8 +878,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../../software_setup/elmer.html" title="previous page">ElmerGUI</a>
-    <a class='right-next' id="next-link" href="../../Aboutus/index.html" title="next page">CoFEA Team</a>
+    <a class='left-prev' id="prev-link" href="../../reference/cofeaDocsSetup.html" title="previous page">Documentation setup</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

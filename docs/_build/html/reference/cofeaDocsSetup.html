@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Overview: module code &#8212; CoFEA Initiative</title>
+    <title>Documentation setup &#8212; CoFEA Initiative</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -53,20 +53,22 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://cofea.readthedocs.io/_modules/index.html" />
+    <link rel="canonical" href="https://cofea.readthedocs.io/reference/cofeaDocsSetup.html" />
     <link rel="shortcut icon" href="../_static/cofea-black.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tuning fork benchmark" href="../benchmarks/000-tuning-fork/index.html" />
+    <link rel="prev" title="ElmerGUI" href="../softwareSetup/elmer.html" /> 
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
 
 
 <!-- Opengraph tags -->
-<meta property="og:url"         content="https://cofea.readthedocs.io/_modules/index.html" />
+<meta property="og:url"         content="https://cofea.readthedocs.io/reference/cofeaDocsSetup.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="CoFEA Initiative" />
-<meta property="og:description" content="" />
+<meta property="og:title"       content="Documentation setup" />
+<meta property="og:description" content="Documentation setup  CoFEA uses Sphinx Book Theme to automatically create this website. If you would like to contribute to this project, you will need to instal" />
 <meta property="og:image"       content="https://cofea.readthedocs.io/_static/cofea-black.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -75,7 +77,7 @@
 <link
   rel="alternate"
   type="application/atom+xml"
-  href="../reference/blog/atom.xml"
+  href="blog/atom.xml"
   title="Blog"
 />
  
@@ -132,14 +134,14 @@
   Documentation structure
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../reference/blog.html">
+  <a class="reference internal" href="blog.html">
    CoFEA Blog
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../reference/aboutUs.html">
+  <a class="reference internal" href="aboutUs.html">
    CoFEA Team
   </a>
  </li>
@@ -188,8 +190,8 @@
    </i>
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../reference/cofeaDocsSetup.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Documentation setup
   </a>
  </li>
@@ -237,6 +239,23 @@
         </button>
         
         
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/reference/cofeaDocsSetup.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
         <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
@@ -248,10 +267,12 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/spolanski/CoFEA/issues/new?title=Issue%20on%20page%20%2F_modules/index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/spolanski/CoFEA/issues/new?title=Issue%20on%20page%20%2Freference/cofeaDocsSetup.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
+        <a class="edit-button" href="https://github.com/spolanski/CoFEA/edit/master/docs/reference/cofeaDocsSetup.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
 </div>
 
@@ -269,15 +290,95 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tools">
+   Tools
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#converting-md-into-html-files">
+   Converting .MD into HTML files
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
-                 <h1>All modules for which code is available</h1>
-<ul><li><a href="cofea.html">cofea</a></li>
+                 <div class="section" id="documentation-setup">
+<h1>Documentation setup<a class="headerlink" href="#documentation-setup" title="Permalink to this headline">¶</a></h1>
+<p>CoFEA uses <a class="reference external" href="https://sphinx-book-theme.readthedocs.io/en/latest/index.html">Sphinx Book Theme</a> to automatically create this website. If you would like to contribute to this project, you will need to install Sphinx and some additional prerequisites first. In this instruction it will be shown how to do that and covert the *.md files into html ones.</p>
+<div class="section" id="tools">
+<h2>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Install the required tools for Sphinx:</p>
+<ul class="simple">
+<li><p>jinja2,</p></li>
+<li><p>pyyaml,</p></li>
+<li><p>docutils&gt;=0.15,</p></li>
+<li><p>sphinx,</p></li>
+<li><p>click,</p></li>
+<li><p>pydata-sphinx-theme~=0.4.1,</p></li>
+<li><p>beautifulsoup4,</p></li>
+<li><p>importlib-resources~=3.0.0; python_version &lt; 3.7,</p></li>
+<li><p>myst-nb,</p></li>
+<li><p>sphinx-copybutton,</p></li>
+<li><p>sphinx-togglebutton,</p></li>
+<li><p>sphinxcontrib-bibtex,</p></li>
+<li><p>sphinx-thebe,</p></li>
+<li><p>ablog,</p></li>
+<li><p>sphinx-book-theme,</p></li>
 </ul>
+</li>
+</ol>
+<p>using your python package manager. For Ubuntu and Debian-oriented system the command can be like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">jinja2</span>
+</pre></div>
+</div>
+<p>or if you are using anaconda just type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">anaconda</span> <span class="n">jinja2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="converting-md-into-html-files">
+<h2>Converting .MD into HTML files<a class="headerlink" href="#converting-md-into-html-files" title="Permalink to this headline">¶</a></h2>
+<p>Navigate to github CoFEA/docs directory in your terminal, then simply type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">html</span>
+</pre></div>
+</div>
+<p>After this command Sphinx will automatically convert Markdown files into HTML. After this operation just push them to the repository. The changes done in a documentation structure will be visible shortly after uploading files into Github.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./reference"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 <div class="section">
    
 </div>
@@ -290,6 +391,8 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="../softwareSetup/elmer.html" title="previous page">ElmerGUI</a>
+    <a class='right-next' id="next-link" href="../benchmarks/000-tuning-fork/index.html" title="next page">Tuning fork benchmark</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

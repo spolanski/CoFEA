@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CoFEA mesh converter &#8212; CoFEA Initiative</title>
+    <title>CoFEA Mesh Converter &#8212; CoFEA Initiative</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -58,7 +58,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CoFEA module implementation" href="api.html" />
-    <link rel="prev" title="CoFEA Documentation Setup" href="../cofea_docs_setup.html" /> 
+    <link rel="prev" title="CoFEA Team" href="../reference/aboutUs.html" /> 
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -67,8 +67,8 @@
 <!-- Opengraph tags -->
 <meta property="og:url"         content="https://cofea.readthedocs.io/pyCofea/index.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="CoFEA mesh converter" />
-<meta property="og:description" content="CoFEA mesh converter  The idea behind of Python CoFEA module is to allow converting models data between different simulation environments. The CoFEA module is w" />
+<meta property="og:title"       content="CoFEA Mesh Converter" />
+<meta property="og:description" content="CoFEA Mesh Converter  The idea behind of Python CoFEA module is to allow converting models data between different simulation environments. The CoFEA module is w" />
 <meta property="og:image"       content="https://cofea.readthedocs.io/_static/cofea-black.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -136,18 +136,47 @@
 </p>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../cofea_docs_setup.html">
-   CoFEA Documentation Setup
+  <a class="reference internal" href="../reference/blog.html">
+   CoFEA Blog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/aboutUs.html">
+   CoFEA Team
   </a>
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="current reference internal" href="#">
-   CoFEA mesh converter
+   CoFEA Mesh Converter
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="api.html">
      CoFEA module implementation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../softwareSetup/index.html">
+   Simulation environment setup
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../softwareSetup/calculix.html">
+     Calculix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../softwareSetup/code_aster.html">
+     Code_Aster Compilation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../softwareSetup/elmer.html">
+     ElmerGUI
     </a>
    </li>
   </ul>
@@ -161,29 +190,10 @@
    </i>
   </a>
  </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../software_setup/index.html">
-   Simulation environment setup
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/cofeaDocsSetup.html">
+   Documentation setup
   </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../software_setup/calculix.html">
-     Calculix
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../software_setup/code_aster.html">
-     Code_Aster Compilation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../software_setup/elmer.html">
-     ElmerGUI
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
 <p class="caption collapsible-parent">
@@ -195,18 +205,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../benchmarks/000-tuning-fork/index.html">
    Tuning fork benchmark
-  </a>
- </li>
-</ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  About us
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../Aboutus/index.html">
-   CoFEA Team
   </a>
  </li>
 </ul>
@@ -299,7 +297,7 @@
         
               <div>
                  <div class="section" id="cofea-mesh-converter">
-<h1>CoFEA mesh converter<a class="headerlink" href="#cofea-mesh-converter" title="Permalink to this headline">¶</a></h1>
+<h1>CoFEA Mesh Converter<a class="headerlink" href="#cofea-mesh-converter" title="Permalink to this headline">¶</a></h1>
 <p>The idea behind of Python CoFEA module is to allow converting models data between different simulation environments. The CoFEA module is written in a way that allows to either create a mesh from scratch or import it from different source. Here is the example how to prepare a mesh which is then exported to Calculix input deck. It can also be exported to .db file from which it can be imported back.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># example: prepare db file from scratch</span>
 <span class="c1"># prepare nodes</span>
@@ -402,7 +400,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../cofea_docs_setup.html" title="previous page">CoFEA Documentation Setup</a>
+    <a class='left-prev' id="prev-link" href="../reference/aboutUs.html" title="previous page">CoFEA Team</a>
     <a class='right-next' id="next-link" href="api.html" title="next page">CoFEA module implementation</a>
 
     </div>

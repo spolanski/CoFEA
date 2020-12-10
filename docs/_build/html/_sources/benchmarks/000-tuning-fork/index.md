@@ -222,6 +222,6 @@ Chart representing results of the simulation with quadratic wedge mesh
 A few conclusions can be derived from the presented study:
 
 1. It is possible to use open-source software and achieve correct solution. 
-2. Although all three solvers gave very similar response, it feels like Calculix and Elmer were the most straightforward to set up. They picked up rigid body modes without any additional settings. On the other hand, Code_Aster had to be set up so that it searches only for non-rigid modes (this is possible with setting called 'Bande') or the model has to be constrained.
+2. Although all three solvers gave very similar response, it feels like Calculix and Elmer were the most straightforward to set up. They picked up rigid body modes without any additional settings. On the other hand, Code_Aster had to be set up so that it searches only for non-rigid body modes (this is possible with setting called 'Bande') or the model has to be constrained.
 3. Despite the mentioned difference in the solver setup, Code_Aster and Elmer seem to give almost the same answers.
 4. For the tuning fork model, the quadratic shape function give a lot more accurate answer than the linear one. The very fine linear hexahedral mesh achieve the same order of accuracy as the coarse quadratic tetrahedral mesh.

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Overview: module code &#8212; CoFEA Initiative</title>
+    <title>Simulation environment setup &#8212; CoFEA Initiative</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -53,20 +53,22 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://cofea.readthedocs.io/_modules/index.html" />
+    <link rel="canonical" href="https://cofea.readthedocs.io/softwareSetup/index.html" />
     <link rel="shortcut icon" href="../_static/cofea-black.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Calculix" href="calculix.html" />
+    <link rel="prev" title="CoFEA module implementation" href="../pyCofea/api.html" /> 
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
 
 
 <!-- Opengraph tags -->
-<meta property="og:url"         content="https://cofea.readthedocs.io/_modules/index.html" />
+<meta property="og:url"         content="https://cofea.readthedocs.io/softwareSetup/index.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="CoFEA Initiative" />
-<meta property="og:description" content="" />
+<meta property="og:title"       content="Simulation environment setup" />
+<meta property="og:description" content="Simulation environment setup  There are number of open-source simulation codes, but it is not always easy to set it up correctly. This section describes how thi" />
 <meta property="og:image"       content="https://cofea.readthedocs.io/_static/cofea-black.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -132,7 +134,7 @@
   Documentation structure
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../reference/blog.html">
    CoFEA Blog
@@ -157,23 +159,23 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../softwareSetup/index.html">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="current reference internal" href="#">
    Simulation environment setup
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../softwareSetup/calculix.html">
+    <a class="reference internal" href="calculix.html">
      Calculix
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../softwareSetup/code_aster.html">
+    <a class="reference internal" href="code_aster.html">
      Code_Aster Compilation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../softwareSetup/elmer.html">
+    <a class="reference internal" href="elmer.html">
      ElmerGUI
     </a>
    </li>
@@ -237,6 +239,23 @@
         </button>
         
         
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/softwareSetup/index.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
         <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
@@ -248,10 +267,12 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/spolanski/CoFEA/issues/new?title=Issue%20on%20page%20%2F_modules/index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/spolanski/CoFEA/issues/new?title=Issue%20on%20page%20%2FsoftwareSetup/index.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
+        <a class="edit-button" href="https://github.com/spolanski/CoFEA/edit/master/docs/softwareSetup/index.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
 </div>
 
@@ -275,9 +296,52 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
-                 <h1>All modules for which code is available</h1>
-<ul><li><a href="cofea.html">cofea</a></li>
+                 <div class="section" id="simulation-environment-setup">
+<h1>Simulation environment setup<a class="headerlink" href="#simulation-environment-setup" title="Permalink to this headline">¶</a></h1>
+<p>There are number of open-source simulation codes, but it is not always easy to set it up correctly. This section describes how this can be done for some of the codes.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="calculix.html">Calculix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="calculix.html#tools">Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculix.html#spooles">SPOOLES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculix.html#arpack">ARPACK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculix.html#calculix-compilation">Calculix compilation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculix.html#interesting-projects-with-calculix">Interesting projects with CalculiX</a></li>
 </ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="code_aster.html">Code_Aster Compilation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="code_aster.html#prerequisities">Prerequisities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code_aster.html#compilation">Compilation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code_aster.html#how-to-use-astk-with-code-aster">How to use ASTK with Code_aster</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elmer.html">ElmerGUI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elmer.html#how-to-use-elmergui-with-benchmarks">How  to use ElmerGUI with Benchmarks</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./softwareSetup"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 <div class="section">
    
 </div>
@@ -290,6 +354,8 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="../pyCofea/api.html" title="previous page">CoFEA module implementation</a>
+    <a class='right-next' id="next-link" href="calculix.html" title="next page">Calculix</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
