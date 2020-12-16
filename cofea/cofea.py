@@ -31,6 +31,29 @@ def _getChunks(itemsToChunk, numOfChunks):
     return temp
 
 
+class CoordSys(object):
+    """Class used to store coordinate system information.
+    
+    Attributes
+    ----------
+    label: int
+        Coordinate system number
+    type: str
+        Coordinate system type ('rec' - rectangular
+                                'cyl' - cylindrical
+                                'sph' - spherical)
+    ref: int
+        Reference coordinate system number
+    origin: tuple
+        Coordinate system origin specified in reference system (x,y,z)
+    plus_x_point: tuple
+        Coordinates of a point in the +x axis specified in reference
+        system (x,y,z)
+    plus_xz_points: tuple
+        Coordinates of a point in the +xz axis specified in reference
+        system (x,y,z)
+    """
+    
 class Node(object):
     """Used to create node objects from external data
 
