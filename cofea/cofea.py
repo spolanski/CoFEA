@@ -38,9 +38,12 @@ class CoordSys(object):
     ----------    
     id: int
         Coordinate system number
+<<<<<<< HEAD
     label: str
         Coordinate system name
     type: str
+=======
+>>>>>>> Implemented CSYS class
         Coordinate system type ('rec' - rectangular
                                 'cyl' - cylindrical
                                 'sph' - spherical)
@@ -56,16 +59,22 @@ class CoordSys(object):
         system (x,y,z)
     """
 
+<<<<<<< HEAD
     def __init__(self, csID, csLabel, csType="rec", csRef=0, csOrigin=(0,0,0),
                  csPlusX=(1,0,0), csPlusXZ=(0,0,1)):
+=======
+>>>>>>> Implemented CSYS class
         """Coordinate system class constructor
 
         Parameters
         ----------
+<<<<<<< HEAD
         csID: int
             Coordinate system number
         csLabel: str
             Coordinate system name
+=======
+>>>>>>> Implemented CSYS class
         csType: str
             Coordinate system type ('rec' - rectangular
                                     'cyl' - cylindrical
@@ -81,14 +90,18 @@ class CoordSys(object):
             Coordinates of a point in the +xz axis specified in
             reference system (x,y,z)
         """
+<<<<<<< HEAD
         self.id = csID
         self.label = str(csLabel)
         self.type = str(csType)
+=======
+>>>>>>> Implemented CSYS class
         self.ref = csRef
         self.origin = csOrigin
         self.plus_x_point = csPlusX
         self.plus_xz_point = csPlusXZ
 
+<<<<<<< HEAD
     def __repr__(self):
         return 'CSYS - ID: ' + str(self.id) + '; Label: ' + self.label
 
@@ -112,6 +125,8 @@ class CoordSys(object):
         """
         self.id = newID
             
+=======
+>>>>>>> Implemented CSYS class
 class Node(object):
     """Used to create node objects from external data
 
