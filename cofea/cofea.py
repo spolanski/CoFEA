@@ -38,7 +38,7 @@ class CoordSys(object):
     ----------
     label: int
         Coordinate system number
-    type: str
+    cstype: str
         Coordinate system type ('rec' - rectangular
                                 'cyl' - cylindrical
                                 'sph' - spherical)
@@ -53,7 +53,50 @@ class CoordSys(object):
         Coordinates of a point in the +xz axis specified in reference
         system (x,y,z)
     """
-    
+
+    def __init__(self, csLabel, csType, csRef, csOrigin,
+                 csPlusX, csPlusXZ):
+        """Coordinate system class constructor
+
+        Parameters
+        ----------
+        cslabel: int
+            Coordinate system number
+        csType: str
+            Coordinate system type ('rec' - rectangular
+                                    'cyl' - cylindrical
+                                    'sph' - spherical)
+        csRef: int
+            Reference coordinate system number
+        csOrigin: tuple
+            Coordinate system origin specified in reference system (x,y,z)
+        csPlusX: tuple
+            Coordinates of a point in the +x axis specified in reference
+            system (x,y,z)
+        csPlusXZ: tuple
+            Coordinates of a point in the +xz axis specified in
+            reference system (x,y,z)
+        """
+        self.label = csLabel
+        self.cstype = csType
+        self.ref = csRef
+        self.origin = csOrigin
+        self.plus_x_point = csPlusX
+        self.plus_xz_point = csPlusXZ
+
+        def __repr__(self):
+            return 'CSYS-%d' % self.label
+
+        def changeLabel(self, newLabel):
+            """A function to change coordinate system label
+
+            Parameters
+            ----------
+            newLabel: int
+                New coordinate system number
+            """
+            self.label = newLabel
+        
 class Node(object):
     """Used to create node objects from external data
 
