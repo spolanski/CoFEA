@@ -31,6 +31,87 @@ def _getChunks(itemsToChunk, numOfChunks):
     return temp
 
 
+class CoordSys(object):
+    """Class used to store coordinate system information.
+    
+    Attributes
+    ----------    
+    id: int
+        Coordinate system number
+    label: str
+        Coordinate system name
+    type: str
+        Coordinate system type ('rec' - rectangular
+                                'cyl' - cylindrical
+                                'sph' - spherical)
+    ref: int
+        Reference coordinate system number
+    origin: tuple
+        Coordinate system origin specified in reference system (x,y,z)
+    plus_x_point: tuple
+        Coordinates of a point in the +x axis specified in reference
+        system (x,y,z)
+    plus_xz_points: tuple
+        Coordinates of a point in the +xz axis specified in reference
+        system (x,y,z)
+    """
+
+    def __init__(self, csID, csLabel, csType="rec", csRef=0, csOrigin=(0,0,0),
+                 csPlusX=(1,0,0), csPlusXZ=(0,0,1)):
+        """Coordinate system class constructor
+
+        Parameters
+        ----------
+        csID: int
+            Coordinate system number
+        csLabel: str
+            Coordinate system name
+        csType: str
+            Coordinate system type ('rec' - rectangular
+                                    'cyl' - cylindrical
+                                    'sph' - spherical)
+        csRef: int
+            Reference coordinate system number
+        csOrigin: tuple
+            Coordinate system origin specified in reference system (x,y,z)
+        csPlusX: tuple
+            Coordinates of a point in the +x axis specified in reference
+            system (x,y,z)
+        csPlusXZ: tuple
+            Coordinates of a point in the +xz axis specified in
+            reference system (x,y,z)
+        """
+        self.id = csID
+        self.label = str(csLabel)
+        self.type = str(csType)
+        self.ref = csRef
+        self.origin = csOrigin
+        self.plus_x_point = csPlusX
+        self.plus_xz_point = csPlusXZ
+
+    def __repr__(self):
+        return 'CSYS - ID: ' + str(self.id) + '; Label: ' + self.label
+
+    def changeLabel(self, newLabel):
+        """A function to change coordinate system label
+        
+        Parameters
+        ----------
+        newLabel: str
+            New coordinate system label
+        """
+        self.label = str(newLabel)
+
+    def changeID(self, newID):
+        """A function to change coordinate system ID
+            
+        Parameters
+        ----------
+        newID: int
+            New coordinate system ID
+        """
+        self.id = newID
+            
 class Node(object):
     """Used to create node objects from external data
 
@@ -40,9 +121,11 @@ class Node(object):
         Node number
     coordinates: tuple
         Node coordinates
+    csys: int
+        Node coordinate system 
     """
 
-    def __init__(self, nLabel, nCoords):
+    def __init__(self, nLabel, nCoords, nCSYS=0):
         """Node class constructor.
 
         Parameters
@@ -55,6 +138,7 @@ class Node(object):
 
         self.label = nLabel
         self.coordinates = nCoords
+        self.csys = nCSYS
 
     def __repr__(self):
 
