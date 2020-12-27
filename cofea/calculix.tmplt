@@ -40,6 +40,25 @@
 {%- endif %}
 {%- endfor %}
 {% endfor %}
+{# FOR LOOP OVER ASSEMBLY ELEMENT SETS #}
+{%- for elSetName, elementSetList in assembly_el_sets.items() %}
+*ELSET, ELSET={{ elSetName }}
+{% for element in elementSetList -%}
+{{ '{:>8},'.format(element.label) -}}
+{% if loop.index % 6 == 0 %}{{"\n"}}
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+{# FOR LOOP OVER ASSEMBLY NODE SETS #}
+{%- for nSetName, nodeSetList in assembly_n_sets.items() -%}
+*NSET, NSET={{ nSetName }}
+{% for node in nodeSetList -%}
+{{ '{:>8},'.format(node.label) -}}
+{% if loop.index % 6 == 0 %}{{"\n"}}
+{%- endif %}
+{%- endfor %}
+{% endfor %}
+{# FOR LOOP OVER PART SURFACES #}
 {% if part.ccxElSetSurfDef is defined %}
 {%- for surfName, surfValue in part.ccxElSetSurfDef.items() -%}
 *Surface, type=ELEMENT, name={{ part.name }}-{{ surfName }}
