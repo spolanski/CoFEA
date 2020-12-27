@@ -1,35 +1,21 @@
 # -*- coding: utf-8 -*-
 """
-.. moduleauthor:: Slawomir Polanski
+module authors:
+- Slawomir Polanski
 
 """
+import meshpressoMisc as misc
 from collections import defaultdict, OrderedDict
 import pickle
 import pprint
-import jinja2
-
 import os
+
 filePath = os.path.dirname(os.path.realpath(__file__))
-
-def _getChunks(itemsToChunk, numOfChunks):
-    """Useful function to create lists of lists from list
-
-    Parameters
-    ----------
-    itemsToChunk : list
-        list of objects
-    numOfChunks : int
-        length of internal list
-
-    Returns
-    -------
-    list
-        list of lists
-    """
-    temp = [itemsToChunk[i:i + numOfChunks]
-            for i in xrange(0, len(itemsToChunk), numOfChunks)]
-    return temp
-
+element_library = misc.ElementLibrary()
+try:
+    import jinja2
+except ImportError:
+    print('WARNING! jinja2 not available. It will not be possible to export mesh\n')
 
 class CoordSys(object):
     """Class used to store coordinate system information.
@@ -144,6 +130,15 @@ class Node(object):
 
         return 'ND-%d' % self.label
 
+    def __eq__(self, other):
+        if isinstance(other, Element):
+            return (self.label == other.label)
+        else:
+            return False
+
+    def __hash__(self):
+        return hash(self.__repr__())
+
     def changeLabel(self, newLabel):
         """A function to change node label
         
@@ -186,14 +181,22 @@ class Element(object):
             list of all Node objects retrieved from the current part
         
         """
-        self.type = str(elType)
+        self.type = element_library.convert_to_general(str(elType))
         self.label = elLabel
         self.connectivity = [partAllNodes[c] for c in elConnect]
 
     def __repr__(self):
-        
         return 'EL-%d' % self.label
-    
+
+    def __eq__(self, other):
+        if isinstance(other, Element):
+            return (self.label == other.label)
+        else:
+            return False
+
+    def __hash__(self):
+        return hash(self.__repr__())
+
     def getNodeLabels(self):
         """Function returns labels of nodes which building the element
 
@@ -203,6 +206,23 @@ class Element(object):
             list of integers describing node labels
         """
         return [n.label for n in self.connectivity]
+
+    def getCalculixElSurfaces(self, surfNodesLabels):
+        # import variable from misc module
+        ccxSurfDefiniton = misc.ccxSurfaceDefiniton
+        # list of tuples (element.label, element.face)
+        surfElementFaces = []
+        # common values from two lists
+        intersection = lambda x, y: [i for i in x if i in y]
+        # calculix definition of element faces
+        topology = self.type[0]
+        elSurfDef = ccxSurfDefiniton[topology]
+        for face, nodesLindices in elSurfDef.items():
+            nodeLabels = map(lambda i: self.connectivity[i].label, nodesLindices)
+            commonNodes = intersection(nodeLabels, surfNodesLabels)
+            if len(commonNodes) == len(nodeLabels):
+                surfElementFaces.append((self, face))
+        return surfElementFaces
 
         
 class PartMesh(object):
@@ -222,25 +242,14 @@ class PartMesh(object):
         dictionary of element sets grouped by element set name
     nSet: defaultdict(list)
         dictionary of node sets grouped by node set name
+    surfaces : defaultdict(list), optional
+        dictionary of surfaces {surfName: {'nodes': nSet,
+        'elements': elSet, 'sides': string},
+        by default None
     """
-    # UNV element types
-    # http://victorsndvg.github.io/FEconv/formats/unv.xhtml
-    __elementTypes = (
-        OrderedDict([('ABQ', 'S3'), ('CCX', 'S3'), ('UNV', '91')]),
-        OrderedDict([('ABQ', 'STRI65'), ('CCX', 'S6'), ('UNV', '92')]),
-        OrderedDict([('ABQ', 'S4'), ('CCX', 'S4'), ('UNV', '94')]),
-        OrderedDict([('ABQ', 'S4R'), ('CCX', 'S4R'), ('UNV', '94')]),
-        OrderedDict([('ABQ', 'C3D4'), ('CCX', 'C3D4'), ('UNV', '111')]),
-        OrderedDict([('ABQ', 'C3D6'), ('CCX', 'C3D6'), ('UNV', '112')]),
-        OrderedDict([('ABQ', 'C3D8'), ('CCX', 'C3D8'), ('UNV', '115')]),
-        OrderedDict([('ABQ', 'C3D8R'), ('CCX', 'C3D8R'), ('UNV', '115')]),
-        OrderedDict([('ABQ', 'C3D10'), ('CCX', 'C3D10'), ('UNV', '118')]),
-        OrderedDict([('ABQ', 'C3D15'), ('CCX', 'C3D15'), ('UNV', '113')]),
-        OrderedDict([('ABQ', 'C3D20R'), ('CCX', 'C3D20R'), ('UNV', '116')]),
-    )
-    
+
     def __init__(self, partName, partNodes, partElements,
-                 elementSets=None, nodeSets=None):
+                 elementSets=None, nodeSets=None, surfaces=None):
         """PartMesh constructor
 
         Parameters
@@ -257,12 +266,16 @@ class PartMesh(object):
         nodeSets : defaultdict(list), optional
             dictionary of node sets {setName: list of set nodes},
             by default None
+        surfaces : defaultdict(list), optional
+            dictionary of surfaces {surfName: {'nodes': nSet,
+            'elements': elSet, 'sides': string},
+            by default None
         """
         self.name = partName
         self.nodes = partNodes
         self.elements = partElements
         self.elementsByType = self.getElementsByType()
-
+        
         if elementSets is None:
             self.elSet = defaultdict(list)
         else:
@@ -271,12 +284,11 @@ class PartMesh(object):
             self.nSet = defaultdict(list)
         else:
             self.nSet = nodeSets
+        if surfaces is None:
+            self.surfaces = defaultdict(list)
+        else:
+            self.surfaces = surfaces
 
-    def __str__(self):
-        return pprint.pformat(self.__dict__, width=2)
-    
-    def __repr__(self):
-        return 'PART-%s' % self.name
 
     @classmethod
     def fromAbaqusCae(cls, abqPart):
@@ -302,23 +314,51 @@ class PartMesh(object):
         
         nSet = defaultdict(list)
         elSet = defaultdict(list)
-
-        for setName, setValues in dict(abqPart.sets).items():
-            nodeLabelList = [n.label for n in setValues.nodes]
-            currentLabels = [n.label for n in nodes]
-            listOfIndices = [currentLabels.index(lab) for lab in nodeLabelList]
+        
+        currentNodeLabels = [n.label for n in nodes]
+        currentElLabels = [e.label for e in elements]
+        
+        for abqSetName, abqSetValues in dict(abqPart.sets).items():
+            nodeLabelList = [n.label for n in abqSetValues.nodes]
+            listOfIndices = [currentNodeLabels.index(lab) for lab in nodeLabelList]
             listOfNodes = [nodes[i] for i in listOfIndices]
-            nSet['N_' + setName] = listOfNodes
+            nSet['N-' + abqSetName] = listOfNodes
 
-            elementLabelList = [el.label for el in setValues.elements]
-            currentLabels = [e.label for e in elements]
-            listOfIndices = [currentLabels.index(lab)
+            elementLabelList = [el.label for el in abqSetValues.elements]
+            listOfIndices = [currentElLabels.index(lab)
                              for lab in elementLabelList]
             listOfElements = [elements[i] for i in listOfIndices]
-            elSet['EL_' + setName] = listOfElements
+            elSet['EL-' + abqSetName] = listOfElements
+        
+        surfaces = defaultdict(list)
+        for abqSurfName, abqSurfValues in dict(abqPart.surfaces).items():
+            nodeLabelList = [n.label for n in abqSurfValues.nodes]
+            listOfIndices = [currentNodeLabels.index(lab) for lab in nodeLabelList]
+            listOfNodes = [nodes[i] for i in listOfIndices]
+            listOfUniqueNodes = sorted(list(set(listOfNodes)),
+                                          key=lambda n: n.label)
+            nSet['S-' + abqSurfName] = listOfUniqueNodes
+
+            elementLabelList = [el.label for el in abqSurfValues.elements]
+            listOfIndices = [currentElLabels.index(lab)
+                             for lab in elementLabelList]
+            listOfElements = [elements[i] for i in listOfIndices]
+            listOfUniqueElements = sorted(list(set(listOfElements)),
+                                          key=lambda e: e.label)
+            elSet['S-' + abqSurfName] = listOfUniqueElements
+            
+            surfaces[abqSurfName] = {'nodes': nSet['S-' + abqSurfName],
+                                     'elements': elSet['S-' + abqSurfName],
+                                     'sides': str(abqSurfValues.sides[0])}
         
         return cls(partName=name, partNodes=nodes, partElements=elements,
-                   elementSets=elSet, nodeSets=nSet)
+                   elementSets=elSet, nodeSets=nSet, surfaces=surfaces)
+
+    def __str__(self):
+        return pprint.pformat(self.__dict__, width=2)
+    
+    def __repr__(self):
+        return 'PART-%s' % self.name
 
     def getNodesFromLabelList(self, labelList):
         """Function to retrieve the nodes from list of node labels
@@ -371,43 +411,43 @@ class PartMesh(object):
             elementByType[e.type].append(e)
         
         return elementByType
+# TODO: DELETE getDiffFormat
+    # def getDiffFormatForElType(self, oldElType, newMeshFormat):
+    #     """Function to retrieve name of element type for a
+    #     specific software
 
-    def getDiffFormatForElType(self, oldElType, newMeshFormat):
-        """Function to retrieve name of element type for a
-        specific software
+    #     Parameters
+    #     ----------
+    #     oldElType : str
+    #         name of the element type that needs to be
+    #         converted (eg 'C3D8R')
+    #     newMeshFormat : str
+    #         new mesh format (eg 'UNV')
 
-        Parameters
-        ----------
-        oldElType : str
-            name of the element type that needs to be
-            converted (eg 'C3D8R')
-        newMeshFormat : str
-            new mesh format (eg 'UNV')
+    #     Returns
+    #     -------
+    #     str
+    #         name of the element type in new format
 
-        Returns
-        -------
-        str
-            name of the element type in new format
-
-        Raises
-        ------
-        ValueError
-            error appears when the specific element type
-            is not implemented
-        """
-        newElType = False
-        for elTypes in self.__elementTypes:
-            if oldElType in elTypes.values():
-                newElType = elTypes[newMeshFormat]
-        if newElType is False:
-            er = "Element type {0} in not implemented yet".format(oldElType)
-            raise ValueError(er)
+    #     Raises
+    #     ------
+    #     ValueError
+    #         error appears when the specific element type
+    #         is not implemented
+    #     """
+    #     newElType = False
+    #     for elTypes in misc.elementTypes:
+    #         if oldElType in elTypes.values():
+    #             newElType = elTypes[newMeshFormat]
+    #     if newElType is False:
+    #         er = "Element type {0} in not implemented yet".format(oldElType)
+    #         raise ValueError(er)
         
-        return newElType
+    #     return newElType
 
     def setElementTypeFormat(self, newFormat):
         """Function to change element types in dictionary
-        elementsByType (for example from C3D20R to )
+        elementsByType (for example from C3D20R to 116)
 
         Parameters
         ----------
@@ -419,9 +459,11 @@ class PartMesh(object):
         # iterate over all element types in the dict
         for elTypeName, elValues in self.elementsByType.items():
             # get new format for each type fo element
-            newElType = self.getDiffFormatForElType(oldElType=elTypeName,
-                                                    newMeshFormat=newFormat)
-            tempElementByType[newElType] = elValues
+            new_el_type = element_library.convert_to_specific_format(general_format=elTypeName,
+                                                                     output=newFormat)
+            # newElType = self.getDiffFormatForElType(oldElType=elTypeName,
+            #                                         newMeshFormat=newFormat)
+            tempElementByType[new_el_type] = elValues
         # swap temporary dict with dict with new formats
         self.elementsByType = tempElementByType
     
@@ -465,6 +507,29 @@ class PartMesh(object):
                              13, 6, 14, 7, 15]
                     changeOrder(elements, order)
 
+    def getCalculixSurfDefinition(self):
+        """Function converts Part.surfaces into format appropriate
+        for Calculix.
+
+        Returns:
+            dict: dictionary with surface name as keys and dictionary surface
+            definition as value
+        """
+        # The idea below is to iterate over each surface definition and find
+        # out what are the surface nodes and compare them with nodes from each
+        # element defined in the surface. Once compared it is possible to figure
+        # out which face is used in the definition based on index of surf-node 
+        # in element-node.
+        ccxSurfaceDefinition = {}
+        for surfName, surfValue in self.surfaces.items():
+            nodeLabels = [n.label for n in surfValue['nodes']]
+            tempSurfaceDefinition = defaultdict(list)
+            for e in surfValue['elements']:
+                elementFaceList = e.getCalculixElSurfaces(surfNodesLabels = nodeLabels)
+                for el, face in elementFaceList: tempSurfaceDefinition[face].append(el)
+            ccxSurfaceDefinition[surfName] = tempSurfaceDefinition
+        return ccxSurfaceDefinition
+    
 class Mesh(object):
     """Mesh is the most general class used to import, store
     and export mesh data. The idea is to initialise the constructor,
@@ -582,9 +647,21 @@ class Mesh(object):
             name of the file to export mesh (eg 'calculix.inp')
         """
         # get calculix/abaqus element format for each part
-        for p in self.parts:
-            p.setElementTypeFormat(newFormat='CCX')
-            # p.reorderNodesInElType()
+        for part in self.parts:
+            # if any surface definition exists
+            if len(part.surfaces.keys()):
+                # compute surface definiton made with elements
+                ccxElementSurfDef = part.getCalculixSurfDefinition()
+                # convert surface definition from elements to element sets
+                part.ccxElSetSurfDef = defaultdict(list)
+                for surfName, surfDef in ccxElementSurfDef.items():
+                    for face, elements in surfDef.items():
+                        nameOfElset = 'S-' + surfName + '-' + face
+                        # add element set to part for each face
+                        part.elSet[nameOfElset] = elements
+                        # add apprioprate naming to temporary dict
+                        part.ccxElSetSurfDef[surfName].append((nameOfElset, face))
+            part.setElementTypeFormat(newFormat='CCX')
         # prepare a dict which will be used to render things in template
         renderDict = {'modelName': self.modelName,
                       'parts': self.parts}

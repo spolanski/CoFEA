@@ -23,7 +23,7 @@
 {% endfor %}
 {%- endfor %}
 {# FOR LOOP OVER PART ELEMENT SETS #}
-{%- for elSetName, elementSetList in part.elSet.items() -%}
+{%- for elSetName, elementSetList in part.elSet.items() %}
 *ELSET, ELSET={{ part.name }}-{{ elSetName }}
 {% for element in elementSetList -%}
 {{ '{:>8},'.format(element.label) -}}
@@ -40,4 +40,12 @@
 {%- endif %}
 {%- endfor %}
 {% endfor %}
+{% if part.ccxElSetSurfDef is defined %}
+{%- for surfName, surfValue in part.ccxElSetSurfDef.items() -%}
+*Surface, type=ELEMENT, name={{ part.name }}-{{ surfName }}
+{% for elSet, face in surfValue -%}
+{{ part.name }}-{{ elSet}}, {{ face }}
+{% endfor %}
+{% endfor %}
+{%- endif %}
 {%- endfor -%}
