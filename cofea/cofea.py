@@ -414,6 +414,18 @@ class Mesh(object):
             return 'Mesh object is empty. Data needs to be loaded first'
         return pprint.pformat(self.__dict__, width=2)
 
+    coordinate_system = dict(part_UID = 1,
+                             part_name = 'SMESH_Mesh',
+                             label = 1,
+                             type_ = 0,
+                             color = 0,
+                             name = 'Global Cartesian Coordinate System',
+                             transf_matrix_row_1 = [1, 0, 0],
+                             transf_matrix_row_2 = [0, 1, 0],
+                             transf_matrix_row_3 = [0, 0, 1],
+                             transf_matrix_row_4 = [0, 0, 0]
+                        )
+    
     @classmethod
     def importFromAbaqusCae(cls, abqModelName, abqPartList):
         """Function to initiate the Mesh object
@@ -531,7 +543,10 @@ class Mesh(object):
             p.setElementTypeFormat(newFormat='UNV')
             p.reorderNodesInElType(meshFormat='UNV')
         # prepare a dict which will be used to render things in template
-        renderDict = {'parts': self.parts}
+        renderDict = {
+            'parts': self.parts,
+            'coord_sys': self.coordinate_system
+            }
         # load jinja template from file
         # https://stackoverflow.com/a/38642558
         templateLoader = jinja2.FileSystemLoader(searchpath=filePath)

@@ -1,3 +1,9 @@
+{# COORDINATE SYSTEM FORMAT #}
+{# ------------------- #}
+{{ '{:>6}'.format(-1) }}
+{{ '{:>6}'.format(2420) }}
+{{ '{:>10}'.format(coord_sys.part_UID) }}
+{{ '{:>6}'.format(-1) }}
 {# NODE FORMAT #}
 {# ------------------- #}
 {{ '{:>6}'.format(-1) }}
