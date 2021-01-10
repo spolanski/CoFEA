@@ -23,7 +23,7 @@
 {% endfor %}
 {%- endfor %}
 {# FOR LOOP OVER PART ELEMENT SETS #}
-{%- for elSetName, elementSetList in part.elSet.items() -%}
+{%- for elSetName, elementSetList in part.elSet.items() %}
 *ELSET, ELSET={{ part.name }}-{{ elSetName }}
 {% for element in elementSetList -%}
 {{ '{:>8},'.format(element.label) -}}
@@ -39,5 +39,37 @@
 {% if loop.index % 6 == 0 %}{{"\n"}}
 {%- endif %}
 {%- endfor %}
+{% endfor %}
+{# FOR LOOP OVER ASSEMBLY ELEMENT SETS #}
+{%- for elSetName, elementSetList in assembly_el_sets.items() %}
+*ELSET, ELSET={{ elSetName }}
+{% for element in elementSetList -%}
+{{ '{:>8},'.format(element.label) -}}
+{% if loop.index % 6 == 0 %}{{"\n"}}
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+{# FOR LOOP OVER ASSEMBLY NODE SETS #}
+{%- for nSetName, nodeSetList in assembly_n_sets.items() -%}
+*NSET, NSET={{ nSetName }}
+{% for node in nodeSetList -%}
+{{ '{:>8},'.format(node.label) -}}
+{% if loop.index % 6 == 0 %}{{"\n"}}
+{%- endif %}
+{%- endfor %}
+{% endfor %}
+{# FOR LOOP OVER PART SURFACES #}
+{%- for surfName, surfValue in part.ccxElSetSurfDef.items() -%}
+*Surface, type=ELEMENT, name={{ part.name }}-{{ surfName }}
+{% for elSet, face in surfValue -%}
+{{ part.name }}-{{ elSet}}, {{ face }}
+{% endfor %}
+{% endfor %}
+{# FOR LOOP OVER ASSEMBLY SURFACES #}
+{%- for surfName, surfValue in assembly_ccx_surfaces.items() -%}
+*Surface, type=ELEMENT, name={{ surfName }}
+{% for elSet, face in surfValue -%}
+{{ elSet}}, {{ face }}
+{% endfor %}
 {% endfor %}
 {%- endfor -%}
