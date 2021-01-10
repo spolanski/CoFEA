@@ -1,5 +1,5 @@
 # Thick plate under pressure
-![[LE01.png]]
+![image](./LE01.png)
 
 ## Material
 Linear elastic material model:
@@ -14,14 +14,4 @@ Linear elastic material model:
 - normal pressure of 1.0e6 Pa
 ## Benchmark purpose
 The purpose of the benchmark is to check if $\sigma_{yy}=5.38e6 Pa$ at point D
-## Files
-### Calculix files
-- (coarse linear tet)[]
-- (coarse linear hex)[]
-- (fine linear hex)[]
-- (fine linear hex)[]
-### Salome files
-- (coarse linear tet)[]
-- (coarse linear hex)[]
-- (fine linear hex)[]
-- (fine linear hex)[]
+
