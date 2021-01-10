@@ -2,7 +2,14 @@
 """
 module authors:
 - Slawomir Polanski
-
+TODO:
+- remove unnecesary comments
+- check python3
+- change to snake_case
+- remove coordsys
+- test unv
+- keep only db files
+- appropriate function order
 """
 import meshpressoMisc as misc
 from collections import defaultdict, OrderedDict
@@ -196,6 +203,16 @@ class Element(object):
 
     def __hash__(self):
         return hash(self.__repr__())
+    
+    def changeLabel(self, newLabel):
+        """A function to change element label
+        
+        Parameters
+        ----------
+        newLabel: int
+            new element number
+        """
+        self.label = newLabel
 
     def getNodeLabels(self):
         """Function returns labels of nodes which building the element
@@ -207,7 +224,7 @@ class Element(object):
         """
         return [n.label for n in self.connectivity]
 
-    def getCalculixElSurfaces(self, surfNodesLabels):
+    def getCalculixElSurfaces(self, surfNodesLabels, surfSide):
         # import variable from misc module
         ccxSurfDefiniton = misc.ccxSurfaceDefiniton
         # list of element faces which are part of surface definition
@@ -217,6 +234,7 @@ class Element(object):
         # calculix definition of element faces
         topology = self.type[0]
         elSurfDef = ccxSurfDefiniton[topology]
+        # if topology in ('SOLID-TET', 'SOLID-WEDGE', 'SOLID-HEX'):
         for face, nodesLindices in elSurfDef.items():
             nodeLabels = map(lambda i: self.connectivity[i].label, nodesLindices)
             commonNodes = intersection(nodeLabels, surfNodesLabels)
@@ -288,6 +306,8 @@ class PartMesh(object):
             self.surfaces = defaultdict(list)
         else:
             self.surfaces = surfaces
+        
+        self.ccxElSetSurfDef = defaultdict(list)
 
 
     @classmethod
@@ -414,6 +434,23 @@ class PartMesh(object):
             elementByType[e.type].append(e)
         
         return elementByType
+    
+    # def getMinMaxLabels(self, nodes=None, elements=None):
+    #     if nodes:
+    #         labels = [n.label for n in self.nodes]
+    #         return (min(labels), max(labels))
+    #     elif elements:
+    #         labels = [e.label for e in self.elements]
+    #         return (min(labels), max(labels))
+    
+    def renumberNodes(self, new_label_list):
+        # rangeOfLabels = xrange(startLabel, len(self.nodes) + startLabel)
+        map(lambda node, newLab: node.changeLabel(newLab), self.nodes, new_label_list)
+    
+    def renumberElements(self, new_label_list):
+        # rangeOfLabels = xrange(startLabel, len(self.nodes) + startLabel)
+        map(lambda element, newLab: element.changeLabel(newLab), self.elements, new_label_list)
+        
 
     def setElementTypeFormat(self, newFormat):
         """Function to change element types in dictionary
@@ -429,6 +466,7 @@ class PartMesh(object):
         # iterate over all element types in the dict
         for elTypeName, elValues in self.elementsByType.items():
             # get new format for each type fo element
+            # print elTypeName, elValues
             new_el_type = element_library.convert_to_specific_format(general_format=elTypeName,
                                                                      output=newFormat)
             # newElType = self.getDiffFormatForElType(oldElType=elTypeName,
@@ -523,9 +561,8 @@ class Mesh(object):
         else:
             self.surfaces = asblySurfaces
 
-        # TODO computeAssemblyMesh function needs to be finished
-        # self.assemblyMesh = self.computeAssemblyMesh()
-        
+        self.renumberMesh()
+        self.ccxElSetSurfDef = defaultdict(list)
 
     def __str__(self):
         if len(self.__dict__.keys()) == 0:
@@ -552,6 +589,7 @@ class Mesh(object):
                             for p in abqRootAssembly.allInstances.values()
                             if p.excludedFromSimulation is False)
         
+        # print parts
         n_set = defaultdict(list)
         e_set = defaultdict(list)
         for setName, setValues in abqRootAssembly.sets.items():
@@ -568,8 +606,31 @@ class Mesh(object):
                     e_objects = parts[inst].getElementsFromLabelList(labelList=e_labels)
                     e_set['EL-' + setName].extend(e_objects)
 
+        # surfaces[abqSurfName] = {'nodes': nSet['S-' + abqSurfName],
+        #                             'elements': elSet['S-' + abqSurfName],
+        #                             'sides': str(abqSurfValues.sides[0])}
+        # if abqRootAssembly.surfaces.keys():
+        #     temp_dict = defaultdict(list)
+        #     map(lambda x: expression)
+        asbly_surfaces = defaultdict(list)
+        for surfName, surfValues in abqRootAssembly.surfaces.items():
+            asbly_surfaces[surfName] = defaultdict(list)
+            temp_dict = defaultdict(list)
+            map(lambda n: temp_dict[n.instanceName].append(n.label), surfValues.nodes)
+            for inst, n_labels in temp_dict.items():
+                n_objects = parts[inst].getNodesFromLabelList(labelList=n_labels)
+                asbly_surfaces[surfName]['nodes'].extend(n_objects)
+            
+            temp_dict = defaultdict(list)
+            map(lambda e: temp_dict[e.instanceName].append(e.label), surfValues.elements)
+            for inst, e_labels in temp_dict.items():
+                e_objects = parts[inst].getElementsFromLabelList(labelList=e_labels)
+                asbly_surfaces[surfName]['elements'].extend(e_objects)
+            asbly_surfaces[surfName]['sides'] = str(surfValues.sides[0])
+            
         return cls(modelName=abqModelName, dictOfParts=parts,
-                   asblyElementSets=e_set, asblyNodeSets=n_set)
+                   asblyElementSets=e_set, asblyNodeSets=n_set,
+                   asblySurfaces=asbly_surfaces)
 
     @classmethod
     def importFromDbFile(cls, pathToDbFile):
@@ -591,7 +652,8 @@ class Mesh(object):
         return cls(modelName=mesh['modelName'],
                    dictOfParts=mesh['partDict'],
                    asblyElementSets=mesh['element_set'],
-                   asblyNodeSets=mesh['node_set'])
+                   asblyNodeSets=mesh['node_set'],
+                   asblySurfaces=mesh['surfaces'])
     
     def saveToDbFile(self, nameOfDbFile):
         """Function to save model data to db file
@@ -605,6 +667,7 @@ class Mesh(object):
                       'partDict': self.parts,
                       'element_set': self.elSet,
                       'node_set': self.nSet,
+                      'surfaces': self.surfaces,
                       }
         
         with open(nameOfDbFile, 'wb') as handle:
@@ -612,7 +675,7 @@ class Mesh(object):
                         protocol=pickle.HIGHEST_PROTOCOL)
         print('Mesh has been written into {0} file'.format(nameOfDbFile))
 
-    def computeAssemblyMesh(self):
+    def renumberMesh(self):
         """Function computes mesh at assembly level from list
         of Part objects. The returned dictionary contains
         parts with renumbered nodes and elements
@@ -622,15 +685,26 @@ class Mesh(object):
         defaultdict(list)
             dictionary of parts
         """
+        # rng = lambda x: xrange(1, x+1)
+        num_part_nodes = [len(part.nodes) for part in self.parts.values()]
+        all_nodes = range(1, sum(num_part_nodes)+1)
+        num_part_elements = [len(part.elements) for part in self.parts.values()]
+        all_elements = range(1, sum(num_part_elements)+1)
         
-        # TODO: Function is not finished
-        assembly = defaultdict(list)
-        for partName, partValue in self.parts.items():
-            assembly[partName] = partValue
+        slice = lambda list, s: (list[:s], list[s:])
         
-        return assembly
+        new_numbering = []
+        for nodes_len, elem_len in zip(num_part_nodes, num_part_elements):
+            part_nodes, all_nodes = slice(all_nodes, nodes_len)
+            part_elements, all_elements = slice(all_elements, elem_len)
+            new_numbering.append((part_nodes, part_elements))
+        
+        for i, part in enumerate(self.parts.items()):
+            partName, partValue = part
+            partValue.renumberNodes(new_label_list=new_numbering[i][0])
+            partValue.renumberElements(new_label_list=new_numbering[i][1])
 
-    def setCalculixSurfDefinition(self, part=None, assembly=None):
+    def setCalculixSurfDefinition(self, surface_source):
         """Function converts Part.surfaces into format appropriate
         for Calculix.
 
@@ -643,30 +717,30 @@ class Mesh(object):
         # element defined in the surface. Once compared it is possible to figure
         # out which face is used in the definition based on index of surf-node 
         # in element-node.
-        if part:
-            part.ccxElSetSurfDef = defaultdict(list)
-            # for each surface define
-            for surfName, surfValue in part.surfaces.items():
-                # get node labels from surface definition
-                nodeLabels = [n.label for n in surfValue['nodes']]
-                # set temporary value
-                tempSurfaceDefinition = defaultdict(list)
-                # for each element in surface definition
-                for e in surfValue['elements']:
-                    # find list of pairs [(element, surface face),..]
-                    elementFacesList = e.getCalculixElSurfaces(surfNodesLabels = nodeLabels)
-                    # add values to temporary surface dict
-                    map(lambda face : tempSurfaceDefinition[face].append(e), elementFacesList)
-                # for each item in {'el_face': [el-1, el-2,..]}
-                for face, elements in tempSurfaceDefinition.items():
-                    # create name set
-                    nameOfElset = 'S-' + surfName + '-' + face
-                    # add element set to part for each face
-                    part.elSet[nameOfElset] = elements
-                    # add apprioprate naming to temporary dict
-                    part.ccxElSetSurfDef[surfName].append((nameOfElset, face))
-        elif assembly:
-            pass
+        # print dict(surface_source)
+        # surface_source.ccxElSetSurfDef = defaultdict(list)
+        
+        # for each surface define
+        for surfName, surfValue in surface_source.surfaces.items():
+            # get node labels from surface definition
+            nodeLabels = [n.label for n in surfValue['nodes']]
+            # set temporary value
+            tempSurfaceDefinition = defaultdict(list)
+            # for each element in surface definition
+            for e in surfValue['elements']:
+                # find list of pairs [(element, surface face),..]
+                elementFacesList = e.getCalculixElSurfaces(surfNodesLabels=nodeLabels,
+                                                           surfSide=surfValue['sides'])
+                # add values to temporary surface dict
+                map(lambda face : tempSurfaceDefinition[face].append(e), elementFacesList)
+            # for each item in {'el_face': [el-1, el-2,..]}
+            for face, elements in tempSurfaceDefinition.items():
+                # create name set
+                nameOfElset = 'S-' + surfName + '-' + face
+                # add element set to surface_source for each face
+                surface_source.elSet[nameOfElset] = elements
+                # add apprioprate naming to temporary dict
+                surface_source.ccxElSetSurfDef[surfName].append((nameOfElset, face))
 
     def exportToCalculix(self, exportedFilename):
         """Function to export mesh to Calculix format
@@ -681,15 +755,17 @@ class Mesh(object):
             # if any surface definition exists
             if len(part.surfaces.keys()):
                 # compute surface definiton made with elements
-                self.setCalculixSurfDefinition(part=part)
+                self.setCalculixSurfDefinition(surface_source=part)
                 # convert surface definition from elements to element sets
             part.setElementTypeFormat(newFormat='CCX')
+
+        self.setCalculixSurfDefinition(surface_source=self)
         # prepare a dict which will be used to render things in template
-        # TODO: change self.parts to self.assembly for more than one part
         renderDict = {'modelName': self.modelName,
                       'parts': self.parts.values(),
                       'assembly_el_sets': self.elSet,
-                      'assembly_n_sets': self.nSet}
+                      'assembly_n_sets': self.nSet,
+                      'assembly_ccx_surfaces': self.ccxElSetSurfDef}
         # load jinja template from file
         # https://stackoverflow.com/a/38642558
         templateLoader = jinja2.FileSystemLoader(searchpath=filePath)
@@ -714,11 +790,16 @@ class Mesh(object):
             name of the file to export mesh (eg 'salome.unv')
         """
         # get unv format for each part
-        for p in self.parts:
-            p.setElementTypeFormat(newFormat='UNV')
-            p.reorderNodesInElType(meshFormat='UNV')
+        for part in self.parts.values():
+            part.setElementTypeFormat(newFormat='UNV')
+            part.reorderNodesInElType(meshFormat='UNV')
         # prepare a dict which will be used to render things in template
-        renderDict = {'parts': self.parts}
+        renderDict = {'modelName': self.modelName,
+                      'parts': self.parts.values(),
+                      'assembly_el_sets': self.elSet,
+                      'assembly_n_sets': self.nSet,
+                      }
+        # renderDict = {'parts': self.parts}
         # load jinja template from file
         # https://stackoverflow.com/a/38642558
         templateLoader = jinja2.FileSystemLoader(searchpath=filePath)

@@ -1,3 +1,4 @@
+{% set count_sets = namespace(value=0) %}
 {# NODE FORMAT #}
 {# ------------------- #}
 {{ '{:>6}'.format(-1) }}
@@ -12,15 +13,11 @@
 {{ '   {:.16E}'.format(node.coordinates[1])|replace("E","D") -}}
 {{ '   {:.16E}'.format(node.coordinates[2])|replace("E","D") }}
 {% endfor -%}
-{% endfor -%}
 {{ '{:>6}'.format(-1) }}
 {# ELEMENTS FORMAT #}
 {# ------------------- #}
 {{ '{:>6}'.format(-1) }}
 {{ '{:>6}'.format(2412) }}
-{# FOR EACH PART IN ALL PARTS #}
-{# ------------------- #}
-{% for part in parts -%}
 {# FOR EACH ELEMENT IN DICTIONARY OF ELEMENTS #}
 {# ------------------- #}
 {% for elType, elementList in part.elementsByType.items() -%}
@@ -42,6 +39,7 @@
 {# -------------------------- #}
 {% for elSetName, elSetElementList in part.elSet.items() -%}
 {%- if elSetElementList|length > 0 -%}
+{% set count_sets.value = count_sets.value + 1 %}
 {# ELEMENT GROUP DEFINITION #}
 {# -------------------------- #}
 {{ '{:>6}'.format(-1) }}
@@ -63,6 +61,7 @@
 {# -------------------------- #}
 {% for nSetName, nSetNodeList in part.nSet.items() -%}
 {%- if nSetNodeList|length > 0 -%}
+{% set count_sets.value = count_sets.value + 1 %}
 {# NODE GROUP DEFINITION #}
 {# -------------------------- #}
 {{ '{:>6}'.format(-1) }}
@@ -81,4 +80,46 @@
 {{ '{:>6}'.format(-1) }}
 {%- endif -%}
 {% endfor -%}
+{% endfor -%}
+{# -------------------------- #}
+{% for elSetName, elSetElementList in assembly_el_sets.items() -%}
+{%- if elSetElementList|length > 0 -%}
+{# ELEMENT GROUP DEFINITION #}
+{# -------------------------- #}
+{{ '{:>6}'.format(-1) }}
+{{ '{:>6}'.format(2477) }}
+{{ '{:>10}'.format(loop.index + count_sets.value) -}}
+{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}
+{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}
+{{ '{:>10}'.format(elSetElementList|length) }}
+{{ elSetName }}
+{% for element in elSetElementList %}
+{{- '{:>10}'.format(8) }}
+{{- '{:>10}'.format(element.label) }}
+{{- '{:>10}'.format(0) }}
+{{- '{:>10}'.format(0) -}}{%- if loop.index % 2 == 0 -%}{{"\n"}}{%- endif -%}
+{% endfor %}
+{{ '{:>6}'.format(-1) }}
+{%- endif -%}
+{% endfor -%}
+{# -------------------------- #}
+{% for nSetName, nSetNodeList in assembly_n_sets.items() -%}
+{%- if nSetNodeList|length > 0 -%}
+{# NODE GROUP DEFINITION #}
+{# -------------------------- #}
+{{ '{:>6}'.format(-1) }}
+{{ '{:>6}'.format(2477) }}
+{{ '{:>10}'.format(loop.index + count_sets.value + assembly_el_sets.keys()|length) -}}
+{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}
+{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}
+{{ '{:>10}'.format(nSetNodeList|length) }}
+{{ nSetName }}
+{% for node in nSetNodeList %}
+{{- '{:>10}'.format(7) }}
+{{- '{:>10}'.format(node.label) }}
+{{- '{:>10}'.format(0) }}
+{{- '{:>10}'.format(0) -}}{%- if loop.index % 2 == 0 -%}{{"\n"}}{%- endif -%}
+{% endfor %}
+{{ '{:>6}'.format(-1) }}
+{%- endif -%}
 {% endfor -%}

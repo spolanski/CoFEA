@@ -195,6 +195,26 @@ ccxSurfaceDefiniton = {
         'S5': [2, 3, 6, 7],
         'S6': [0, 3, 4, 7],
     },
+    'PSTRESS-QUAD': {
+        'S1': [0, 1],
+        'S2': [1, 2],
+        'S3': [2, 3],
+        'S4': [3, 0],
+    },
+    'PSTRAIN-QUAD': {
+        'S1': [0, 1],
+        'S2': [1, 2],
+        'S3': [2, 3],
+        'S4': [3, 0],
+    },
+    'SHELL-QUAD': {
+        'SPOS': [0, 1, 2, 3],
+        'SNEG': [0, 1, 2, 3],
+        'S3': [0, 1],
+        'S4': [1, 2],
+        'S5': [2, 3],
+        'S6': [3, 0],
+    },
 }
 
 def _getChunks(itemsToChunk, numOfChunks):

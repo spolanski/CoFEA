@@ -59,12 +59,17 @@
 {%- endfor %}
 {% endfor %}
 {# FOR LOOP OVER PART SURFACES #}
-{% if part.ccxElSetSurfDef is defined %}
 {%- for surfName, surfValue in part.ccxElSetSurfDef.items() -%}
 *Surface, type=ELEMENT, name={{ part.name }}-{{ surfName }}
 {% for elSet, face in surfValue -%}
 {{ part.name }}-{{ elSet}}, {{ face }}
 {% endfor %}
 {% endfor %}
-{%- endif %}
+{# FOR LOOP OVER ASSEMBLY SURFACES #}
+{%- for surfName, surfValue in assembly_ccx_surfaces.items() -%}
+*Surface, type=ELEMENT, name={{ surfName }}
+{% for elSet, face in surfValue -%}
+{{ elSet}}, {{ face }}
+{% endfor %}
+{% endfor %}
 {%- endfor -%}
