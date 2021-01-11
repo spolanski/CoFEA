@@ -424,8 +424,29 @@ class Mesh(object):
                                               [0, 1, 0],
                                               [0, 0, 1],
                                               [0, 0, 0]]
-                        )
+                             )
     
+    units_descriptions = ['SI: Meter (newton)',
+                          'BG: Foot (pound f)',
+                          'MG: Meter (kilogram f)',
+                          'BA: Foot (poundal)',
+                          'MM: mm (milli newton)',
+                          'CM: cm (centi newton)',
+                          'IN: Inch (pound f)',
+                          'GM: mm (kilogram f)',
+                          'US: USER_DEFINED',
+                          'MN: mm (newton)'
+                          ]
+    
+    units = dict(units_code = (code := 1),
+                 units_description = units_descriptions[code-1],
+                 temperature_mode = 2,
+                 length_factor = 1,
+                 force_factor = 1,
+                 temperature_factor = 1,
+                 temperature_offset = 2.7314999999999998E+2
+                 )
+         
     @classmethod
     def importFromAbaqusCae(cls, abqModelName, abqPartList):
         """Function to initiate the Mesh object
@@ -545,7 +566,8 @@ class Mesh(object):
         # prepare a dict which will be used to render things in template
         renderDict = {
             'parts': self.parts,
-            'coord_sys': self.coordinate_system
+            'coord_sys': self.coordinate_system,
+            'units': self.units
             }
         # load jinja template from file
         # https://stackoverflow.com/a/38642558
