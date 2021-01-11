@@ -420,10 +420,10 @@ class Mesh(object):
                              type_ = 0,
                              color = 0,
                              name = 'Global Cartesian Coordinate System',
-                             transf_matrix_row_1 = [1, 0, 0],
-                             transf_matrix_row_2 = [0, 1, 0],
-                             transf_matrix_row_3 = [0, 0, 1],
-                             transf_matrix_row_4 = [0, 0, 0]
+                             transf_matrix = [[1, 0, 0],
+                                              [0, 1, 0],
+                                              [0, 0, 1],
+                                              [0, 0, 0]]
                         )
     
     @classmethod

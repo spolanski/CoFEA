@@ -3,6 +3,14 @@
 {{ '{:>6}'.format(-1) }}
 {{ '{:>6}'.format(2420) }}
 {{ '{:>10}'.format(coord_sys.part_UID) }}
+{{ '{:<40}'.format(coord_sys.part_name) }}
+{{ '{:>10}'.format(coord_sys.label) -}}
+{{ '{:>10}'.format(coord_sys.type_) -}}
+{{ '{:>10}'.format(coord_sys.color) }}
+{{ '{:<40}'.format(coord_sys.name) }}
+{% for row in coord_sys.transf_matrix -%}
+{{ '{:>25.16E}{:>25.16E}{:>25.16E}'.format(*row) }}
+{% endfor -%}
 {{ '{:>6}'.format(-1) }}
 {# NODE FORMAT #}
 {# ------------------- #}
