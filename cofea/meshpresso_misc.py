@@ -161,18 +161,6 @@ class ElementLibrary(object):
             raise ValueError('Element not found')
         return element_type
 
-# el_types = ElementLibrary()
-# a = el_types.convert_to_general()
-# print el_types.convert_to_specific_format(gen_el_def=a,
-#                                           soft='ABQ')
-
-
-# elementTypes = (
-#     OrderedDict([('ABQ', 'S3'), ('CCX', 'S3'), ('UNV', '91')]),
-#     OrderedDict([('ABQ', 'STRI65'), ('CCX', 'S6'), ('UNV', '92')]),
-#     OrderedDict([('ABQ', 'C3D15'), ('CCX', 'C3D15'), ('UNV', '113')]),
-#     )
-
 ccxSurfaceDefiniton = {
     'SOLID-TET': {
         'S1': [0, 1, 2],

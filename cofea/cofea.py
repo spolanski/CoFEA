@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-module authors:
-- Slawomir Polanski
 TODO:
-- remove unnecesary comments
 - check python3
 - change to snake_case
-- remove coordsys
-- test unv
-- keep only db files
-- appropriate function order
 """
-import meshpressoMisc as misc
+import meshpresso_misc as misc
 from collections import defaultdict, OrderedDict
 import pickle
 import pprint
@@ -19,92 +12,12 @@ import os
 
 filePath = os.path.dirname(os.path.realpath(__file__))
 element_library = misc.ElementLibrary()
+
 try:
     import jinja2
 except ImportError:
     print('WARNING! jinja2 not available. It will not be possible to export mesh\n')
 
-class CoordSys(object):
-    """Class used to store coordinate system information.
-    
-    Attributes
-    ----------    
-    id: int
-        Coordinate system number
-    label: str
-        Coordinate system name
-    type: str
-        Coordinate system type ('rec' - rectangular
-                                'cyl' - cylindrical
-                                'sph' - spherical)
-    ref: int
-        Reference coordinate system number
-    origin: tuple
-        Coordinate system origin specified in reference system (x,y,z)
-    plus_x_point: tuple
-        Coordinates of a point in the +x axis specified in reference
-        system (x,y,z)
-    plus_xz_points: tuple
-        Coordinates of a point in the +xz axis specified in reference
-        system (x,y,z)
-    """
-
-    def __init__(self, csID, csLabel, csType="rec", csRef=0, csOrigin=(0,0,0),
-                 csPlusX=(1,0,0), csPlusXZ=(0,0,1)):
-        """Coordinate system class constructor
-
-        Parameters
-        ----------
-        csID: int
-            Coordinate system number
-        csLabel: str
-            Coordinate system name
-        csType: str
-            Coordinate system type ('rec' - rectangular
-                                    'cyl' - cylindrical
-                                    'sph' - spherical)
-        csRef: int
-            Reference coordinate system number
-        csOrigin: tuple
-            Coordinate system origin specified in reference system (x,y,z)
-        csPlusX: tuple
-            Coordinates of a point in the +x axis specified in reference
-            system (x,y,z)
-        csPlusXZ: tuple
-            Coordinates of a point in the +xz axis specified in
-            reference system (x,y,z)
-        """
-        self.id = csID
-        self.label = str(csLabel)
-        self.type = str(csType)
-        self.ref = csRef
-        self.origin = csOrigin
-        self.plus_x_point = csPlusX
-        self.plus_xz_point = csPlusXZ
-
-    def __repr__(self):
-        return 'CSYS - ID: ' + str(self.id) + '; Label: ' + self.label
-
-    def changeLabel(self, newLabel):
-        """A function to change coordinate system label
-        
-        Parameters
-        ----------
-        newLabel: str
-            New coordinate system label
-        """
-        self.label = str(newLabel)
-
-    def changeID(self, newID):
-        """A function to change coordinate system ID
-            
-        Parameters
-        ----------
-        newID: int
-            New coordinate system ID
-        """
-        self.id = newID
-            
 class Node(object):
     """Used to create node objects from external data
 
@@ -114,11 +27,9 @@ class Node(object):
         Node number
     coordinates: tuple
         Node coordinates
-    csys: int
-        Node coordinate system 
     """
 
-    def __init__(self, nLabel, nCoords, nCSYS=0):
+    def __init__(self, nLabel, nCoords):
         """Node class constructor.
 
         Parameters
@@ -128,10 +39,8 @@ class Node(object):
         nCoords: tuple
             Node coordinates (x,y,z)
         """
-
         self.label = nLabel
         self.coordinates = nCoords
-        self.csys = nCSYS
 
     def __repr__(self):
 
@@ -435,14 +344,6 @@ class PartMesh(object):
         
         return elementByType
     
-    # def getMinMaxLabels(self, nodes=None, elements=None):
-    #     if nodes:
-    #         labels = [n.label for n in self.nodes]
-    #         return (min(labels), max(labels))
-    #     elif elements:
-    #         labels = [e.label for e in self.elements]
-    #         return (min(labels), max(labels))
-    
     def renumberNodes(self, new_label_list):
         # rangeOfLabels = xrange(startLabel, len(self.nodes) + startLabel)
         map(lambda node, newLab: node.changeLabel(newLab), self.nodes, new_label_list)
@@ -466,7 +367,6 @@ class PartMesh(object):
         # iterate over all element types in the dict
         for elTypeName, elValues in self.elementsByType.items():
             # get new format for each type fo element
-            # print elTypeName, elValues
             new_el_type = element_library.convert_to_specific_format(general_format=elTypeName,
                                                                      output=newFormat)
             # newElType = self.getDiffFormatForElType(oldElType=elTypeName,
@@ -516,7 +416,6 @@ class PartMesh(object):
                     changeOrder(elements, order)
 
 
-    
 class Mesh(object):
     """Mesh is the most general class used to import, store
     and export mesh data. The idea is to initialise the constructor,
@@ -589,7 +488,6 @@ class Mesh(object):
                             for p in abqRootAssembly.allInstances.values()
                             if p.excludedFromSimulation is False)
         
-        # print parts
         n_set = defaultdict(list)
         e_set = defaultdict(list)
         for setName, setValues in abqRootAssembly.sets.items():
@@ -606,12 +504,6 @@ class Mesh(object):
                     e_objects = parts[inst].getElementsFromLabelList(labelList=e_labels)
                     e_set['EL-' + setName].extend(e_objects)
 
-        # surfaces[abqSurfName] = {'nodes': nSet['S-' + abqSurfName],
-        #                             'elements': elSet['S-' + abqSurfName],
-        #                             'sides': str(abqSurfValues.sides[0])}
-        # if abqRootAssembly.surfaces.keys():
-        #     temp_dict = defaultdict(list)
-        #     map(lambda x: expression)
         asbly_surfaces = defaultdict(list)
         for surfName, surfValues in abqRootAssembly.surfaces.items():
             asbly_surfaces[surfName] = defaultdict(list)
@@ -685,7 +577,6 @@ class Mesh(object):
         defaultdict(list)
             dictionary of parts
         """
-        # rng = lambda x: xrange(1, x+1)
         num_part_nodes = [len(part.nodes) for part in self.parts.values()]
         all_nodes = range(1, sum(num_part_nodes)+1)
         num_part_elements = [len(part.elements) for part in self.parts.values()]
@@ -813,8 +704,3 @@ class Mesh(object):
         with open(exportedFilename, 'w') as f:
             f.write(outputText)
         print('Mesh exported to {0}'.format(exportedFilename))
-
-# if __name__ == '__main__':
-#     m = Mesh.importFromDbFile(pathToDbFile='Abaqus.db')
-#     m.exportToCalculix('calculix.inp')
-#     m.exportToUnvFormat('salome.unv')
