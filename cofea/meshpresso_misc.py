@@ -96,7 +96,7 @@ class ElementLibrary(object):
                 'UNV': ['111', ],
                 },
             'PARA': {
-                'ABQ': ['C3D10', ],
+                'ABQ': ['C3D10', 'C3D10H' ],
                 'CCX': ['C3D10', ],
                 'UNV': ['118', ],
             }
@@ -139,6 +139,7 @@ class ElementLibrary(object):
     def convert_to_general(self, el_type='C3D4'):
         gen_element = [el[:2] for ind, el in enumerate(self.el_container)
                        if el_type in el]
+        print el_type
         
         if all(gen_element):
             # if all elements have the same topology and shape function
@@ -148,10 +149,14 @@ class ElementLibrary(object):
     
     def convert_to_specific_format(self, general_format=('SOLID-TET', 'LIN'),
                                    output = 'ABQ'):
+        if len(general_format) != 2:
+            print('Provided format value is incorrect!')
+            print("Should be eg ('SOLID-TET', 'LIN')")
+            print('It is: '), general_format
+            raise AssertionError
         topo, shape = general_format
         spec_form = [el for el in self.el_container
                      if (topo in el) and (shape in el)]
-        
         spec_soft = [el for el in spec_form
                      if output in el]
         
@@ -161,7 +166,7 @@ class ElementLibrary(object):
             raise ValueError('Element not found')
         return element_type
 
-ccxSurfaceDefiniton = {
+ccx_surface_definiton = {
     'SOLID-TET': {
         'S1': [0, 1, 2],
         'S2': [0, 3, 1],
