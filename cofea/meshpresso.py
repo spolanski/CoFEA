@@ -451,6 +451,27 @@ class Mesh(object):
                                               [0, 0, 1],
                                               [0, 0, 0]]
                         )
+    default_unit = 1
+    units_descriptions = ['SI: Meter (newton)',
+                          'BG: Foot (pound f)',
+                          'MG: Meter (kilogram f)',
+                          'BA: Foot (poundal)',
+                          'MM: mm (milli newton)',
+                          'CM: cm (centi newton)',
+                          'IN: Inch (pound f)',
+                          'GM: mm (kilogram f)',
+                          'US: USER_DEFINED',
+                          'MN: mm (newton)'
+                          ]
+    
+    units = dict(units_code = default_unit,
+                 units_description = units_descriptions[default_unit-1],
+                 temperature_mode = 2,
+                 length_factor = 1,
+                 force_factor = 1,
+                 temperature_factor = 1,
+                 temperature_offset = 2.7314999999999998E+2
+                 )
 
     def __init__(self, model_name, dict_of_parts, asbly_element_sets=None,
                  asbly_node_sets=None, asbly_surfaces=None):
@@ -703,6 +724,7 @@ class Mesh(object):
                       'assembly_el_sets': self.el_set,
                       'assembly_n_sets': self.n_set,
                       'coord_sys': self.coordinate_system,
+                      'units': self.units
                       }
         # render_dict = {'parts': self.parts}
         # load jinja template from file
