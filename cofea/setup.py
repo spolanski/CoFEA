@@ -1,8 +1,8 @@
 from setuptools import setup
 
-setup(name='cofea',
+setup(name='meshpresso',
       version='0.1',
-      description="A CoFEA Initiative project",
+      description="mesh converter which is a part of the CoFEA Initiative project",
       long_description="",
       python_requires=">=3.6",
       author='Slawomir Polanski',
