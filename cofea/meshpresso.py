@@ -440,6 +440,18 @@ class Mesh(object):
         repeating
     """
 
+    coordinate_system = dict(part_UID = 1,
+                             part_name = 'SMESH_Mesh',
+                             label = 1,
+                             type_ = 0,
+                             color = 0,
+                             name = 'Global Cartesian Coordinate System',
+                             transf_matrix = [[1, 0, 0],
+                                              [0, 1, 0],
+                                              [0, 0, 1],
+                                              [0, 0, 0]]
+                        )
+
     def __init__(self, model_name, dict_of_parts, asbly_element_sets=None,
                  asbly_node_sets=None, asbly_surfaces=None):
         self.model_name = model_name
@@ -690,6 +702,7 @@ class Mesh(object):
                       'parts': self.parts.values(),
                       'assembly_el_sets': self.el_set,
                       'assembly_n_sets': self.n_set,
+                      'coord_sys': self.coordinate_system,
                       }
         # render_dict = {'parts': self.parts}
         # load jinja template from file
