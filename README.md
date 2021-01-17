@@ -1,11 +1,11 @@
-#CoFEA
+
 # What is CoFEA?
 
-> CoFEA is an initiative that aims to bring open-source simulation software closer to the industry problems. Even though CoFEA itself sounds like the magic drink which drives engineering minds, it is a combination of the words *cooperation* and *Finite Element Analysis*. That links with the goals of this project which are:
-> * raise awareness of available open-source simulation software
-> * increase confidence in using this software by testing it with benchmarks and real-life problems
-> * develop Python tools and scripts to make usage easier and simpler
-> * gather information on how to set up the simulation environment correctly
+CoFEA is an initiative that aims to bring open-source simulation software closer to the industry problems. Even though CoFEA itself sounds like the magic drink which drives engineering minds, it is a combination of the words *cooperation* and *Finite Element Analysis*. That links with the goals of this project which are:
+ * raise awareness of available open-source simulation software
+ * increase confidence in using this software by testing it with benchmarks and real-life problems
+ * develop Python tools and scripts to make usage easier and simpler
+ * gather information on how to set up the simulation environment correctly
 
 # How to contribute?
 
