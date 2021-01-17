@@ -12,8 +12,8 @@ CoFEA is an initiative that aims to bring open-source simulation software closer
 There are plenty of ways on how you could contribute:
 
 * if you know how to use simulation software then you can help to make models
-* if you posses programming skills then you can help to develop [CoFEA mesh converter](https://github.com/spolanski/CoFEA/tree/master/cofea)
-* if you are good at writing then you can help with [writing the docs](reference/cofeaDocsSetup)
+* if you posses programming skills then you can help to develop CoFEA mesh converter
+* if you are good at writing then you can help with writing the docs
 * finally, if you don't think you have anything from the above, but you are eager to learn just let us know!
 
 :::{important}
@@ -22,6 +22,6 @@ If you posses some old FEA models which are validated experimentally and you cou
 
 In any situation that you would like to contact us at cofea.project(at)gmail.com
 
-Follow us on our social media!
-[Twitter](https://twitter.com/_CoFEA_)
+Follow us on our social media!  
+[Twitter](https://twitter.com/_CoFEA_)  
 [LinkedIn](https://www.linkedin.com/company/70465138/admin/)
