@@ -19,7 +19,7 @@ name: cofea
 There are plenty of ways on how you could contribute:
 
 * if you know how to use simulation software then you can help to make models
-* if you posses programming skills then you can help to develop [CoFEA mesh converter](https://github.com/spolanski/CoFEA/tree/master/cofea)
+* if you posses programming skills then you can help to develop [CoFEA Meshpresso converter](https://github.com/spolanski/CoFEA/tree/master/cofea)
 * if you are good at writing then you can help with [writing the docs](reference/cofeaDocsSetup)
 * finally, if you don't think you have anything from the above, but you are eager to learn just let us know!
 
