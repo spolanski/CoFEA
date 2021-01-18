@@ -18,7 +18,6 @@ extensions = [
     "myst_nb",
     "sphinx_copybutton",
     "sphinx_togglebutton",
-    "sphinxcontrib.bibtex",
     "sphinx_thebe",
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
