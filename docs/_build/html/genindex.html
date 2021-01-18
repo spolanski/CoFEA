@@ -113,12 +113,12 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="pyCofea/index.html">
-   CoFEA Mesh Converter
+   Meshpresso Mesh Converter
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="pyCofea/api.html">
-     CoFEA module implementation
+     Meshpresso module implementation
     </a>
    </li>
   </ul>
@@ -266,7 +266,7 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.Mesh.assemblyMesh">assemblyMesh (cofea.Mesh attribute)</a>
+      <li><a href="pyCofea/api.html#meshpresso.Mesh.assembly_mesh">assembly_mesh (meshpresso.Mesh attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -274,15 +274,17 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.Node.changeLabel">changeLabel() (cofea.Node method)</a>
+      <li><a href="pyCofea/api.html#meshpresso.Element.change_label">change_label() (meshpresso.Element method)</a>
+
+      <ul>
+        <li><a href="pyCofea/api.html#meshpresso.Node.change_label">(meshpresso.Node method)</a>
 </li>
-      <li><a href="pyCofea/api.html#cofea.Mesh.computeAssemblyMesh">computeAssemblyMesh() (cofea.Mesh method)</a>
-</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.Element.connectivity">connectivity (cofea.Element attribute)</a>
+      <li><a href="pyCofea/api.html#meshpresso.Element.connectivity">connectivity (meshpresso.Element attribute)</a>
 </li>
-      <li><a href="pyCofea/api.html#cofea.Node.coordinates">coordinates (cofea.Node attribute)</a>
+      <li><a href="pyCofea/api.html#meshpresso.Node.coordinates">coordinates (meshpresso.Node attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -290,19 +292,19 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.Element">Element (class in cofea)</a>
+      <li><a href="pyCofea/api.html#meshpresso.PartMesh.el_set">el_set (meshpresso.PartMesh attribute)</a>
 </li>
-      <li><a href="pyCofea/api.html#cofea.PartMesh.elements">elements (cofea.PartMesh attribute)</a>
+      <li><a href="pyCofea/api.html#meshpresso.Element">Element (class in meshpresso)</a>
 </li>
-      <li><a href="pyCofea/api.html#cofea.PartMesh.elementsByType">elementsByType (cofea.PartMesh attribute)</a>
+      <li><a href="pyCofea/api.html#meshpresso.PartMesh.elements">elements (meshpresso.PartMesh attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.PartMesh.elSet">elSet (cofea.PartMesh attribute)</a>
+      <li><a href="pyCofea/api.html#meshpresso.PartMesh.elements_by_type">elements_by_type (meshpresso.PartMesh attribute)</a>
 </li>
-      <li><a href="pyCofea/api.html#cofea.Mesh.exportToCalculix">exportToCalculix() (cofea.Mesh method)</a>
+      <li><a href="pyCofea/api.html#meshpresso.Mesh.export_to_calculix">export_to_calculix() (meshpresso.Mesh method)</a>
 </li>
-      <li><a href="pyCofea/api.html#cofea.Mesh.exportToUnvFormat">exportToUnvFormat() (cofea.Mesh method)</a>
+      <li><a href="pyCofea/api.html#meshpresso.Mesh.export_to_unv_format">export_to_unv_format() (meshpresso.Mesh method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -310,7 +312,7 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.PartMesh.fromAbaqusCae">fromAbaqusCae() (cofea.PartMesh class method)</a>
+      <li><a href="pyCofea/api.html#meshpresso.PartMesh.from_abaqus_cae">from_abaqus_cae() (meshpresso.PartMesh class method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -318,17 +320,15 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.PartMesh.getDiffFormatForElType">getDiffFormatForElType() (cofea.PartMesh method)</a>
+      <li><a href="pyCofea/api.html#meshpresso.PartMesh.get_elements_by_type">get_elements_by_type() (meshpresso.PartMesh method)</a>
 </li>
-      <li><a href="pyCofea/api.html#cofea.PartMesh.getElementsByType">getElementsByType() (cofea.PartMesh method)</a>
+      <li><a href="pyCofea/api.html#meshpresso.PartMesh.get_elements_from_label_list">get_elements_from_label_list() (meshpresso.PartMesh method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.PartMesh.getElementsFromLabelList">getElementsFromLabelList() (cofea.PartMesh method)</a>
+      <li><a href="pyCofea/api.html#meshpresso.Element.get_node_labels">get_node_labels() (meshpresso.Element method)</a>
 </li>
-      <li><a href="pyCofea/api.html#cofea.Element.getNodeLabels">getNodeLabels() (cofea.Element method)</a>
-</li>
-      <li><a href="pyCofea/api.html#cofea.PartMesh.getNodesFromLabelList">getNodesFromLabelList() (cofea.PartMesh method)</a>
+      <li><a href="pyCofea/api.html#meshpresso.PartMesh.get_nodes_from_label_list">get_nodes_from_label_list() (meshpresso.PartMesh method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -336,11 +336,11 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.Mesh.importFromAbaqusCae">importFromAbaqusCae() (cofea.Mesh class method)</a>
+      <li><a href="pyCofea/api.html#meshpresso.Mesh.import_from_abaqus_cae">import_from_abaqus_cae() (meshpresso.Mesh class method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.Mesh.importFromDbFile">importFromDbFile() (cofea.Mesh class method)</a>
+      <li><a href="pyCofea/api.html#meshpresso.Mesh.import_from_db_file">import_from_db_file() (meshpresso.Mesh class method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -348,10 +348,10 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.Element.label">label (cofea.Element attribute)</a>
+      <li><a href="pyCofea/api.html#meshpresso.Element.label">label (meshpresso.Element attribute)</a>
 
       <ul>
-        <li><a href="pyCofea/api.html#cofea.Node.label">(cofea.Node attribute)</a>
+        <li><a href="pyCofea/api.html#meshpresso.Node.label">(meshpresso.Node attribute)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -360,11 +360,11 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.Mesh">Mesh (class in cofea)</a>
+      <li><a href="pyCofea/api.html#meshpresso.Mesh">Mesh (class in meshpresso)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.Mesh.modelName">modelName (cofea.Mesh attribute)</a>
+      <li><a href="pyCofea/api.html#meshpresso.Mesh.model_name">model_name (meshpresso.Mesh attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -372,15 +372,15 @@
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.PartMesh.name">name (cofea.PartMesh attribute)</a>
+      <li><a href="pyCofea/api.html#meshpresso.PartMesh.n_set">n_set (meshpresso.PartMesh attribute)</a>
 </li>
-      <li><a href="pyCofea/api.html#cofea.Node">Node (class in cofea)</a>
+      <li><a href="pyCofea/api.html#meshpresso.PartMesh.name">name (meshpresso.PartMesh attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.PartMesh.nodes">nodes (cofea.PartMesh attribute)</a>
+      <li><a href="pyCofea/api.html#meshpresso.Node">Node (class in meshpresso)</a>
 </li>
-      <li><a href="pyCofea/api.html#cofea.PartMesh.nSet">nSet (cofea.PartMesh attribute)</a>
+      <li><a href="pyCofea/api.html#meshpresso.PartMesh.nodes">nodes (meshpresso.PartMesh attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -388,11 +388,11 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.PartMesh">PartMesh (class in cofea)</a>
+      <li><a href="pyCofea/api.html#meshpresso.PartMesh">PartMesh (class in meshpresso)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.Mesh.parts">parts (cofea.Mesh attribute)</a>
+      <li><a href="pyCofea/api.html#meshpresso.Mesh.parts">parts (meshpresso.Mesh attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -400,7 +400,11 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.PartMesh.reorderNodesInElType">reorderNodesInElType() (cofea.PartMesh method)</a>
+      <li><a href="pyCofea/api.html#meshpresso.Mesh.renumber_mesh">renumber_mesh() (meshpresso.Mesh method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pyCofea/api.html#meshpresso.PartMesh.reorder_nodes_in_el_definition">reorder_nodes_in_el_definition() (meshpresso.PartMesh method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -408,11 +412,15 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.Mesh.saveToDbFile">saveToDbFile() (cofea.Mesh method)</a>
+      <li><a href="pyCofea/api.html#meshpresso.Mesh.save_to_db_file">save_to_db_file() (meshpresso.Mesh method)</a>
+</li>
+      <li><a href="pyCofea/api.html#meshpresso.Mesh.set_calculix_surf_definition">set_calculix_surf_definition() (meshpresso.Mesh method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.PartMesh.setElementTypeFormat">setElementTypeFormat() (cofea.PartMesh method)</a>
+      <li><a href="pyCofea/api.html#meshpresso.PartMesh.set_element_type_format">set_element_type_format() (meshpresso.PartMesh method)</a>
+</li>
+      <li><a href="pyCofea/api.html#meshpresso.PartMesh.surfaces">surfaces (meshpresso.PartMesh attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -420,7 +428,7 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pyCofea/api.html#cofea.Element.type">type (cofea.Element attribute)</a>
+      <li><a href="pyCofea/api.html#meshpresso.Element.type">type (meshpresso.Element attribute)</a>
 </li>
   </ul></td>
 </tr></table>

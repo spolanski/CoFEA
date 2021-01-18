@@ -139,7 +139,7 @@ class ElementLibrary(object):
     def convert_to_general(self, el_type='C3D4'):
         gen_element = [el[:2] for ind, el in enumerate(self.el_container)
                        if el_type in el]
-        print el_type
+        
         
         if all(gen_element):
             # if all elements have the same topology and shape function

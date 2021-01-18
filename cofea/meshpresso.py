@@ -97,7 +97,7 @@ class Element(object):
             list of all node objects retrieved from the current part
         
         """
-        print el_type
+        
         self.type = element_library.convert_to_general(str(el_type))
         self.label = el_label
         self.connectivity = [part_all_nodes[c] for c in el_connect]
