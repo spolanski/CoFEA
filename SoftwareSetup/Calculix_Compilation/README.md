@@ -1,5 +1,5 @@
 # Calculix
-To use Calculix in multithreading mode it is needed to compile from source. In order to do so, it is necessary to compile ARPACK and SPOOLES library and install the required tools. The code, which is presented here, is already changed and ready for compilation. Please read the original documentation first from http://www.dhondt.de/ccx_2.17.README.INSTALL
+To use Calculix in multithreading mode it is needed to compile from source. In order to do so, it is necessary to compile ARPACK and SPOOLES library and install the required tools. Please read the original documentation first from http://www.dhondt.de/ccx_2.17.README.INSTALL
 
 # Tools
 1. Install the required tools for Calculix:
@@ -131,7 +131,7 @@ make
 After compilation the ccx_2.17.1_MT should be obtained. To use Calculix globally please move executable to /usr/local/bin. Additionally some privileges should be added to the file. If system ask for root priveleges please add sudo to the commands.
 
 ```example
-cp ccx_2.17.1_MT /ur/local/bin
+cp ccx_2.17.1_MT /usr/local/bin
 chmod a+rx ccx_2.17.1_MT
 ```
 
