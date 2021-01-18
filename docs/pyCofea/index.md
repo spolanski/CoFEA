@@ -1,4 +1,4 @@
-# Meshpresso Mesh Converter
+# Mshpresso Mesh Converter
 
 The idea behind of Python Meshpresso module is to allow converting models data between different simulation environments. The Meshpresso module is written in a way that allows to either create a mesh from scratch or import it from different source. Here is the example how to prepare a mesh which is then exported to Calculix input deck. It can also be exported to .db file from which it can be imported back.
 
