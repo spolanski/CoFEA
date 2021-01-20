@@ -15,7 +15,7 @@ master_doc = "index"
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "myst_nb",
+    
     "sphinx_copybutton",
     "sphinx_togglebutton",
     "sphinxcontrib.bibtex",
@@ -26,6 +26,7 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinx.ext.napoleon',
     "ablog",
+    "myst_parser",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
