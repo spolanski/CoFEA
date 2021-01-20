@@ -18,6 +18,7 @@ extensions = [
     "myst_nb",
     "sphinx_copybutton",
     "sphinx_togglebutton",
+    "sphinxcontrib.bibtex",
     "sphinx_thebe",
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
@@ -46,10 +47,23 @@ nitpick_ignore = [
 
 numfig = True
 
-myst_admonition_enable = True
-myst_deflist_enable = True
+#myst_admonition_enable = True
+#myst_deflist_enable = True
 myst_url_schemes = ("http", "https", "mailto")
 panels_add_bootstrap_css = False
+
+myst_enable_extensions = [
+    "amsmath",
+    "colon_fence",
+    "deflist",
+    "dollarmath",
+    "html_admonition",
+    "html_image",
+    "linkify",
+    "replacements",
+    "smartquotes",
+    "substitution"
+]
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -125,6 +139,6 @@ execution_show_tb = "READTHEDOCS" in os.environ
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 # ------------ Bibtex settings -----------------------------------------
-#bibtex_bibfiles = ['references.bib']
-#bibtex_encoding = 'latin'
-#bibtex_default_style = 'unsrt'
+bibtex_bibfiles = ['references.bib']
+bibtex_encoding = 'latin'
+bibtex_default_style = 'unsrt'
