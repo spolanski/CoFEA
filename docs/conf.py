@@ -18,6 +18,7 @@ extensions = [
     "myst_nb",
     "sphinx_copybutton",
     "sphinx_togglebutton",
+    "sphinxcontrib.bibtex",
     "sphinx_thebe",
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
@@ -125,4 +126,3 @@ execution_show_tb = "READTHEDOCS" in os.environ
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 # ------------
-bibtex_bibfiles = ["references.bib"]
