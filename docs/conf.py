@@ -125,4 +125,7 @@ execution_show_tb = "READTHEDOCS" in os.environ
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
-# ------------
+# ------------ Bibtex settings -----------------------------------------
+bibtex_bibfiles = ['references.bib']
+bibtex_encoding = 'latin'
+bibtex_default_style = 'unsrt'
