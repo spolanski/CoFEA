@@ -127,7 +127,7 @@ name: Quadratic wedge mesh Fork Results
 ---
 Chart representing results of the simulation with quadratic wedge mesh
 ```
-> Error obtained with quadratic wedge mesh
+### Error obtained with quadratic wedge mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|

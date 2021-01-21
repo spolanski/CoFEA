@@ -3,7 +3,4 @@
 ```{toctree}
 model
 results
-calculix
-salome
-elmer
 ```
