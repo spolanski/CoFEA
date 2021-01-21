@@ -56,7 +56,7 @@
     <link rel="shortcut icon" href="../../_static/cofea-black.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Salome" href="salome.html" /> 
+    <link rel="prev" title="Code_Aster" href="salome.html" /> 
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -66,7 +66,7 @@
 <meta property="og:url"         content="https://cofea.readthedocs.io/benchmarks/000-tuning-fork/elmer.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Elmer" />
-<meta property="og:description" content="Elmer" />
+<meta property="og:description" content="Elmer  Elmer supports rigid body modes out of the box. Below there is an explanation of solver input file.  Header   CHECK KEYWORDS Warn   Mesh DB &#34;.&#34; &#34;Mesh/QUA" />
 <meta property="og:image"       content="https://cofea.readthedocs.io/_static/cofea-black.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -222,7 +222,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="salome.html">
-     Salome
+     Code_Aster
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -325,6 +325,91 @@
               <div>
                  <div class="section" id="elmer">
 <h1>Elmer<a class="headerlink" href="#elmer" title="Permalink to this headline">¶</a></h1>
+<p>Elmer supports rigid body modes out of the box. Below there is an explanation of solver input file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Header</span>
+  <span class="n">CHECK</span> <span class="n">KEYWORDS</span> <span class="n">Warn</span>
+  <span class="n">Mesh</span> <span class="n">DB</span> <span class="s2">&quot;.&quot;</span> <span class="s2">&quot;Mesh/QUAD-HEX-0-5&quot;</span> <span class="c1"># Path to the mesh</span>
+  <span class="n">Include</span> <span class="n">Path</span> <span class="s2">&quot;&quot;</span>
+  <span class="n">Results</span> <span class="n">Directory</span> <span class="s2">&quot;Results&quot;</span>     <span class="c1"># Path to results directory</span>
+<span class="n">End</span>
+
+<span class="n">Simulation</span>                        <span class="c1"># Settings and constants for simulation</span>
+  <span class="n">Max</span> <span class="n">Output</span> <span class="n">Level</span> <span class="o">=</span> <span class="mi">5</span>
+  <span class="n">Coordinate</span> <span class="n">System</span> <span class="o">=</span> <span class="n">Cartesian</span>
+  <span class="n">Coordinate</span> <span class="n">Mapping</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span>
+  <span class="n">Simulation</span> <span class="n">Type</span> <span class="o">=</span> <span class="n">Steady</span> <span class="n">state</span>
+  <span class="n">Steady</span> <span class="n">State</span> <span class="n">Max</span> <span class="n">Iterations</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">Output</span> <span class="n">Intervals</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">Timestepping</span> <span class="n">Method</span> <span class="o">=</span> <span class="n">BDF</span>
+  <span class="n">BDF</span> <span class="n">Order</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">Solver</span> <span class="n">Input</span> <span class="n">File</span> <span class="o">=</span> <span class="n">case</span><span class="o">.</span><span class="n">sif</span>
+  <span class="n">Post</span> <span class="n">File</span> <span class="o">=</span> <span class="n">case</span><span class="o">.</span><span class="n">ep</span>
+<span class="n">End</span>
+
+<span class="n">Constants</span>                          
+  <span class="n">Gravity</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span> <span class="mf">9.82</span>
+  <span class="n">Stefan</span> <span class="n">Boltzmann</span> <span class="o">=</span> <span class="mf">5.67e-08</span>
+  <span class="n">Permittivity</span> <span class="n">of</span> <span class="n">Vacuum</span> <span class="o">=</span> <span class="mf">8.8542e-12</span>
+  <span class="n">Boltzmann</span> <span class="n">Constant</span> <span class="o">=</span> <span class="mf">1.3807e-23</span>
+  <span class="n">Unit</span> <span class="n">Charge</span> <span class="o">=</span> <span class="mf">1.602e-19</span>
+<span class="n">End</span>
+
+<span class="n">Body</span> <span class="mi">1</span>                            <span class="c1"># Assigning the material and equations to the mesh</span>
+  <span class="n">Target</span> <span class="n">Bodies</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;Body 1&quot;</span>
+  <span class="n">Equation</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">Material</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">End</span>
+
+<span class="n">Solver</span> <span class="mi">1</span>                          <span class="c1"># Solver settings</span>
+  <span class="n">Equation</span> <span class="o">=</span> <span class="n">Linear</span> <span class="n">elasticity</span>
+  <span class="n">Procedure</span> <span class="o">=</span> <span class="s2">&quot;StressSolve&quot;</span> <span class="s2">&quot;StressSolver&quot;</span>
+  <span class="n">Eigen</span> <span class="n">System</span> <span class="n">Select</span> <span class="o">=</span> <span class="n">Smallest</span> <span class="n">magnitude</span>
+  <span class="n">Eigen</span> <span class="n">System</span> <span class="n">Values</span> <span class="o">=</span> <span class="mi">10</span>
+  <span class="n">Variable</span> <span class="o">=</span> <span class="o">-</span><span class="n">dofs</span> <span class="mi">3</span> <span class="n">Displacement</span>
+  <span class="n">Eigen</span> <span class="n">Analysis</span> <span class="o">=</span> <span class="kc">True</span>
+  <span class="n">Exec</span> <span class="n">Solver</span> <span class="o">=</span> <span class="n">Always</span>
+  <span class="n">Stabilize</span> <span class="o">=</span> <span class="kc">True</span>
+  <span class="n">Bubbles</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="n">Lumped</span> <span class="n">Mass</span> <span class="n">Matrix</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="n">Optimize</span> <span class="n">Bandwidth</span> <span class="o">=</span> <span class="kc">True</span>
+  <span class="n">Linear</span> <span class="n">System</span> <span class="n">Convergence</span> <span class="n">Tolerance</span> <span class="o">=</span> <span class="mf">1.0e-3</span>
+  <span class="n">Steady</span> <span class="n">State</span> <span class="n">Convergence</span> <span class="n">Tolerance</span> <span class="o">=</span> <span class="mf">1.0e-5</span>
+  <span class="n">Nonlinear</span> <span class="n">System</span> <span class="n">Convergence</span> <span class="n">Tolerance</span> <span class="o">=</span> <span class="mf">1.0e-7</span>
+  <span class="n">Nonlinear</span> <span class="n">System</span> <span class="n">Max</span> <span class="n">Iterations</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">Nonlinear</span> <span class="n">System</span> <span class="n">Newton</span> <span class="n">After</span> <span class="n">Iterations</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="n">Nonlinear</span> <span class="n">System</span> <span class="n">Newton</span> <span class="n">After</span> <span class="n">Tolerance</span> <span class="o">=</span> <span class="mf">1.0e-3</span>
+  <span class="n">Nonlinear</span> <span class="n">System</span> <span class="n">Relaxation</span> <span class="n">Factor</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">Linear</span> <span class="n">System</span> <span class="n">Solver</span> <span class="o">=</span> <span class="n">Direct</span>
+  <span class="n">Linear</span> <span class="n">System</span> <span class="n">Direct</span> <span class="n">Method</span> <span class="o">=</span> <span class="n">MUMPS</span>
+<span class="n">End</span>
+
+<span class="n">Solver</span> <span class="mi">2</span>                          <span class="c1"># Extracting the result to the .dat file</span>
+  <span class="n">Exec</span> <span class="n">Solver</span> <span class="o">=</span> <span class="n">After</span> <span class="n">Saving</span>
+  <span class="n">Equation</span> <span class="o">=</span><span class="s2">&quot;Equation 1&quot;</span>
+  <span class="n">Procedure</span> <span class="o">=</span> <span class="s2">&quot;SaveData&quot;</span> <span class="s2">&quot;SaveScalars&quot;</span>
+  <span class="n">Filename</span> <span class="o">=</span> <span class="s2">&quot;QUAD-HEX-0-5.dat&quot;</span>
+  <span class="n">Variable</span> <span class="mi">1</span> <span class="o">=</span> <span class="n">Displacement</span>
+  <span class="n">Save</span> <span class="n">Eigenfrequencies</span> <span class="o">=</span> <span class="n">Logical</span> <span class="kc">True</span>
+<span class="n">End</span>
+
+<span class="n">Equation</span> <span class="mi">1</span>                        <span class="c1"># Setting the active solvers</span>
+  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;Equation 1&quot;</span>
+  <span class="n">Active</span> <span class="n">Solvers</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="mi">2</span>
+<span class="n">End</span>
+
+<span class="n">Material</span> <span class="mi">1</span>                        <span class="c1"># Defining the material</span>
+  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;Steel&quot;</span>
+  <span class="n">Mesh</span> <span class="n">Poisson</span> <span class="n">ratio</span> <span class="o">=</span> <span class="mf">0.33</span>
+  <span class="n">Youngs</span> <span class="n">modulus</span> <span class="o">=</span> <span class="mi">207000</span>
+  <span class="n">Poisson</span> <span class="n">ratio</span> <span class="o">=</span> <span class="mf">0.33</span>
+  <span class="n">Porosity</span> <span class="n">Model</span> <span class="o">=</span> <span class="n">Always</span> <span class="n">saturated</span>
+  <span class="n">Density</span> <span class="o">=</span> <span class="mf">7.829e-9</span>
+<span class="n">End</span>
+
+</pre></div>
+</div>
+<p>The simulation input file used in this study can be found on our <a class="reference external" href="https://github.com/spolanski/CoFEA/tree/master/Benchmarks/00-Tuning-Fork/MODEL_ElmerGUI">GitHub</a>!</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -358,7 +443,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="salome.html" title="previous page">Salome</a>
+    <a class='left-prev' id="prev-link" href="salome.html" title="previous page">Code_Aster</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

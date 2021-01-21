@@ -1,6 +1,7 @@
-# Tuning fork benchmark
+# Benchmark name
 
 ```{toctree}
 model
 results
+solver name
 ```

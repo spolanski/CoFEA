@@ -1,6 +1,6 @@
 # CalculiX
 
-CalculiX supports rigid body moves out of the box. Below there is an explanation of the input file of CalculiX.
+CalculiX supports rigid body moves out of the box. Below there is an explanation of the input file.
 
 ```
 
@@ -18,11 +18,11 @@ CalculiX supports rigid body moves out of the box. Below there is an explanation
 
 ** Sections ++++++++++++++++++++++++++++++++++++++++++++++++
 
-*Solid section, Elset=Fork-El_Section, Material=Material-1   # Assigning material and solid elements to the Elements sets in mesh
-
+*Solid section, Elset=Fork-El_Section, Material=Material-1  # Assigning material and solid elements
+                                                            # to the elements sets in mesh
 ** Steps +++++++++++++++++++++++++++++++++++++++++++++++++++
 
-*Step                           #  Begin of analysis
+*Step                           # Begin of analysis
 *Frequency                      # Selection of frequency analysis
 12                              # Defining the number of modes to calculate  
 
@@ -38,3 +38,4 @@ S, E
 *End step                      # End on analysis
 
 ```
+The simulation input file used in this study can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/Benchmarks/00-Tuning-Fork/MODEL_CALCULIX)!
