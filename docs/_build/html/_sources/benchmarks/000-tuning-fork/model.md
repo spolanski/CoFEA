@@ -30,7 +30,6 @@ name: Fork Results
 Tuning fork geometry and its' vibration modes
 ```
 
-
 ## Approximated solution
 
 It is possible to estimate the frequency of the fork using the fixed-free cantilever beam equation.
@@ -68,3 +67,7 @@ The table below presents all the material properties that were used in the study
 ## Boundary conditions
 
 It is a free body modal simulation therefore there is no boundary conditions assigned to the tuning fork.
+
+## Benchmark aim
+
+The aim of this benchmark is to examine the frequencies of the tuning fork.
