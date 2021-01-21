@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Salome &#8212; CoFEA Initiative</title>
+    <title>Code_Aster &#8212; CoFEA Initiative</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -66,8 +66,8 @@
 <!-- Opengraph tags -->
 <meta property="og:url"         content="https://cofea.readthedocs.io/benchmarks/000-tuning-fork/salome.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Salome" />
-<meta property="og:description" content="Salome" />
+<meta property="og:title"       content="Code_Aster" />
+<meta property="og:description" content="Code_Aster  Unfortunately Code_Aster isn’t ideal solver to obtain frequencies which are almost zero therefore the option BANDE was used to calculate frequencies" />
 <meta property="og:image"       content="https://cofea.readthedocs.io/_static/cofea-black.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -223,7 +223,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Salome
+     Code_Aster
     </a>
    </li>
    <li class="toctree-l2">
@@ -324,8 +324,65 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
-                 <div class="section" id="salome">
-<h1>Salome<a class="headerlink" href="#salome" title="Permalink to this headline">¶</a></h1>
+                 <div class="section" id="code-aster">
+<h1>Code_Aster<a class="headerlink" href="#code-aster" title="Permalink to this headline">¶</a></h1>
+<p>Unfortunately Code_Aster isn’t ideal solver to obtain frequencies which are almost zero therefore the option BANDE was used to calculate frequencies in certain bandwidth. Below there is an explanation of the input file of Code_Aster.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DEBUT</span><span class="p">()</span>
+
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">LIRE_MAILLAGE</span><span class="p">(</span><span class="n">FORMAT</span><span class="o">=</span><span class="s1">&#39;MED&#39;</span><span class="p">,</span>                          <span class="c1"># Read the mesh</span>
+                     <span class="n">UNITE</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                     <span class="n">VERI_MAIL</span><span class="o">=</span><span class="n">_F</span><span class="p">())</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">AFFE_MODELE</span><span class="p">(</span><span class="n">AFFE</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">MODELISATION</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;3D&#39;</span><span class="p">,</span> <span class="p">),</span>          <span class="c1"># Assigning the element to the model</span>
+                            <span class="n">PHENOMENE</span><span class="o">=</span><span class="s1">&#39;MECANIQUE&#39;</span><span class="p">,</span>
+                            <span class="n">TOUT</span><span class="o">=</span><span class="s1">&#39;OUI&#39;</span><span class="p">),</span>
+                    <span class="n">MAILLAGE</span><span class="o">=</span><span class="n">mesh</span><span class="p">)</span>
+
+<span class="n">mater</span> <span class="o">=</span> <span class="n">DEFI_MATERIAU</span><span class="p">(</span><span class="n">ELAS</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">E</span><span class="o">=</span><span class="mf">207000.0</span><span class="p">,</span>                   <span class="c1"># Defining the material</span>
+                              <span class="n">NU</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span>
+                              <span class="n">RHO</span><span class="o">=</span><span class="mf">7.829e-09</span><span class="p">))</span>
+
+<span class="n">fieldmat</span> <span class="o">=</span> <span class="n">AFFE_MATERIAU</span><span class="p">(</span><span class="n">AFFE</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">MATER</span><span class="o">=</span><span class="p">(</span><span class="n">mater</span><span class="p">,</span> <span class="p">),</span>           <span class="c1"># Assigning the material to the mesh</span>
+                                 <span class="n">TOUT</span><span class="o">=</span><span class="s1">&#39;OUI&#39;</span><span class="p">),</span>
+                         <span class="n">MAILLAGE</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span>
+                         <span class="n">MODELE</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
+
+<span class="n">ASSEMBLAGE</span><span class="p">(</span><span class="n">CHAM_MATER</span><span class="o">=</span><span class="n">fieldmat</span><span class="p">,</span>                             <span class="c1"># Setting the right matrixes for simulation</span>
+           <span class="n">MATR_ASSE</span><span class="o">=</span><span class="p">(</span><span class="n">_F</span><span class="p">(</span><span class="n">MATRICE</span><span class="o">=</span><span class="n">CO</span><span class="p">(</span><span class="s1">&#39;MASS&#39;</span><span class="p">),</span>
+                         <span class="n">OPTION</span><span class="o">=</span><span class="s1">&#39;MASS_MECA&#39;</span><span class="p">),</span>
+                      <span class="n">_F</span><span class="p">(</span><span class="n">MATRICE</span><span class="o">=</span><span class="n">CO</span><span class="p">(</span><span class="s1">&#39;RIGI&#39;</span><span class="p">),</span>
+                         <span class="n">OPTION</span><span class="o">=</span><span class="s1">&#39;RIGI_MECA&#39;</span><span class="p">)),</span>
+           <span class="n">MODELE</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+           <span class="n">NUME_DDL</span><span class="o">=</span><span class="n">CO</span><span class="p">(</span><span class="s1">&#39;ndl&#39;</span><span class="p">))</span>
+
+
+
+
+<span class="n">modes</span> <span class="o">=</span> <span class="n">CALC_MODES</span><span class="p">(</span><span class="n">CALC_FREQ</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">FREQ</span><span class="o">=</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">3000.0</span><span class="p">)),</span>      <span class="c1"># Setting the solver BANDE option between 100 and 3000 Hz.</span>
+                   <span class="n">MATR_MASS</span><span class="o">=</span><span class="n">MASS</span><span class="p">,</span>
+                   <span class="n">MATR_RIGI</span><span class="o">=</span><span class="n">RIGI</span><span class="p">,</span>
+                   <span class="n">OPTION</span><span class="o">=</span><span class="s1">&#39;BANDE&#39;</span><span class="p">,</span>
+                   <span class="n">SOLVEUR_MODAL</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">METHODE</span><span class="o">=</span><span class="s1">&#39;TRI_DIAG&#39;</span><span class="p">,</span>
+                                    <span class="p">),</span>
+                   <span class="n">TYPE_RESU</span><span class="o">=</span><span class="s1">&#39;DYNAMIQUE&#39;</span><span class="p">)</span>
+
+
+<span class="n">IMPR_RESU</span><span class="p">(</span><span class="n">FORMAT</span><span class="o">=</span><span class="s1">&#39;MED&#39;</span><span class="p">,</span>                                     <span class="c1"># Saving the result in 3D format</span>
+          <span class="n">RESU</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">INFO_MAILLAGE</span><span class="o">=</span><span class="s1">&#39;OUI&#39;</span><span class="p">,</span>
+                  <span class="n">RESULTAT</span><span class="o">=</span><span class="n">modes</span><span class="p">),</span>
+          <span class="n">UNITE</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+
+<span class="n">IMPR_RESU</span><span class="p">(</span><span class="n">FORMAT</span><span class="o">=</span><span class="s1">&#39;RESULTAT&#39;</span><span class="p">,</span>                                <span class="c1"># Saving the result in .dat file</span>
+          <span class="n">RESU</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">RESULTAT</span><span class="o">=</span><span class="n">modes</span><span class="p">),</span>
+          <span class="n">UNITE</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+
+<span class="n">FIN</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p>The simulation input file used in this study can be found on our <a class="reference external" href="https://github.com/spolanski/CoFEA/tree/master/Benchmarks/00-Tuning-Fork/MODEL_Code_Aster">GitHub</a>!</p>
 </div>
 
     <script type="text/x-thebe-config">
