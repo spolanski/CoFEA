@@ -27,9 +27,8 @@
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     
   <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
@@ -39,10 +38,10 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/language_data.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
@@ -57,6 +56,7 @@
     <link rel="shortcut icon" href="../../_static/cofea-black.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Model setup" href="model.html" />
     <link rel="prev" title="Documentation setup" href="../../reference/cofeaDocsSetup.html" /> 
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -67,7 +67,7 @@
 <meta property="og:url"         content="https://cofea.readthedocs.io/benchmarks/000-tuning-fork/index.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Tuning fork benchmark" />
-<meta property="og:description" content="Tuning fork benchmark  &lt;script src=&#34;https://code.jquery.com/jquery-2.1.4.js&#34;&gt;&lt;/script&gt;      &lt;script&gt;       function showIframeMapOnClick() {          $(&#34;#myDiv&#34;" />
+<meta property="og:description" content="Tuning fork benchmark  Model setup  Model definition  Approximated solution  Material properties  Boundary conditions  Benchmark aim  Results  Linear tetrahedra" />
 <meta property="og:image"       content="https://cofea.readthedocs.io/_static/cofea-black.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -146,12 +146,12 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../../pyCofea/index.html">
-   CoFEA Mesh Converter
+   Meshpresso Mesh Converter
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="../../pyCofea/api.html">
-     CoFEA module implementation
+     Meshpresso module implementation
     </a>
    </li>
   </ul>
@@ -201,10 +201,39 @@
  </span>
 </p>
 <ul class="current nav sidenav_l1">
- <li class="toctree-l1 current active">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="current reference internal" href="#">
    Tuning fork benchmark
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="model.html">
+     Model setup
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="calculix.html">
+     CalculiX
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="salome.html">
+     Code_Aster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="elmer.html">
+     Elmer
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
 </ul>
 
@@ -289,105 +318,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-definition">
-   Model definition
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#approximated-solution">
-   Approximated solution
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#material-properties">
-   Material properties
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#boundary-conditions">
-   Boundary conditions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#results">
-   Results
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#linear-tetrahedral-mesh">
-     Linear tetrahedral mesh
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#error-obtained-with-linear-tetrahedral-mesh">
-       Error obtained with linear tetrahedral mesh
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#linear-hexahedral-mesh">
-     Linear hexahedral mesh
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#error-obtained-with-linear-hexahedral-mesh">
-       Error obtained with linear hexahedral mesh
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quadratic-tetrahedral-mesh">
-     Quadratic tetrahedral mesh
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#error-obtained-with-quadratic-tetrahedral-mesh">
-       Error obtained with quadratic tetrahedral mesh
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quadratic-hexahedral-mesh">
-     Quadratic hexahedral mesh
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#error-obtained-with-quadratic-hexahedral-mesh">
-       Error obtained with quadratic hexahedral mesh
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quadratic-wedge-mesh">
-     Quadratic wedge mesh
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#codes-comparison">
-     Codes comparison
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusions">
-   Conclusions
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -396,454 +326,45 @@
               <div>
                  <div class="section" id="tuning-fork-benchmark">
 <h1>Tuning fork benchmark<a class="headerlink" href="#tuning-fork-benchmark" title="Permalink to this headline">¶</a></h1>
-<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-   <script>
-      function showIframeMapOnClick() {
-         $("#myDiv").html("<iframe id='iFrameMap' src='https://blogtechniczny.pl/paraview-glance/index.html?name=fork.vtk&url=https://blogtechniczny.pl/para-files/fork.vtk' width='100%' height='550px' style=''></iframe>");
-      }
-   </script>
-<div id="myDiv">
-   <input width="100%" type="image" ID="Image1" onclick="showIframeMapOnClick();return false" src="../../_static/fork.png"  />
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Click on the image above to play with 3D object in ParaView Glance!</p>
-</div>
-<div class="section" id="model-definition">
-<h2>Model definition<a class="headerlink" href="#model-definition" title="Permalink to this headline">¶</a></h2>
-<p>The aim of this study is to compare the results from a modal analysis performed in <a class="reference external" href="http://www.calculix.de/">CalculiX</a>, <a class="reference external" href="https://code-aster.org/">Code_Aster</a> and <a class="reference external" href="http://www.elmerfem.org/blog/">Elmer</a> Finite-Element codes. A tuning fork geometry will be used to measure the software performance. The model described in this report was created on a basis of the article found in this <a class="reference external" href="http://pubs.sciepub.com/ajme/4/7/16/index.html">link</a>.</p>
-<p>Simulation input files used in this study can be found on our <a class="reference external" href="https://github.com/spolanski/CoFEA/tree/master/Benchmarks/00-Tuning-Fork">GitHub</a>!</p>
-<div class="figure align-default" id="fork-results">
-<a class="reference internal image-reference" href="../../_images/fork-geo-results.png"><img alt="Fork original Results" src="../../_images/fork-geo-results.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Tuning fork geometry and its’ vibration modes</span><a class="headerlink" href="#fork-results" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="approximated-solution">
-<h2>Approximated solution<a class="headerlink" href="#approximated-solution" title="Permalink to this headline">¶</a></h2>
-<p>It is possible to estimate the frequency of the fork using the fixed-free cantilever beam equation.</p>
-<div class="math notranslate nohighlight">
-\[
-   \begin{eqnarray}
-      f_{1} = \frac{1.875^{2}}{2 \pi L^{2}} \sqrt{\frac{E I}{\rho A}} = 495.11 [Hz]
-   \end{eqnarray}
-\]</div>
-<ul class="simple">
-<li><p>Length of the prong, <span class="math notranslate nohighlight">\(L=0.0709\)</span> [m]</p></li>
-<li><p>Young’s modulus, <span class="math notranslate nohighlight">\(E=207\)</span> [GPa]</p></li>
-<li><p>Material density, <span class="math notranslate nohighlight">\(\rho = 7829 \)</span> [kg/<span class="math notranslate nohighlight">\(m^{3}\)</span>]</p></li>
-<li><p>Moment of inertia <span class="math notranslate nohighlight">\(I = \frac{a^{4}}{12}\)</span> [<span class="math notranslate nohighlight">\(m^{4}\)</span>]</p></li>
-<li><p>Cross-sectional area of the prong, <span class="math notranslate nohighlight">\(A = a^{2}\)</span></p></li>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model.html">Model setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="model.html#model-definition">Model definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#approximated-solution">Approximated solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#material-properties">Material properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#boundary-conditions">Boundary conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#benchmark-aim">Benchmark aim</a></li>
 </ul>
-<p>Based on the expected value of frequency <span class="math notranslate nohighlight">\(f=440\)</span> Hz, the relative error can be measured as follows:</p>
-<div class="math notranslate nohighlight">
-\[
-   \begin{eqnarray}
-      Error = \left\lvert \frac{495.11 - 440.0}{440} \cdot 100 \% \right\rvert = 12.5 \%
-   \end{eqnarray}
-\]</div>
-</div>
-<div class="section" id="material-properties">
-<h2>Material properties<a class="headerlink" href="#material-properties" title="Permalink to this headline">¶</a></h2>
-<p>The table below presents all the material properties that were used in the study. These properties aim to reproduce the behaviour of steel material.</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Property</p></th>
-<th class="head"><p>Value</p></th>
-<th class="head"><p>Unit</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Density <span class="math notranslate nohighlight">\(\rho\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(7829.0\)</span></p></td>
-<td><p>kg/<span class="math notranslate nohighlight">\(m^{3}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Young’s modulus, E</p></td>
-<td><p><span class="math notranslate nohighlight">\(2.07 \cdot 10^{11}\)</span></p></td>
-<td><p>Pa</p></td>
-</tr>
-<tr class="row-even"><td><p>Poissons ratio, <span class="math notranslate nohighlight">\(\nu\)</span></p></td>
-<td><p>0.33</p></td>
-<td><p>-</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="boundary-conditions">
-<h2>Boundary conditions<a class="headerlink" href="#boundary-conditions" title="Permalink to this headline">¶</a></h2>
-<p>It is a free body modal simulation therefore there is no boundary conditions assigned to the tuning fork.</p>
-</div>
-<div class="section" id="results">
-<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
-<p>Number of simulations with different element types and mesh size have been performed for the tuning model. The animation below shows the results from the Calculix code.</p>
-<div class="figure align-default" id="fork-gif">
-<a class="reference internal image-reference" href="../../_images/movie.gif"><img alt="Fork gif" src="../../_images/movie.gif" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Tuning fork geometry and its’ 1st vibration mode</span><a class="headerlink" href="#fork-gif" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="linear-tetrahedral-mesh">
-<h3>Linear tetrahedral mesh<a class="headerlink" href="#linear-tetrahedral-mesh" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Solver</p></th>
-<th class="head"><p>Mesh element size = 2mm</p></th>
-<th class="head"><p>Mesh element size = 1mm</p></th>
-<th class="head"><p>Mesh element size = 0.5mm</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>CalculiX</p></td>
-<td><p><span class="math notranslate nohighlight">\(564.55 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(490.92 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(455.64 Hz\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Code_Aster</p></td>
-<td><p><span class="math notranslate nohighlight">\(564.48 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(490.90 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(455.63 Hz\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Elmer</p></td>
-<td><p><span class="math notranslate nohighlight">\(564.48 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(490.90 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(455.63 Hz \)</span></p></td>
-</tr>
-</tbody>
-</table>
-<div class="figure align-default" id="liner-tetrahedral-mesh-fork-results">
-<a class="reference internal image-reference" href="../../_images/Linear-tetrahedral-mesh.png"><img alt="Linear tetrahedral mesh Results" src="../../_images/Linear-tetrahedral-mesh.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Chart representing results of the simulation with linear tetrahedral mesh</span><a class="headerlink" href="#liner-tetrahedral-mesh-fork-results" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="error-obtained-with-linear-tetrahedral-mesh">
-<h4>Error obtained with linear tetrahedral mesh<a class="headerlink" href="#error-obtained-with-linear-tetrahedral-mesh" title="Permalink to this headline">¶</a></h4>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Solver</p></th>
-<th class="head"><p>Mesh element size = 2mm</p></th>
-<th class="head"><p>Mesh element size = 1mm</p></th>
-<th class="head"><p>Mesh element size = 0.5mm</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>CalculiX</p></td>
-<td><p><span class="math notranslate nohighlight">\(28.30 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(11.57 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(3.55 \%\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Code_Aster</p></td>
-<td><p><span class="math notranslate nohighlight">\(28.29 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(11.57 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(3.55 \%\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Elmer</p></td>
-<td><p><span class="math notranslate nohighlight">\(28.29 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(11.57 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(3.55 \%\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="linear-hexahedral-mesh">
-<h3>Linear hexahedral mesh<a class="headerlink" href="#linear-hexahedral-mesh" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Solver</p></th>
-<th class="head"><p>Mesh element size = 2mm</p></th>
-<th class="head"><p>Mesh element size = 1mm</p></th>
-<th class="head"><p>Mesh element size = 0.5mm</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>CalculiX</p></td>
-<td><p><span class="math notranslate nohighlight">\(388.67 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(415.79 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(434.17 Hz\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Code_Aster</p></td>
-<td><p><span class="math notranslate nohighlight">\(496.87 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(455.34 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(444.22 Hz\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Elmer</p></td>
-<td><p><span class="math notranslate nohighlight">\(496.87 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(455.34 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(444.22 Hz\)</span></p></td>
-</tr>
-</tbody>
-</table>
-<div class="figure align-default" id="linear-hexahedral-mesh-fork-results">
-<a class="reference internal image-reference" href="../../_images/Linear-hexahedral-mesh.png"><img alt="Linear hexahedral mesh Results" src="../../_images/Linear-hexahedral-mesh.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Chart representing results of the simulation with linear hexahedral mesh</span><a class="headerlink" href="#linear-hexahedral-mesh-fork-results" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="error-obtained-with-linear-hexahedral-mesh">
-<h4>Error obtained with linear hexahedral mesh<a class="headerlink" href="#error-obtained-with-linear-hexahedral-mesh" title="Permalink to this headline">¶</a></h4>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Solver</p></th>
-<th class="head"><p>Mesh element size = 2mm</p></th>
-<th class="head"><p>Mesh element size = 1mm</p></th>
-<th class="head"><p>Mesh element size = 0.5mm</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>CalculiX</p></td>
-<td><p><span class="math notranslate nohighlight">\(11.66 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(5.50 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(1.32 \%\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Code_Aster</p></td>
-<td><p><span class="math notranslate nohighlight">\(12.93 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(3.49 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.96 \%\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Elmer</p></td>
-<td><p><span class="math notranslate nohighlight">\(12.93 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(3.49 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.96 \%\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="quadratic-tetrahedral-mesh">
-<h3>Quadratic tetrahedral mesh<a class="headerlink" href="#quadratic-tetrahedral-mesh" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Solver</p></th>
-<th class="head"><p>Mesh element size = 2mm</p></th>
-<th class="head"><p>Mesh element size = 1mm</p></th>
-<th class="head"><p>Mesh element size = 0.5mm</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>CalculiX</p></td>
-<td><p><span class="math notranslate nohighlight">\(441.14 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(440.29 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(440.0088 Hz\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Code_Aster</p></td>
-<td><p><span class="math notranslate nohighlight">\(441.16 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(440.29 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(440.0092 Hz\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Elmer</p></td>
-<td><p><span class="math notranslate nohighlight">\(441.26 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(440.30 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(440.0094 Hz\)</span></p></td>
-</tr>
-</tbody>
-</table>
-<div class="figure align-default" id="quadratic-tetrahedral-mesh-fork-results">
-<a class="reference internal image-reference" href="../../_images/Quadratic-tetrahedral-mesh.png"><img alt="Quadratic tetrahedral mesh Results" src="../../_images/Quadratic-tetrahedral-mesh.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Chart representing results of the simulation with quadratic tetrahedral mesh</span><a class="headerlink" href="#quadratic-tetrahedral-mesh-fork-results" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="error-obtained-with-quadratic-tetrahedral-mesh">
-<h4>Error obtained with quadratic tetrahedral mesh<a class="headerlink" href="#error-obtained-with-quadratic-tetrahedral-mesh" title="Permalink to this headline">¶</a></h4>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Solver</p></th>
-<th class="head"><p>Mesh element size = 2mm</p></th>
-<th class="head"><p>Mesh element size = 1mm</p></th>
-<th class="head"><p>Mesh element size = 0.5mm</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>CalculiX</p></td>
-<td><p><span class="math notranslate nohighlight">\(0.26 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.0662 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.002 \%\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Code_Aster</p></td>
-<td><p><span class="math notranslate nohighlight">\(0.27 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.0672 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.002 \%\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Elmer</p></td>
-<td><p><span class="math notranslate nohighlight">\(0.29 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.0685 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.002 \%\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="quadratic-hexahedral-mesh">
-<h3>Quadratic hexahedral mesh<a class="headerlink" href="#quadratic-hexahedral-mesh" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Solver</p></th>
-<th class="head"><p>Mesh element size = 2mm</p></th>
-<th class="head"><p>Mesh element size = 1mm</p></th>
-<th class="head"><p>Mesh element size = 0.5mm</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>CalculiX</p></td>
-<td><p><span class="math notranslate nohighlight">\(440.57 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(440.34 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(440.0529 Hz\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Code_Aster</p></td>
-<td><p><span class="math notranslate nohighlight">\(441.10 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(440.49 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(440.0907 Hz\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Elmer</p></td>
-<td><p><span class="math notranslate nohighlight">\(441.10 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(440.49 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(440.0907 Hz\)</span></p></td>
-</tr>
-</tbody>
-</table>
-<div class="figure align-default" id="quadratic-hexahedral-mesh-fork-results">
-<a class="reference internal image-reference" href="../../_images/Quadratic-hexahedral-mesh.png"><img alt="Quadratic hexahedral mesh Results" src="../../_images/Quadratic-hexahedral-mesh.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Chart representing results of the simulation with quadratic hexahedral mesh</span><a class="headerlink" href="#quadratic-hexahedral-mesh-fork-results" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="error-obtained-with-quadratic-hexahedral-mesh">
-<h4>Error obtained with quadratic hexahedral mesh<a class="headerlink" href="#error-obtained-with-quadratic-hexahedral-mesh" title="Permalink to this headline">¶</a></h4>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Solver</p></th>
-<th class="head"><p>Mesh element size = 2mm</p></th>
-<th class="head"><p>Mesh element size = 1mm</p></th>
-<th class="head"><p>Mesh element size = 0.5mm</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>CalculiX</p></td>
-<td><p><span class="math notranslate nohighlight">\(0.13 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.0776 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.012 \%\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Code_Aster</p></td>
-<td><p><span class="math notranslate nohighlight">\(0.25 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.1114 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.021 \%\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Elmer</p></td>
-<td><p><span class="math notranslate nohighlight">\(0.25 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.1114 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.021 \%\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="quadratic-wedge-mesh">
-<h3>Quadratic wedge mesh<a class="headerlink" href="#quadratic-wedge-mesh" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Solver</p></th>
-<th class="head"><p>Mesh element size = 2mm</p></th>
-<th class="head"><p>Mesh element size = 1mm</p></th>
-<th class="head"><p>Mesh element size = 0.5mm</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>CalculiX</p></td>
-<td><p><span class="math notranslate nohighlight">\(441.16 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(440.32 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(440.0090 Hz\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Code_Aster</p></td>
-<td><p><span class="math notranslate nohighlight">\(441.35 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(440.34 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(440.0104 Hz\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Elmer</p></td>
-<td><p><span class="math notranslate nohighlight">\(441.35 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(440.34 Hz\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(440.0104 Hz\)</span></p></td>
-</tr>
-</tbody>
-</table>
-<div class="figure align-default" id="quadratic-wedge-mesh-fork-results">
-<a class="reference internal image-reference" href="../../_images/Quadratic-wedge-mesh.png"><img alt="Quadratic wedge mesh Results" src="../../_images/Quadratic-wedge-mesh.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Chart representing results of the simulation with quadratic wedge mesh</span><a class="headerlink" href="#quadratic-wedge-mesh-fork-results" title="Permalink to this image">¶</a></p>
-</div>
-<blockquote>
-<div><p>Error obtained with quadratic wedge mesh</p>
-</div></blockquote>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Solver</p></th>
-<th class="head"><p>Mesh element size = 2mm</p></th>
-<th class="head"><p>Mesh element size = 1mm</p></th>
-<th class="head"><p>Mesh element size = 0.5mm</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>CalculiX</p></td>
-<td><p><span class="math notranslate nohighlight">\(0.26 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.0735 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.0020(45) \%\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Code_Aster</p></td>
-<td><p><span class="math notranslate nohighlight">\(0.31 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.0783 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.0002(36) \%\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Elmer</p></td>
-<td><p><span class="math notranslate nohighlight">\(0.31 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.0783 \%\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(0.0002(36) \%\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="codes-comparison">
-<h3>Codes comparison<a class="headerlink" href="#codes-comparison" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Eigenfrequency</p></th>
-<th class="text-align:center head"><p>Commercial code</p></th>
-<th class="text-align:center head"><p>Calculix</p></th>
-<th class="text-align:center head"><p>Code Aster</p></th>
-<th class="text-align:center head"><p>Elmer</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>1</p></td>
-<td class="text-align:center"><p>440.33</p></td>
-<td class="text-align:center"><p>440.05</p></td>
-<td class="text-align:center"><p>440.91</p></td>
-<td class="text-align:center"><p>440.91</p></td>
-</tr>
-<tr class="row-odd"><td><p>2</p></td>
-<td class="text-align:center"><p>675.80</p></td>
-<td class="text-align:center"><p>673.51</p></td>
-<td class="text-align:center"><p>673.57</p></td>
-<td class="text-align:center"><p>673.57</p></td>
-</tr>
-<tr class="row-even"><td><p>3</p></td>
-<td class="text-align:center"><p>1689.51</p></td>
-<td class="text-align:center"><p>1689.30</p></td>
-<td class="text-align:center"><p>1689.37</p></td>
-<td class="text-align:center"><p>1689.37</p></td>
-</tr>
-<tr class="row-odd"><td><p>4</p></td>
-<td class="text-align:center"><p>1827.55</p></td>
-<td class="text-align:center"><p>1825.55</p></td>
-<td class="text-align:center"><p>1825.63</p></td>
-<td class="text-align:center"><p>1825.63</p></td>
-</tr>
-<tr class="row-even"><td><p>5</p></td>
-<td class="text-align:center"><p>2788.66</p></td>
-<td class="text-align:center"><p>2777.73</p></td>
-<td class="text-align:center"><p>2777.56</p></td>
-<td class="text-align:center"><p>2777.56</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="conclusions">
-<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
-<p>A few conclusions can be derived from the presented study:</p>
-<ol class="simple">
-<li><p>It is possible to use open-source software and achieve correct solution.</p></li>
-<li><p>Although all three solvers gave very similar response, it feels like Calculix and Elmer were the most straightforward to set up. They picked up rigid body modes without any additional settings. On the other hand, Code_Aster had to be set up so that it searches only for non-rigid body modes (this is possible with setting called ‘Bande’) or the model has to be constrained.</p></li>
-<li><p>Despite the mentioned difference in the solver setup, Code_Aster and Elmer seem to give almost the same answers.</p></li>
-<li><p>For the tuning fork model, the quadratic shape function give a lot more accurate answer than the linear one. The very fine linear hexahedral mesh achieve the same order of accuracy as the coarse quadratic tetrahedral mesh.</p></li>
-</ol>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">Results</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="results.html#linear-tetrahedral-mesh">Linear tetrahedral mesh</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="results.html#error-obtained-with-linear-tetrahedral-mesh">Error obtained with linear tetrahedral mesh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="results.html#linear-hexahedral-mesh">Linear hexahedral mesh</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="results.html#error-obtained-with-linear-hexahedral-mesh">Error obtained with linear hexahedral mesh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="results.html#quadratic-tetrahedral-mesh">Quadratic tetrahedral mesh</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="results.html#error-obtained-with-quadratic-tetrahedral-mesh">Error obtained with quadratic tetrahedral mesh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="results.html#quadratic-hexahedral-mesh">Quadratic hexahedral mesh</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="results.html#error-obtained-with-quadratic-hexahedral-mesh">Error obtained with quadratic hexahedral mesh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="results.html#quadratic-wedge-mesh">Quadratic wedge mesh</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="results.html#error-obtained-with-quadratic-wedge-mesh">Error obtained with quadratic wedge mesh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="results.html#codes-comparison">Codes comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="results.html#conclusions">Conclusions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="calculix.html">CalculiX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="salome.html">Code_Aster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elmer.html">Elmer</a></li>
+</ul>
 </div>
 </div>
 
@@ -879,6 +400,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="../../reference/cofeaDocsSetup.html" title="previous page">Documentation setup</a>
+    <a class='right-next' id="next-link" href="model.html" title="next page">Model setup</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

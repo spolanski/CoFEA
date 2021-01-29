@@ -15,7 +15,7 @@ master_doc = "index"
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "myst_nb",
+    
     "sphinx_copybutton",
     "sphinx_togglebutton",
     "sphinxcontrib.bibtex",
@@ -26,6 +26,7 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinx.ext.napoleon',
     "ablog",
+    "myst_parser",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -125,4 +126,7 @@ execution_show_tb = "READTHEDOCS" in os.environ
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
-# ------------
+# ------------ Bibtex settings -----------------------------------------
+bibtex_bibfiles = ['references.bib']
+bibtex_encoding = 'latin'
+bibtex_default_style = 'unsrt'

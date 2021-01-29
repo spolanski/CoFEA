@@ -1,17 +1,17 @@
-CoFEA module implementation
-=============================
+Meshpresso module implementation
+================================
 
-The following section contains a documentation of the CoFEA module implementation.
+The following section contains a documentation of the Meshpresso module implementation.
 
-.. autoclass:: cofea.Mesh
+.. autoclass:: meshpresso.Mesh
    :members:
 
-.. autoclass:: cofea.PartMesh
+.. autoclass:: meshpresso.PartMesh
    :members:
 
-.. autoclass:: cofea.Element
+.. autoclass:: meshpresso.Element
    :members:
 
-.. autoclass:: cofea.Node
+.. autoclass:: meshpresso.Node
    :members:
 

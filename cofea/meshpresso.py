@@ -149,6 +149,45 @@ class Element(object):
             if len(common_nodes) == len(node_labels):
                 element_faces_list.append(face)
         return element_faces_list
+    
+    def get_salome_nodes_from_three_dim_elements(self, surf_nodes):
+        # import variable from misc module
+        salome_surf_definiton = misc.salome_surface_definiton
+        # lambda function - common values from two lists
+        intersection = lambda x, y: [i for i in x if i in y]
+        # dict which acts like a switch
+        # keys are the number of nodes and value is
+        # the corresponding 2D element
+        # 
+        num_nodes_to_eltype = {
+            3: '41',
+            4: '44',
+            6: '42',
+            8: '45',
+            }
+        # set temporary storage
+        surface_nodes = []
+        # get salome format for this element
+        topology = element_library.convert_to_specific_format(general_format=self.type,
+                                                              output='UNV')
+        # get salome element surf definition
+        el_surf_def = salome_surf_definiton[topology]
+        # for each face in the element definition
+        for face, nodes_indices in el_surf_def.items():
+            # find corresponding nodes
+            el_face_nodes = map(lambda i: self.connectivity[i], nodes_indices)
+            # find common nodes with those which are in the surface nodes definition
+            common_nodes = intersection(el_face_nodes, surf_nodes)
+            # check if each node on a particular element face
+            # was found in the common node
+            if all(n in common_nodes for n in el_face_nodes):
+                # find which type of 2D element will be created
+                salome_element_type = num_nodes_to_eltype[len(el_face_nodes)]
+                # append the type of element and particular nodes
+                surface_nodes.append((salome_element_type, el_face_nodes))
+        # repeat for loop for each face on element
+        # return nodes together with new element type
+        return surface_nodes
 
         
 class PartMesh(object):
@@ -253,13 +292,15 @@ class PartMesh(object):
             list_of_indices = [current_node_labels.index(lab) for lab in node_label_list]
             # from list of indices get list of node objects
             list_of_nodes = [nodes[i] for i in list_of_indices]
-            n_set['n_' + abq_set_name] = list_of_nodes
+            # n_set['n_' + abq_set_name] = list_of_nodes
+            n_set[abq_set_name] = list_of_nodes
 
             element_label_list = [el.label for el in abq_set_values.elements]
             list_of_indices = [current_el_labels.index(lab)
                              for lab in element_label_list]
             list_of_elements = [elements[i] for i in list_of_indices]
-            el_set['el_' + abq_set_name] = list_of_elements
+            # el_set['el_' + abq_set_name] = list_of_elements
+            el_set[abq_set_name] = list_of_elements
         
         surfaces = defaultdict(list)
         for abq_surf_name, abq_surf_values in dict(abq_part.surfaces).items():
@@ -370,6 +411,7 @@ class PartMesh(object):
                                                                      output=new_format)
             # new_el_type = self.get_diff_format_for_el_type(old_el_type=el_type_name,
             #                                         new_mesh_format=new_format)
+            for e in el_values: e.type = new_el_type
             temp_element_by_type[new_el_type] = el_values
         # swap temporary dict with dict with new formats
         self.elements_by_type = temp_element_by_type
@@ -396,22 +438,21 @@ class PartMesh(object):
         # unv = [3, 9, 2, 8, 1, 7, 14, 13, 15, 6, 10, 5, 11, 4, 12]
         # idx _ order to be used in function
         # idx = [abq.index(i) for i in unv]
+        unv_format = {
+            '118': [0, 4, 1, 5, 2, 6, 7, 8, 9, 3],
+            '113': [0, 6, 1, 7, 2, 8, 12, 13, 14, 3, 9, 4, 10, 5, 11],
+            '116': [0, 8, 1, 9, 2, 10, 3, 11, 16, 17,
+                    18, 19, 4, 12, 5, 13, 6, 14, 7, 15],
+            '42': [0, 5, 1, 4, 2, 3],
+            '45': [0, 4, 1, 5, 2, 6, 3, 7],
+        }
         def change_order(elements, order):
             for el in elements:
                 el.connectivity = [el.connectivity[i] for i in order]
         if mesh_format == 'UNV':
             for el_type, elements in self.elements_by_type.items():
-                if '118' == el_type:
-                    order = [0, 4, 1, 5, 2, 6, 7, 8, 9, 3]
-                    change_order(elements, order)
-                elif '113' == el_type:
-                    order = [0, 6, 1, 7, 2, 8, 12, 13, 14,
-                             3, 9, 4, 10, 5, 11]
-                    change_order(elements, order)
-                elif '116' == el_type:
-                    order = [0, 8, 1, 9, 2, 10, 3, 11,
-                             16, 17, 18, 19, 4, 12, 5,
-                             13, 6, 14, 7, 15]
+                if el_type in unv_format.keys():
+                    order = unv_format[el_type]
                     change_order(elements, order)
 
 
@@ -492,9 +533,47 @@ class Mesh(object):
         else:
             self.surfaces = asbly_surfaces
 
+
         self.renumber_mesh()
         self.ccx_el_set_surf_def = defaultdict(list)
+    
+    def get_all_nodes(self):
+        # from each part get node then create a set to avoid duplicates
+        # then create a list
+        all_nodes = list({n for p in self.parts.values() for n in p.nodes})
+        # sort the list
+        all_nodes.sort(key=lambda n: n.label)
+        # return all nodes
+        return all_nodes
+    
+    def get_all_elements(self):
+        # from each part get element then create a set to avoid duplicates
+        # then create a list
+        all_elements = list({e for p in self.parts.values() for e in p.elements})
+        element_by_type = defaultdict(list)
+        for element in all_elements:
+            element_by_type[element.type].append(element)
+            
+        for key, value in element_by_type.items():
+            element_by_type[key] = sorted(value, key=lambda x: x.label)
+        return element_by_type
+    
+    def set_asbly_sets_and_surf(self, node_sets=False,
+                                element_sets=False,
+                                surfaces=False):
 
+        for part in self.parts.values():
+            if surfaces:
+                for surf_name, surf_value in part.surfaces.items():
+                    self.surfaces[part.name + '-' + surf_name] = surf_value
+            if element_sets:
+                for elset_name, elset_value in part.el_set.items():
+                    self.el_set[part.name + '-' + elset_name] = elset_value
+            if node_sets:
+                for nset_name, nset_value in part.n_set.items():
+                    self.n_set[part.name + '-' + nset_name] = nset_value
+        
+        
     def __str__(self):
         if len(self.__dict__.keys()) == 0:
             return 'mesh object is empty. data needs to be loaded first'
@@ -528,13 +607,15 @@ class Mesh(object):
                 map(lambda n: temp_dict[n.instanceName].append(n.label), set_values.nodes)
                 for inst, n_labels in temp_dict.items():
                     n_objects = parts[inst].get_nodes_from_label_list(label_list=n_labels)
-                    n_set['n_' + set_name].extend(n_objects)
+                    # n_set['n_' + set_name].extend(n_objects)
+                    n_set[set_name].extend(n_objects)
             if set_values.elements:
                 temp_dict = defaultdict(list)
                 map(lambda e: temp_dict[e.instanceName].append(e.label), set_values.elements)
                 for inst, e_labels in temp_dict.items():
                     e_objects = parts[inst].get_elements_from_label_list(label_list=e_labels)
-                    e_set['el_' + set_name].extend(e_objects)
+                    # e_set['el_' + set_name].extend(e_objects)
+                    e_set[set_name].extend(e_objects)
 
         asbly_surfaces = defaultdict(list)
         for surf_name, surf_values in abq_root_assembly.surfaces.items():
@@ -551,7 +632,7 @@ class Mesh(object):
                 e_objects = parts[inst].get_elements_from_label_list(label_list=e_labels)
                 asbly_surfaces[surf_name]['elements'].extend(e_objects)
             asbly_surfaces[surf_name]['sides'] = str(surf_values.sides[0])
-            
+        
         return cls(model_name=abq_model_name, dict_of_parts=parts,
                    asbly_element_sets=e_set, asbly_node_sets=n_set,
                    asbly_surfaces=asbly_surfaces)
@@ -626,9 +707,10 @@ class Mesh(object):
             part_name, part_value = part
             part_value.renumber_nodes(new_label_list=new_numbering[i][0])
             part_value.renumber_elements(new_label_list=new_numbering[i][1])
+            
 
-    def set_calculix_surf_definition(self, surface_source):
-        """function converts part.surfaces into format appropriate
+    def get_calculix_surf_definition(self):
+        """function converts surfaces into format appropriate
         for calculix.
 
         returns:
@@ -640,11 +722,11 @@ class Mesh(object):
         # element defined in the surface. once compared it is possible to figure
         # out which face is used in the definition based on index of surf_node 
         # in element_node.
-        # print dict(surface_source)
-        # surface_source.ccx_el_set_surf_def = defaultdict(list)
-        
+        # print dict(self)
+        # self.ccx_el_set_surf_def = defaultdict(list)
+        ccx_el_set_surf_def = defaultdict(list)
         # for each surface define
-        for surf_name, surf_value in surface_source.surfaces.items():
+        for surf_name, surf_value in self.surfaces.items():
             # get node labels from surface definition
             node_labels = [n.label for n in surf_value['nodes']]
             # set temporary value
@@ -660,10 +742,11 @@ class Mesh(object):
             for face, elements in temp_surface_definition.items():
                 # create name set
                 name_of_elset = 's_' + surf_name + '_' + face
-                # add element set to surface_source for each face
-                surface_source.el_set[name_of_elset] = elements
+                # add element set to self for each face
+                self.el_set[name_of_elset] = elements
                 # add apprioprate naming to temporary dict
-                surface_source.ccx_el_set_surf_def[surf_name].append((name_of_elset, face))
+                ccx_el_set_surf_def[surf_name].append((name_of_elset, face))
+        return ccx_el_set_surf_def
 
     def export_to_calculix(self, exported_filename):
         """function to export mesh to calculix format
@@ -673,22 +756,20 @@ class Mesh(object):
         exported_filename : str
             name of the file to export mesh (eg 'calculix.inp')
         """
+        self.set_asbly_sets_and_surf(node_sets=True,
+                                     element_sets=True,
+                                     surfaces=True)
+        ccx_el_set_surf_def = self.get_calculix_surf_definition()
         # get calculix/abaqus element format for each part
         for part in self.parts.values():
-            # if any surface definition exists
-            if len(part.surfaces.keys()):
-                # compute surface definiton made with elements
-                self.set_calculix_surf_definition(surface_source=part)
-                # convert surface definition from elements to element sets
             part.set_element_type_format(new_format='CCX')
-
-        self.set_calculix_surf_definition(surface_source=self)
+        
         # prepare a dict which will be used to render things in template
         render_dict = {'model_name': self.model_name,
-                      'parts': self.parts.values(),
-                      'assembly_el_sets': self.el_set,
-                      'assembly_n_sets': self.n_set,
-                      'assembly_ccx_surfaces': self.ccx_el_set_surf_def}
+                       'parts': self.parts.values(),
+                       'assembly_el_sets': self.el_set,
+                       'assembly_n_sets': self.n_set,
+                       'assembly_ccx_surfaces': ccx_el_set_surf_def}
         # load jinja template from file
         # https://stackoverflow.com/a/38642558
         template_loader = jinja2.FileSystemLoader(searchpath=file_path)
@@ -704,6 +785,57 @@ class Mesh(object):
             f.write(output_text)
         print('Mesh exported to {0}'.format(exported_filename))
 
+    def set_salome_surf_definition(self):
+        """function converts surfaces into format appropriate
+        for salome.
+
+        returns:
+            dict: dictionary with surface name as keys and dictionary surface
+            definition as value
+        """
+        # find total number of elements
+        num_part_elements = [len(part.elements) for part in self.parts.values()]
+        all_elements = range(1, sum(num_part_elements)+1)
+        # for each surface defined at the assembly leve
+        for surf_num, surf_items in enumerate(self.surfaces.items()):
+            # unpack surface name and values
+            surf_name, surf_value = surf_items
+            # set temporary storage for nodes
+            temp_surf_def = []
+            # for each element in surface definiton
+            for e in surf_value['elements']:
+                # find list of pairs [(element type, [nd_1, nd_2, nd_3])]
+                el_surf_nodes = e.get_salome_nodes_from_three_dim_elements(surf_nodes=surf_value['nodes'])
+                # extend the temporary storage
+                temp_surf_def.extend(el_surf_nodes)
+            # repeat for all elements in the loop
+
+            # set temporary storage for surface elements
+            surf_part_elements = []
+            for el_num, el_surf_def in enumerate(temp_surf_def,1):
+                # unpack element type and element nodes
+                el_type, el_nodes = el_surf_def
+                # get indices of all surface nodes
+                indices = [surf_value['nodes'].index(i) for i in el_nodes]
+                # create a new element
+                element = Element(el_type=el_type,
+                                  el_label=all_elements[-1] + el_num + surf_num,
+                                  el_connect=indices,
+                                  part_all_nodes=surf_value['nodes'])
+                # add all elements to temporary storage
+                surf_part_elements.append(element)
+            # create a new part mesh 
+            part = PartMesh(part_name=surf_name,
+                            part_nodes=surf_value['nodes'],
+                            part_elements=surf_part_elements)
+            # add new part to the dictionary of parts
+            self.parts[surf_name] = part
+            # add new node set
+            self.n_set[part.name + '-' + surf_name].extend(surf_value['nodes'])
+            # add new elements set
+            self.el_set[part.name + '-' + surf_name].extend(surf_part_elements)
+        # repeat for all surface definitions
+
     def export_to_unv_format(self, exported_filename):
         """function to export to unv format
 
@@ -712,17 +844,49 @@ class Mesh(object):
         exported_filename : str
             name of the file to export mesh (eg 'salome.unv')
         """
-        # get unv format for each part
+        # Compute all node/element sets and surfaces at assembly
+        # rather than parts
+        self.set_asbly_sets_and_surf(surfaces=True)
+        # compute salome surface definitions
+        self.set_salome_surf_definition()
+        self.set_asbly_sets_and_surf(node_sets=True,
+                                     element_sets=True)
+        
         for part in self.parts.values():
             part.set_element_type_format(new_format='UNV')
             part.reorder_nodes_in_el_definition(mesh_format='UNV')
+        
+        # nodes sorted by label
+        all_nodes = self.get_all_nodes()
+        
+        # elements sorted by type and label
+        all_elements_dict = self.get_all_elements()
+        
+        # sort elements in all_elements_dict
+
+        # set new naming for node sets
+        # new_nset_name = ['NSET_{}'.format(n) for n, nset in enumerate(self.n_set,1)]
+        new_nset_name = ['N_{}_'.format(num) + nset_tup[0][:6].replace('-','_') 
+                         for num, nset_tup in enumerate(self.n_set.items(), 1)]
+        all_nsets = OrderedDict(zip(new_nset_name, self.n_set.values()))
+
+        # set new naming for element sets
+        # new_elset_name = ['ELSET_{}'.format(e) for e, elset in enumerate(self.el_set,1)]
+        new_elset_name = ['E_{}_'.format(num) + elset_tup[0][:6].replace('-','_') 
+                         for num, elset_tup in enumerate(self.el_set.items(), 1)]
+        all_elsets = OrderedDict(zip(new_elset_name, self.el_set.values()))
+        # sorts the sets according to element typ
+        for key, value in all_elsets.items():
+            all_elsets[key] = sorted(value, key=lambda x: x.type)
+            
         # prepare a dict which will be used to render things in template
         render_dict = {'model_name': self.model_name,
-                      'parts': self.parts.values(),
-                      'assembly_el_sets': self.el_set,
-                      'assembly_n_sets': self.n_set,
-                      'coord_sys': self.coordinate_system,
-                      'units': self.units
+                       'coord_sys': self.coordinate_system,
+                       'units': self.units,
+                       'all_nodes': all_nodes,
+                       'all_elements_dict': all_elements_dict,
+                       'all_node_sets': all_nsets,
+                       'all_element_sets': all_elsets
                       }
         # render_dict = {'parts': self.parts}
         # load jinja template from file

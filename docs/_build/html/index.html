@@ -27,9 +27,8 @@
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     
   <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
@@ -39,10 +38,10 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/language_data.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
@@ -146,12 +145,12 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="pyCofea/index.html">
-   CoFEA Mesh Converter
+   Meshpresso Mesh Converter
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="pyCofea/api.html">
-     CoFEA module implementation
+     Meshpresso module implementation
     </a>
    </li>
   </ul>
@@ -201,10 +200,39 @@
  </span>
 </p>
 <ul class="nav sidenav_l1">
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="benchmarks/000-tuning-fork/index.html">
    Tuning fork benchmark
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="benchmarks/000-tuning-fork/model.html">
+     Model setup
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="benchmarks/000-tuning-fork/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="benchmarks/000-tuning-fork/calculix.html">
+     CalculiX
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="benchmarks/000-tuning-fork/salome.html">
+     Code_Aster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="benchmarks/000-tuning-fork/elmer.html">
+     Elmer
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
 </ul>
 
@@ -305,6 +333,11 @@
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#license">
+   License
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#site-contents">
    Site contents
   </a>
@@ -341,7 +374,7 @@
 <p>There are plenty of ways on how you could contribute:</p>
 <ul class="simple">
 <li><p>if you know how to use simulation software then you can help to make models</p></li>
-<li><p>if you posses programming skills then you can help to develop <a class="reference external" href="https://github.com/spolanski/CoFEA/tree/master/cofea">CoFEA mesh converter</a></p></li>
+<li><p>if you posses programming skills then you can help to develop <a class="reference external" href="https://github.com/spolanski/CoFEA/tree/master/cofea">CoFEA Meshpresso converter</a></p></li>
 <li><p>if you are good at writing then you can help with <a class="reference internal" href="reference/cofeaDocsSetup.html"><span class="doc std std-doc">writing the docs</span></a></p></li>
 <li><p>finally, if you don’t think you have anything from the above, but you are eager to learn just let us know!</p></li>
 </ul>
@@ -351,6 +384,21 @@
 </div>
 <p>In any situation that you would like to contact us at cofea.project(at)gmail.com</p>
 </div>
+<div class="section" id="license">
+<h1>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h1>
+<p>Copyright (c) 2021, CoFEA Team
+All rights reserved.</p>
+<p>Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:</p>
+<ol class="simple">
+<li><p>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</p></li>
+<li><p>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</p></li>
+<li><p>All advertising materials mentioning features or use of this software must display the following acknowledgement: This product includes software developed by the CoFEA Team.</p></li>
+<li><p>Neither the name of the CoFEA Team nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</p></li>
+</ol>
+<p>THIS SOFTWARE IS PROVIDED BY CoFEA Team ‘’AS IS’’ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL CoFEA Team BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+</div>
 <div class="section" id="site-contents">
 <h1>Site contents<a class="headerlink" href="#site-contents" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
@@ -358,7 +406,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="reference/blog.html">CoFEA Blog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/aboutUs.html">CoFEA Team</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pyCofea/index.html">CoFEA Mesh Converter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyCofea/index.html">Meshpresso Mesh Converter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="softwareSetup/index.html">Simulation environment setup</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/spolanski/CoFEA">GitHub repository</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/cofeaDocsSetup.html">Documentation setup</a></li>
