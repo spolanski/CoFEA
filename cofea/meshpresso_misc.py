@@ -139,8 +139,6 @@ class ElementLibrary(object):
     def convert_to_general(self, el_type='C3D4'):
         gen_element = [el[:2] for ind, el in enumerate(self.el_container)
                        if el_type in el]
-        print el_type
-        
         if all(gen_element):
             # if all elements have the same topology and shape function
             return gen_element[0]
@@ -207,6 +205,53 @@ ccx_surface_definiton = {
         'S4': [1, 2],
         'S5': [2, 3],
         'S6': [3, 0],
+    },
+}
+#TODO: The surface for quad unv is correct only for
+# 118 S2, check S1, S3, S4
+
+salome_surface_definiton = {
+    '111': {
+        'S1': [0, 1, 2],
+        'S2': [0, 3, 1],
+        'S3': [1, 3, 2],
+        'S4': [2, 3, 0],
+    },
+    '118': {
+        'S1': [0, 1, 2, 4, 5, 6],
+        'S2': [0, 3, 1, 4, 8, 7],
+        'S3': [1, 3, 2, 5, 8, 9],
+        'S4': [2, 3, 0, 6, 7, 9],
+    },
+    '112': {
+        'S1': [0, 1, 2],
+        'S2': [3, 4, 5],
+        'S3': [0, 1, 4, 3],
+        'S4': [1, 2, 5, 4],
+        'S5': [2, 0, 3, 5],
+    },
+    '113': {
+        'S1': [0, 1, 2],
+        'S2': [3, 4, 5],
+        'S3': [0, 1, 4, 3],
+        'S4': [1, 2, 5, 4],
+        'S5': [2, 0, 3, 5],
+    },
+    '115': {
+        'S1': [0, 1, 2, 3],
+        'S2': [4, 5, 6, 7],
+        'S3': [0, 1, 4, 5],
+        'S4': [1, 2, 5, 6],
+        'S5': [2, 3, 6, 7],
+        'S6': [0, 3, 4, 7],
+    },
+    '116': {
+        'S1': [0, 1, 2, 3],
+        'S2': [4, 5, 6, 7, 12, 13, 14, 15],
+        'S3': [0, 1, 4, 5],
+        'S4': [1, 2, 5, 6],
+        'S5': [2, 3, 6, 7],
+        'S6': [0, 3, 4, 7],
     },
 }
 
