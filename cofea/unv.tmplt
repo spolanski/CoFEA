@@ -5,8 +5,8 @@
 {{ '{:>10}'.format(units.units_code) -}}
 {{ '  {:<20}'.format(units.units_description) -}}
 {{ '{:>10}'.format(units.temperature_mode) }}
-{{ '{:>25.17E}{:>25.17E}{:>25.17E}'.format(*[units.length_factor, units.force_factor, units.temperature_factor])|replace("E","D") }}
-{{ '{:>25.17E}'.format(units.temperature_offset)|replace("E","D") }}
+{{ '{:>25.16E}{:>25.16E}{:>25.16E}'.format(*[units.length_factor, units.force_factor, units.temperature_factor]) }}
+{{ '{:>25.16E}'.format(units.temperature_offset) }}
 {{ '{:>6}'.format(-1) }}
 {# COORDINATE SYSTEM FORMAT #}
 {# ------------------- #}
@@ -26,28 +26,26 @@
 {# ------------------- #}
 {{ '{:>6}'.format(-1) }}
 {{ '{:>6}'.format(2411) }}
-{% for part in parts -%}
-{% for node in part.nodes -%}
+{% for node in all_nodes -%}
 {{ '{:>10}'.format(node.label) -}}
-{{ '{:>10}'.format(0) -}}
-{{ '{:>10}'.format(0) -}}
+{{ '{:>10}'.format(1) -}}
+{{ '{:>10}'.format(1) -}}
 {{ '{:>10}'.format(11) }}
-{{ '   {:.16E}'.format(node.coordinates[0])|replace("E","D") -}}
-{{ '   {:.16E}'.format(node.coordinates[1])|replace("E","D") -}}
-{{ '   {:.16E}'.format(node.coordinates[2])|replace("E","D") }}
+{{ '   {:.16E}'.format(node.coordinates[0]) -}}
+{{ '   {:.16E}'.format(node.coordinates[1]) -}}
+{{ '   {:.16E}'.format(node.coordinates[2]) }}
 {% endfor -%}
 {{ '{:>6}'.format(-1) }}
 {# ELEMENTS FORMAT #}
 {# ------------------- #}
 {{ '{:>6}'.format(-1) }}
 {{ '{:>6}'.format(2412) }}
-{# FOR EACH ELEMENT IN DICTIONARY OF ELEMENTS #}
 {# ------------------- #}
-{% for elType, elementList in part.elements_by_type.items() -%}
-{% for element in elementList -%}
+{% for el_type, elements in all_elements_dict.items() -%}
+{% for element in elements -%}
 {# GET LABEL, TYPE, PROPERTY TABLE NUMBER, MATERIAL TABLE NUMBER, COLOR, NUMBER OF NODES #}
 {{ '{:>10}'.format(element.label) -}}
-{{ '{:>10}'.format(elType) -}}
+{{ '{:>10}'.format(element.type) -}}
 {{ '{:>10}'.format(1) -}}
 {{ '{:>10}'.format(1) -}}
 {{ '{:>10}'.format(7) -}}
@@ -56,18 +54,19 @@
 {% for node in element.connectivity -%}
 {{ '{:>10}'.format(node.label) }}{% if loop.index % 8 == 0 %}{{"\n"}}{% endif %}
 {%- endfor %}
-{% endfor -%}
+{%- endfor %}
 {% endfor -%}
 {{ '{:>6}'.format(-1) }}
 {# -------------------------- #}
-{% for el_setName, el_setElementList in part.el_set.items() -%}
-{%- if el_setElementList|length > 0 -%}
-{% set count_sets.value = count_sets.value + 1 %}
-{# ELEMENT GROUP DEFINITION #}
-{# -------------------------- #}
+{% set group_count = namespace(value=1) %}
 {{ '{:>6}'.format(-1) }}
 {{ '{:>6}'.format(2477) }}
-{{ '{:>10}'.format(loop.index) -}}
+{% for el_setName, el_setElementList in all_element_sets.items() -%}
+{%- if el_setElementList|length > 0 -%}
+{# ELEMENT GROUP DEFINITION #}
+{# -------------------------- #}
+{{ '{:>10}'.format(group_count.value) -}}
+{%- set group_count.value = group_count.value + 1 -%}
 {{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}
 {{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}
 {{ '{:>10}'.format(el_setElementList|length) }}
@@ -78,18 +77,18 @@
 {{- '{:>10}'.format(0) }}
 {{- '{:>10}'.format(0) -}}{%- if loop.index % 2 == 0 -%}{{"\n"}}{%- endif -%}
 {% endfor %}
-{{ '{:>6}'.format(-1) }}
 {%- endif -%}
 {% endfor -%}
-{# -------------------------- #}
-{% for n_setName, n_setNodeList in part.n_set.items() -%}
-{%- if n_setNodeList|length > 0 -%}
-{% set count_sets.value = count_sets.value + 1 %}
-{# NODE GROUP DEFINITION #}
+{{ '{:>6}'.format(-1) }}
 {# -------------------------- #}
 {{ '{:>6}'.format(-1) }}
 {{ '{:>6}'.format(2477) }}
-{{ '{:>10}'.format(loop.index + part.el_set.keys()|length) -}}
+{% for n_setName, n_setNodeList in all_node_sets.items() -%}
+{%- if n_setNodeList|length > 0 -%}
+{# NODE GROUP DEFINITION #}
+{# -------------------------- #}
+{{ '{:>10}'.format(group_count.value) -}}
+{%- set group_count.value = group_count.value + 1 -%}
 {{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}
 {{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}
 {{ '{:>10}'.format(n_setNodeList|length) }}
@@ -100,49 +99,7 @@
 {{- '{:>10}'.format(0) }}
 {{- '{:>10}'.format(0) -}}{%- if loop.index % 2 == 0 -%}{{"\n"}}{%- endif -%}
 {% endfor %}
-{{ '{:>6}'.format(-1) }}
 {%- endif -%}
-{% endfor -%}
-{% endfor -%}
-{# -------------------------- #}
-{% for el_setName, el_setElementList in assembly_el_sets.items() -%}
-{%- if el_setElementList|length > 0 -%}
-{# ELEMENT GROUP DEFINITION #}
-{# -------------------------- #}
-{{ '{:>6}'.format(-1) }}
-{{ '{:>6}'.format(2477) }}
-{{ '{:>10}'.format(loop.index + count_sets.value) -}}
-{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}
-{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}
-{{ '{:>10}'.format(el_setElementList|length) }}
-{{ el_setName }}
-{% for element in el_setElementList %}
-{{- '{:>10}'.format(8) }}
-{{- '{:>10}'.format(element.label) }}
-{{- '{:>10}'.format(0) }}
-{{- '{:>10}'.format(0) -}}{%- if loop.index % 2 == 0 -%}{{"\n"}}{%- endif -%}
 {% endfor %}
 {{ '{:>6}'.format(-1) }}
-{%- endif -%}
-{% endfor -%}
-{# -------------------------- #}
-{% for n_setName, n_setNodeList in assembly_n_sets.items() -%}
-{%- if n_setNodeList|length > 0 -%}
-{# NODE GROUP DEFINITION #}
-{# -------------------------- #}
-{{ '{:>6}'.format(-1) }}
-{{ '{:>6}'.format(2477) }}
-{{ '{:>10}'.format(loop.index + count_sets.value + assembly_el_sets.keys()|length) -}}
-{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}
-{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}{{ '{:>10}'.format(0) -}}
-{{ '{:>10}'.format(n_setNodeList|length) }}
-{{ n_setName }}
-{% for node in n_setNodeList %}
-{{- '{:>10}'.format(7) }}
-{{- '{:>10}'.format(node.label) }}
-{{- '{:>10}'.format(0) }}
-{{- '{:>10}'.format(0) -}}{%- if loop.index % 2 == 0 -%}{{"\n"}}{%- endif -%}
-{% endfor %}
-{{ '{:>6}'.format(-1) }}
-{%- endif -%}
-{% endfor -%}
+
