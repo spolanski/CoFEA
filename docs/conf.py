@@ -1,7 +1,7 @@
 # -- Project information -----------------------------------------------------
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../cofea'))
+sys.path.insert(0, os.path.abspath('../meshpresso'))
 
 project = "CoFEA Initiative"
 copyright = "2020"

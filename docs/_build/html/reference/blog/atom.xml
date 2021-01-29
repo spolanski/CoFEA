@@ -2,14 +2,14 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://cofea.readthedocs.io</id>
   <title>Blog</title>
-  <updated>2021-01-21T22:37:44.829960+00:00</updated>
+  <updated>2021-01-29T23:15:28.315119+00:00</updated>
   <link href="https://cofea.readthedocs.io"/>
   <link href="https://cofea.readthedocs.io/reference/blog/atom.xml"/>
   <generator uri="https://ablog.readthedocs.org" version="0.10.12">ABlog</generator>
   <entry>
     <id>https://cofea.readthedocs.io/reference/blog/2020-12-10.html</id>
     <title>Engineering simulations without limits. The origin of CoFEA Initiative ☕</title>
-    <updated>2020-12-10T00:00:00+01:00</updated>
+    <updated>2020-10-12T00:00:00+02:00</updated>
     <author>
       <name>Slawomir Polanski</name>
     </author>
@@ -36,6 +36,6 @@
     &lt;/script&gt;
     &lt;script&gt;kernelName = 'python3'&lt;/script&gt;</content>
     <link href="https://cofea.readthedocs.io/reference/blog/2020-12-10.html" rel="alternate"/>
-    <published>2020-12-10T00:00:00+01:00</published>
+    <published>2020-10-12T00:00:00+02:00</published>
   </entry>
 </feed>

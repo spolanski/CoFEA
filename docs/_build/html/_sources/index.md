@@ -19,12 +19,16 @@ name: cofea
 There are plenty of ways on how you could contribute:
 
 * if you know how to use simulation software then you can help to make models
-* if you posses programming skills then you can help to develop [CoFEA Meshpresso converter](https://github.com/spolanski/CoFEA/tree/master/cofea)
-* if you are good at writing then you can help with [writing the docs](reference/cofeaDocsSetup)
+* if you posses programming skills then you can help to develop [CoFEA Meshpresso converter](https://github.com/spolanski/CoFEA/tree/master/meshpresso)
+* if you are good at writing then you can help writing the docs
 * finally, if you don't think you have anything from the above, but you are eager to learn just let us know!
 
 :::{important}
 If you posses some old FEA models which are validated experimentally and you could share them - do let us know! We will give them another life by checking them once again in the open-source software.
+:::
+
+:::{seealso}
+For more details on how to contribute, please look into [Contributor Guide](reference/contributor_guide).
 :::
 
 In any situation that you would like to contact us at cofea.project(at)gmail.com
@@ -50,11 +54,20 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 :caption: Documentation structure
 
 reference/blog
-reference/aboutUs
-pyCofea/index
-softwareSetup/index
+reference/about_us
+reference/contributor_guide
+meshpresso/index
 GitHub repository <https://github.com/spolanski/CoFEA>
-reference/cofeaDocsSetup
+
+```
+
+```{toctree}
+:maxdepth: 1
+:caption: FEA Software
+
+fea_software/calculix.md
+fea_software/code_aster.md
+fea_software/elmer.md
 ```
 
 ```{toctree}
