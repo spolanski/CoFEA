@@ -1,0 +1,32 @@
+** Mesh ++++++++++++++++++++++++++++++++++++++++++++++++
+
+*INCLUDE, INPUT=Mesh/TET-0-5.inp 
+
+** Material ++++++++++++++++++++++++++++++++++++++++++++++++
+
+*Material, Name=Material-1
+*Density
+7.829E-09
+*Elastic
+207000, 0.33
+
+** Sections ++++++++++++++++++++++++++++++++++++++++++++++++
+
+*Solid section, Elset=Fork-El_Section, Material=Material-1
+
+** Steps +++++++++++++++++++++++++++++++++++++++++++++++++++
+
+*Step
+*Frequency
+12
+
+** Field outputs +++++++++++++++++++++++++++++++++++++++++++
+
+*Node file
+RF, U
+*El file
+S, E
+
+** End step ++++++++++++++++++++++++++++++++++++++++++++++++
+
+*End step
