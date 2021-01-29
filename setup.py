@@ -1,6 +1,6 @@
 from setuptools import setup
 
-setup(name='meshpresso',
+setup(name='CoFEA',
       version='0.1',
       description="mesh converter which is a part of the CoFEA Initiative project",
       long_description="",
@@ -8,7 +8,7 @@ setup(name='meshpresso',
       author='Slawomir Polanski',
       author_email='polanski.slawomir@gmail.com',
       license='TODO',
-      packages=['cofea', 'docs'],
+      packages=['meshpresso', 'docs'],
       zip_safe=False,
       install_requires=[
           'jinja2',
