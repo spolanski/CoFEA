@@ -1,0 +1,154 @@
+DEBUT(
+      LANG='EN',
+      PAR_LOT='NON',
+      INFO=1,
+     );
+
+RESULT_PATH = "/home/filon/salome_projects/repo/CoFEA/Benchmarks/01-LE10-Thick-Plate/Model_C_A/mesh_convergence/"
+
+# Define material
+STEEL   =DEFI_MATERIAU(
+                       ELAS=_F(
+                               E = 2.1e11,
+                               NU = 0.3,
+                              ),
+                      );
+
+
+# Load mesh file
+mesh = LIRE_MAILLAGE(
+                   UNITE=20,
+                   FORMAT='IDEAS'
+                  );
+
+# Create groups of nodes according to all groups of elements
+# Additionaly create group with one node for comparison the results
+mesh = DEFI_GROUP(
+                reuse = mesh,
+                MAILLAGE = mesh,
+                CREA_GROUP_MA=_F(NOM="All", TOUT="OUI"),
+                CREA_GROUP_NO=(
+                               _F(TOUT_GROUP_MA = 'OUI',),
+                               _F(
+                                  NOM = 'D',
+                                  OPTION = 'ENV_SPHERE',
+                                  POINT = (2.0, 0.0, 0.6),
+                                  RAYON = 0.005,
+                                  PRECISION = 0.005
+                                 ),
+                              ),
+               );
+
+# Change orientation of solids "peel"
+mesh = MODI_MAILLAGE(
+                   reuse = mesh,
+                   MAILLAGE = mesh,
+                   ORIE_PEAU_3D = _F(GROUP_MA = 'E_2_DIST'),
+                  );
+
+# Define analysis type
+Model = AFFE_MODELE(
+                    MAILLAGE = mesh,
+                    AFFE = _F(
+                              TOUT = 'OUI',
+                              PHENOMENE = 'MECANIQUE',
+                              MODELISATION = '3D',
+                             ),
+                   );
+
+
+# Assign material to mesh and model
+Mater = AFFE_MATERIAU(
+                      MAILLAGE = mesh,
+                      AFFE = _F(
+                                TOUT = 'OUI',
+                                MATER = STEEL,
+                               ),
+                     );
+
+# Get list with names of nodes groups (node-sets)
+#no_groups_names = mesh.getGroupsOfNodes()
+no_groups_names = mesh.LIST_GROUP_NO()
+for name, node_quantity in no_groups_names:
+    if name == "All":
+        all_node_quantity = node_quantity
+
+[('E_2_DIST', 651), ('N_4_DC', 441), ('N_2_AB', 441), ('N_3_BC', 651), ('N_9_MID', 31), ('All', 13671), ('D', 1)]
+
+# Find '_DC' name (C_A do not accept comprehension lists)
+for uy, _ in no_groups_names:
+    if uy.endswith('_DC'):
+        Uy_group_name = uy
+        print(f"Uy_group_name: {Uy_group_name}")
+
+# Find '_MID' name (C_A do not accept comprehension lists)
+for uz, _ in no_groups_names:
+    if uz.endswith('_MID'):
+        Uz_group_name = uz
+        print(f"Uz_group_name: {Uz_group_name}")
+
+# Define boundaries
+Bound = AFFE_CHAR_MECA(
+                       MODELE = Model,
+                       DDL_IMPO = (
+                                   _F(GROUP_NO = Uz_group_name, DZ = 0.0,),
+                                   _F(GROUP_NO = 'N_2_AB', DX = 0.0,),
+                                   _F(GROUP_NO = Uy_group_name, DY = 0.0,),
+                                   _F(GROUP_NO = 'N_3_BC', DX = 0.0, DY = 0.0,),
+                                  ),
+                        PRES_REP = _F(GROUP_MA = 'E_2_DIST', PRES = 1.0e6),
+                      );
+
+# Solve
+Results = MECA_STATIQUE(
+                        MODELE = Model,
+                        CHAM_MATER = Mater,
+                        EXCIT = _F(CHARGE = Bound,),
+                       );
+
+# Calculate the field of stresses extrapolated from Gauss point to nodes in Cartesian CS
+Results	= CALC_CHAMP(
+                     reuse = Results,
+                     RESULTAT = Results,
+                     TOUT = 'OUI',
+                     CONTRAINTE = 'SIGM_NOEU',
+                    );
+
+# Extract value of normal stress in Y direction extrapolated to node D
+ResD = POST_RELEVE_T(
+                     ACTION=(
+                             _F(
+                                INTITULE = 'Stress SIYY in point D',
+                                OPERATION = 'EXTRACTION',
+                                RESULTAT = Results,
+                                NOM_CHAM = 'SIGM_NOEU',
+                                NOM_CMP = ('SIYY'),
+                                GROUP_NO = 'D',
+                               ),
+                            ),
+                    );
+
+# Extract table to python object and save the value to dictionary
+resi=ResD.EXTR_TABLE()
+value_SIYY_D = resi.SIYY.values()[0]
+#mesh_nums[mesh_num].append("{:e}".format(resi.SIYY.values()[0]))
+
+# Additionaly prepare mesh output enriched with fields of displacement, stresses in gauss points, and  stresses extrapolated to nodes
+# IMPR_RESU(
+#           FORMAT = 'MED',
+#           UNITE = 80,
+#           RESU = _F(
+#                     MAILLAGE = mesh,
+#                     RESULTAT = Results,
+#                     NOM_CHAM = ('DEPL', 'SIEF_ELGA','SIGM_NOEU'),
+#                    ),
+#          );
+
+# Pretty print the dictionary with stresses
+#print("Results:")
+#pp(mesh_nums)
+
+with open(RESULT_PATH + "Results.txt","a") as h:
+    h.write(f"{all_node_quantity},{value_SIYY_D}\n")
+
+FIN();
