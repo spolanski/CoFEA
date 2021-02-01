@@ -1,6 +1,6 @@
 # Contributor Guide
 
-Here is a quick introduction on how to start contributing to the CoFEA Initiative. At first, you can acknowledge yourself with rules we try to follow and which we also recommend:
+Here is a quick introduction on how to start contributing to the CoFEA Initiative. At first, you can acknowledge yourself with the rules we try to follow and which we also recommend following:
 - if you are not familiar with programming, compilation etc, we recommend using Ubuntu 18.0 (or any Debian based Linux) as your main environment. We tend to use this distribution and all guidelines presented in this docs have been validated with this OS.
 - we use GitHub website as a place to store the code, docs and everything else. As a result of that, if you would like to contribute to CoFEA you should have an account on this platform to be able to fork the [CoFEA repository](https://github.com/spolanski/CoFEA), add your changes and send a modified version back. That also implies that you ought to have basic understanding of *git* version control system and the nomenclature used on GitHub (such as pull request, fork etc.)
 - while it would be nice to use Python 3.x only, some FE codes (for example Salome) are still using Python version 2.7. Due to that, all scripts which are developed should be developed in a way that is more or less compatible with 2.x and 3.x versions.
@@ -57,7 +57,7 @@ After this command Sphinx will automatically convert Markdown files into HTML. I
 Once you add some modifications, you can send a pull request. Once accepted, the .md files will be converted and the conversion status can be seen on the [Read the Docs](https://readthedocs.org/projects/cofea/builds/) page.
 
 :::{hint}
-Looking for a task to do? Check [CoFEA documentation tasks issue](https://github.com/spolanski/CoFEA/issues/27)
+Looking for a task to do? Check [CoFEA documentation issue](https://github.com/spolanski/CoFEA/issues/27). It contains several things that we would like to implement. Pick one and [create a Github issue](https://github.com/spolanski/CoFEA/issues/new/choose), so everyone knows that someone is working on it. After that send a pull request and your work will be merged soon.
 :::
 
 ## FE work contribution
@@ -70,13 +70,14 @@ Once the documentation works, you can set up the simulation environment. The CoF
 
 The best way way to contribute is to install Salome_Meca with Code_Aster, Calculix and Elmer, so that you could build your own models and contribute to the CoFEA initiative.
 
-:::{important}
-If you are developing your own FE-code or know how to use different free and open-source simulation environment, feel free to it to the Benchmarks folder and send pull request. You can send already existing benchmark with results from different code or something totally new.
+:::{hint}
+Looking for a task to do? Check [FEA work issue](https://github.com/spolanski/CoFEA/issues/51). It contains several examples that we would like to test. Pick one and [create a Github issue](https://github.com/spolanski/CoFEA/issues/new/choose), so everyone knows that someone is working on it. After that send a pull request and your work will be merged soon.
 :::
 
-:::{hint}
-Looking for a task to do? Check [FEA work issue](https://github.com/spolanski/CoFEA/issues/51)
+:::{important}
+If you are an FE code developer and you would like to submit your own example or show results for already existing benchmark, feel free to add your contribution to the Benchmarks folder and send pull request.
 :::
+
 
 ## Python scripts contribution
 
