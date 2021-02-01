@@ -1,7 +1,7 @@
   The readme file should be amend to present benchmark information:
 
   # Model sketch
-  prepare a sketch with dimensions or provide any useful image
+  ![image](./other/sketch.png)
   # Benchmark purpose
   describe what the benchmark is trying to measure
   # Material
