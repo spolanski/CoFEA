@@ -1,3 +1,4 @@
+<!---
 # Model setup
 
 <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
@@ -11,22 +12,12 @@
    <input width="100%" type="image" ID="Image1" onclick="showIframeMapOnClick();return false" src="../../_static/fork.png"  />
 </div>
 
-.. jupyter-execute::
-from ipygany import Scene, TetraMesh
-
-mesh = TetraMesh.from_vtk('fork.vtk')
-mesh.default_color = 'gray'
-
-scene = Scene([mesh])
-scene
-
-
 
 ```{tip}
 Click on the image above to play with 3D object in ParaView Glance!
 ```
-
-## Model definition
+-->
+# Model definition
 
 The aim of this study is to compare the results from a modal analysis performed in [CalculiX](http://www.calculix.de/), [Code_Aster](https://code-aster.org/) and [Elmer](http://www.elmerfem.org/blog/) Finite-Element codes. A tuning fork geometry will be used to measure the software performance. The model described in this report was created on a basis of the article found in this [link](http://pubs.sciepub.com/ajme/4/7/16/index.html).
 

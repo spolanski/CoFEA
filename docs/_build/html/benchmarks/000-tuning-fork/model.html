@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Model setup &#8212; CoFEA Initiative</title>
+    <title>Model definition &#8212; CoFEA Initiative</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -47,6 +47,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
@@ -62,7 +63,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Results" href="results.html" />
-    <link rel="prev" title="Tuning fork benchmark" href="index.html" /> 
+    <link rel="prev" title="Geometry" href="geo.html" /> 
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -71,8 +72,8 @@
 <!-- Opengraph tags -->
 <meta property="og:url"         content="https://cofea.readthedocs.io/benchmarks/000-tuning-fork/model.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Model setup" />
-<meta property="og:description" content="Model setup  &lt;script src=&#34;https://code.jquery.com/jquery-2.1.4.js&#34;&gt;&lt;/script&gt;      &lt;script&gt;       function showIframeMapOnClick() {          $(&#34;#myDiv&#34;).html(&#34;&lt;i" />
+<meta property="og:title"       content="Model definition" />
+<meta property="og:description" content="Model definition  The aim of this study is to compare the results from a modal analysis performed in CalculiX, Code_Aster and Elmer Finite-Element codes. A tuni" />
 <meta property="og:image"       content="https://cofea.readthedocs.io/_static/cofea-black.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -209,9 +210,14 @@
    Tuning fork benchmark
   </a>
   <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="geo.html">
+     Geometry
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Model setup
+     Model definition
     </a>
    </li>
    <li class="toctree-l2">
@@ -327,11 +333,6 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-definition">
-   Model definition
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#approximated-solution">
    Approximated solution
   </a>
@@ -361,35 +362,32 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
-                 <div class="section" id="model-setup">
-<h1>Model setup<a class="headerlink" href="#model-setup" title="Permalink to this headline">¶</a></h1>
+                 <!---
+# Model setup
+
 <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
    <script>
       function showIframeMapOnClick() {
          $("#myDiv").html("<iframe id='iFrameMap' src='https://blogtechniczny.pl/paraview-glance/index.html?name=fork.vtk&url=https://blogtechniczny.pl/para-files/fork.vtk' width='100%' height='550px' style=''></iframe>");
       }
    </script>
+
 <div id="myDiv">
    <input width="100%" type="image" ID="Image1" onclick="showIframeMapOnClick();return false" src="../../_static/fork.png"  />
 </div>
-<p>.. jupyter-execute::
-from ipygany import Scene, TetraMesh</p>
-<p>mesh = TetraMesh.from_vtk(‘fork.vtk’)
-mesh.default_color = ‘gray’</p>
-<p>scene = Scene([mesh])
-scene</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Click on the image above to play with 3D object in ParaView Glance!</p>
-</div>
+
+
+```{tip}
+Click on the image above to play with 3D object in ParaView Glance!
+```
+-->
 <div class="section" id="model-definition">
-<h2>Model definition<a class="headerlink" href="#model-definition" title="Permalink to this headline">¶</a></h2>
+<h1>Model definition<a class="headerlink" href="#model-definition" title="Permalink to this headline">¶</a></h1>
 <p>The aim of this study is to compare the results from a modal analysis performed in <a class="reference external" href="http://www.calculix.de/">CalculiX</a>, <a class="reference external" href="https://code-aster.org/">Code_Aster</a> and <a class="reference external" href="http://www.elmerfem.org/blog/">Elmer</a> Finite-Element codes. A tuning fork geometry will be used to measure the software performance. The model described in this report was created on a basis of the article found in this <a class="reference external" href="http://pubs.sciepub.com/ajme/4/7/16/index.html">link</a>.</p>
 <p>Simulation input files used in this study can be found on our <a class="reference external" href="https://github.com/spolanski/CoFEA/tree/master/Benchmarks/00-Tuning-Fork">GitHub</a>!</p>
 <div class="figure align-default" id="fork-results">
 <a class="reference internal image-reference" href="../../_images/fork-geo-results.png"><img alt="Fork original Results" src="../../_images/fork-geo-results.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Tuning fork geometry and its’ vibration modes</span><a class="headerlink" href="#fork-results" title="Permalink to this image">¶</a></p>
-</div>
 </div>
 <div class="section" id="approximated-solution">
 <h2>Approximated solution<a class="headerlink" href="#approximated-solution" title="Permalink to this headline">¶</a></h2>
@@ -482,7 +480,7 @@ scene</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Tuning fork benchmark</a>
+    <a class='left-prev' id="prev-link" href="geo.html" title="previous page">Geometry</a>
     <a class='right-next' id="next-link" href="results.html" title="next page">Results</a>
 
     </div>
