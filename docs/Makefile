@@ -1,5 +1,7 @@
 # Minimal makefile for Sphinx documentation
 #
+clean :
+	rm -r ./_build
 
 # You can set these variables from the command line.
 SPHINXOPTS    =

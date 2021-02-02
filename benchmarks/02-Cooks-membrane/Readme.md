@@ -1,6 +1,5 @@
 # Cook's membrane - linear version
-![image](./combbase.png)
-![image](./image-1.jpg)
+![image](./sketch.png)
 
 ## Material
 Linear elastic material model:
