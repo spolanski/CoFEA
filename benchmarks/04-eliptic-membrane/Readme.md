@@ -1,4 +1,7 @@
   The readme file should be amend to present benchmark information:
+  
+  
+  A description of a similar benchmark can be found in this [link](http://wufengyun.com:888/v6.14/books/bmk/default.htm?startat=ch04s02anf01.html)
 
   # Model sketch
   ![image](./other/sketch.png)
