@@ -28,5 +28,6 @@ setup(name='CoFEA',
           'nbsphinx',
           'nbconvert~=5.6',
           'ipygany',
+          'ipywidgets<8,>=7.0.0',
           'sphinx-book-theme', ],
       )
