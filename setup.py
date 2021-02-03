@@ -25,5 +25,6 @@ setup(name='CoFEA',
           'sphinxcontrib-bibtex',
           'sphinx-thebe',
           'ablog',
+          'nbsphinx',
           'sphinx-book-theme', ],
       )
