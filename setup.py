@@ -27,5 +27,6 @@ setup(name='CoFEA',
           'ablog',
           'nbsphinx',
           'nbconvert~=5.6',
+          'ipygany',
           'sphinx-book-theme', ],
       )
