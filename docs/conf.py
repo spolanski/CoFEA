@@ -15,7 +15,9 @@ master_doc = "index"
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    
+
+    'nbsphinx',
+    'jupyter_sphinx',
     "sphinx_copybutton",
     "sphinx_togglebutton",
     "sphinxcontrib.bibtex",
