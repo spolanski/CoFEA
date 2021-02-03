@@ -26,5 +26,6 @@ setup(name='CoFEA',
           'sphinx-thebe',
           'ablog',
           'nbsphinx',
+          'nbconvert~=5.6',
           'sphinx-book-theme', ],
       )
