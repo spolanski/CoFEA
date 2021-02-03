@@ -47,7 +47,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
@@ -73,7 +72,7 @@
 <meta property="og:url"         content="https://cofea.readthedocs.io/benchmarks/000-tuning-fork/calculix.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="CalculiX" />
-<meta property="og:description" content="CalculiX  CalculiX supports rigid body moves out of the box. Below there is an explanation of the input file.   ** Mesh ++++++++++++++++++++++++++++++++++++++++" />
+<meta property="og:description" content="CalculiX  CalculiX supports rigid body moves out of the box. Below there is an explanation of the input file.  ** Mesh +++++++++++++++++++++++++++++++++++++++++" />
 <meta property="og:image"       content="https://cofea.readthedocs.io/_static/cofea-black.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -217,7 +216,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="model.html">
-     Model setup
+     Model definition
     </a>
    </li>
    <li class="toctree-l2">
@@ -237,6 +236,45 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="elmer.html">
+     Elmer
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../001-LE10-THICK-PLATE/index.html">
+   Tuning fork benchmark
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../001-LE10-THICK-PLATE/geo.html">
+     Geometry
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../001-LE10-THICK-PLATE/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../001-LE10-THICK-PLATE/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../001-LE10-THICK-PLATE/calculix.html">
+     CalculiX
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../001-LE10-THICK-PLATE/salome.html">
+     Code_Aster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../001-LE10-THICK-PLATE/elmer.html">
      Elmer
     </a>
    </li>
@@ -336,35 +374,52 @@
                  <div class="section" id="calculix">
 <h1>CalculiX<a class="headerlink" href="#calculix" title="Permalink to this headline">¶</a></h1>
 <p>CalculiX supports rigid body moves out of the box. Below there is an explanation of the input file.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-<span class="o">**</span> <span class="n">Mesh</span> <span class="o">++++++++++++++++++++++++++++++++++++++++++++++++</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">**</span> <span class="n">Mesh</span> <span class="o">++++++++++++++++++++++++++++++++++++++++++++++++++++</span>
 
-<span class="o">*</span><span class="n">INCLUDE</span><span class="p">,</span> <span class="n">INPUT</span><span class="o">=</span><span class="n">Mesh</span><span class="o">/</span><span class="n">TET</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="mf">5.</span><span class="n">inp</span>  <span class="c1"># Path to mesh for ccx solver</span>
+<span class="o">*</span><span class="n">INCLUDE</span><span class="p">,</span> <span class="n">INPUT</span><span class="o">=</span><span class="n">Mesh</span><span class="o">/</span><span class="n">cofea</span><span class="o">-</span><span class="n">coarse</span><span class="o">-</span><span class="n">quad</span><span class="o">-</span><span class="nb">hex</span><span class="o">.</span><span class="n">inp</span>  <span class="c1"># Path to mesh for ccx solver</span>
 
 <span class="o">**</span> <span class="n">Material</span> <span class="o">++++++++++++++++++++++++++++++++++++++++++++++++</span>
 
-<span class="o">*</span><span class="n">Material</span><span class="p">,</span> <span class="n">Name</span><span class="o">=</span><span class="n">Material</span><span class="o">-</span><span class="mi">1</span>      <span class="c1"># Defining a material</span>
-<span class="o">*</span><span class="n">Density</span>
-<span class="mf">7.829E-09</span>                       <span class="c1"># Defining a density</span>
-<span class="o">*</span><span class="n">Elastic</span>
-<span class="mi">207000</span><span class="p">,</span> <span class="mf">0.33</span>                    <span class="c1"># Defining Young modulus and Poisson&#39;s ratio</span>
+<span class="o">*</span><span class="n">MATERIAL</span><span class="p">,</span> <span class="n">NAME</span><span class="o">=</span><span class="n">Steel</span>                                    <span class="c1"># Defining a material</span>
+    <span class="o">*</span><span class="n">DENSITY</span>
+        <span class="mi">7850</span>                                             <span class="c1"># Defining a density</span>
+    <span class="o">*</span><span class="n">ELASTIC</span><span class="p">,</span>
+        <span class="mf">2.1e11</span><span class="p">,</span> <span class="mf">0.3</span>                                      <span class="c1"># Defining Young modulus and Poisson&#39;s ratio</span>
 
 <span class="o">**</span> <span class="n">Sections</span> <span class="o">++++++++++++++++++++++++++++++++++++++++++++++++</span>
 
-<span class="o">*</span><span class="n">Solid</span> <span class="n">section</span><span class="p">,</span> <span class="n">Elset</span><span class="o">=</span><span class="n">Fork</span><span class="o">-</span><span class="n">El_Section</span><span class="p">,</span> <span class="n">Material</span><span class="o">=</span><span class="n">Material</span><span class="o">-</span><span class="mi">1</span>  <span class="c1"># Assigning material and solid elements</span>
-                                                            <span class="c1"># to the elements sets in mesh</span>
+<span class="o">*</span><span class="n">SOLID</span> <span class="n">SECTION</span><span class="p">,</span> <span class="n">ELSET</span><span class="o">=</span><span class="n">PART</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">EL</span><span class="o">-</span><span class="n">EALL</span><span class="p">,</span> <span class="n">MATERIAL</span><span class="o">=</span><span class="n">Steel</span>   <span class="c1"># Assigning material and solid elements</span>
+                                                         <span class="c1"># to the elements sets in mesh</span>
 <span class="o">**</span> <span class="n">Steps</span> <span class="o">+++++++++++++++++++++++++++++++++++++++++++++++++++</span>
 
-<span class="o">*</span><span class="n">Step</span>                           <span class="c1"># Begin of analysis</span>
-<span class="o">*</span><span class="n">Frequency</span>                      <span class="c1"># Selection of frequency analysis</span>
-<span class="mi">12</span>                              <span class="c1"># Defining the number of modes to calculate  </span>
+<span class="o">*</span><span class="n">STEP</span>                                                    <span class="c1"># Begin of analysis</span>
+    <span class="o">*</span><span class="n">STATIC</span><span class="p">,</span> <span class="n">SOLVER</span><span class="o">=</span><span class="n">SPOOLES</span>                              <span class="c1"># Selection of elastic analysis</span>
 
 <span class="o">**</span> <span class="n">Field</span> <span class="n">outputs</span> <span class="o">+++++++++++++++++++++++++++++++++++++++++++</span>
 
-<span class="o">*</span><span class="n">Node</span> <span class="n">file</span>                      <span class="c1"># Commands responsible for saving results     </span>
-<span class="n">RF</span><span class="p">,</span> <span class="n">U</span>
-<span class="o">*</span><span class="n">El</span> <span class="n">file</span>
-<span class="n">S</span><span class="p">,</span> <span class="n">E</span>
+    <span class="o">*</span><span class="n">EL</span> <span class="n">FILE</span>                                             <span class="c1"># Commands responsible for saving results</span>
+        <span class="n">E</span><span class="p">,</span> <span class="n">S</span>
+    <span class="o">*</span><span class="n">NODE</span> <span class="n">FILE</span>
+        <span class="n">U</span>
+    <span class="o">*</span><span class="n">EL</span> <span class="n">PRINT</span><span class="p">,</span><span class="n">ELSET</span><span class="o">=</span><span class="n">EL</span><span class="o">-</span><span class="n">EOUT</span>
+        <span class="n">S</span>
+
+<span class="o">**</span> <span class="n">Boundary</span> <span class="n">conditions</span> <span class="o">+++++++++++++++++++++++++++++++++++++</span>
+
+    <span class="o">*</span><span class="n">BOUNDARY</span><span class="p">,</span>                                           <span class="c1"># Applying translation = 0 on desired nodes</span>
+        <span class="n">N</span><span class="o">-</span><span class="n">AB</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span>
+    <span class="o">*</span><span class="n">BOUNDARY</span>
+        <span class="n">N</span><span class="o">-</span><span class="n">DC</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span>
+    <span class="o">*</span><span class="n">BOUNDARY</span>
+        <span class="n">N</span><span class="o">-</span><span class="n">BC</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span>
+	      <span class="n">N</span><span class="o">-</span><span class="n">BC</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span>
+    <span class="o">*</span><span class="n">BOUNDARY</span>
+        <span class="n">N</span><span class="o">-</span><span class="n">MID</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span>
+
+<span class="o">**</span> <span class="n">Boundary</span> <span class="n">conditions</span><span class="p">(</span><span class="n">adding</span> <span class="n">pressure</span><span class="p">)</span> <span class="o">++++++++++++++++++++</span>
+
+    <span class="o">*</span><span class="n">DLOAD</span><span class="p">,</span>
+    <span class="o">*</span><span class="n">INCLUDE</span><span class="p">,</span> <span class="n">INPUT</span><span class="o">=</span><span class="n">Pressure</span><span class="o">/</span><span class="n">cofea</span><span class="o">-</span><span class="n">coarse</span><span class="o">-</span><span class="n">quad</span><span class="o">-</span><span class="nb">hex</span><span class="o">.</span><span class="n">dlo</span>
 
 <span class="o">**</span> <span class="n">End</span> <span class="n">step</span> <span class="o">++++++++++++++++++++++++++++++++++++++++++++++++</span>
 
@@ -372,7 +427,7 @@
 
 </pre></div>
 </div>
-<p>The simulation input file used in this study can be found on our <a class="reference external" href="https://github.com/spolanski/CoFEA/tree/master/Benchmarks/00-Tuning-Fork/MODEL_CALCULIX">GitHub</a>!</p>
+<p>The simulation input file used in this study can be found on our <a class="reference external" href="https://github.com/spolanski/CoFEA/tree/master/benchmarks/00-Tuning-Fork/MODEL_CALCULIX">GitHub</a>!</p>
 </div>
 
     <script type="text/x-thebe-config">

@@ -1,0 +1,13 @@
+! ----- names for bodies -----
+$ E_3_PART_1 = 3
+$ E_4_EOUT = 4
+! ----- names for boundaries -----
+$ E_2_DISTFO = 2
+$ N_1_LOAD = 5
+$ N_2_AB = 6
+$ N_3_BC = 7
+$ N_4_DC = 8
+$ N_5_MID = 9
+$ N_6_EOUT = 10
+$ N_7_DISTFO = 11
+$ N_8_PART_1 = 12

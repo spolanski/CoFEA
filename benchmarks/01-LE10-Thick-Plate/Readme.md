@@ -14,4 +14,3 @@ Linear elastic material model:
 - normal pressure of 1.0e6 Pa
 ## Benchmark purpose
 The purpose of the benchmark is to check if $\sigma_{yy}=5.38e6 Pa$ at point D
-

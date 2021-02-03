@@ -16,7 +16,6 @@ master_doc = "index"
 # ones.
 extensions = [
 
-    'nbsphinx',
     'jupyter_sphinx',
     "sphinx_copybutton",
     "sphinx_togglebutton",
