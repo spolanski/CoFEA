@@ -21,7 +21,7 @@ Click on the image above to play with 3D object in ParaView Glance!
 
 The aim of this study is to compare the results from a static analysis performed in [CalculiX](http://www.calculix.de/), [Code_Aster](https://code-aster.org/) and [Elmer](http://www.elmerfem.org/blog/) Finite-Element codes. A thick plate geometry will be used to measure the software performance. The model described in this report was created on a basis of the article found in this [link](http://wufengyun.com:888/v6.14/books/bmk/ch04s02anf10.html).
 
-Simulation input files used in this study can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/benchmarks/01-LE10-Thcik-Plate)!
+Simulation input files used in this study can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/benchmarks/01-LE10-Thick-Plate)!
 
 
 ## Expected solution

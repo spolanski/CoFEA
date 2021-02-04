@@ -162,4 +162,4 @@ pp(mesh_nums)
 FIN();
 
 ```
-The simulation input file used in this study can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/benchmarks/01-LE10-Thick-Plate/MODEL_Code_Aster)!
+The simulation input file used in this study can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/benchmarks/01-LE10-Thick-Plate/Model_Code_Aster)!

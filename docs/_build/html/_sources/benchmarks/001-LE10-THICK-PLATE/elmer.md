@@ -131,4 +131,4 @@ End
 ```
 
 
-The simulation input file used in this study can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/benchmarks/01-LE10-Thick-Plate/MODEL_ElmerGUI)!
+The simulation input file used in this study can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/benchmarks/01-LE10-Thick-Plate/Model_ElmerGUI)!
