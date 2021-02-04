@@ -47,7 +47,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
@@ -244,6 +243,45 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../001-LE10-THICK-PLATE/index.html">
+   Tuning fork benchmark
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../001-LE10-THICK-PLATE/geo.html">
+     Geometry
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../001-LE10-THICK-PLATE/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../001-LE10-THICK-PLATE/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../001-LE10-THICK-PLATE/calculix.html">
+     CalculiX
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../001-LE10-THICK-PLATE/salome.html">
+     Code_Aster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../001-LE10-THICK-PLATE/elmer.html">
+     Elmer
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
 </ul>
 
 </nav> <!-- To handle the deprecated key -->
@@ -384,7 +422,7 @@ Click on the image above to play with 3D object in ParaView Glance!
 <div class="section" id="model-definition">
 <h1>Model definition<a class="headerlink" href="#model-definition" title="Permalink to this headline">¶</a></h1>
 <p>The aim of this study is to compare the results from a modal analysis performed in <a class="reference external" href="http://www.calculix.de/">CalculiX</a>, <a class="reference external" href="https://code-aster.org/">Code_Aster</a> and <a class="reference external" href="http://www.elmerfem.org/blog/">Elmer</a> Finite-Element codes. A tuning fork geometry will be used to measure the software performance. The model described in this report was created on a basis of the article found in this <a class="reference external" href="http://pubs.sciepub.com/ajme/4/7/16/index.html">link</a>.</p>
-<p>Simulation input files used in this study can be found on our <a class="reference external" href="https://github.com/spolanski/CoFEA/tree/master/Benchmarks/00-Tuning-Fork">GitHub</a>!</p>
+<p>Simulation input files used in this study can be found on our <a class="reference external" href="https://github.com/spolanski/CoFEA/tree/master/benchmarks/00-Tuning-Fork">GitHub</a>!</p>
 <div class="figure align-default" id="fork-results">
 <a class="reference internal image-reference" href="../../_images/fork-geo-results.png"><img alt="Fork original Results" src="../../_images/fork-geo-results.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Tuning fork geometry and its’ vibration modes</span><a class="headerlink" href="#fork-results" title="Permalink to this image">¶</a></p>

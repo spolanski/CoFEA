@@ -57,4 +57,4 @@ IMPR_RESU(FORMAT='RESULTAT',                                # Saving the result 
 FIN()
 
 ```
-The simulation input file used in this study can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/Benchmarks/00-Tuning-Fork/MODEL_Code_Aster)!
+The simulation input file used in this study can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/benchmarks/00-Tuning-Fork/MODEL_Code_Aster)!
