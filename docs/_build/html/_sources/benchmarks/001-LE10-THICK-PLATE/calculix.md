@@ -55,4 +55,4 @@ CalculiX supports elastic simulation. Below there is an explanation of the input
 *End step                      # End on analysis
 
 ```
-The simulation input file used in this study can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/benchmarks/01-LE10-Thick-Plate/MODEL_CALCULIX)!
+The simulation input file used in this study can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/benchmarks/01-LE10-Thick-Plate/Model_CalculiX)!
