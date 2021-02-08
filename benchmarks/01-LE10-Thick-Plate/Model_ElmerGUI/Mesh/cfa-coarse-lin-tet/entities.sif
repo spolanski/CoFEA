@@ -1,46 +1,34 @@
 !------ Skeleton for body section -----
 Body 1
-  Name = E_3_PART_1
-End
-
-Body 2
-  Name = E_4_EOUT
+  Name = ELIPSE
 End
 
 !------ Skeleton for boundary section -----
 Boundary Condition 1
-  Name = E_2_DISTFO
+  Name = bnry2
 End
 
 Boundary Condition 2
-  Name = N_1_LOAD
+  Name = AB
 End
 
 Boundary Condition 3
-  Name = N_2_AB
+  Name = PRESSURE
 End
 
 Boundary Condition 4
-  Name = N_3_BC
-End
-
-Boundary Condition 6
-  Name = N_4_DC
-End
-
-Boundary Condition 9
-  Name = N_5_MID
-End
-
-Boundary Condition 7
-  Name = N_6_EOUT
+  Name = CD
 End
 
 Boundary Condition 5
-  Name = N_7_DISTFO
+  Name = BC
 End
 
-Boundary Condition 8
-  Name = N_8_PART_1
+Boundary Condition 6
+  Name = bnry2
+End
+
+Boundary Condition 7
+  Name = EE
 End
 
