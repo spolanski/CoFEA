@@ -83,24 +83,25 @@ html_sidebars = {
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
+html_css_files = ["custom.css"]
 jupyter_execute_notebooks = "cache"
-thebe_config = {
-    "repository_url": "https://github.com/binder-examples/jupyter-stacks-datascience",
-    "repository_branch": "master",
-}
+# thebe_config = {
+#     "repository_url": "https://github.com/binder-examples/jupyter-stacks-datascience",
+#     "repository_branch": "master",
+# }
 
 html_theme_options = {
     "theme_dev_mode": True,
     "path_to_docs": "docs",
     "repository_url": "https://github.com/spolanski/CoFEA",
     # "repository_branch": "gh-pages",  # For testing
-    "launch_buttons": {
-        "binderhub_url": "https://mybinder.org",
-        # "jupyterhub_url": "https://datahub.berkeley.edu",  # For testing
-        "colab_url": "https://colab.research.google.com/",
-        "notebook_interface": "jupyterlab",
-        "thebe": True,
-    },
+    # "launch_buttons": {
+    #     "binderhub_url": "https://mybinder.org",
+    #     # "jupyterhub_url": "https://datahub.berkeley.edu",  # For testing
+    #     "colab_url": "https://colab.research.google.com/",
+    #     "notebook_interface": "jupyterlab",
+    #     "thebe": True,
+    # },
     "use_edit_page_button": True,
     "use_issues_button": True,
     "use_repository_button": True,
