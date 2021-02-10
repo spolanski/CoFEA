@@ -372,23 +372,18 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linear-hexahedral-mesh">
-   Linear hexahedral mesh
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#quadratic-tetrahedral-mesh">
    Quadratic tetrahedral mesh
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quadratic-hexahedral-mesh">
-   Quadratic hexahedral mesh
+  <a class="reference internal nav-link" href="#linear-hexahedral-mesh">
+   Linear hexahedral mesh
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quadratic-wedge-mesh">
-   Quadratic wedge mesh
+  <a class="reference internal nav-link" href="#quadratic-hexahedral-mesh">
+   Quadratic hexahedral mesh
   </a>
  </li>
 </ul>
@@ -462,6 +457,10 @@
 </tr>
 </tbody>
 </table>
+<div class="figure align-default" id="fe-codes-comparison">
+<a class="reference internal image-reference" href="../../_images/code-comparison.png"><img alt="FE codes comparison" src="../../_images/code-comparison.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Comparison of FE codes</span><a class="headerlink" href="#fe-codes-comparison" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 <div class="section" id="linear-tetrahedral-mesh">
 <h2>Linear tetrahedral mesh<a class="headerlink" href="#linear-tetrahedral-mesh" title="Permalink to this headline">¶</a></h2>
@@ -491,9 +490,38 @@
 </tr>
 </tbody>
 </table>
-<div class="figure align-default" id="liner-tetrahedral-mesh-fork-results">
-<a class="reference internal image-reference" href="../../_images/Linear-tetrahedral-mesh.png"><img alt="Linear tetrahedral mesh Results" src="../../_images/Linear-tetrahedral-mesh.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Chart representing results of the simulation with linear tetrahedral mesh</span><a class="headerlink" href="#liner-tetrahedral-mesh-fork-results" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="quadratic-tetrahedral-mesh">
+<h2>Quadratic tetrahedral mesh<a class="headerlink" href="#quadratic-tetrahedral-mesh" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Solver</p></th>
+<th class="head"><p>Mesh element size = 2mm</p></th>
+<th class="head"><p>Mesh element size = 1mm</p></th>
+<th class="head"><p>Mesh element size = 0.5mm</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CalculiX</p></td>
+<td><p>441.14 Hz</p></td>
+<td><p>440.29 Hz</p></td>
+<td><p>440.00 Hz</p></td>
+</tr>
+<tr class="row-odd"><td><p>Code_Aster</p></td>
+<td><p>441.16 Hz</p></td>
+<td><p>440.29 Hz</p></td>
+<td><p>440.00 Hz</p></td>
+</tr>
+<tr class="row-even"><td><p>Elmer</p></td>
+<td><p>441.26 Hz</p></td>
+<td><p>440.30 Hz</p></td>
+<td><p>440.00 Hz</p></td>
+</tr>
+</tbody>
+</table>
+<div class="figure align-default" id="tetrahedral-mesh-comparison">
+<a class="reference internal image-reference" href="../../_images/tet-comparison.png"><img alt="Tetrahedral mesh comparison" src="../../_images/tet-comparison.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Graph representing results of the simulation with tetrahedral mesh</span><a class="headerlink" href="#tetrahedral-mesh-comparison" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="linear-hexahedral-mesh">
@@ -524,43 +552,6 @@
 </tr>
 </tbody>
 </table>
-<div class="figure align-default" id="linear-hexahedral-mesh-fork-results">
-<a class="reference internal image-reference" href="../../_images/Linear-hexahedral-mesh.png"><img alt="Linear hexahedral mesh Results" src="../../_images/Linear-hexahedral-mesh.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Chart representing results of the simulation with linear hexahedral mesh</span><a class="headerlink" href="#linear-hexahedral-mesh-fork-results" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="quadratic-tetrahedral-mesh">
-<h2>Quadratic tetrahedral mesh<a class="headerlink" href="#quadratic-tetrahedral-mesh" title="Permalink to this headline">¶</a></h2>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Solver</p></th>
-<th class="head"><p>Mesh element size = 2mm</p></th>
-<th class="head"><p>Mesh element size = 1mm</p></th>
-<th class="head"><p>Mesh element size = 0.5mm</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>CalculiX</p></td>
-<td><p>441.14 Hz</p></td>
-<td><p>440.29 Hz</p></td>
-<td><p>440.00 Hz</p></td>
-</tr>
-<tr class="row-odd"><td><p>Code_Aster</p></td>
-<td><p>441.16 Hz</p></td>
-<td><p>440.29 Hz</p></td>
-<td><p>440.00 Hz</p></td>
-</tr>
-<tr class="row-even"><td><p>Elmer</p></td>
-<td><p>441.26 Hz</p></td>
-<td><p>440.30 Hz</p></td>
-<td><p>440.00 Hz</p></td>
-</tr>
-</tbody>
-</table>
-<div class="figure align-default" id="quadratic-tetrahedral-mesh-fork-results">
-<a class="reference internal image-reference" href="../../_images/Quadratic-tetrahedral-mesh.png"><img alt="Quadratic tetrahedral mesh Results" src="../../_images/Quadratic-tetrahedral-mesh.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Chart representing results of the simulation with quadratic tetrahedral mesh</span><a class="headerlink" href="#quadratic-tetrahedral-mesh-fork-results" title="Permalink to this image">¶</a></p>
-</div>
 </div>
 <div class="section" id="quadratic-hexahedral-mesh">
 <h2>Quadratic hexahedral mesh<a class="headerlink" href="#quadratic-hexahedral-mesh" title="Permalink to this headline">¶</a></h2>
@@ -590,42 +581,9 @@
 </tr>
 </tbody>
 </table>
-<div class="figure align-default" id="quadratic-hexahedral-mesh-fork-results">
-<a class="reference internal image-reference" href="../../_images/Quadratic-hexahedral-mesh.png"><img alt="Quadratic hexahedral mesh Results" src="../../_images/Quadratic-hexahedral-mesh.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Chart representing results of the simulation with quadratic hexahedral mesh</span><a class="headerlink" href="#quadratic-hexahedral-mesh-fork-results" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="quadratic-wedge-mesh">
-<h2>Quadratic wedge mesh<a class="headerlink" href="#quadratic-wedge-mesh" title="Permalink to this headline">¶</a></h2>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Solver</p></th>
-<th class="head"><p>Mesh element size = 2mm</p></th>
-<th class="head"><p>Mesh element size = 1mm</p></th>
-<th class="head"><p>Mesh element size = 0.5mm</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>CalculiX</p></td>
-<td><p>441.16 Hz</p></td>
-<td><p>440.32 Hz</p></td>
-<td><p>440.0090 Hz</p></td>
-</tr>
-<tr class="row-odd"><td><p>Code_Aster</p></td>
-<td><p>441.35 Hz</p></td>
-<td><p>440.34 Hz</p></td>
-<td><p>440.0104 Hz</p></td>
-</tr>
-<tr class="row-even"><td><p>Elmer</p></td>
-<td><p>441.35 Hz</p></td>
-<td><p>440.34 Hz</p></td>
-<td><p>440.0104 Hz</p></td>
-</tr>
-</tbody>
-</table>
-<div class="figure align-default" id="quadratic-wedge-mesh-fork-results">
-<a class="reference internal image-reference" href="../../_images/Quadratic-wedge-mesh.png"><img alt="Quadratic wedge mesh Results" src="../../_images/Quadratic-wedge-mesh.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Chart representing results of the simulation with quadratic wedge mesh</span><a class="headerlink" href="#quadratic-wedge-mesh-fork-results" title="Permalink to this image">¶</a></p>
+<div class="figure align-default" id="hexahedral-mesh-comparison">
+<a class="reference internal image-reference" href="../../_images/hex-comparison.png"><img alt="Hexahedral mesh comparison" src="../../_images/hex-comparison.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Graph representing results of the simulation with hexahedral mesh</span><a class="headerlink" href="#hexahedral-mesh-comparison" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
