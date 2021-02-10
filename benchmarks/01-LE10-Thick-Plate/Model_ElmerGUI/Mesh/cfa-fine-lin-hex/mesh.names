@@ -1,13 +1,10 @@
 ! ----- names for bodies -----
-$ E_3_PART_1 = 1
-$ E_4_EOUT = 2
+$ ELIPSE = 1
 ! ----- names for boundaries -----
-$ E_2_DISTFO = 1
-$ N_1_LOAD = 2
-$ N_2_AB = 3
-$ N_3_BC = 4
-$ N_4_DC = 5
-$ N_5_MID = 6
-$ N_6_EOUT = 7
-$ N_7_DISTFO = 8
-$ N_8_PART_1 = 9
+$ bnry2 = 1
+$ AB = 2
+$ PRESSURE = 3
+$ CD = 4
+$ BC = 5
+$ bnry2 = 6
+$ EE = 7
