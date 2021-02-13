@@ -75,5 +75,5 @@ fea_software/elmer.md
 :caption: Benchmarks
 
 benchmarks/000-tuning-fork/index
-benchmarks/001-LE10-THICK-PLATE/index
+benchmarks/001-thick-plate/index
 ```

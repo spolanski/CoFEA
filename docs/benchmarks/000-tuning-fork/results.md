@@ -30,6 +30,16 @@ A few conclusions can be derived from the presented study:
 |              4 |     1827.55 Hz     |  1825.55 Hz |   1825.63 Hz  | 1825.63 Hz |
 |              5 |     2788.66 Hz     |  2777.73 Hz |   2777.56 Hz  | 2777.56 Hz |
 
+```{figure} ./code-comparison.png
+---
+width: 600px
+alt: FE codes comparison
+name: FE codes comparison
+---
+Comparison of FE codes
+```
+
+
 ## Linear tetrahedral mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
@@ -38,14 +48,21 @@ A few conclusions can be derived from the presented study:
 | Code_Aster            |  564.48 Hz              |  490.90 Hz              |  455.63 Hz                |
 | Elmer                 |  564.48 Hz              |  490.90 Hz              |  455.63 Hz                |
 
+## Quadratic tetrahedral mesh
 
-```{figure} ./Linear-tetrahedral-mesh.png
+| Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
+|-----------------------|-----------------------  |-------------------------|---------------------------|
+| CalculiX              |  441.14 Hz              |  440.29 Hz              |  440.00 Hz              |    
+| Code_Aster            |  441.16 Hz              |  440.29 Hz              |  440.00 Hz              |
+| Elmer                 |  441.26 Hz              |  440.30 Hz              |  440.00 Hz              |
+
+```{figure} ./tet-comparison.png
 ---
-width: 500px
-alt: Linear tetrahedral mesh Results
-name: Liner tetrahedral mesh Fork Results
+width: 600px
+alt: Tetrahedral mesh comparison
+name: Tetrahedral mesh comparison
 ---
-Chart representing results of the simulation with linear tetrahedral mesh
+Graph representing results of the simulation with tetrahedral mesh 
 ```
 
 ## Linear hexahedral mesh
@@ -56,32 +73,6 @@ Chart representing results of the simulation with linear tetrahedral mesh
 | Code_Aster            |  496.87 Hz              |  455.34 Hz              |  444.22 Hz                |
 | Elmer                 |  496.87 Hz              |  455.34 Hz              |  444.22 Hz                |
 
-```{figure} ./Linear-hexahedral-mesh.png
----
-width: 500px
-alt: Linear hexahedral mesh Results
-name: Linear hexahedral mesh Fork Results
----
-Chart representing results of the simulation with linear hexahedral mesh
-```
-
-## Quadratic tetrahedral mesh
-
-| Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
-|-----------------------|-----------------------  |-------------------------|---------------------------|
-| CalculiX              |  441.14 Hz              |  440.29 Hz              |  440.00 Hz              |    
-| Code_Aster            |  441.16 Hz              |  440.29 Hz              |  440.00 Hz              |
-| Elmer                 |  441.26 Hz              |  440.30 Hz              |  440.00 Hz              |
-
-```{figure} ./Quadratic-tetrahedral-mesh.png
----
-width: 500px
-alt: Quadratic tetrahedral mesh Results
-name: Quadratic tetrahedral mesh Fork Results
----
-Chart representing results of the simulation with quadratic tetrahedral mesh
-```
-
 ## Quadratic hexahedral mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
@@ -90,28 +81,11 @@ Chart representing results of the simulation with quadratic tetrahedral mesh
 | Code_Aster            |  441.10 Hz              |  440.49 Hz              |  440.09 Hz              |
 | Elmer                 |  441.10 Hz              |  440.49 Hz              |  440.09 Hz              |
 
-```{figure} ./Quadratic-hexahedral-mesh.png
+```{figure} ./hex-comparison.png
 ---
-width: 500px
-alt: Quadratic hexahedral mesh Results
-name: Quadratic hexahedral mesh Fork Results
+width: 600px
+alt: Hexahedral mesh comparison
+name: Hexahedral mesh comparison
 ---
-Chart representing results of the simulation with quadratic hexahedral mesh
-```
-
-## Quadratic wedge mesh
-
-| Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
-|-----------------------|-----------------------  |-------------------------|---------------------------|
-| CalculiX              |  441.16 Hz              |  440.32 Hz              |  440.0090 Hz              |    
-| Code_Aster            |  441.35 Hz              |  440.34 Hz              |  440.0104 Hz              |
-| Elmer                 |  441.35 Hz              |  440.34 Hz              |  440.0104 Hz              |
-
-```{figure} ./Quadratic-wedge-mesh.png
----
-width: 500px
-alt: Quadratic wedge mesh Results
-name: Quadratic wedge mesh Fork Results
----
-Chart representing results of the simulation with quadratic wedge mesh
+Graph representing results of the simulation with hexahedral mesh 
 ```
