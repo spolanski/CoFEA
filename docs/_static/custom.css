@@ -41,7 +41,7 @@ td p{
   --borderWidth: 2px;
   background: #FFFFFF;
   position: relative;
-  width: 125%;
+  width: 150%;
 }
 .cell_output:after {
   content: '';
