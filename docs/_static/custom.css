@@ -38,10 +38,9 @@ td p{
 }
 
 .cell_output {
-  --borderWidth: 3px;
+  --borderWidth: 2px;
   background: #FFFFFF;
   position: relative;
-  border-radius: var(--borderWidth);
   width: 75%;
 }
 .cell_output:after {
@@ -51,8 +50,7 @@ td p{
   left: calc(-1 * var(--borderWidth));
   height: calc(100% + var(--borderWidth) * 2);
   width: calc(100% + var(--borderWidth) * 2);
-  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-  border-radius: calc(2 * var(--borderWidth));
+  background: linear-gradient(60deg, #000000, #333333, #999999);
   z-index: -1;
   animation: animatedgradient 3s ease alternate infinite;
   background-size: 300% 300%;
