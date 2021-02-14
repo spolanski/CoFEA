@@ -11,7 +11,7 @@ Simulation input files used in this study can be found on our [GitHub](https://g
 :hide-code:
 import numpy as np
 import pyvista as pv
-from ipywidgets import FloatSlider, FloatRangeSlider, Dropdown, Select, VBox, AppLayout, jslink
+from ipywidgets import FloatSlider, FloatRangeSlider, Dropdown, Select, Box, AppLayout, jslink
 from ipygany import Scene, IsoColor, TetraMesh, Component, ColorBar, colormaps
 
 
@@ -42,9 +42,12 @@ jslink((colored_mesh, 'colormap'), (colormap, 'index'))
 
 
 AppLayout(
-    left_sidebar=Scene([colored_mesh]),
-    right_sidebar=VBox((colormap_slider_range, colormap, colorbar)),
-    pane_widths=[2, 0, 1]
+    center=Scene([colored_mesh]),
+    header=Box((colormap, colorbar)),
+    footer=Box((colormap_slider_range,)),
+    pane_heights=['10%', 1, '10%'],
+    justify_content='center',
+    align_content='center',
 )
 ```
 ```{Tip}
