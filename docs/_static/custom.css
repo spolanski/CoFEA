@@ -41,7 +41,6 @@ td p{
   --borderWidth: 2px;
   background: #FFFFFF;
   position: relative;
-  width: 125%;
 }
 .cell_output:after {
   content: '';
@@ -67,4 +66,11 @@ td p{
 	100% {
 		background-position: 0% 50%;
 	}
+}
+
+.widget-box{
+    overflow: visible!important;
+}
+.widget-vbox{
+    overflow: visible!important;
 }

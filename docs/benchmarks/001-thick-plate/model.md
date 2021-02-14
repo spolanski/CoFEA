@@ -42,9 +42,9 @@ jslink((colored_mesh, 'colormap'), (colormap, 'index'))
 
 
 AppLayout(
-    left_sidebar=Scene([colored_mesh]),
+    center=Scene([colored_mesh]),
     right_sidebar=VBox((colormap_slider_range, colormap, colorbar)),
-    pane_widths=[2, 0, 1]
+    pane_widths=[2, 2, 1]
 )
 ```
 ```{Tip}
