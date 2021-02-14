@@ -3,7 +3,7 @@
 /* Give bottom margin to images */
 tr,
 th,
-td { 
+td {
     text-align: center;
     vertical-align: middle;
     padding: 0.1em;
@@ -41,7 +41,7 @@ td p{
   --borderWidth: 2px;
   background: #FFFFFF;
   position: relative;
-  width: 75%;
+  width: 125%;
 }
 .cell_output:after {
   content: '';
@@ -68,5 +68,3 @@ td p{
 		background-position: 0% 50%;
 	}
 }
-
-
