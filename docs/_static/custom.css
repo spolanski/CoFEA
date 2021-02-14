@@ -67,10 +67,3 @@ td p{
 		background-position: 0% 50%;
 	}
 }
-
-.widget-box{
-    overflow: visible!important;
-}
-.widget-vbox{
-    overflow: visible!important;
-}
