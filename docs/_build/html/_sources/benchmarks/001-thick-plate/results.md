@@ -8,7 +8,7 @@ A few conclusions can be derived from the presented study:
 
 1. It is possible to use open-source software and achieve correct solution.
 2. CalculiX and Code_Aster gave very similar response in tetrahedral meshes, the Elmer shines in hexahedral quadratic meshes.
-3. Calculix performs significanlty worse than other solvers in linear hexahedral meshes. 
+3. Code_Aster and Elmer seem to give almost the same answers as it comes to tetrahedral meshes.
 4. For the thick plate model, the quadratic shape tetrahedral mesh gives a more accurate answer than the linear one. The very fine linear hexahedral mesh achieve more precise solution than coarse quadratic hexahedral mesh.
 
 
