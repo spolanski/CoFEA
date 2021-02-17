@@ -1,0 +1,19 @@
+Elmer version: 9.0
+Elmer compilation date: 2021-02-09
+Solver input file: case.sif
+File started at: 2021/02/17 19:35:28
+ 
+Variables in columns of matrix: ./file1.dat
+   1: value: displacement 1 at node      33
+   2: value: displacement 2 at node      33
+   3: value: displacement 3 at node      33
+   4: value: stress_xx at node      33
+   5: value: stress_yy at node      33
+   6: value: stress_zz at node      33
+   7: value: stress_xy at node      33
+   8: value: stress_yz at node      33
+   9: value: stress_xz at node      33
+  10: value: vonmises at node      33
+  11: value: coordinate 1 at node      33
+  12: value: coordinate 2 at node      33
+  13: value: coordinate 3 at node      33

@@ -1,0 +1,9 @@
+! ----- names for bodies -----
+$ ELIPSE = 18
+! ----- names for boundaries -----
+$ bnry2 = 2
+$ AB = 13
+$ PRESSURE = 14
+$ CD = 15
+$ BC = 16
+$ EE = 19

@@ -5,7 +5,7 @@ plt.close('all')
 
 def mesh_study():
     plot_title = 'Tetrahedral mesh comparison'
-    file_name = 'tet-comparison.png'
+    file_name = 'tet-comparison_thick_plate.png'
     results = pd.read_csv('elipse_results.csv')
 
     lin_type = results['Mesh type'] == 'Linear-Tet'
