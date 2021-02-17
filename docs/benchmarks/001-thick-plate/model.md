@@ -11,7 +11,7 @@ Simulation input files used in this study can be found on our [GitHub](https://g
 :hide-code:
 import numpy as np
 import pyvista as pv
-from ipywidgets import FloatSlider, FloatRangeSlider, Dropdown, Select, Box, AppLayout, jslink
+from ipywidgets import FloatSlider, FloatRangeSlider, Dropdown, Select, Box, AppLayout, jslink, Layout, VBox, HBox
 from ipygany import Scene, IsoColor, TetraMesh, Component, ColorBar, colormaps
 
 
@@ -40,18 +40,20 @@ colormap = Dropdown(
 
 jslink((colored_mesh, 'colormap'), (colormap, 'index'))
 
-
 AppLayout(
-    center=Scene([colored_mesh]),
-    header=Box((colormap, colorbar)),
-    footer=Box((colormap_slider_range,)),
-    pane_heights=['10%', 1, '10%'],
-    justify_content='center',
-    align_content='center',
+    header=Scene([colored_mesh]),
+    left_sidebar=VBox((colormap, colormap_slider_range)),
+    right_sidebar=(colorbar),
+    pane_widths=[1, 0, 1],
+    pane_heights=['80%','20%',0],
+    footer=None,
 )
 ```
+
+
+
 ```{Tip}
-The benchmark geometry shown above is interactive and shows $\sigma_{yy}$ results in Pa.
+The benchmark geometry shown above is interactive and shows $\sigma_{yy}$ results in [Pa].
 ```
 
 ```{figure} .   /sketch.png
