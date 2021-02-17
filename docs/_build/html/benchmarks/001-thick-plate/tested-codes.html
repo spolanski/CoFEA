@@ -344,6 +344,13 @@
   <a class="reference internal nav-link" href="#calculix">
    CalculiX
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-apply-pressure-boundary-condition">
+     How to apply pressure boundary condition
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#code-aster">
@@ -424,6 +431,20 @@
 </pre></div>
 </div>
 <p>The simulation input file used in this study can be found on our <a class="reference external" href="https://github.com/spolanski/CoFEA/tree/master/benchmarks/01-LE10-Thick-Plate/Model_CalculiX">GitHub</a>!</p>
+<div class="section" id="how-to-apply-pressure-boundary-condition">
+<h3>How to apply pressure boundary condition<a class="headerlink" href="#how-to-apply-pressure-boundary-condition" title="Permalink to this headline">¶</a></h3>
+<p>Please open your mesh with CalculiX GraphiX in read mode using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cgx</span> <span class="o">-</span><span class="n">c</span> <span class="n">mesh_file</span><span class="o">.</span><span class="n">inp</span>
+</pre></div>
+</div>
+<p>Then in CGX window please click right button of mouse and choose Toggle command line. In command line please write:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">comp</span> <span class="n">NODESET</span> <span class="n">do</span>
+<span class="n">send</span> <span class="n">NODESET</span> <span class="n">abq</span> <span class="n">press</span> <span class="n">value_of_press</span>
+</pre></div>
+</div>
+<p>In the same directory should appear file called NODESET.dlo which need to be included in *DLOAD section to apply pressure to boundary.
+Positive value of pressure goes is compressing the element face.</p>
+</div>
 </div>
 <div class="section" id="code-aster">
 <h2>Code_Aster<a class="headerlink" href="#code-aster" title="Permalink to this headline">¶</a></h2>
@@ -687,34 +708,34 @@
 <span class="n">End</span>
 
 <span class="n">Boundary</span> <span class="n">Condition</span> <span class="mi">1</span>                                <span class="c1"># Applying the boundary conditions</span>
-  <span class="n">Target</span> <span class="n">Boundaries</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="n">Target</span> <span class="n">Boundaries</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">13</span>
   <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;AB&quot;</span>
   <span class="n">Displacement</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">End</span>
 
 <span class="n">Boundary</span> <span class="n">Condition</span> <span class="mi">2</span>
-  <span class="n">Target</span> <span class="n">Boundaries</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">6</span>
+  <span class="n">Target</span> <span class="n">Boundaries</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">15</span>
   <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;CD&quot;</span>
   <span class="n">Displacement</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">End</span>
 
 <span class="n">Boundary</span> <span class="n">Condition</span> <span class="mi">3</span>
-  <span class="n">Target</span> <span class="n">Boundaries</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">4</span>
+  <span class="n">Target</span> <span class="n">Boundaries</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">16</span>
   <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;BC&quot;</span>
-  <span class="n">Displacement</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">0</span>
   <span class="n">Displacement</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">Displacement</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">End</span>
 
 <span class="n">Boundary</span> <span class="n">Condition</span> <span class="mi">4</span>
-  <span class="n">Target</span> <span class="n">Boundaries</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
-  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;LOAD&quot;</span>
-  <span class="n">Normal</span> <span class="n">Force</span> <span class="o">=</span> <span class="mf">1e6</span>
+  <span class="n">Target</span> <span class="n">Boundaries</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">19</span>
+  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;EE&quot;</span>
+  <span class="n">Displacement</span> <span class="mi">3</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">End</span>
 
 <span class="n">Boundary</span> <span class="n">Condition</span> <span class="mi">5</span>
-  <span class="n">Target</span> <span class="n">Boundaries</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">9</span>
-  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;EE&quot;</span>
-  <span class="n">Displacement</span> <span class="mi">3</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">Target</span> <span class="n">Boundaries</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">14</span>
+  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;LOAD&quot;</span>
+  <span class="n">Normal</span> <span class="n">Force</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1e6</span>
 <span class="n">End</span>
 
 </pre></div>

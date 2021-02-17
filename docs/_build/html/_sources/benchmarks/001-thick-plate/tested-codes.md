@@ -58,6 +58,22 @@ CalculiX supports elastic simulation. Below there is an explanation of the input
 ```
 The simulation input file used in this study can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/benchmarks/01-LE10-Thick-Plate/Model_CalculiX)!
 
+### How to apply pressure boundary condition
+
+Please open your mesh with CalculiX GraphiX in read mode using:
+
+```
+cgx -c mesh_file.inp
+```
+Then in CGX window please click right button of mouse and choose Toggle command line. In command line please write:
+
+```
+comp NODESET do
+send NODESET abq press value_of_press
+```
+In the same directory should appear file called NODESET.dlo which need to be included in *DLOAD section to apply pressure to boundary.
+Positive value of pressure goes is compressing the element face.
+
 ## Code_Aster
 
 Code_Aster supports elastic simulation. Below there is an explanation of the input file.
@@ -324,34 +340,34 @@ Material 1                                          # Defining the material
 End
 
 Boundary Condition 1                                # Applying the boundary conditions
-  Target Boundaries(1) = 3
+  Target Boundaries(1) = 13
   Name = "AB"
   Displacement 1 = 0
 End
 
 Boundary Condition 2
-  Target Boundaries(1) = 6
+  Target Boundaries(1) = 15
   Name = "CD"
   Displacement 2 = 0
 End
 
 Boundary Condition 3
-  Target Boundaries(1) = 4
+  Target Boundaries(1) = 16
   Name = "BC"
-  Displacement 2 = 0
   Displacement 1 = 0
+  Displacement 2 = 0
 End
 
 Boundary Condition 4
-  Target Boundaries(1) = 1
-  Name = "LOAD"
-  Normal Force = 1e6
+  Target Boundaries(1) = 19
+  Name = "EE"
+  Displacement 3 = 0
 End
 
 Boundary Condition 5
-  Target Boundaries(1) = 9
-  Name = "EE"
-  Displacement 3 = 0
+  Target Boundaries(1) = 14
+  Name = "LOAD"
+  Normal Force = -1e6
 End
 
 ```

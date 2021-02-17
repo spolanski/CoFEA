@@ -7,7 +7,7 @@ Number of simulations with different element types and mesh size have been perfo
 A few conclusions can be derived from the presented study:
 
 1. It is possible to use open-source software and achieve correct solution.
-2. CalculiX and Code_Aster gave very similar response in tetrahedral meshes, the Elmer shines in hexahedral quadratic meshes.
+2. CalculiX and Code_Aster gave very similar response in tetrahedral meshes, the Elmer outperforms other solvers in linear tetrahedral and hexahedral quadratic meshes.
 3. Code_Aster and Elmer seem to give almost the same answers as it comes to tetrahedral meshes.
 4. For the thick plate model, the quadratic shape tetrahedral mesh gives a more accurate answer than the linear one. The very fine linear hexahedral mesh achieve more precise solution than coarse quadratic hexahedral mesh.
 
@@ -18,7 +18,7 @@ A few conclusions can be derived from the presented study:
 |-----------------------|-------------------------|-------------------------|
 | CalculiX              | -1.51 MPa               | -4.38 MPa               |    
 | Code_Aster            | -1.51 MPa               | -4.38 MPa               |
-| Elmer                 | -2.84 MPa               | -2.53 MPa               |
+| Elmer                 | -2.64 MPa               | -5.49 MPa               |
 
 ## Quadratic tetrahedral mesh
 
@@ -26,7 +26,7 @@ A few conclusions can be derived from the presented study:
 |-----------------------|-------------------------|-------------------------|
 | CalculiX              | -5.45 MPa               |  -5.77 MPa              |    
 | Code_Aster            | -5.51 MPa               |  -5.85 MPa              |
-| Elmer                 | -2.78 MPa               |  -3.51 MPa              |
+| Elmer                 | -4.58 MPa               |  -5.50 MPa              |
 
 ```{figure} ./tet-comparison_thick_plate.png
 ---
@@ -43,7 +43,7 @@ Graph representing results of the simulation with tetrahedral mesh
 |-----------------------|-------------------------|-------------------------|
 | CalculiX              | -2.75 MPa               |  -3.08 MPa              |    
 | Code_Aster            | -4.05 MPa               |  -5.42 MPa              |
-| Elmer                 | -1.02 MPa               |  -5.02 MPa              |
+| Elmer                 | -4.52 MPa               |  -5.02 MPa              |
 
 ## Quadratic hexahedral mesh
 
