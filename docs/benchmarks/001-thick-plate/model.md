@@ -51,7 +51,7 @@ AppLayout(
 )
 ```
 ```{Tip}
-The benchmark geometry shown above is interactive
+The benchmark geometry shown above is interactive and shows $\sigma_{yy}$ results in Pa.
 ```
 
 ```{figure} .   /sketch.png
