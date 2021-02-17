@@ -18,7 +18,7 @@ A few conclusions can be derived from the presented study:
 |-----------------------|-------------------------|-------------------------|
 | CalculiX              | -1.51 MPa               | -4.38 MPa               |    
 | Code_Aster            | -1.51 MPa               | -4.38 MPa               |
-| Elmer                 | -2.84 MPa               | -2.53 MPa               |
+| Elmer                 | -2.64 MPa               | -5.49 MPa               |
 
 ## Quadratic tetrahedral mesh
 
@@ -26,7 +26,7 @@ A few conclusions can be derived from the presented study:
 |-----------------------|-------------------------|-------------------------|
 | CalculiX              | -5.45 MPa               |  -5.77 MPa              |    
 | Code_Aster            | -5.51 MPa               |  -5.85 MPa              |
-| Elmer                 | -2.78 MPa               |  -3.51 MPa              |
+| Elmer                 | -4.58 MPa               |  -5.50 MPa              |
 
 ```{figure} ./tet-comparison_thick_plate.png
 ---
@@ -43,7 +43,7 @@ Graph representing results of the simulation with tetrahedral mesh
 |-----------------------|-------------------------|-------------------------|
 | CalculiX              | -2.75 MPa               |  -3.08 MPa              |    
 | Code_Aster            | -4.05 MPa               |  -5.42 MPa              |
-| Elmer                 | -1.02 MPa               |  -5.02 MPa              |
+| Elmer                 | -4.52 MPa               |  -5.02 MPa              |
 
 ## Quadratic hexahedral mesh
 
