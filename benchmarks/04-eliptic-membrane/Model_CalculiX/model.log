@@ -1,0 +1,221 @@
+DEBUG: Running from binaries.
+INFO: Application's home directory is:
+/home/maciej/Calculix/cae
+INFO: Work directory is:
+/home/maciej/Documents/Eliptic_membrane/CCX
+DEBUG: Stopping threads:
+thread_1_read_cgx_stdout_1612822075
+
+INFO: Keywords object model generated.
+INFO: Loading model
+/home/maciej/Documents/Eliptic_membrane/CCX/model.inp
+
+DEBUG: *INCLUDE, INPUT=Mesh/cfa-fine-quad-hex.inp
+DEBUG: keyword_chain: *INCLUDE
+DEBUG: path found: *INCLUDE
+INFO: *INCLUDE INCLUDE-1 created.
+
+DEBUG: *NODE, NSET=NALL
+DEBUG: keyword_chain: *INCLUDE, *NODE
+DEBUG: path found: Mesh, *NODE
+INFO: *NODE NALL created.
+
+DEBUG: *ELEMENT, TYPE=B31, ELSET=B31
+DEBUG: keyword_chain: *NODE, *ELEMENT
+DEBUG: path found: Mesh, *ELEMENT
+INFO: *ELEMENT B31 created.
+
+DEBUG: *ELEMENT, TYPE=CPS4, ELSET=CPS4
+DEBUG: keyword_chain: *ELEMENT
+DEBUG: path found: Mesh, *ELEMENT
+INFO: *ELEMENT CPS4 created.
+
+DEBUG: *NSET, NSET=AB
+DEBUG: keyword_chain: *ELEMENT, *NSET
+DEBUG: path found: Mesh, *NSET
+INFO: *NSET AB created.
+
+DEBUG: *NSET, NSET=CD
+DEBUG: keyword_chain: *NSET
+DEBUG: path found: Mesh, *NSET
+INFO: *NSET CD created.
+
+DEBUG: *NSET, NSET=BC
+DEBUG: keyword_chain: *NSET
+DEBUG: path found: Mesh, *NSET
+INFO: *NSET BC created.
+
+DEBUG: *NSET, NSET=ELIPSE
+DEBUG: keyword_chain: *NSET
+DEBUG: path found: Mesh, *NSET
+INFO: *NSET ELIPSE created.
+
+DEBUG: *ELSET, ELSET=ELIPSE
+DEBUG: keyword_chain: *NSET, *ELSET
+DEBUG: path found: Mesh, *ELSET
+INFO: *ELSET ELIPSE created.
+
+DEBUG: *ELSET, ELSET=BC
+DEBUG: keyword_chain: *ELSET
+DEBUG: path found: Mesh, *ELSET
+INFO: *ELSET BC created.
+
+DEBUG: *MATERIAL, NAME=Steel
+DEBUG: keyword_chain: *ELSET, *MATERIAL
+DEBUG: path found: Properties, *MATERIAL
+INFO: *MATERIAL Steel created.
+
+DEBUG: *DENSITY
+DEBUG: keyword_chain: *MATERIAL, *DENSITY
+DEBUG: path found: Properties, *MATERIAL, *DENSITY
+INFO: *DENSITY DENSITY-1 created.
+
+DEBUG: *ELASTIC,
+DEBUG: keyword_chain: *MATERIAL, *DENSITY, *ELASTIC
+DEBUG: path found: Properties, *MATERIAL, *ELASTIC
+INFO: *ELASTIC ELASTIC-1 created.
+
+DEBUG: *SOLID SECTION, ELSET=ELIPSE, MATERIAL=Steel
+DEBUG: keyword_chain: *MATERIAL, *DENSITY, *ELASTIC, *SOLID SECTION
+DEBUG: path found: Properties, Section, *SOLID SECTION
+INFO: *SOLID SECTION ELIPSE created.
+
+DEBUG: *STEP
+DEBUG: keyword_chain: *SOLID SECTION, *STEP
+DEBUG: path found: *STEP
+INFO: *STEP STEP-1 created.
+
+DEBUG: *STATIC, SOLVER=SPOOLES
+DEBUG: keyword_chain: *STEP, *STATIC
+DEBUG: path found: *STEP, Analysis type, *STATIC
+INFO: *STATIC STATIC-1 created.
+
+DEBUG: *EL FILE
+DEBUG: keyword_chain: *STEP, *STATIC, *EL FILE
+DEBUG: path found: *STEP, Field Output, *EL FILE
+INFO: *EL FILE EL FILE-1 created.
+
+DEBUG: *NODE FILE
+DEBUG: keyword_chain: *STEP, *STATIC, *EL FILE, *NODE FILE
+DEBUG: path found: *STEP, Field Output, *NODE FILE
+INFO: *NODE FILE NODE FILE-1 created.
+
+DEBUG: *BOUNDARY,
+DEBUG: keyword_chain: *STEP, *STATIC, *EL FILE, *NODE FILE, *BOUNDARY
+DEBUG: path found: *STEP, Load & BC, *BOUNDARY
+INFO: *BOUNDARY BOUNDARY-1 created.
+
+DEBUG: *BOUNDARY
+DEBUG: keyword_chain: *STEP, *STATIC, *EL FILE, *NODE FILE, *BOUNDARY
+DEBUG: path found: *STEP, Load & BC, *BOUNDARY
+INFO: *BOUNDARY BOUNDARY-2 created.
+
+DEBUG: *DLOAD
+DEBUG: keyword_chain: *STEP, *STATIC, *EL FILE, *NODE FILE, *BOUNDARY, *DLOAD
+DEBUG: path found: *STEP, Load & BC, *DLOAD
+INFO: *DLOAD DLOAD-1 created.
+
+DEBUG: *END STEP
+DEBUG: keyword_chain: *STEP, *STATIC, *EL FILE, *NODE FILE, *BOUNDARY, *DLOAD, *END STEP
+DEBUG: path found: *STEP, *END STEP
+INFO: *END STEP END STEP-1 created.
+INFO: Mesh parser:
+35 nodes
+5 nsets
+58 elements
+4 elsets
+0 surfaces
+DEBUG: Killed CGX, PID=29152.
+DEBUG: CGX PID=29205
+DEBUG: CalculiX GraphiX WID=0x05e00001
+
+DEBUG: Logging threads:
+thread_1_read_cgx_stdout_1612822128
+
+on a Linux machine, nodename maciej-ThinkPad-T440p, release 5.4.0-65-generic, version #73~18.04.1-Ubuntu SMP Tue Jan 19 09:02:24 UTC 2021, machine x86_64
+ The HOME was detected:/home/maciej
+parameters:3 arguments:2
+GL_MAX_EVAL_ORDER:8, mesh threads:1
+ Try to read ccx input
+
+******************************************************************************
+*  read ccx input                                   4.4.2002 wi              *
+*                                                                            *
+*                                                                            *
+* -only free-format is supported. fixed format might cause a prg-crash.      *
+*                                                                            *
+*                                                                            *
+******************************************************************************
+ ignore statement: *NODEFILE
+
+ 35 nodes reallocated
+
+ 58 elements reallocated
+WARNING: *ELFILE not known. Data ignored.
+ create dataset:0 name= +bou
+WARNING: *ENDSTEP not known. Data ignored.
+ generate node-values for set:+dlo_ds1
+ fill dataset:1 name= +dlo
+ ncomps:2
+max min :-100000003318135351409612647563264.000000 100000003318135351409612647563264.000000
+ Elements: 58 Nodes:35 Datasets:2  MinElemNr: 1 MaxElemNr: 58 MinNodNr:1 MaxNodNr:35  read in 0.067397 sec
+ found elements of type 1: 0
+ found elements of type 2: 0
+ found elements of type 3: 0
+ found elements of type 4: 0
+ found elements of type 5: 0
+ found elements of type 6: 0
+ found elements of type 7: 0
+ found elements of type 8: 0
+ found elements of type 9: 24
+ found elements of type 10: 0
+ found elements of type 11: 34
+ found elements of type 12: 0
+gtol calculated:4.062500e-10
+
+read /home/maciej/Calculix/cae/config/iso.fbd
+
+/home/maciej/Calculix/cae/config/iso.fbd opened
+ reading file
+ done
+
+gtol calculated:4.062500e-10
+ ready
+read /home/maciej/Calculix/cae/config/colors.fbd
+
+/home/maciej/Calculix/cae/config/colors.fbd opened
+ reading file
+ done
+
+gtol calculated:4.062500e-10
+ ready
+plot e B31
+plot e BC
+plot e ELIPSE
+plot e CPS4
+plot e B31
+plot e BC
+plot e BC
+plot e ELIPSE
+
+DEBUG: Argument ELSET
+DEBUG: 	Keyword *ELSET
+DEBUG: 		Implementations ['ELIPSE', 'BC']
+DEBUG: 		Argument items []
+
+DEBUG: Argument MATERIAL
+DEBUG: 	Keyword *MATERIAL
+DEBUG: 		Implementations ['Steel']
+DEBUG: 		Argument items []
+
+DEBUG: Argument ORIENTATION
+DEBUG: 	Keyword *ORIENTATION
+DEBUG: 		Implementations []
+DEBUG: 		Argument items []
+plot e B31
+plot e ELIPSE
+plot e BC
+plot e B31
+
+INFO: END
+DEBUG: Killed CGX, PID=29205.

@@ -1,0 +1,120 @@
+ ELEMENT            1 with label "CPS4    " and with nodes:
+          2         13         30         14
+  is expanded into a "C3D8  S " element with topology:
+         39         72        123         75         41         74        125         77
+
+ ELEMENT            2 with label "CPS4    " and with nodes:
+         14         30         15          3
+  is expanded into a "C3D8  S " element with topology:
+         75        123         78         42         77        125         80         44
+
+ ELEMENT            3 with label "CPS4    " and with nodes:
+         13          1         16         30
+  is expanded into a "C3D8  S " element with topology:
+         72         36         81        123         74         38         83        125
+
+ ELEMENT            4 with label "CPS4    " and with nodes:
+         30         16          4         15
+  is expanded into a "C3D8  S " element with topology:
+        123         81         45         78        125         83         47         80
+
+ ELEMENT            5 with label "CPS4    " and with nodes:
+          3         15         31         17
+  is expanded into a "C3D8  S " element with topology:
+         42         78        126         84         44         80        128         86
+
+ ELEMENT            6 with label "CPS4    " and with nodes:
+         17         31         18          5
+  is expanded into a "C3D8  S " element with topology:
+         84        126         87         48         86        128         89         50
+
+ ELEMENT            7 with label "CPS4    " and with nodes:
+         15          4         19         31
+  is expanded into a "C3D8  S " element with topology:
+         78         45         90        126         80         47         92        128
+
+ ELEMENT            8 with label "CPS4    " and with nodes:
+         31         19          6         18
+  is expanded into a "C3D8  S " element with topology:
+        126         90         51         87        128         92         53         89
+
+ ELEMENT            9 with label "CPS4    " and with nodes:
+          1         20         32         16
+  is expanded into a "C3D8  S " element with topology:
+         36         93        129         81         38         95        131         83
+
+ ELEMENT           10 with label "CPS4    " and with nodes:
+         16         32         21          4
+  is expanded into a "C3D8  S " element with topology:
+         81        129         96         45         83        131         98         47
+
+ ELEMENT           11 with label "CPS4    " and with nodes:
+         20          7         22         32
+  is expanded into a "C3D8  S " element with topology:
+         93         54         99        129         95         56        101        131
+
+ ELEMENT           12 with label "CPS4    " and with nodes:
+         32         22          8         21
+  is expanded into a "C3D8  S " element with topology:
+        129         99         57         96        131        101         59         98
+
+ ELEMENT           13 with label "CPS4    " and with nodes:
+          4         21         33         19
+  is expanded into a "C3D8  S " element with topology:
+         45         96        132         90         47         98        134         92
+
+ ELEMENT           14 with label "CPS4    " and with nodes:
+         19         33         23          6
+  is expanded into a "C3D8  S " element with topology:
+         90        132        102         51         92        134        104         53
+
+ ELEMENT           15 with label "CPS4    " and with nodes:
+         21          8         24         33
+  is expanded into a "C3D8  S " element with topology:
+         96         57        105        132         98         59        107        134
+
+ ELEMENT           16 with label "CPS4    " and with nodes:
+         33         24          9         23
+  is expanded into a "C3D8  S " element with topology:
+        132        105         60        102        134        107         62        104
+
+ ELEMENT           17 with label "CPS4    " and with nodes:
+          7         25         34         22
+  is expanded into a "C3D8  S " element with topology:
+         54        108        135         99         56        110        137        101
+
+ ELEMENT           18 with label "CPS4    " and with nodes:
+         22         34         26          8
+  is expanded into a "C3D8  S " element with topology:
+         99        135        111         57        101        137        113         59
+
+ ELEMENT           19 with label "CPS4    " and with nodes:
+         25         10         27         34
+  is expanded into a "C3D8  S " element with topology:
+        108         63        114        135        110         65        116        137
+
+ ELEMENT           20 with label "CPS4    " and with nodes:
+         34         27         11         26
+  is expanded into a "C3D8  S " element with topology:
+        135        114         66        111        137        116         68        113
+
+ ELEMENT           21 with label "CPS4    " and with nodes:
+          8         26         35         24
+  is expanded into a "C3D8  S " element with topology:
+         57        111        138        105         59        113        140        107
+
+ ELEMENT           22 with label "CPS4    " and with nodes:
+         24         35         28          9
+  is expanded into a "C3D8  S " element with topology:
+        105        138        117         60        107        140        119         62
+
+ ELEMENT           23 with label "CPS4    " and with nodes:
+         26         11         29         35
+  is expanded into a "C3D8  S " element with topology:
+        111         66        120        138        113         68        122        140
+
+ ELEMENT           24 with label "CPS4    " and with nodes:
+         35         29         12         28
+  is expanded into a "C3D8  S " element with topology:
+        138        120         69        117        140        122         71        119
+
