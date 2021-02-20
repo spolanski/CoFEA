@@ -1,0 +1,85 @@
+Header
+  CHECK KEYWORDS Warn
+  Mesh DB "." "."
+  Include Path ""
+  Results Directory ""
+End
+
+Simulation
+  Max Output Level = 5
+  Coordinate System = Cartesian
+  Coordinate Mapping(3) = 1 2 3
+  Simulation Type = Steady state
+  Steady State Max Iterations = 1
+  Output Intervals = 1
+  Timestepping Method = BDF
+  BDF Order = 1
+  Solver Input File = case.sif
+  Post File = case.vtu
+End
+
+Constants
+  Gravity(4) = 0 -1 0 9.82
+  Stefan Boltzmann = 5.67e-08
+  Permittivity of Vacuum = 8.8542e-12
+  Boltzmann Constant = 1.3807e-23
+  Unit Charge = 1.602e-19
+End
+
+Body 1
+  Target Bodies(1) = 18
+  Name = "Body 1"
+  Equation = 1
+  Material = 1
+End
+
+Solver 1
+  Equation = Linear elasticity
+  Procedure = "StressSolve" "StressSolver"
+  Variable = -dofs 3 Displacement
+  Exec Solver = Always
+  Stabilize = True
+  Bubbles = False
+  Lumped Mass Matrix = False
+  Optimize Bandwidth = True
+  Steady State Convergence Tolerance = 1.0e-5
+  Nonlinear System Convergence Tolerance = 1.0e-7
+  Nonlinear System Max Iterations = 20
+  Nonlinear System Newton After Iterations = 3
+  Nonlinear System Newton After Tolerance = 1.0e-3
+  Nonlinear System Relaxation Factor = 1
+  Linear System Solver = Direct
+  Linear System Direct Method = Umfpack
+End
+
+Equation 1
+  Name = "STRESS"
+  Plane Stress = True
+  Calculate Stresses = True
+  Active Solvers(1) = 1
+End
+
+Material 1
+  Name = "STEEL"
+  Porosity Model = Always saturated
+  Youngs modulus = 2.1e11
+  Poisson ratio = 0.3
+End
+
+Boundary Condition 1
+  Target Boundaries(1) = 15 
+  Name = "AB"
+  Displacement 1 = 0
+End
+
+Boundary Condition 2
+  Target Boundaries(1) = 16 
+  Name = "CD"
+  Displacement 2 = 0
+End
+
+Boundary Condition 3
+  Target Boundaries(1) = 17 
+  Name = "BoundaryCondition 3"
+  Normal Force = 10e6
+End
