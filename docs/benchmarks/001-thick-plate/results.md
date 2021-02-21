@@ -1,16 +1,23 @@
 # Results
 
-Number of simulations with different element types and mesh size have been performed for the thick plate model.
+Number of simulations with different element types and mesh size have been performed for the thick plate under pressure model.
 
 ## Conclusions
 
 A few conclusions can be derived from the presented study:
 
-1. It is possible to use open-source software and achieve correct solution.
-2. CalculiX and Code_Aster gave very similar response in tetrahedral meshes, the Elmer outperforms other solvers in linear tetrahedral and hexahedral quadratic meshes.
-3. Calculix performs significanlty worse than other solvers in linear hexahedral meshes.
-4. For the thick plate model, the quadratic shape tetrahedral mesh gives a more accurate answer than the linear one. The very fine linear hexahedral mesh achieve more precise solution than coarse quadratic hexahedral mesh.
+1. It is possible to perform a structural analysis with pressure loading condition using open-source software and achieve a correct solution. In the current study, fairly coarse meshes have been tested and they allow to obtain a stress value close to the target of $\sigma_{yy}=5.38 MPa$. An additional test with a very fine mesh has been run and all tested FE codes converged to the target value.
+2. It can be seen that Calculix and Code_Aster generally provided similar output apart for the case of linear hex mesh. It may indicate that a slightly different element formulation for linear hexahedral meshes was used.
+3. The results from Elmer show a different convergence behaviour comparing to other FE codes. While this behaviour can be a result of different numerical scheme implementation, it should also be highlighted that FE meshes used in Elmer runs were slightly different compared to the runs in other codes. This difference was caused by the fact that the meshes used in Calculix and Code_Aster came as an output from meshpresso converter and those seem not to be compatible with Elmer. It looks like the 3D geometry requires all type of elements to be provided (3D hex/tet, 2D tri/quad and 1D wires) while at the current stage, the meshpresso provides only 3D or 2D elements. However, it was also noted that ElmerGUI struggles to import some type of .UNV meshes created in the Salome environment. Especially, the quadratic hexahedral mesh type seems to be problematic.
 
+```{figure} ./ccx_output.png
+---
+width: 600px
+alt: Calculix results
+name: Calculix results
+---
+Results obtained with Calculix software and quadratic hexahedral mesh
+```
 
 ## Linear tetrahedral mesh
 
