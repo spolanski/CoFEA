@@ -1,0 +1,1290 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>meshpresso &#8212; CoFEA Initiative</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cofea.readthedocs.io/_modules/meshpresso.html" />
+    <link rel="shortcut icon" href="../_static/cofea-black.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cofea.readthedocs.io/_modules/meshpresso.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="CoFEA Initiative" />
+<meta property="og:description" content="" />
+<meta property="og:image"       content="https://cofea.readthedocs.io/_static/cofea-black.png" />
+
+<meta name="twitter:card" content="summary" />
+
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../reference/blog/atom.xml"
+  title="Blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/cofea-black.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CoFEA Initiative</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Documentation structure
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/blog.html">
+   CoFEA Blog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/about_us.html">
+   CoFEA Team
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/contributor_guide.html">
+   Contributor Guide
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../meshpresso/index.html">
+   Meshpresso Mesh Converter
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../meshpresso/api.html">
+     Meshpresso module
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/spolanski/CoFEA">
+   GitHub repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  FEA Software
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fea_software/calculix.html">
+   Calculix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fea_software/code_aster.html">
+   Code_Aster Compilation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fea_software/elmer.html">
+   Elmer
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Benchmarks
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../benchmarks/000-tuning-fork/index.html">
+   Tuning fork benchmark
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/000-tuning-fork/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/000-tuning-fork/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/000-tuning-fork/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../benchmarks/001-thick-plate/index.html">
+   Thick plate under pressure
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/001-thick-plate/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/001-thick-plate/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/001-thick-plate/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../benchmarks/004-eliptic-membrane/index.html">
+   Eliptic plane under pressure
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/004-eliptic-membrane/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/004-eliptic-membrane/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/004-eliptic-membrane/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/spolanski/CoFEA"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/spolanski/CoFEA/issues/new?title=Issue%20on%20page%20%2F_modules/meshpresso.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                 <h1>Source code for meshpresso</h1><div class="highlight"><pre>
+<span></span><span class="c1"># _*_ coding: utf_8 _*_</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">todo:</span>
+<span class="sd">- check python3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">meshpresso_misc</span> <span class="k">as</span> <span class="nn">misc</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span><span class="p">,</span> <span class="n">OrderedDict</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="n">element_library</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">ElementLibrary</span><span class="p">()</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">jinja2</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;warning! jinja2 not available. it will not be possible to export mesh</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Node"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.Node">[docs]</a><span class="k">class</span> <span class="nc">Node</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;used to create node objects from external data</span>
+
+<span class="sd">    attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    label: int</span>
+<span class="sd">        node number</span>
+<span class="sd">    coordinates: tuple</span>
+<span class="sd">        node coordinates</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_label</span><span class="p">,</span> <span class="n">n_coords</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;node class constructor.</span>
+
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        n_label: int</span>
+<span class="sd">            node number</span>
+<span class="sd">        n_coords: tuple</span>
+<span class="sd">            node coordinates (x,y,z)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">n_label</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">n_coords</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="s1">&#39;nd_</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Node</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">())</span>
+
+<div class="viewcode-block" id="Node.change_label"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.Node.change_label">[docs]</a>    <span class="k">def</span> <span class="nf">change_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_label</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;a function to change node label</span>
+<span class="sd">        </span>
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        new_label: int</span>
+<span class="sd">            new node number</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">new_label</span></div></div>
+
+
+<div class="viewcode-block" id="Element"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.Element">[docs]</a><span class="k">class</span> <span class="nc">Element</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;class used to store information about elements,</span>
+<span class="sd">    theirs type, label and connection to nodes</span>
+<span class="sd">    </span>
+<span class="sd">    attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    type: str</span>
+<span class="sd">        element type (eg C3D4)</span>
+<span class="sd">    label: int</span>
+<span class="sd">        element number</span>
+<span class="sd">    connectivity: list</span>
+<span class="sd">        list of nodes that element is based on</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">el_type</span><span class="p">,</span> <span class="n">el_label</span><span class="p">,</span> <span class="n">el_connect</span><span class="p">,</span>
+                 <span class="n">part_all_nodes</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;element object constructor</span>
+
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        el_type: str</span>
+<span class="sd">            type of the element</span>
+<span class="sd">        el_label: int</span>
+<span class="sd">            element number</span>
+<span class="sd">        el_connect: list</span>
+<span class="sd">            list of **indices** that will be used to retrieve</span>
+<span class="sd">            node objects from list of all nodes</span>
+<span class="sd">        part_all_nodes: list</span>
+<span class="sd">            list of all node objects retrieved from the current part</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">element_library</span><span class="o">.</span><span class="n">convert_to_general</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">el_type</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">el_label</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connectivity</span> <span class="o">=</span> <span class="p">[</span><span class="n">part_all_nodes</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">el_connect</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;el_</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Element</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">())</span>
+    
+<div class="viewcode-block" id="Element.change_label"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.Element.change_label">[docs]</a>    <span class="k">def</span> <span class="nf">change_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_label</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;a function to change element label</span>
+<span class="sd">        </span>
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        new_label: int</span>
+<span class="sd">            new element number</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">new_label</span></div>
+
+<div class="viewcode-block" id="Element.get_node_labels"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.Element.get_node_labels">[docs]</a>    <span class="k">def</span> <span class="nf">get_node_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;function returns labels of nodes which building the element</span>
+
+<span class="sd">        returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            list of integers describing node labels</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">connectivity</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">get_calculix_el_surfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">surf_nodes_labels</span><span class="p">,</span> <span class="n">surf_side</span><span class="p">):</span>
+        <span class="c1"># import variable from misc module</span>
+        <span class="n">ccx_surf_definiton</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">ccx_surface_definiton</span>
+        <span class="c1"># list of element faces which are part of surface definition</span>
+        <span class="n">element_faces_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># common values from two lists</span>
+        <span class="n">intersection</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">y</span><span class="p">]</span>
+        <span class="c1"># calculix definition of element faces</span>
+        <span class="n">topology</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">el_surf_def</span> <span class="o">=</span> <span class="n">ccx_surf_definiton</span><span class="p">[</span><span class="n">topology</span><span class="p">]</span>
+        <span class="c1"># if topology in (&#39;solid_tet&#39;, &#39;solid_wedge&#39;, &#39;solid_hex&#39;):</span>
+        <span class="k">for</span> <span class="n">face</span><span class="p">,</span> <span class="n">nodes_label_indices</span> <span class="ow">in</span> <span class="n">el_surf_def</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">node_labels</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">connectivity</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">nodes_label_indices</span><span class="p">)</span>
+            <span class="n">common_nodes</span> <span class="o">=</span> <span class="n">intersection</span><span class="p">(</span><span class="n">node_labels</span><span class="p">,</span> <span class="n">surf_nodes_labels</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">common_nodes</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">node_labels</span><span class="p">):</span>
+                <span class="n">element_faces_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">face</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">element_faces_list</span>
+    
+    <span class="k">def</span> <span class="nf">get_salome_nodes_from_three_dim_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">surf_nodes</span><span class="p">):</span>
+        <span class="c1"># import variable from misc module</span>
+        <span class="n">salome_surf_definiton</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">salome_surface_definiton</span>
+        <span class="c1"># lambda function - common values from two lists</span>
+        <span class="n">intersection</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">y</span><span class="p">]</span>
+        <span class="c1"># dict which acts like a switch</span>
+        <span class="c1"># keys are the number of nodes and value is</span>
+        <span class="c1"># the corresponding 2D element</span>
+        <span class="c1"># </span>
+        <span class="n">num_nodes_to_eltype</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;41&#39;</span><span class="p">,</span>
+            <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;44&#39;</span><span class="p">,</span>
+            <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;42&#39;</span><span class="p">,</span>
+            <span class="mi">8</span><span class="p">:</span> <span class="s1">&#39;45&#39;</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="c1"># set temporary storage</span>
+        <span class="n">surface_nodes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># get salome format for this element</span>
+        <span class="n">topology</span> <span class="o">=</span> <span class="n">element_library</span><span class="o">.</span><span class="n">convert_to_specific_format</span><span class="p">(</span><span class="n">general_format</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">,</span>
+                                                              <span class="n">output</span><span class="o">=</span><span class="s1">&#39;UNV&#39;</span><span class="p">)</span>
+        <span class="c1"># get salome element surf definition</span>
+        <span class="n">el_surf_def</span> <span class="o">=</span> <span class="n">salome_surf_definiton</span><span class="p">[</span><span class="n">topology</span><span class="p">]</span>
+        <span class="c1"># for each face in the element definition</span>
+        <span class="k">for</span> <span class="n">face</span><span class="p">,</span> <span class="n">nodes_indices</span> <span class="ow">in</span> <span class="n">el_surf_def</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># find corresponding nodes</span>
+            <span class="n">el_face_nodes</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">connectivity</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nodes_indices</span><span class="p">)</span>
+            <span class="c1"># find common nodes with those which are in the surface nodes definition</span>
+            <span class="n">common_nodes</span> <span class="o">=</span> <span class="n">intersection</span><span class="p">(</span><span class="n">el_face_nodes</span><span class="p">,</span> <span class="n">surf_nodes</span><span class="p">)</span>
+            <span class="c1"># check if each node on a particular element face</span>
+            <span class="c1"># was found in the common node</span>
+            <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">n</span> <span class="ow">in</span> <span class="n">common_nodes</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">el_face_nodes</span><span class="p">):</span>
+                <span class="c1"># find which type of 2D element will be created</span>
+                <span class="n">salome_element_type</span> <span class="o">=</span> <span class="n">num_nodes_to_eltype</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">el_face_nodes</span><span class="p">)]</span>
+                <span class="c1"># append the type of element and particular nodes</span>
+                <span class="n">surface_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">salome_element_type</span><span class="p">,</span> <span class="n">el_face_nodes</span><span class="p">))</span>
+        <span class="c1"># repeat for loop for each face on element</span>
+        <span class="c1"># return nodes together with new element type</span>
+        <span class="k">return</span> <span class="n">surface_nodes</span></div>
+
+        
+<div class="viewcode-block" id="PartMesh"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.PartMesh">[docs]</a><span class="k">class</span> <span class="nc">PartMesh</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;PartMesh is an object used to store mesh properties for a given part.</span>
+
+<span class="sd">    attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name: str</span>
+<span class="sd">        name of the part</span>
+<span class="sd">    nodes: list of node objects</span>
+<span class="sd">        list of the node objects</span>
+<span class="sd">    elements: list</span>
+<span class="sd">        list of the element objects</span>
+<span class="sd">    elements_by_type: defaultdict(list)</span>
+<span class="sd">        dictionary of elements grouped by element type</span>
+<span class="sd">    el_set: defaultdict(list)</span>
+<span class="sd">        dictionary of element sets grouped by element set name</span>
+<span class="sd">    n_set: defaultdict(list)</span>
+<span class="sd">        dictionary of node sets grouped by node set name</span>
+<span class="sd">    surfaces : defaultdict(list), optional</span>
+<span class="sd">        dictionary of surfaces {surf_name: {&#39;nodes&#39;: n_set,</span>
+<span class="sd">        &#39;elements&#39;: el_set, &#39;sides&#39;: string},</span>
+<span class="sd">        by default None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">part_name</span><span class="p">,</span> <span class="n">part_nodes</span><span class="p">,</span> <span class="n">part_elements</span><span class="p">,</span>
+                 <span class="n">element_sets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">node_sets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">surfaces</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;PartMesh constructor</span>
+
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        part_name : str</span>
+<span class="sd">            name of the part</span>
+<span class="sd">        part_nodes : list</span>
+<span class="sd">            list of node objects</span>
+<span class="sd">        part_elements : list</span>
+<span class="sd">            list of element objects</span>
+<span class="sd">        element_sets : defaultdict(list), optional</span>
+<span class="sd">            dictionary of elements sets {set_name: list of set elements},</span>
+<span class="sd">            by default None</span>
+<span class="sd">        node_sets : defaultdict(list), optional</span>
+<span class="sd">            dictionary of node sets {set_name: list of set nodes},</span>
+<span class="sd">            by default None</span>
+<span class="sd">        surfaces : defaultdict(list), optional</span>
+<span class="sd">            dictionary of surfaces {surf_name: {&#39;nodes&#39;: n_set,</span>
+<span class="sd">            &#39;elements&#39;: el_set, &#39;sides&#39;: string},</span>
+<span class="sd">            by default None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">part_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span> <span class="o">=</span> <span class="n">part_nodes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elements</span> <span class="o">=</span> <span class="n">part_elements</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elements_by_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_elements_by_type</span><span class="p">()</span>
+        
+        <span class="k">if</span> <span class="n">element_sets</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">el_set</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">el_set</span> <span class="o">=</span> <span class="n">element_sets</span>
+        <span class="k">if</span> <span class="n">node_sets</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_set</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_set</span> <span class="o">=</span> <span class="n">node_sets</span>
+        <span class="k">if</span> <span class="n">surfaces</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">surfaces</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">surfaces</span> <span class="o">=</span> <span class="n">surfaces</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">ccx_el_set_surf_def</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="PartMesh.from_abaqus_cae"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.PartMesh.from_abaqus_cae">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_abaqus_cae</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">abq_part</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;function to initiate object from abaqus part.</span>
+
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        abq_part : abq_part</span>
+<span class="sd">            abaqus part object</span>
+
+<span class="sd">        returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        part_mesh</span>
+<span class="sd">            object containing part mesh definition</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># define part name</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">abq_part</span><span class="o">.</span><span class="n">name</span>
+        <span class="c1"># create list of all nodes</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Node</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">n</span><span class="o">.</span><span class="n">coordinates</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">abq_part</span><span class="o">.</span><span class="n">nodes</span><span class="p">]</span>
+        <span class="c1"># create list of all elements</span>
+        <span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="n">Element</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">connectivity</span><span class="p">,</span>
+                            <span class="n">nodes</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">abq_part</span><span class="o">.</span><span class="n">elements</span><span class="p">]</span>
+        
+        <span class="n">n_set</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="n">el_set</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        
+        <span class="n">current_node_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">]</span>
+        <span class="n">current_el_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">]</span>
+        
+        <span class="k">for</span> <span class="n">abq_set_name</span><span class="p">,</span> <span class="n">abq_set_values</span> <span class="ow">in</span> <span class="nb">dict</span><span class="p">(</span><span class="n">abq_part</span><span class="o">.</span><span class="n">sets</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># get labels from abaqus database</span>
+            <span class="n">node_label_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">abq_set_values</span><span class="o">.</span><span class="n">nodes</span><span class="p">]</span>
+            <span class="c1"># for each node get index from the list of current nodes</span>
+            <span class="n">list_of_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">current_node_labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">lab</span><span class="p">)</span> <span class="k">for</span> <span class="n">lab</span> <span class="ow">in</span> <span class="n">node_label_list</span><span class="p">]</span>
+            <span class="c1"># from list of indices get list of node objects</span>
+            <span class="n">list_of_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">list_of_indices</span><span class="p">]</span>
+            <span class="c1"># n_set[&#39;n_&#39; + abq_set_name] = list_of_nodes</span>
+            <span class="n">n_set</span><span class="p">[</span><span class="n">abq_set_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">list_of_nodes</span>
+
+            <span class="n">element_label_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">el</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">abq_set_values</span><span class="o">.</span><span class="n">elements</span><span class="p">]</span>
+            <span class="n">list_of_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">current_el_labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">lab</span><span class="p">)</span>
+                             <span class="k">for</span> <span class="n">lab</span> <span class="ow">in</span> <span class="n">element_label_list</span><span class="p">]</span>
+            <span class="n">list_of_elements</span> <span class="o">=</span> <span class="p">[</span><span class="n">elements</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">list_of_indices</span><span class="p">]</span>
+            <span class="c1"># el_set[&#39;el_&#39; + abq_set_name] = list_of_elements</span>
+            <span class="n">el_set</span><span class="p">[</span><span class="n">abq_set_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">list_of_elements</span>
+        
+        <span class="n">surfaces</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">abq_surf_name</span><span class="p">,</span> <span class="n">abq_surf_values</span> <span class="ow">in</span> <span class="nb">dict</span><span class="p">(</span><span class="n">abq_part</span><span class="o">.</span><span class="n">surfaces</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">node_label_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">abq_surf_values</span><span class="o">.</span><span class="n">nodes</span><span class="p">]</span>
+            <span class="n">list_of_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">current_node_labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">lab</span><span class="p">)</span> <span class="k">for</span> <span class="n">lab</span> <span class="ow">in</span> <span class="n">node_label_list</span><span class="p">]</span>
+            <span class="n">list_of_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">list_of_indices</span><span class="p">]</span>
+            <span class="n">list_of_unique_nodes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">list_of_nodes</span><span class="p">)),</span>
+                                          <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">n_set</span><span class="p">[</span><span class="s1">&#39;s_&#39;</span> <span class="o">+</span> <span class="n">abq_surf_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">list_of_unique_nodes</span>
+
+            <span class="n">element_label_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">el</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">abq_surf_values</span><span class="o">.</span><span class="n">elements</span><span class="p">]</span>
+            <span class="n">list_of_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">current_el_labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">lab</span><span class="p">)</span>
+                             <span class="k">for</span> <span class="n">lab</span> <span class="ow">in</span> <span class="n">element_label_list</span><span class="p">]</span>
+            <span class="n">list_of_elements</span> <span class="o">=</span> <span class="p">[</span><span class="n">elements</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">list_of_indices</span><span class="p">]</span>
+            <span class="n">list_of_unique_elements</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">list_of_elements</span><span class="p">)),</span>
+                                          <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">el_set</span><span class="p">[</span><span class="s1">&#39;s_&#39;</span> <span class="o">+</span> <span class="n">abq_surf_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">list_of_unique_elements</span>
+            
+            <span class="n">surfaces</span><span class="p">[</span><span class="n">abq_surf_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;nodes&#39;</span><span class="p">:</span> <span class="n">n_set</span><span class="p">[</span><span class="s1">&#39;s_&#39;</span> <span class="o">+</span> <span class="n">abq_surf_name</span><span class="p">],</span>
+                                     <span class="s1">&#39;elements&#39;</span><span class="p">:</span> <span class="n">el_set</span><span class="p">[</span><span class="s1">&#39;s_&#39;</span> <span class="o">+</span> <span class="n">abq_surf_name</span><span class="p">],</span>
+                                     <span class="s1">&#39;sides&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">abq_surf_values</span><span class="o">.</span><span class="n">sides</span><span class="p">[</span><span class="mi">0</span><span class="p">])}</span>
+        
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">part_name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">part_nodes</span><span class="o">=</span><span class="n">nodes</span><span class="p">,</span> <span class="n">part_elements</span><span class="o">=</span><span class="n">elements</span><span class="p">,</span>
+                   <span class="n">element_sets</span><span class="o">=</span><span class="n">el_set</span><span class="p">,</span> <span class="n">node_sets</span><span class="o">=</span><span class="n">n_set</span><span class="p">,</span> <span class="n">surfaces</span><span class="o">=</span><span class="n">surfaces</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pprint</span><span class="o">.</span><span class="n">pformat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;part_</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+<div class="viewcode-block" id="PartMesh.get_nodes_from_label_list"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.PartMesh.get_nodes_from_label_list">[docs]</a>    <span class="k">def</span> <span class="nf">get_nodes_from_label_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_list</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;function to retrieve the nodes from list of node labels</span>
+
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        label_list: list</span>
+<span class="sd">            list of integers describing node labes</span>
+
+<span class="sd">        returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            list of node objects</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">current_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">]</span>
+        <span class="n">list_of_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">current_labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">lab</span><span class="p">)</span> <span class="k">for</span> <span class="n">lab</span> <span class="ow">in</span> <span class="n">label_list</span><span class="p">]</span>
+        <span class="n">list_of_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">list_of_indices</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">list_of_nodes</span></div>
+
+<div class="viewcode-block" id="PartMesh.get_elements_from_label_list"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.PartMesh.get_elements_from_label_list">[docs]</a>    <span class="k">def</span> <span class="nf">get_elements_from_label_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_list</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;function to retreive the elements from list of</span>
+<span class="sd">        elements labels.</span>
+
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        label_list: list</span>
+<span class="sd">            list of integers referring to element labels</span>
+
+<span class="sd">        returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            list of element objects</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">current_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">elements</span><span class="p">]</span>
+        <span class="n">list_of_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">current_labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">lab</span><span class="p">)</span> <span class="k">for</span> <span class="n">lab</span> <span class="ow">in</span> <span class="n">label_list</span><span class="p">]</span>
+        <span class="n">list_of_elements</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">elements</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">list_of_indices</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">list_of_elements</span></div>
+    
+<div class="viewcode-block" id="PartMesh.get_elements_by_type"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.PartMesh.get_elements_by_type">[docs]</a>    <span class="k">def</span> <span class="nf">get_elements_by_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;function used to create a dictionary of elements with</span>
+<span class="sd">        element types used as keys</span>
+<span class="sd">        </span>
+<span class="sd">        returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        defaultdict(list)</span>
+<span class="sd">            dictionary of elements with elementtypes used as keys</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">element_by_type</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">elements</span><span class="p">:</span>
+            <span class="n">element_by_type</span><span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">type</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">element_by_type</span></div>
+    
+    <span class="k">def</span> <span class="nf">renumber_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_label_list</span><span class="p">):</span>
+        <span class="c1"># range_of_labels = xrange(start_label, len(self.nodes) + start_label)</span>
+        <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">node</span><span class="p">,</span> <span class="n">new_lab</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">change_label</span><span class="p">(</span><span class="n">new_lab</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">,</span> <span class="n">new_label_list</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">renumber_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_label_list</span><span class="p">):</span>
+        <span class="c1"># range_of_labels = xrange(start_label, len(self.nodes) + start_label)</span>
+        <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">element</span><span class="p">,</span> <span class="n">new_lab</span><span class="p">:</span> <span class="n">element</span><span class="o">.</span><span class="n">change_label</span><span class="p">(</span><span class="n">new_lab</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">elements</span><span class="p">,</span> <span class="n">new_label_list</span><span class="p">)</span>
+        
+
+<div class="viewcode-block" id="PartMesh.set_element_type_format"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.PartMesh.set_element_type_format">[docs]</a>    <span class="k">def</span> <span class="nf">set_element_type_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_format</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;function to change element types in dictionary</span>
+<span class="sd">        elements_by_type (for example from c3_d20_r to 116)</span>
+
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        new_format : str</span>
+<span class="sd">            new format (eg &#39;UNV&#39;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># create a temporary dict</span>
+        <span class="n">temp_element_by_type</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="c1"># iterate over all element types in the dict</span>
+        <span class="k">for</span> <span class="n">el_type_name</span><span class="p">,</span> <span class="n">el_values</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">elements_by_type</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># get new format for each type fo element</span>
+            <span class="n">new_el_type</span> <span class="o">=</span> <span class="n">element_library</span><span class="o">.</span><span class="n">convert_to_specific_format</span><span class="p">(</span><span class="n">general_format</span><span class="o">=</span><span class="n">el_type_name</span><span class="p">,</span>
+                                                                     <span class="n">output</span><span class="o">=</span><span class="n">new_format</span><span class="p">)</span>
+            <span class="c1"># new_el_type = self.get_diff_format_for_el_type(old_el_type=el_type_name,</span>
+            <span class="c1">#                                         new_mesh_format=new_format)</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">el_values</span><span class="p">:</span> <span class="n">e</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">new_el_type</span>
+            <span class="n">temp_element_by_type</span><span class="p">[</span><span class="n">new_el_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">el_values</span>
+        <span class="c1"># swap temporary dict with dict with new formats</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elements_by_type</span> <span class="o">=</span> <span class="n">temp_element_by_type</span></div>
+    
+<div class="viewcode-block" id="PartMesh.reorder_nodes_in_el_definition"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.PartMesh.reorder_nodes_in_el_definition">[docs]</a>    <span class="k">def</span> <span class="nf">reorder_nodes_in_el_definition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesh_format</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;function used to reoder nodes. by default the node</span>
+<span class="sd">        order is the same as in abaqus.</span>
+
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        mesh_format : str</span>
+<span class="sd">            format of mesh to be converted to</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># c3_d20_r</span>
+        <span class="c1"># abq = [5, 6, 8, 7, 1, 2, 4, 3, 12, 11,</span>
+        <span class="c1">#        10, 9, 13, 14, 15, 16, 18, 17, 19, 20]</span>
+        <span class="c1"># unv = [5, 12, 6, 11, 8, 10, 7, 9, 18, 17, 19,</span>
+        <span class="c1">#        20, 1, 13, 2, 14, 4, 15, 3, 16]</span>
+        <span class="c1"># c3_d10</span>
+        <span class="c1"># abq = [4, 3, 1, 2, 7, 6, 5, 9, 8, 10]</span>
+        <span class="c1"># unv = [4, 7, 3, 6, 1, 5, 9, 8, 10, 2]</span>
+        <span class="c1"># c3_d15</span>
+        <span class="c1"># abq = [3, 2, 1, 6, 5, 4, 9, 8, 7, 10, 11, 12, 14, 13, 15]</span>
+        <span class="c1"># unv = [3, 9, 2, 8, 1, 7, 14, 13, 15, 6, 10, 5, 11, 4, 12]</span>
+        <span class="c1"># idx _ order to be used in function</span>
+        <span class="c1"># idx = [abq.index(i) for i in unv]</span>
+        <span class="n">unv_format</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;118&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+            <span class="s1">&#39;113&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
+            <span class="s1">&#39;116&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span>
+                    <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+            <span class="s1">&#39;42&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+            <span class="s1">&#39;45&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+        <span class="p">}</span>
+        <span class="k">def</span> <span class="nf">change_order</span><span class="p">(</span><span class="n">elements</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">:</span>
+                <span class="n">el</span><span class="o">.</span><span class="n">connectivity</span> <span class="o">=</span> <span class="p">[</span><span class="n">el</span><span class="o">.</span><span class="n">connectivity</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">order</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">mesh_format</span> <span class="o">==</span> <span class="s1">&#39;UNV&#39;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">el_type</span><span class="p">,</span> <span class="n">elements</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">elements_by_type</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">el_type</span> <span class="ow">in</span> <span class="n">unv_format</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="n">order</span> <span class="o">=</span> <span class="n">unv_format</span><span class="p">[</span><span class="n">el_type</span><span class="p">]</span>
+                    <span class="n">change_order</span><span class="p">(</span><span class="n">elements</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Mesh"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.Mesh">[docs]</a><span class="k">class</span> <span class="nc">Mesh</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Mesh is the most general class used to import, store</span>
+<span class="sd">    and export mesh data. the idea is to initialise the constructor,</span>
+<span class="sd">    then import mesh from db file. finally, the mesh can be</span>
+<span class="sd">    exported to an external format. for example</span>
+<span class="sd">    </span>
+<span class="sd">    &gt;&gt;&gt; mesh = Mesh()</span>
+<span class="sd">    &gt;&gt;&gt; mesh.import_from_db_file(path_to_db_file=&#39;mesh.db&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; mesh.export_to_calculix(exported_filename=&#39;calculix.inp&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; mesh.export_to_unv_format(exported_filename=&#39;salome.unv&#39;)</span>
+<span class="sd">    </span>
+<span class="sd">    attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model_name : string</span>
+<span class="sd">        name of imported model</span>
+<span class="sd">    parts : list</span>
+<span class="sd">        list of imported parts</span>
+<span class="sd">    assembly_mesh: dictionary</span>
+<span class="sd">        the dictionary contains parts, but those have renumbered\</span>
+<span class="sd">        node and element labels, so that the labels are not\</span>
+<span class="sd">        repeating</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">coordinate_system</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">part_UID</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                             <span class="n">part_name</span> <span class="o">=</span> <span class="s1">&#39;SMESH_Mesh&#39;</span><span class="p">,</span>
+                             <span class="n">label</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                             <span class="n">type_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                             <span class="n">color</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                             <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Global Cartesian Coordinate System&#39;</span><span class="p">,</span>
+                             <span class="n">transf_matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                                              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                                              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                                              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+                        <span class="p">)</span>
+    <span class="n">default_unit</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">units_descriptions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SI: Meter (newton)&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;BG: Foot (pound f)&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;MG: Meter (kilogram f)&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;BA: Foot (poundal)&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;MM: mm (milli newton)&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;CM: cm (centi newton)&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;IN: Inch (pound f)&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;GM: mm (kilogram f)&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;US: USER_DEFINED&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;MN: mm (newton)&#39;</span>
+                          <span class="p">]</span>
+    
+    <span class="n">units</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">units_code</span> <span class="o">=</span> <span class="n">default_unit</span><span class="p">,</span>
+                 <span class="n">units_description</span> <span class="o">=</span> <span class="n">units_descriptions</span><span class="p">[</span><span class="n">default_unit</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                 <span class="n">temperature_mode</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+                 <span class="n">length_factor</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                 <span class="n">force_factor</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                 <span class="n">temperature_factor</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                 <span class="n">temperature_offset</span> <span class="o">=</span> <span class="mf">2.7314999999999998E+2</span>
+                 <span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">dict_of_parts</span><span class="p">,</span> <span class="n">asbly_element_sets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">asbly_node_sets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">asbly_surfaces</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="n">model_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parts</span> <span class="o">=</span> <span class="n">dict_of_parts</span>
+
+        <span class="c1"># assembly element sets</span>
+        <span class="k">if</span> <span class="n">asbly_element_sets</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">el_set</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">el_set</span> <span class="o">=</span> <span class="n">asbly_element_sets</span>
+        <span class="c1"># assembly node sets</span>
+        <span class="k">if</span> <span class="n">asbly_node_sets</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_set</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_set</span> <span class="o">=</span> <span class="n">asbly_node_sets</span>
+        <span class="c1"># assembly surfaces</span>
+        <span class="k">if</span> <span class="n">asbly_surfaces</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">surfaces</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">surfaces</span> <span class="o">=</span> <span class="n">asbly_surfaces</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">renumber_mesh</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ccx_el_set_surf_def</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">get_all_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># from each part get node then create a set to avoid duplicates</span>
+        <span class="c1"># then create a list</span>
+        <span class="n">all_nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">({</span><span class="n">n</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">nodes</span><span class="p">})</span>
+        <span class="c1"># sort the list</span>
+        <span class="n">all_nodes</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="c1"># return all nodes</span>
+        <span class="k">return</span> <span class="n">all_nodes</span>
+    
+    <span class="k">def</span> <span class="nf">get_all_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># from each part get element then create a set to avoid duplicates</span>
+        <span class="c1"># then create a list</span>
+        <span class="n">all_elements</span> <span class="o">=</span> <span class="nb">list</span><span class="p">({</span><span class="n">e</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">elements</span><span class="p">})</span>
+        <span class="n">element_by_type</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">all_elements</span><span class="p">:</span>
+            <span class="n">element_by_type</span><span class="p">[</span><span class="n">element</span><span class="o">.</span><span class="n">type</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+            
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">element_by_type</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">element_by_type</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">element_by_type</span>
+    
+    <span class="k">def</span> <span class="nf">set_asbly_sets_and_surf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_sets</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                <span class="n">element_sets</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                <span class="n">surfaces</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+        <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">surfaces</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">surf_name</span><span class="p">,</span> <span class="n">surf_value</span> <span class="ow">in</span> <span class="n">part</span><span class="o">.</span><span class="n">surfaces</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">surfaces</span><span class="p">[</span><span class="n">part</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">surf_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">surf_value</span>
+            <span class="k">if</span> <span class="n">element_sets</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">elset_name</span><span class="p">,</span> <span class="n">elset_value</span> <span class="ow">in</span> <span class="n">part</span><span class="o">.</span><span class="n">el_set</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">el_set</span><span class="p">[</span><span class="n">part</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">elset_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">elset_value</span>
+            <span class="k">if</span> <span class="n">node_sets</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">nset_name</span><span class="p">,</span> <span class="n">nset_value</span> <span class="ow">in</span> <span class="n">part</span><span class="o">.</span><span class="n">n_set</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">n_set</span><span class="p">[</span><span class="n">part</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">nset_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">nset_value</span>
+        
+        
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;mesh object is empty. data needs to be loaded first&#39;</span>
+        <span class="k">return</span> <span class="n">pprint</span><span class="o">.</span><span class="n">pformat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Mesh.import_from_abaqus_cae"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.Mesh.import_from_abaqus_cae">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">import_from_abaqus_cae</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">abq_model_name</span><span class="p">,</span> <span class="n">abq_root_assembly</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;function to initiate the mesh object</span>
+
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        abq_model_name : str</span>
+<span class="sd">            name of the abaqus model</span>
+<span class="sd">        abq_part_list : list</span>
+<span class="sd">            list of abaqus parts to export mesh from</span>
+
+<span class="sd">        returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Mesh</span>
+<span class="sd">            object containing model mesh definition</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">((</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">PartMesh</span><span class="o">.</span><span class="n">from_abaqus_cae</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+                            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">abq_root_assembly</span><span class="o">.</span><span class="n">allInstances</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+                            <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">excludedFromSimulation</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">)</span>
+        
+        <span class="n">n_set</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="n">e_set</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">set_name</span><span class="p">,</span> <span class="n">set_values</span> <span class="ow">in</span> <span class="n">abq_root_assembly</span><span class="o">.</span><span class="n">sets</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">set_values</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+                <span class="n">temp_dict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+                <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">temp_dict</span><span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">instanceName</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">label</span><span class="p">),</span> <span class="n">set_values</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">inst</span><span class="p">,</span> <span class="n">n_labels</span> <span class="ow">in</span> <span class="n">temp_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">n_objects</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="n">inst</span><span class="p">]</span><span class="o">.</span><span class="n">get_nodes_from_label_list</span><span class="p">(</span><span class="n">label_list</span><span class="o">=</span><span class="n">n_labels</span><span class="p">)</span>
+                    <span class="c1"># n_set[&#39;n_&#39; + set_name].extend(n_objects)</span>
+                    <span class="n">n_set</span><span class="p">[</span><span class="n">set_name</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">n_objects</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">set_values</span><span class="o">.</span><span class="n">elements</span><span class="p">:</span>
+                <span class="n">temp_dict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+                <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">temp_dict</span><span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">instanceName</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">label</span><span class="p">),</span> <span class="n">set_values</span><span class="o">.</span><span class="n">elements</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">inst</span><span class="p">,</span> <span class="n">e_labels</span> <span class="ow">in</span> <span class="n">temp_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">e_objects</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="n">inst</span><span class="p">]</span><span class="o">.</span><span class="n">get_elements_from_label_list</span><span class="p">(</span><span class="n">label_list</span><span class="o">=</span><span class="n">e_labels</span><span class="p">)</span>
+                    <span class="c1"># e_set[&#39;el_&#39; + set_name].extend(e_objects)</span>
+                    <span class="n">e_set</span><span class="p">[</span><span class="n">set_name</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">e_objects</span><span class="p">)</span>
+
+        <span class="n">asbly_surfaces</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">surf_name</span><span class="p">,</span> <span class="n">surf_values</span> <span class="ow">in</span> <span class="n">abq_root_assembly</span><span class="o">.</span><span class="n">surfaces</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">asbly_surfaces</span><span class="p">[</span><span class="n">surf_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+            <span class="n">temp_dict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+            <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">temp_dict</span><span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">instanceName</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">label</span><span class="p">),</span> <span class="n">surf_values</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">inst</span><span class="p">,</span> <span class="n">n_labels</span> <span class="ow">in</span> <span class="n">temp_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">n_objects</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="n">inst</span><span class="p">]</span><span class="o">.</span><span class="n">get_nodes_from_label_list</span><span class="p">(</span><span class="n">label_list</span><span class="o">=</span><span class="n">n_labels</span><span class="p">)</span>
+                <span class="n">asbly_surfaces</span><span class="p">[</span><span class="n">surf_name</span><span class="p">][</span><span class="s1">&#39;nodes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">n_objects</span><span class="p">)</span>
+            
+            <span class="n">temp_dict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+            <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">temp_dict</span><span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">instanceName</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">label</span><span class="p">),</span> <span class="n">surf_values</span><span class="o">.</span><span class="n">elements</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">inst</span><span class="p">,</span> <span class="n">e_labels</span> <span class="ow">in</span> <span class="n">temp_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">e_objects</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="n">inst</span><span class="p">]</span><span class="o">.</span><span class="n">get_elements_from_label_list</span><span class="p">(</span><span class="n">label_list</span><span class="o">=</span><span class="n">e_labels</span><span class="p">)</span>
+                <span class="n">asbly_surfaces</span><span class="p">[</span><span class="n">surf_name</span><span class="p">][</span><span class="s1">&#39;elements&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">e_objects</span><span class="p">)</span>
+            <span class="n">asbly_surfaces</span><span class="p">[</span><span class="n">surf_name</span><span class="p">][</span><span class="s1">&#39;sides&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">surf_values</span><span class="o">.</span><span class="n">sides</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">abq_model_name</span><span class="p">,</span> <span class="n">dict_of_parts</span><span class="o">=</span><span class="n">parts</span><span class="p">,</span>
+                   <span class="n">asbly_element_sets</span><span class="o">=</span><span class="n">e_set</span><span class="p">,</span> <span class="n">asbly_node_sets</span><span class="o">=</span><span class="n">n_set</span><span class="p">,</span>
+                   <span class="n">asbly_surfaces</span><span class="o">=</span><span class="n">asbly_surfaces</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Mesh.import_from_db_file"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.Mesh.import_from_db_file">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">import_from_db_file</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path_to_db_file</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;function to initiate the mesh object</span>
+
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        path_to_db_file : str</span>
+<span class="sd">            path to the db file</span>
+
+<span class="sd">        returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        mesh</span>
+<span class="sd">            object containing model mesh definition</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_to_db_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+            <span class="n">mesh</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">mesh</span><span class="p">[</span><span class="s1">&#39;model_name&#39;</span><span class="p">],</span>
+                   <span class="n">dict_of_parts</span><span class="o">=</span><span class="n">mesh</span><span class="p">[</span><span class="s1">&#39;part_dict&#39;</span><span class="p">],</span>
+                   <span class="n">asbly_element_sets</span><span class="o">=</span><span class="n">mesh</span><span class="p">[</span><span class="s1">&#39;element_set&#39;</span><span class="p">],</span>
+                   <span class="n">asbly_node_sets</span><span class="o">=</span><span class="n">mesh</span><span class="p">[</span><span class="s1">&#39;node_set&#39;</span><span class="p">],</span>
+                   <span class="n">asbly_surfaces</span><span class="o">=</span><span class="n">mesh</span><span class="p">[</span><span class="s1">&#39;surfaces&#39;</span><span class="p">])</span></div>
+    
+<div class="viewcode-block" id="Mesh.save_to_db_file"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.Mesh.save_to_db_file">[docs]</a>    <span class="k">def</span> <span class="nf">save_to_db_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name_of_db_file</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;function to save model data to db file</span>
+
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name_of_db_file : str</span>
+<span class="sd">            name of the file that will be used to store data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dict_to_save</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;model_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
+                      <span class="s1">&#39;part_dict&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="p">,</span>
+                      <span class="s1">&#39;element_set&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">el_set</span><span class="p">,</span>
+                      <span class="s1">&#39;node_set&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_set</span><span class="p">,</span>
+                      <span class="s1">&#39;surfaces&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">surfaces</span><span class="p">,</span>
+                      <span class="p">}</span>
+        
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">name_of_db_file</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+            <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">dict_to_save</span><span class="p">,</span> <span class="n">handle</span><span class="p">,</span>
+                        <span class="n">protocol</span><span class="o">=</span><span class="n">pickle</span><span class="o">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mesh has been written into </span><span class="si">{0}</span><span class="s1"> file&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name_of_db_file</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Mesh.renumber_mesh"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.Mesh.renumber_mesh">[docs]</a>    <span class="k">def</span> <span class="nf">renumber_mesh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;function computes mesh at assembly level from list</span>
+<span class="sd">        of part objects. the returned dictionary contains</span>
+<span class="sd">        parts with renumbered nodes and elements</span>
+
+<span class="sd">        returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        defaultdict(list)</span>
+<span class="sd">            dictionary of parts</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">num_part_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+        <span class="n">all_nodes</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">num_part_nodes</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">num_part_elements</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">elements</span><span class="p">)</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+        <span class="n">all_elements</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">num_part_elements</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="nb">slice</span> <span class="o">=</span> <span class="k">lambda</span> <span class="nb">list</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="p">(</span><span class="nb">list</span><span class="p">[:</span><span class="n">s</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="n">s</span><span class="p">:])</span>
+        
+        <span class="n">new_numbering</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">nodes_len</span><span class="p">,</span> <span class="n">elem_len</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">num_part_nodes</span><span class="p">,</span> <span class="n">num_part_elements</span><span class="p">):</span>
+            <span class="n">part_nodes</span><span class="p">,</span> <span class="n">all_nodes</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">all_nodes</span><span class="p">,</span> <span class="n">nodes_len</span><span class="p">)</span>
+            <span class="n">part_elements</span><span class="p">,</span> <span class="n">all_elements</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">all_elements</span><span class="p">,</span> <span class="n">elem_len</span><span class="p">)</span>
+            <span class="n">new_numbering</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">part_nodes</span><span class="p">,</span> <span class="n">part_elements</span><span class="p">))</span>
+        
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">part</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="n">part_name</span><span class="p">,</span> <span class="n">part_value</span> <span class="o">=</span> <span class="n">part</span>
+            <span class="n">part_value</span><span class="o">.</span><span class="n">renumber_nodes</span><span class="p">(</span><span class="n">new_label_list</span><span class="o">=</span><span class="n">new_numbering</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">part_value</span><span class="o">.</span><span class="n">renumber_elements</span><span class="p">(</span><span class="n">new_label_list</span><span class="o">=</span><span class="n">new_numbering</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span></div>
+            
+
+<div class="viewcode-block" id="Mesh.get_calculix_surf_definition"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.Mesh.get_calculix_surf_definition">[docs]</a>    <span class="k">def</span> <span class="nf">get_calculix_surf_definition</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;function converts surfaces into format appropriate</span>
+<span class="sd">        for calculix.</span>
+
+<span class="sd">        returns:</span>
+<span class="sd">            dict: dictionary with surface name as keys and dictionary surface</span>
+<span class="sd">            definition as value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># the idea below is to iterate over each surface definition and find</span>
+        <span class="c1"># out what are the surface nodes and compare them with nodes from each</span>
+        <span class="c1"># element defined in the surface. once compared it is possible to figure</span>
+        <span class="c1"># out which face is used in the definition based on index of surf_node </span>
+        <span class="c1"># in element_node.</span>
+        <span class="c1"># print dict(self)</span>
+        <span class="c1"># self.ccx_el_set_surf_def = defaultdict(list)</span>
+        <span class="n">ccx_el_set_surf_def</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="c1"># for each surface define</span>
+        <span class="k">for</span> <span class="n">surf_name</span><span class="p">,</span> <span class="n">surf_value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">surfaces</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># get node labels from surface definition</span>
+            <span class="n">node_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">surf_value</span><span class="p">[</span><span class="s1">&#39;nodes&#39;</span><span class="p">]]</span>
+            <span class="c1"># set temporary value</span>
+            <span class="n">temp_surface_definition</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+            <span class="c1"># for each element in surface definition</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">surf_value</span><span class="p">[</span><span class="s1">&#39;elements&#39;</span><span class="p">]:</span>
+                <span class="c1"># find list of pairs [(element, surface face),..]</span>
+                <span class="n">element_faces_list</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">get_calculix_el_surfaces</span><span class="p">(</span><span class="n">surf_nodes_labels</span><span class="o">=</span><span class="n">node_labels</span><span class="p">,</span>
+                                                           <span class="n">surf_side</span><span class="o">=</span><span class="n">surf_value</span><span class="p">[</span><span class="s1">&#39;sides&#39;</span><span class="p">])</span>
+                <span class="c1"># add values to temporary surface dict</span>
+                <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">face</span> <span class="p">:</span> <span class="n">temp_surface_definition</span><span class="p">[</span><span class="n">face</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">element_faces_list</span><span class="p">)</span>
+            <span class="c1"># for each item in {&#39;el_face&#39;: [el_1, el_2,..]}</span>
+            <span class="k">for</span> <span class="n">face</span><span class="p">,</span> <span class="n">elements</span> <span class="ow">in</span> <span class="n">temp_surface_definition</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="c1"># create name set</span>
+                <span class="n">name_of_elset</span> <span class="o">=</span> <span class="s1">&#39;s_&#39;</span> <span class="o">+</span> <span class="n">surf_name</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">face</span>
+                <span class="c1"># add element set to self for each face</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">el_set</span><span class="p">[</span><span class="n">name_of_elset</span><span class="p">]</span> <span class="o">=</span> <span class="n">elements</span>
+                <span class="c1"># add apprioprate naming to temporary dict</span>
+                <span class="n">ccx_el_set_surf_def</span><span class="p">[</span><span class="n">surf_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">name_of_elset</span><span class="p">,</span> <span class="n">face</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">ccx_el_set_surf_def</span></div>
+
+<div class="viewcode-block" id="Mesh.export_to_calculix"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.Mesh.export_to_calculix">[docs]</a>    <span class="k">def</span> <span class="nf">export_to_calculix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exported_filename</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;function to export mesh to calculix format</span>
+
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        exported_filename : str</span>
+<span class="sd">            name of the file to export mesh (eg &#39;calculix.inp&#39;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_asbly_sets_and_surf</span><span class="p">(</span><span class="n">node_sets</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                     <span class="n">element_sets</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                     <span class="n">surfaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">ccx_el_set_surf_def</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_calculix_surf_definition</span><span class="p">()</span>
+        <span class="c1"># get calculix/abaqus element format for each part</span>
+        <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">part</span><span class="o">.</span><span class="n">set_element_type_format</span><span class="p">(</span><span class="n">new_format</span><span class="o">=</span><span class="s1">&#39;CCX&#39;</span><span class="p">)</span>
+        
+        <span class="c1"># prepare a dict which will be used to render things in template</span>
+        <span class="n">render_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;model_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
+                       <span class="s1">&#39;parts&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span>
+                       <span class="s1">&#39;assembly_el_sets&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">el_set</span><span class="p">,</span>
+                       <span class="s1">&#39;assembly_n_sets&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_set</span><span class="p">,</span>
+                       <span class="s1">&#39;assembly_ccx_surfaces&#39;</span><span class="p">:</span> <span class="n">ccx_el_set_surf_def</span><span class="p">}</span>
+        <span class="c1"># load jinja template from file</span>
+        <span class="c1"># https://stackoverflow.com/a/38642558</span>
+        <span class="n">template_loader</span> <span class="o">=</span> <span class="n">jinja2</span><span class="o">.</span><span class="n">FileSystemLoader</span><span class="p">(</span><span class="n">searchpath</span><span class="o">=</span><span class="n">file_path</span><span class="p">)</span>
+        <span class="n">template_env</span> <span class="o">=</span> <span class="n">jinja2</span><span class="o">.</span><span class="n">Environment</span><span class="p">(</span><span class="n">loader</span><span class="o">=</span><span class="n">template_loader</span><span class="p">)</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="n">template_env</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s2">&quot;calculix.tmplt&quot;</span><span class="p">)</span>
+        <span class="c1"># render template with dict</span>
+        <span class="n">output_text</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">render_dict</span><span class="p">)</span>
+        <span class="c1"># remove all empty lines</span>
+        <span class="n">output_text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">output_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+        <span class="n">output_text</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="c1"># save input deck</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">exported_filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output_text</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mesh exported to </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">exported_filename</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Mesh.set_salome_surf_definition"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.Mesh.set_salome_surf_definition">[docs]</a>    <span class="k">def</span> <span class="nf">set_salome_surf_definition</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;function converts surfaces into format appropriate</span>
+<span class="sd">        for salome.</span>
+
+<span class="sd">        returns:</span>
+<span class="sd">            dict: dictionary with surface name as keys and dictionary surface</span>
+<span class="sd">            definition as value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># find total number of elements</span>
+        <span class="n">num_part_elements</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">elements</span><span class="p">)</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+        <span class="n">all_elements</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">num_part_elements</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># for each surface defined at the assembly leve</span>
+        <span class="k">for</span> <span class="n">surf_num</span><span class="p">,</span> <span class="n">surf_items</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surfaces</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="c1"># unpack surface name and values</span>
+            <span class="n">surf_name</span><span class="p">,</span> <span class="n">surf_value</span> <span class="o">=</span> <span class="n">surf_items</span>
+            <span class="c1"># set temporary storage for nodes</span>
+            <span class="n">temp_surf_def</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="c1"># for each element in surface definiton</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">surf_value</span><span class="p">[</span><span class="s1">&#39;elements&#39;</span><span class="p">]:</span>
+                <span class="c1"># find list of pairs [(element type, [nd_1, nd_2, nd_3])]</span>
+                <span class="n">el_surf_nodes</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">get_salome_nodes_from_three_dim_elements</span><span class="p">(</span><span class="n">surf_nodes</span><span class="o">=</span><span class="n">surf_value</span><span class="p">[</span><span class="s1">&#39;nodes&#39;</span><span class="p">])</span>
+                <span class="c1"># extend the temporary storage</span>
+                <span class="n">temp_surf_def</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">el_surf_nodes</span><span class="p">)</span>
+            <span class="c1"># repeat for all elements in the loop</span>
+
+            <span class="c1"># set temporary storage for surface elements</span>
+            <span class="n">surf_part_elements</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">el_num</span><span class="p">,</span> <span class="n">el_surf_def</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">temp_surf_def</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+                <span class="c1"># unpack element type and element nodes</span>
+                <span class="n">el_type</span><span class="p">,</span> <span class="n">el_nodes</span> <span class="o">=</span> <span class="n">el_surf_def</span>
+                <span class="c1"># get indices of all surface nodes</span>
+                <span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">surf_value</span><span class="p">[</span><span class="s1">&#39;nodes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">el_nodes</span><span class="p">]</span>
+                <span class="c1"># create a new element</span>
+                <span class="n">element</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="n">el_type</span><span class="o">=</span><span class="n">el_type</span><span class="p">,</span>
+                                  <span class="n">el_label</span><span class="o">=</span><span class="n">all_elements</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">el_num</span> <span class="o">+</span> <span class="n">surf_num</span><span class="p">,</span>
+                                  <span class="n">el_connect</span><span class="o">=</span><span class="n">indices</span><span class="p">,</span>
+                                  <span class="n">part_all_nodes</span><span class="o">=</span><span class="n">surf_value</span><span class="p">[</span><span class="s1">&#39;nodes&#39;</span><span class="p">])</span>
+                <span class="c1"># add all elements to temporary storage</span>
+                <span class="n">surf_part_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+            <span class="c1"># create a new part mesh </span>
+            <span class="n">part</span> <span class="o">=</span> <span class="n">PartMesh</span><span class="p">(</span><span class="n">part_name</span><span class="o">=</span><span class="n">surf_name</span><span class="p">,</span>
+                            <span class="n">part_nodes</span><span class="o">=</span><span class="n">surf_value</span><span class="p">[</span><span class="s1">&#39;nodes&#39;</span><span class="p">],</span>
+                            <span class="n">part_elements</span><span class="o">=</span><span class="n">surf_part_elements</span><span class="p">)</span>
+            <span class="c1"># add new part to the dictionary of parts</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="n">surf_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">part</span>
+            <span class="c1"># add new node set</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_set</span><span class="p">[</span><span class="n">part</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">surf_name</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">surf_value</span><span class="p">[</span><span class="s1">&#39;nodes&#39;</span><span class="p">])</span>
+            <span class="c1"># add new elements set</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">el_set</span><span class="p">[</span><span class="n">part</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">surf_name</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">surf_part_elements</span><span class="p">)</span></div>
+        <span class="c1"># repeat for all surface definitions</span>
+
+<div class="viewcode-block" id="Mesh.export_to_unv_format"><a class="viewcode-back" href="../meshpresso/api.html#meshpresso.Mesh.export_to_unv_format">[docs]</a>    <span class="k">def</span> <span class="nf">export_to_unv_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exported_filename</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;function to export to unv format</span>
+
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        exported_filename : str</span>
+<span class="sd">            name of the file to export mesh (eg &#39;salome.unv&#39;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Compute all node/element sets and surfaces at assembly</span>
+        <span class="c1"># rather than parts</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_asbly_sets_and_surf</span><span class="p">(</span><span class="n">surfaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># compute salome surface definitions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_salome_surf_definition</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_asbly_sets_and_surf</span><span class="p">(</span><span class="n">node_sets</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                     <span class="n">element_sets</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
+        <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">part</span><span class="o">.</span><span class="n">set_element_type_format</span><span class="p">(</span><span class="n">new_format</span><span class="o">=</span><span class="s1">&#39;UNV&#39;</span><span class="p">)</span>
+            <span class="n">part</span><span class="o">.</span><span class="n">reorder_nodes_in_el_definition</span><span class="p">(</span><span class="n">mesh_format</span><span class="o">=</span><span class="s1">&#39;UNV&#39;</span><span class="p">)</span>
+        
+        <span class="c1"># nodes sorted by label</span>
+        <span class="n">all_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_all_nodes</span><span class="p">()</span>
+        
+        <span class="c1"># elements sorted by type and label</span>
+        <span class="n">all_elements_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_all_elements</span><span class="p">()</span>
+        
+        <span class="c1"># sort elements in all_elements_dict</span>
+
+        <span class="c1"># set new naming for node sets</span>
+        <span class="c1"># new_nset_name = [&#39;NSET_{}&#39;.format(n) for n, nset in enumerate(self.n_set,1)]</span>
+        <span class="n">new_nset_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;N_</span><span class="si">{}</span><span class="s1">_&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">+</span> <span class="n">nset_tup</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="s1">&#39;_&#39;</span><span class="p">)</span> 
+                         <span class="k">for</span> <span class="n">num</span><span class="p">,</span> <span class="n">nset_tup</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_set</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)]</span>
+        <span class="n">all_nsets</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">new_nset_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_set</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+
+        <span class="c1"># set new naming for element sets</span>
+        <span class="c1"># new_elset_name = [&#39;ELSET_{}&#39;.format(e) for e, elset in enumerate(self.el_set,1)]</span>
+        <span class="n">new_elset_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;E_</span><span class="si">{}</span><span class="s1">_&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">+</span> <span class="n">elset_tup</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="s1">&#39;_&#39;</span><span class="p">)</span> 
+                         <span class="k">for</span> <span class="n">num</span><span class="p">,</span> <span class="n">elset_tup</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">el_set</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)]</span>
+        <span class="n">all_elsets</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">new_elset_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">el_set</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+        <span class="c1"># sorts the sets according to element typ</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">all_elsets</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">all_elsets</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+            
+        <span class="c1"># prepare a dict which will be used to render things in template</span>
+        <span class="n">render_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;model_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
+                       <span class="s1">&#39;coord_sys&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinate_system</span><span class="p">,</span>
+                       <span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">,</span>
+                       <span class="s1">&#39;all_nodes&#39;</span><span class="p">:</span> <span class="n">all_nodes</span><span class="p">,</span>
+                       <span class="s1">&#39;all_elements_dict&#39;</span><span class="p">:</span> <span class="n">all_elements_dict</span><span class="p">,</span>
+                       <span class="s1">&#39;all_node_sets&#39;</span><span class="p">:</span> <span class="n">all_nsets</span><span class="p">,</span>
+                       <span class="s1">&#39;all_element_sets&#39;</span><span class="p">:</span> <span class="n">all_elsets</span>
+                      <span class="p">}</span>
+        <span class="c1"># render_dict = {&#39;parts&#39;: self.parts}</span>
+        <span class="c1"># load jinja template from file</span>
+        <span class="c1"># https://stackoverflow.com/a/38642558</span>
+        <span class="n">template_loader</span> <span class="o">=</span> <span class="n">jinja2</span><span class="o">.</span><span class="n">FileSystemLoader</span><span class="p">(</span><span class="n">searchpath</span><span class="o">=</span><span class="n">file_path</span><span class="p">)</span>
+        <span class="n">template_env</span> <span class="o">=</span> <span class="n">jinja2</span><span class="o">.</span><span class="n">Environment</span><span class="p">(</span><span class="n">loader</span><span class="o">=</span><span class="n">template_loader</span><span class="p">)</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="n">template_env</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s2">&quot;unv.tmplt&quot;</span><span class="p">)</span>
+        <span class="c1"># render template with dict</span>
+        <span class="n">output_text</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">render_dict</span><span class="p">)</span>
+        <span class="c1"># remove all empty lines</span>
+        <span class="n">output_text</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">output_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+        <span class="c1"># save input deck</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">exported_filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output_text</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mesh exported to </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">exported_filename</span><span class="p">))</span></div></div>
+</pre></div>
+<div class="section">
+   
+</div>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By BlogTechniczny.pl<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

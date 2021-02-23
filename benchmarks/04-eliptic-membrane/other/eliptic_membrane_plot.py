@@ -4,12 +4,12 @@ import numpy as np
 plt.close('all')
 
 def mesh_study():
-    plot_title = 'Hexahedral mesh comparison'
-    file_name = 'hex-comparison_eliptic_membrane.png'
+    plot_title = 'Tetrahedral mesh comparison'
+    file_name = 'tet-comparison_eliptic_membrane.png'
     results = pd.read_csv('eliptic_membrane.csv')
 
-    lin_type = results['Mesh type'] == 'Linear-Hex'
-    quad_type = results['Mesh type'] == 'Quad-Hex'
+    lin_type = results['Mesh type'] == 'Linear-Tet'
+    quad_type = results['Mesh type'] == 'Quad-Tet'
     mesh_type = results[lin_type | quad_type]
     zipped = zip(mesh_type['Mesh type'],mesh_type['Size'])
     labels = ["{} {}".format(i[0], i[1]) for i in zipped]
