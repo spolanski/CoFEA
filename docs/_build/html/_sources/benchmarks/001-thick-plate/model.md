@@ -81,3 +81,6 @@ The table below presents all the material properties that were used in the study
 - $u_x=0$ on face ABA′B′.
 - $u_y=u_x=0$ on face BCB′C′.
 - $u_z=0$ on line EE′ (E is the midpoint of edge CC′; E′ is the midpoint of edge BB′).
+
+## Loading
+- uniform normal pressure of 1 MPa on face ABCD.

@@ -254,7 +254,7 @@
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="index.html">
-   Thick plate under pressure
+   Eliptic plane under pressure
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2">
@@ -528,12 +528,12 @@ Positive value of pressure goes is compressing the element face.</p>
 <p>Elmer supports elastic simulations out of the box. Below there is an explanation of solver input file.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Header</span>
   <span class="n">CHECK</span> <span class="n">KEYWORDS</span> <span class="n">Warn</span>
-  <span class="n">Mesh</span> <span class="n">DB</span> <span class="s2">&quot;.&quot;</span> <span class="s2">&quot;.&quot;</span>				        <span class="c1"># Path to the mesh</span>
+  <span class="n">Mesh</span> <span class="n">DB</span> <span class="s2">&quot;.&quot;</span> <span class="s2">&quot;.&quot;</span>				<span class="c1"># Path to the mesh</span>
   <span class="n">Include</span> <span class="n">Path</span> <span class="s2">&quot;&quot;</span>
-  <span class="n">Results</span> <span class="n">Directory</span> <span class="s2">&quot;&quot;</span>				  <span class="c1"># Path to results directory</span>
+  <span class="n">Results</span> <span class="n">Directory</span> <span class="s2">&quot;&quot;</span>				<span class="c1"># Path to results directory</span>
 <span class="n">End</span>
 
-<span class="n">Simulation</span>					             <span class="c1"># Settings and constants for simulation</span>
+<span class="n">Simulation</span>					<span class="c1"># Settings and constants for simulation</span>
   <span class="n">Max</span> <span class="n">Output</span> <span class="n">Level</span> <span class="o">=</span> <span class="mi">5</span>
   <span class="n">Coordinate</span> <span class="n">System</span> <span class="o">=</span> <span class="n">Cartesian</span>
   <span class="n">Coordinate</span> <span class="n">Mapping</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span>
@@ -554,14 +554,14 @@ Positive value of pressure goes is compressing the element face.</p>
   <span class="n">Unit</span> <span class="n">Charge</span> <span class="o">=</span> <span class="mf">1.602e-19</span>
 <span class="n">End</span>
 
-<span class="n">Body</span> <span class="mi">1</span>						              <span class="c1"># Assigning the material and equations to the mesh</span>
+<span class="n">Body</span> <span class="mi">1</span>						<span class="c1"># Assigning the material and equations to the mesh</span>
   <span class="n">Target</span> <span class="n">Bodies</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">10</span>
   <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;Body Property 1&quot;</span>
   <span class="n">Equation</span> <span class="o">=</span> <span class="mi">1</span>
   <span class="n">Material</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">End</span>
 
-<span class="n">Solver</span> <span class="mi">2</span>					               <span class="c1"># Solver settings</span>
+<span class="n">Solver</span> <span class="mi">2</span>					<span class="c1"># Solver settings</span>
   <span class="n">Equation</span> <span class="o">=</span> <span class="n">Linear</span> <span class="n">elasticity</span>
   <span class="n">Procedure</span> <span class="o">=</span> <span class="s2">&quot;StressSolve&quot;</span> <span class="s2">&quot;StressSolver&quot;</span>
   <span class="n">Calculate</span> <span class="n">Stresses</span> <span class="o">=</span> <span class="kc">True</span>
@@ -581,7 +581,7 @@ Positive value of pressure goes is compressing the element face.</p>
   <span class="n">Linear</span> <span class="n">System</span> <span class="n">Direct</span> <span class="n">Method</span> <span class="o">=</span> <span class="n">Umfpack</span>
 <span class="n">End</span>
 
-<span class="n">Solver</span> <span class="mi">1</span>					               <span class="c1"># Saving the results from node at point D</span>
+<span class="n">Solver</span> <span class="mi">1</span>					<span class="c1"># Saving the results from node at point D</span>
   <span class="n">Equation</span> <span class="o">=</span> <span class="n">SaveScalars</span>
   <span class="n">Save</span> <span class="n">Points</span> <span class="o">=</span> <span class="mi">26</span>
   <span class="n">Procedure</span> <span class="o">=</span> <span class="s2">&quot;SaveData&quot;</span> <span class="s2">&quot;SaveScalars&quot;</span>
@@ -589,10 +589,10 @@ Positive value of pressure goes is compressing the element face.</p>
   <span class="n">Exec</span> <span class="n">Solver</span> <span class="o">=</span> <span class="n">After</span> <span class="n">Simulation</span>
 <span class="n">End</span>
 
-<span class="n">Equation</span> <span class="mi">1</span>					             <span class="c1"># Setting active solvers</span>
+<span class="n">Equation</span> <span class="mi">1</span>					<span class="c1"># Setting active solvers</span>
   <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;STRESS&quot;</span>
   <span class="n">Calculate</span> <span class="n">Stresses</span> <span class="o">=</span> <span class="kc">True</span>
-  <span class="n">Plane</span> <span class="n">Stress</span> <span class="o">=</span> <span class="kc">True</span>				     <span class="c1"># Turning on plane stress simulation</span>
+  <span class="n">Plane</span> <span class="n">Stress</span> <span class="o">=</span> <span class="kc">True</span>				<span class="c1"># Turning on plane stress simulation</span>
   <span class="n">Active</span> <span class="n">Solvers</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">End</span>
 
@@ -601,14 +601,14 @@ Positive value of pressure goes is compressing the element face.</p>
   <span class="n">Active</span> <span class="n">Solvers</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">End</span>
 
-<span class="n">Material</span> <span class="mi">1</span>					               <span class="c1"># Defining the material</span>
+<span class="n">Material</span> <span class="mi">1</span>					<span class="c1"># Defining the material</span>
   <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;STEEL&quot;</span>
   <span class="n">Poisson</span> <span class="n">ratio</span> <span class="o">=</span> <span class="mf">0.3</span>
   <span class="n">Porosity</span> <span class="n">Model</span> <span class="o">=</span> <span class="n">Always</span> <span class="n">saturated</span>
   <span class="n">Youngs</span> <span class="n">modulus</span> <span class="o">=</span> <span class="mf">2.1e11</span>
 <span class="n">End</span>
 
-<span class="n">Boundary</span> <span class="n">Condition</span> <span class="mi">1</span>				      <span class="c1"># Applying the boundary conditions</span>
+<span class="n">Boundary</span> <span class="n">Condition</span> <span class="mi">1</span>				<span class="c1"># Applying the boundary conditions</span>
   <span class="n">Target</span> <span class="n">Boundaries</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">12</span>
   <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;AB&quot;</span>
   <span class="n">Displacement</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">0</span>

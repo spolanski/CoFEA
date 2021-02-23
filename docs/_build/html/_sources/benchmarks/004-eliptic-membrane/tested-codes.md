@@ -136,12 +136,12 @@ Elmer supports elastic simulations out of the box. Below there is an explanation
 ```
 Header
   CHECK KEYWORDS Warn
-  Mesh DB "." "."				        # Path to the mesh
+  Mesh DB "." "."				# Path to the mesh
   Include Path ""
-  Results Directory ""				  # Path to results directory
+  Results Directory ""				# Path to results directory
 End
 
-Simulation					             # Settings and constants for simulation
+Simulation					# Settings and constants for simulation
   Max Output Level = 5
   Coordinate System = Cartesian
   Coordinate Mapping(3) = 1 2 3
@@ -162,14 +162,14 @@ Constants
   Unit Charge = 1.602e-19
 End
 
-Body 1						              # Assigning the material and equations to the mesh
+Body 1						# Assigning the material and equations to the mesh
   Target Bodies(1) = 10
   Name = "Body Property 1"
   Equation = 1
   Material = 1
 End
 
-Solver 2					               # Solver settings
+Solver 2					# Solver settings
   Equation = Linear elasticity
   Procedure = "StressSolve" "StressSolver"
   Calculate Stresses = True
@@ -189,7 +189,7 @@ Solver 2					               # Solver settings
   Linear System Direct Method = Umfpack
 End
 
-Solver 1					               # Saving the results from node at point D
+Solver 1					# Saving the results from node at point D
   Equation = SaveScalars
   Save Points = 26
   Procedure = "SaveData" "SaveScalars"
@@ -197,10 +197,10 @@ Solver 1					               # Saving the results from node at point D
   Exec Solver = After Simulation
 End
 
-Equation 1					             # Setting active solvers
+Equation 1					# Setting active solvers
   Name = "STRESS"
   Calculate Stresses = True
-  Plane Stress = True				     # Turning on plane stress simulation
+  Plane Stress = True				# Turning on plane stress simulation
   Active Solvers(1) = 2
 End
 
@@ -209,14 +209,14 @@ Equation 2
   Active Solvers(1) = 1
 End
 
-Material 1					               # Defining the material
+Material 1					# Defining the material
   Name = "STEEL"
   Poisson ratio = 0.3
   Porosity Model = Always saturated
   Youngs modulus = 2.1e11
 End
 
-Boundary Condition 1				      # Applying the boundary conditions
+Boundary Condition 1				# Applying the boundary conditions
   Target Boundaries(1) = 12
   Name = "AB"
   Displacement 1 = 0
