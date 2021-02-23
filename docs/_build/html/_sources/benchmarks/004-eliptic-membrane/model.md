@@ -5,7 +5,7 @@ The aim of this study is to compare the results from a static analysis performed
 
 The aim of this benchmark is to examine the stress $\sigma_{yy}$ of the membrane at the point D. The target solution at this point is expected to be equal to 92.7 MPa. Additionally, the benchmark allow to test how easy is to apply pressure load condition.
 
-Simulation input files used in this study can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/benchmarks/04-Eliptic-membrane)!
+Simulation input files used in this study can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/benchmarks/04-eliptic-membrane)!
 
 ```{jupyter-execute}
 :hide-code:
@@ -58,7 +58,7 @@ The benchmark geometry shown above is interactive and shows $\sigma_{yy}$ result
 
 ```{figure} .   /sketch.png
 ---
-width: 600px
+width: 400px
 alt: Eliptic membrane benchmark
 name: Eliptic membrane benchmark
 ---
