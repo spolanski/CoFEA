@@ -73,7 +73,7 @@
 <meta property="og:url"         content="https://cofea.readthedocs.io/benchmarks/004-eliptic-membrane/results.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Results" />
-<meta property="og:description" content="Results  Number of simulations with different element types and mesh size have been performed for the thick plate model.  Conclusions  A few conclusions can be " />
+<meta property="og:description" content="Results  Number of simulations with different element types and mesh size have been performed for the eliptic membrane model.  Conclusions  A few conclusions ca" />
 <meta property="og:image"       content="https://cofea.readthedocs.io/_static/cofea-black.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -255,7 +255,7 @@
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="index.html">
-   Eliptic plane under pressure
+   Eliptic membrane under pressure
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2">
@@ -371,23 +371,23 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linear-tetrahedral-mesh">
-   Linear tetrahedral mesh
+  <a class="reference internal nav-link" href="#linear-triangular-mesh">
+   Linear triangular mesh
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quadratic-tetrahedral-mesh">
-   Quadratic tetrahedral mesh
+  <a class="reference internal nav-link" href="#quadratic-triangular-mesh">
+   Quadratic triangular mesh
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linear-hexahedral-mesh">
-   Linear hexahedral mesh
+  <a class="reference internal nav-link" href="#linear-quadrilateral-mesh">
+   Linear quadrilateral mesh
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quadratic-hexahedral-mesh">
-   Quadratic hexahedral mesh
+  <a class="reference internal nav-link" href="#quadratic-quadrilateral-mesh">
+   Quadratic quadrilateral mesh
   </a>
  </li>
 </ul>
@@ -402,23 +402,22 @@
               <div>
                  <div class="section" id="results">
 <h1>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h1>
-<p>Number of simulations with different element types and mesh size have been performed for the thick plate model.</p>
+<p>Number of simulations with different element types and mesh size have been performed for the eliptic membrane model.</p>
 <div class="section" id="conclusions">
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
 <p>A few conclusions can be derived from the presented study:</p>
 <ol class="simple">
-<li><p>It is possible to use open-source software and achieve correct solution.</p></li>
-<li><p>CalculiX and Code_Aster gave very similar response in tetrahedral meshes, the Elmer outperforms other solvers in linear tetrahedral and hexahedral quadratic meshes.</p></li>
-<li><p>Calculix performs significanlty worse than other solvers in linear hexahedral meshes.</p></li>
-<li><p>For the thick plate model, the quadratic shape tetrahedral mesh gives a more accurate answer than the linear one. The very fine linear hexahedral mesh achieve more precise solution than coarse quadratic hexahedral mesh.</p></li>
+<li><p>It is possible to perform a plane stress analysis with pressure loading condition using open-source software and achieve a correct solution. In the current study, all solvers allow to obtain a stress value close to the target of <span class="math notranslate nohighlight">\(\sigma_{yy}=92.7 MPa\)</span>.</p></li>
+<li><p>It can be seen that Calculix and Code_Aster generally provided similar output, with CalculiX being a slightly more precise in finer meshes.</p></li>
+<li><p>Except of quadratic triangular meshes and fine quadratic quadrilateral mesh, Elmer was converging faster than others FE codes.</p></li>
 </ol>
 <div class="figure align-default" id="calculix-eliptic-membrane-results">
 <a class="reference internal image-reference" href="../../_images/ccx_eliptic_membrane.png"><img alt="Calculix eliptic membrane results" src="../../_images/ccx_eliptic_membrane.png" style="width: 600px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Results obtained with Calculix software and quadratic hexahedral mesh</span><a class="headerlink" href="#calculix-eliptic-membrane-results" title="Permalink to this image">¶</a></p>
 </div>
 </div>
-<div class="section" id="linear-tetrahedral-mesh">
-<h2>Linear tetrahedral mesh<a class="headerlink" href="#linear-tetrahedral-mesh" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linear-triangular-mesh">
+<h2>Linear triangular mesh<a class="headerlink" href="#linear-triangular-mesh" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Solver</p></th>
@@ -442,8 +441,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="quadratic-tetrahedral-mesh">
-<h2>Quadratic tetrahedral mesh<a class="headerlink" href="#quadratic-tetrahedral-mesh" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="quadratic-triangular-mesh">
+<h2>Quadratic triangular mesh<a class="headerlink" href="#quadratic-triangular-mesh" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Solver</p></th>
@@ -466,13 +465,13 @@
 </tr>
 </tbody>
 </table>
-<div class="figure align-default" id="tetrahedral-eliptic-plate-mesh-comparison">
-<a class="reference internal image-reference" href="../../_images/tet-comparison_eliptic_membrane.png"><img alt="Tetrahedral eliptic plate mesh comparison" src="../../_images/tet-comparison_eliptic_membrane.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Graph representing results of the simulation with tetrahedral mesh</span><a class="headerlink" href="#tetrahedral-eliptic-plate-mesh-comparison" title="Permalink to this image">¶</a></p>
+<div class="figure align-default" id="triangular-eliptic-plate-mesh-comparison">
+<a class="reference internal image-reference" href="../../_images/tri-comparison_eliptic_membrane.png"><img alt="Triangular eliptic plate mesh comparison" src="../../_images/tri-comparison_eliptic_membrane.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Graph representing results of the simulation with triangular mesh</span><a class="headerlink" href="#triangular-eliptic-plate-mesh-comparison" title="Permalink to this image">¶</a></p>
 </div>
 </div>
-<div class="section" id="linear-hexahedral-mesh">
-<h2>Linear hexahedral mesh<a class="headerlink" href="#linear-hexahedral-mesh" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linear-quadrilateral-mesh">
+<h2>Linear quadrilateral mesh<a class="headerlink" href="#linear-quadrilateral-mesh" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Solver</p></th>
@@ -496,8 +495,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="quadratic-hexahedral-mesh">
-<h2>Quadratic hexahedral mesh<a class="headerlink" href="#quadratic-hexahedral-mesh" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="quadratic-quadrilateral-mesh">
+<h2>Quadratic quadrilateral mesh<a class="headerlink" href="#quadratic-quadrilateral-mesh" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Solver</p></th>
@@ -520,9 +519,9 @@
 </tr>
 </tbody>
 </table>
-<div class="figure align-default" id="hexahedral-eliptic-plate-mesh-comparison">
-<a class="reference internal image-reference" href="../../_images/hex-comparison_eliptic_membrane.png"><img alt="Hexahedral eliptic plate mesh comparison" src="../../_images/hex-comparison_eliptic_membrane.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Graph representing results of the simulation with hexahedral mesh</span><a class="headerlink" href="#hexahedral-eliptic-plate-mesh-comparison" title="Permalink to this image">¶</a></p>
+<div class="figure align-default" id="quadrilateral-eliptic-plate-mesh-comparison">
+<a class="reference internal image-reference" href="../../_images/quad-comparison_eliptic_membrane.png"><img alt="Quadrilateral eliptic plate mesh comparison" src="../../_images/quad-comparison_eliptic_membrane.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Graph representing results of the simulation with quadrilateral mesh</span><a class="headerlink" href="#quadrilateral-eliptic-plate-mesh-comparison" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>

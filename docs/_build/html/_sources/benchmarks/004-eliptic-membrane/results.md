@@ -1,15 +1,14 @@
 # Results
 
-Number of simulations with different element types and mesh size have been performed for the thick plate model.
+Number of simulations with different element types and mesh size have been performed for the eliptic membrane model.
 
 ## Conclusions
 
 A few conclusions can be derived from the presented study:
 
-1. It is possible to use open-source software and achieve correct solution.
-2. CalculiX and Code_Aster gave very similar response in tetrahedral meshes, the Elmer outperforms other solvers in linear tetrahedral and hexahedral quadratic meshes.
-3. Calculix performs significanlty worse than other solvers in linear hexahedral meshes.
-4. For the thick plate model, the quadratic shape tetrahedral mesh gives a more accurate answer than the linear one. The very fine linear hexahedral mesh achieve more precise solution than coarse quadratic hexahedral mesh.
+1. It is possible to perform a plane stress analysis with pressure loading condition using open-source software and achieve a correct solution. In the current study, all solvers allow to obtain a stress value close to the target of $\sigma_{yy}=92.7 MPa$.
+2. It can be seen that Calculix and Code_Aster generally provided similar output, with CalculiX being a slightly more precise in finer meshes.
+3. Except of quadratic triangular meshes and fine quadratic quadrilateral mesh, Elmer was converging faster than others FE codes.
 
 ```{figure} ./ccx_eliptic_membrane.png
 ---
@@ -20,7 +19,7 @@ name: Calculix eliptic membrane results
 Results obtained with Calculix software and quadratic hexahedral mesh
 ```
 
-## Linear tetrahedral mesh
+## Linear triangular mesh
 
 | Solver                |Coarse Mesh              |Fine Mesh                |
 |-----------------------|-------------------------|-------------------------|
@@ -28,7 +27,7 @@ Results obtained with Calculix software and quadratic hexahedral mesh
 | Code_Aster            | 33.58 MPa               | 54.88 MPa               |
 | Elmer                 | 39.37 MPa               | 65.19 MPa               |
 
-## Quadratic tetrahedral mesh
+## Quadratic triangular mesh
 
 | Solver                |Coarse Mesh              |Fine Mesh                |
 |-----------------------|-------------------------|-------------------------|
@@ -36,16 +35,16 @@ Results obtained with Calculix software and quadratic hexahedral mesh
 | Code_Aster            | 73.13 MPa               |  88.33 MPa              |
 | Elmer                 | 69.26 MPa               |  85.46 MPa              |
 
-```{figure} ./tet-comparison_eliptic_membrane.png
+```{figure} ./tri-comparison_eliptic_membrane.png
 ---
 width: 600px
-alt: Tetrahedral eliptic plate mesh comparison
-name: Tetrahedral eliptic plate mesh comparison
+alt: Triangular eliptic plate mesh comparison
+name: Triangular eliptic plate mesh comparison
 ---
-Graph representing results of the simulation with tetrahedral mesh
+Graph representing results of the simulation with triangular mesh
 ```
 
-## Linear hexahedral mesh
+## Linear quadrilateral mesh
 
 | Solver                |Coarse Mesh              |Fine Mesh                |
 |-----------------------|-------------------------|-------------------------|
@@ -53,7 +52,7 @@ Graph representing results of the simulation with tetrahedral mesh
 | Code_Aster            | 70.49 MPa               |  85.40 MPa              |
 | Elmer                 | 75.33 MPa               |  86.91 MPa              |
 
-## Quadratic hexahedral mesh
+## Quadratic quadrilateral mesh
 
 | Solver                |Coarse Mesh              |Fine Mesh                |
 |-----------------------|-------------------------|-------------------------|
@@ -61,11 +60,11 @@ Graph representing results of the simulation with tetrahedral mesh
 | Code_Aster            | 87 MPa                  |  92.21 MPa              |
 | Elmer                 | 89.65 MPa               |  93.78 MPa              |
 
-```{figure} ./hex-comparison_eliptic_membrane.png
+```{figure} ./quad-comparison_eliptic_membrane.png
 ---
 width: 600px
-alt: Hexahedral eliptic plate mesh comparison
-name: Hexahedral eliptic plate mesh comparison
+alt: Quadrilateral eliptic plate mesh comparison
+name: Quadrilateral eliptic plate mesh comparison
 ---
-Graph representing results of the simulation with hexahedral mesh
+Graph representing results of the simulation with quadrilateral mesh
 ```
