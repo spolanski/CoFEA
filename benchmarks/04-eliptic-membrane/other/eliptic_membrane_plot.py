@@ -4,12 +4,12 @@ import numpy as np
 plt.close('all')
 
 def mesh_study():
-    plot_title = 'Tetrahedral mesh comparison'
-    file_name = 'tet-comparison_eliptic_membrane.png'
+    plot_title = 'Quadrilateral mesh comparison'
+    file_name = 'quad-comparison_eliptic_membrane.png'
     results = pd.read_csv('eliptic_membrane.csv')
 
-    lin_type = results['Mesh type'] == 'Linear-Tet'
-    quad_type = results['Mesh type'] == 'Quad-Tet'
+    lin_type = results['Mesh type'] == 'Linear-Quad'
+    quad_type = results['Mesh type'] == 'Quad-Quad'
     mesh_type = results[lin_type | quad_type]
     zipped = zip(mesh_type['Mesh type'],mesh_type['Size'])
     labels = ["{} {}".format(i[0], i[1]) for i in zipped]
@@ -27,9 +27,9 @@ def mesh_study():
 
     target_value_x = [-1.5 * width, len(mesh_type) - 1 + 1.5 * width]
     ax.plot(target_value_x, 92.7 * np.ones_like(target_value_x), c='black',
-            ls=('dashed'), label='Target 440Hz')
+            ls=('dashed'), label='Target 92.7MPa')
 
-    ax.set_ylabel('Frequency [Hz]')
+    ax.set_ylabel('Stress $\sigma_{yy}$ at point D [MPa]')
     ax.set_title(plot_title)
     ax.set_xticks(x)
     ax.set_xticklabels(labels)

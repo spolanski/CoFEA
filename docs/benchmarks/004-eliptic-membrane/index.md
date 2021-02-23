@@ -1,4 +1,4 @@
-# Eliptic plane under pressure
+# Eliptic membrane under pressure
 
 ```{toctree}
 :maxdepth: 2
