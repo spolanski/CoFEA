@@ -49,13 +49,30 @@ CD,2,2,0
 
 *END STEP					# End on analysis
 
-```
 
+```
+The simulation input file used in this study can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/benchmarks/04-eliptic-membrane/model_setup/Model_CalculiX)!
+
+### How to apply pressure boundary condition
+
+Please open your mesh with CalculiX GraphiX in read mode using:
+
+```
+cgx -c mesh_file.inp
+```
+Then in CGX window please click right button of mouse and choose Toggle command line. In command line please write:
+
+```
+comp NODESET do
+send NODESET abq press value_of_press
+```
+In the same directory should appear file called NODESET.dlo which need to be included in *DLOAD section to apply pressure to boundary.
+Positive value of pressure goes is compressing the element face.
 
 ## Code_Aster
 
 Code_Aster supports elastic simulation. Below there is an explanation of the input file.
-DEBUT(LANG='FR')
+
 
 ```
 mesh = LIRE_MAILLAGE(identifier='0:1',				# Reading a mesh
@@ -108,9 +125,9 @@ IMPR_RESU(identifier='8:1',					# Saving the results
           UNITE=80)
 
 FIN()
+
 ```
-
-
+The simulation input file used in this study can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/benchmarks/04-eliptic-membrane/model_setup//Model_Code_Aster)!
 
 ## Elmer
 
@@ -119,12 +136,12 @@ Elmer supports elastic simulations out of the box. Below there is an explanation
 ```
 Header
   CHECK KEYWORDS Warn
-  Mesh DB "." "."				      # Path to the mesh
+  Mesh DB "." "."				        # Path to the mesh
   Include Path ""
-  Results Directory ""				# Path to results directory
+  Results Directory ""				  # Path to results directory
 End
 
-Simulation					           # Settings and constants for simulation
+Simulation					             # Settings and constants for simulation
   Max Output Level = 5
   Coordinate System = Cartesian
   Coordinate Mapping(3) = 1 2 3
@@ -145,14 +162,14 @@ Constants
   Unit Charge = 1.602e-19
 End
 
-Body 1						            # Assigning the material and equations to the mesh
+Body 1						              # Assigning the material and equations to the mesh
   Target Bodies(1) = 10
   Name = "Body Property 1"
   Equation = 1
   Material = 1
 End
 
-Solver 2					             # Solver settings
+Solver 2					               # Solver settings
   Equation = Linear elasticity
   Procedure = "StressSolve" "StressSolver"
   Calculate Stresses = True
@@ -172,7 +189,7 @@ Solver 2					             # Solver settings
   Linear System Direct Method = Umfpack
 End
 
-Solver 1					             # Saving the results from node at point D
+Solver 1					               # Saving the results from node at point D
   Equation = SaveScalars
   Save Points = 26
   Procedure = "SaveData" "SaveScalars"
@@ -180,10 +197,10 @@ Solver 1					             # Saving the results from node at point D
   Exec Solver = After Simulation
 End
 
-Equation 1					           # Setting active solvers
+Equation 1					             # Setting active solvers
   Name = "STRESS"
   Calculate Stresses = True
-  Plane Stress = True				  # Turning on plane stress simulation
+  Plane Stress = True				     # Turning on plane stress simulation
   Active Solvers(1) = 2
 End
 
@@ -192,14 +209,14 @@ Equation 2
   Active Solvers(1) = 1
 End
 
-Material 1					           # Defining the material
+Material 1					               # Defining the material
   Name = "STEEL"
   Poisson ratio = 0.3
   Porosity Model = Always saturated
   Youngs modulus = 2.1e11
 End
 
-Boundary Condition 1				  # Applying the boundary conditions
+Boundary Condition 1				      # Applying the boundary conditions
   Target Boundaries(1) = 12
   Name = "AB"
   Displacement 1 = 0
@@ -218,3 +235,6 @@ Boundary Condition 3
 End
 
 ```
+
+
+The simulation input file used in this study can be found on our [GitHub](https://github.com/spolanski/CoFEA/tree/master/benchmarks/04-eliptic-membrane/model_setup//Model_ElmerGUI)!

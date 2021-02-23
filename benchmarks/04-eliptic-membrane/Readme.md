@@ -1,17 +1,18 @@
-  The readme file should be amend to present benchmark information:
+The readme file should be amend to present benchmark information:
   
   
-  A description of a similar benchmark can be found in this [link](http://wufengyun.com:888/v6.14/books/bmk/default.htm?startat=ch04s02anf01.html)
-
-  # Model sketch
+A description of a similar benchmark can be found in this [link](http://wufengyun.com:888/v6.14/books/bmk/default.htm?startat=ch04s02anf01.html)
+# Model sketch
   ![image](./other/sketch.png)
-  # Benchmark purpose
-  describe what the benchmark is trying to measure
-  # Material
-  write down material data
-  # Boundary conditions and loads
-  describe boundary conditions and loads
-  # Mesh
-  describe topology of mesh used in the study
-  # Results
-  provide benchmark results for tested codes
+ 
+## Material
+Linear elastic material model:
+- Young's modulus: 2.1e11 Pa
+- Poisson's ratio: 0.3
+## Boundary conditions
+- Y-symmetry condition on CD
+- X-symmetry condition on AB
+## Loading
+- normal pressure of 10e6 Pa
+## Benchmark purpose
+The purpose of the benchmark is to check if $\sigma_{yy}=92.7e6 Pa$ at point D

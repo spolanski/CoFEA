@@ -76,4 +76,5 @@ fea_software/elmer.md
 
 benchmarks/000-tuning-fork/index
 benchmarks/001-thick-plate/index
+benchmarks/004-eliptic-membrane/index
 ```

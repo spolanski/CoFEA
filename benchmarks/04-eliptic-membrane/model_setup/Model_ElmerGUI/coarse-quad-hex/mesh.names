@@ -1,0 +1,7 @@
+! ----- names for bodies -----
+$ ELIPSE = 6
+! ----- names for boundaries -----
+$ AB = 1
+$ CD = 2
+$ BC = 3
+$ bnry7 = 7
