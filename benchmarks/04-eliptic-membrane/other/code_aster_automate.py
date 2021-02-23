@@ -45,12 +45,12 @@ def run_code_aster(input_file, mesh_file_unv):
 
 os.mkdir("Results")
 # Check the meshes in Mesh folder
-mesh_file_mames = gb.glob("Mesh/*.unv")
+mesh_file_names = gb.glob("Mesh/*.unv")
 
 # Name of the input inp file for Code_Aster
 code_aster_input_file = ("RunCase_1")
 
-for mesh_file_mame in mesh_file_mames:
+for mesh_file_name in mesh_file_names:
 
     change_model_export(code_aster_input_file, mesh_file_mame)
     run_code_aster(code_aster_input_file, mesh_file_mame)

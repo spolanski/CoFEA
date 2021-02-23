@@ -18,9 +18,9 @@ def change_model_inp (input_file, change_mesh):
 
     # Pressure load path
     press_path = change_mesh.replace('Mesh/','Pressure/')
-    press_name = press_path.replace('.inp','.dlo')		
+    press_name = press_path.replace('.inp','.dlo')
     press_load_path = "    *INCLUDE, INPUT=" + press_name + "\n"
-     			
+
     # Read model.inp
     with open((input_file + ".inp"),"r") as model_inp:
 
@@ -67,14 +67,14 @@ def run_calculix(input_file, mesh_files_inp):
 
 os.mkdir("Results")
 # Check the meshes in Mesh folder
-mesh_file_mames = gb.glob("Mesh/*.inp")
+mesh_file_names = gb.glob("Mesh/*.inp")
 
 # Name of the input inp file for CalculiX
 ccx_input_file = ("model")
 
-for mesh_file_mame in mesh_file_mames:
+for mesh_file_name in mesh_file_names:
 
-    change_model_inp(ccx_input_file, mesh_file_mame)
-    run_calculix(ccx_input_file, mesh_file_mame)
+    change_model_inp(ccx_input_file, mesh_file_name)
+    run_calculix(ccx_input_file, mesh_file_name)
 
 print ("All simualations are done!")
