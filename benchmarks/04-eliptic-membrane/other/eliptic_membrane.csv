@@ -1,0 +1,9 @@
+Mesh type,Size,Calculix,Code_Aster,Elmer
+Linear-Tet,coarse,33.79,33.58,39.37
+Linear-Tet,fine,54.84,54.88,65.19
+Linear-Hex,coarse,69.62,70.49,75.33
+Linear-Hex,fine,85.55,85.4,86.91
+Quad-Tet,coarse,73.09,73.13,69.26
+Quad-Tet,fine,88.42,88.33,85.46
+Quad-Hex,coarse,85.85,87,89.65
+Quad-Hex,fine,92.99,92.21,93.78

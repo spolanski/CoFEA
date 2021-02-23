@@ -1,0 +1,877 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meshpresso module &#8212; CoFEA Initiative</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cofea.readthedocs.io/meshpresso/api.html" />
+    <link rel="shortcut icon" href="../_static/cofea-black.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Calculix" href="../fea_software/calculix.html" />
+    <link rel="prev" title="Meshpresso Mesh Converter" href="index.html" /> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cofea.readthedocs.io/meshpresso/api.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Meshpresso module" />
+<meta property="og:description" content="Meshpresso module  The following section contains a documentation of the Meshpresso module implementation.    class meshpresso.Mesh(model_name, dict_of_parts, a" />
+<meta property="og:image"       content="https://cofea.readthedocs.io/_static/cofea-black.png" />
+
+<meta name="twitter:card" content="summary" />
+
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../reference/blog/atom.xml"
+  title="Blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/cofea-black.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CoFEA Initiative</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Documentation structure
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/blog.html">
+   CoFEA Blog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/about_us.html">
+   CoFEA Team
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/contributor_guide.html">
+   Contributor Guide
+  </a>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="index.html">
+   Meshpresso Mesh Converter
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Meshpresso module
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/spolanski/CoFEA">
+   GitHub repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  FEA Software
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fea_software/calculix.html">
+   Calculix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fea_software/code_aster.html">
+   Code_Aster Compilation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fea_software/elmer.html">
+   Elmer
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Benchmarks
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../benchmarks/000-tuning-fork/index.html">
+   Tuning fork benchmark
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/000-tuning-fork/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/000-tuning-fork/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/000-tuning-fork/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../benchmarks/001-thick-plate/index.html">
+   Thick plate under pressure
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/001-thick-plate/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/001-thick-plate/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/001-thick-plate/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../benchmarks/004-eliptic-membrane/index.html">
+   Thick plate under pressure
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/004-eliptic-membrane/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/004-eliptic-membrane/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/004-eliptic-membrane/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/meshpresso/api.rst"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/spolanski/CoFEA"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/spolanski/CoFEA/issues/new?title=Issue%20on%20page%20%2Fmeshpresso/api.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/spolanski/CoFEA/edit/master/docs/meshpresso/api.rst"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                 <div class="section" id="meshpresso-module">
+<h1>Meshpresso module<a class="headerlink" href="#meshpresso-module" title="Permalink to this headline">¶</a></h1>
+<p>The following section contains a documentation of the Meshpresso module implementation.</p>
+<dl class="py class">
+<dt id="meshpresso.Mesh">
+<em class="property">class </em><code class="sig-prename descclassname">meshpresso.</code><code class="sig-name descname">Mesh</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model_name</span></em>, <em class="sig-param"><span class="n">dict_of_parts</span></em>, <em class="sig-param"><span class="n">asbly_element_sets</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">asbly_node_sets</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">asbly_surfaces</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#Mesh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.Mesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mesh is the most general class used to import, store
+and export mesh data. the idea is to initialise the constructor,
+then import mesh from db file. finally, the mesh can be
+exported to an external format. for example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">import_from_db_file</span><span class="p">(</span><span class="n">path_to_db_file</span><span class="o">=</span><span class="s1">&#39;mesh.db&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">export_to_calculix</span><span class="p">(</span><span class="n">exported_filename</span><span class="o">=</span><span class="s1">&#39;calculix.inp&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">export_to_unv_format</span><span class="p">(</span><span class="n">exported_filename</span><span class="o">=</span><span class="s1">&#39;salome.unv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt id="meshpresso.Mesh.model_name">
+<code class="sig-name descname">model_name</code><a class="headerlink" href="#meshpresso.Mesh.model_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of imported model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="meshpresso.Mesh.parts">
+<code class="sig-name descname">parts</code><a class="headerlink" href="#meshpresso.Mesh.parts" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of imported parts</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="meshpresso.Mesh.assembly_mesh">
+<code class="sig-name descname">assembly_mesh</code><a class="headerlink" href="#meshpresso.Mesh.assembly_mesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>the dictionary contains parts, but those have renumbered        node and element labels, so that the labels are not        repeating</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meshpresso.Mesh.export_to_calculix">
+<code class="sig-name descname">export_to_calculix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">exported_filename</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#Mesh.export_to_calculix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.Mesh.export_to_calculix" title="Permalink to this definition">¶</a></dt>
+<dd><p>function to export mesh to calculix format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>exported_filename</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – name of the file to export mesh (eg ‘calculix.inp’)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meshpresso.Mesh.export_to_unv_format">
+<code class="sig-name descname">export_to_unv_format</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">exported_filename</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#Mesh.export_to_unv_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.Mesh.export_to_unv_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>function to export to unv format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>exported_filename</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – name of the file to export mesh (eg ‘salome.unv’)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meshpresso.Mesh.get_calculix_surf_definition">
+<code class="sig-name descname">get_calculix_surf_definition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#Mesh.get_calculix_surf_definition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.Mesh.get_calculix_surf_definition" title="Permalink to this definition">¶</a></dt>
+<dd><p>function converts surfaces into format appropriate
+for calculix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dictionary with surface name as keys and dictionary surface
+definition as value</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meshpresso.Mesh.import_from_abaqus_cae">
+<em class="property">classmethod </em><code class="sig-name descname">import_from_abaqus_cae</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">abq_model_name</span></em>, <em class="sig-param"><span class="n">abq_root_assembly</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#Mesh.import_from_abaqus_cae"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.Mesh.import_from_abaqus_cae" title="Permalink to this definition">¶</a></dt>
+<dd><p>function to initiate the mesh object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>abq_model_name</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – name of the abaqus model</p></li>
+<li><p><strong>abq_part_list</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of abaqus parts to export mesh from</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>object containing model mesh definition</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#meshpresso.Mesh" title="meshpresso.Mesh">Mesh</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meshpresso.Mesh.import_from_db_file">
+<em class="property">classmethod </em><code class="sig-name descname">import_from_db_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path_to_db_file</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#Mesh.import_from_db_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.Mesh.import_from_db_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>function to initiate the mesh object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path_to_db_file</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – path to the db file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>object containing model mesh definition</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>mesh</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meshpresso.Mesh.renumber_mesh">
+<code class="sig-name descname">renumber_mesh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#Mesh.renumber_mesh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.Mesh.renumber_mesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>function computes mesh at assembly level from list
+of part objects. the returned dictionary contains
+parts with renumbered nodes and elements</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dictionary of parts</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>defaultdict(<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meshpresso.Mesh.save_to_db_file">
+<code class="sig-name descname">save_to_db_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name_of_db_file</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#Mesh.save_to_db_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.Mesh.save_to_db_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>function to save model data to db file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name_of_db_file</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – name of the file that will be used to store data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meshpresso.Mesh.set_salome_surf_definition">
+<code class="sig-name descname">set_salome_surf_definition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#Mesh.set_salome_surf_definition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.Mesh.set_salome_surf_definition" title="Permalink to this definition">¶</a></dt>
+<dd><p>function converts surfaces into format appropriate
+for salome.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dictionary with surface name as keys and dictionary surface
+definition as value</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="meshpresso.PartMesh">
+<em class="property">class </em><code class="sig-prename descclassname">meshpresso.</code><code class="sig-name descname">PartMesh</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">part_name</span></em>, <em class="sig-param"><span class="n">part_nodes</span></em>, <em class="sig-param"><span class="n">part_elements</span></em>, <em class="sig-param"><span class="n">element_sets</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">node_sets</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">surfaces</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#PartMesh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.PartMesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>PartMesh is an object used to store mesh properties for a given part.</p>
+<dl class="py attribute">
+<dt id="meshpresso.PartMesh.name">
+<code class="sig-name descname">name</code><a class="headerlink" href="#meshpresso.PartMesh.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the part</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="meshpresso.PartMesh.nodes">
+<code class="sig-name descname">nodes</code><a class="headerlink" href="#meshpresso.PartMesh.nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of the node objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of node objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="meshpresso.PartMesh.elements">
+<code class="sig-name descname">elements</code><a class="headerlink" href="#meshpresso.PartMesh.elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of the element objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="meshpresso.PartMesh.elements_by_type">
+<code class="sig-name descname">elements_by_type</code><a class="headerlink" href="#meshpresso.PartMesh.elements_by_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>dictionary of elements grouped by element type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>defaultdict(<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="meshpresso.PartMesh.el_set">
+<code class="sig-name descname">el_set</code><a class="headerlink" href="#meshpresso.PartMesh.el_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>dictionary of element sets grouped by element set name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>defaultdict(<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="meshpresso.PartMesh.n_set">
+<code class="sig-name descname">n_set</code><a class="headerlink" href="#meshpresso.PartMesh.n_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>dictionary of node sets grouped by node set name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>defaultdict(<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="meshpresso.PartMesh.surfaces">
+<code class="sig-name descname">surfaces</code><a class="headerlink" href="#meshpresso.PartMesh.surfaces" title="Permalink to this definition">¶</a></dt>
+<dd><p>dictionary of surfaces {surf_name: {‘nodes’: n_set,
+‘elements’: el_set, ‘sides’: string},
+by default None</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>defaultdict(<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a>), optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meshpresso.PartMesh.from_abaqus_cae">
+<em class="property">classmethod </em><code class="sig-name descname">from_abaqus_cae</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">abq_part</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#PartMesh.from_abaqus_cae"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.PartMesh.from_abaqus_cae" title="Permalink to this definition">¶</a></dt>
+<dd><p>function to initiate object from abaqus part.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>abq_part</strong> (<em>abq_part</em>) – abaqus part object</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>object containing part mesh definition</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>part_mesh</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meshpresso.PartMesh.get_elements_by_type">
+<code class="sig-name descname">get_elements_by_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#PartMesh.get_elements_by_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.PartMesh.get_elements_by_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>function used to create a dictionary of elements with
+element types used as keys</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dictionary of elements with elementtypes used as keys</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>defaultdict(<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meshpresso.PartMesh.get_elements_from_label_list">
+<code class="sig-name descname">get_elements_from_label_list</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label_list</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#PartMesh.get_elements_from_label_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.PartMesh.get_elements_from_label_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>function to retreive the elements from list of
+elements labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>label_list</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of integers referring to element labels</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of element objects</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meshpresso.PartMesh.get_nodes_from_label_list">
+<code class="sig-name descname">get_nodes_from_label_list</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label_list</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#PartMesh.get_nodes_from_label_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.PartMesh.get_nodes_from_label_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>function to retrieve the nodes from list of node labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>label_list</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – list of integers describing node labes</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of node objects</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meshpresso.PartMesh.reorder_nodes_in_el_definition">
+<code class="sig-name descname">reorder_nodes_in_el_definition</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mesh_format</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#PartMesh.reorder_nodes_in_el_definition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.PartMesh.reorder_nodes_in_el_definition" title="Permalink to this definition">¶</a></dt>
+<dd><p>function used to reoder nodes. by default the node
+order is the same as in abaqus.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mesh_format</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – format of mesh to be converted to</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meshpresso.PartMesh.set_element_type_format">
+<code class="sig-name descname">set_element_type_format</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">new_format</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#PartMesh.set_element_type_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.PartMesh.set_element_type_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>function to change element types in dictionary
+elements_by_type (for example from c3_d20_r to 116)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>new_format</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – new format (eg ‘UNV’)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="meshpresso.Element">
+<em class="property">class </em><code class="sig-prename descclassname">meshpresso.</code><code class="sig-name descname">Element</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">el_type</span></em>, <em class="sig-param"><span class="n">el_label</span></em>, <em class="sig-param"><span class="n">el_connect</span></em>, <em class="sig-param"><span class="n">part_all_nodes</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#Element"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.Element" title="Permalink to this definition">¶</a></dt>
+<dd><p>class used to store information about elements,
+theirs type, label and connection to nodes</p>
+<dl class="py attribute">
+<dt id="meshpresso.Element.type">
+<code class="sig-name descname">type</code><a class="headerlink" href="#meshpresso.Element.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>element type (eg C3D4)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="meshpresso.Element.label">
+<code class="sig-name descname">label</code><a class="headerlink" href="#meshpresso.Element.label" title="Permalink to this definition">¶</a></dt>
+<dd><p>element number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="meshpresso.Element.connectivity">
+<code class="sig-name descname">connectivity</code><a class="headerlink" href="#meshpresso.Element.connectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of nodes that element is based on</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meshpresso.Element.change_label">
+<code class="sig-name descname">change_label</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">new_label</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#Element.change_label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.Element.change_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>a function to change element label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>new_label</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – new element number</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meshpresso.Element.get_node_labels">
+<code class="sig-name descname">get_node_labels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#Element.get_node_labels"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.Element.get_node_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>function returns labels of nodes which building the element</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of integers describing node labels</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="meshpresso.Node">
+<em class="property">class </em><code class="sig-prename descclassname">meshpresso.</code><code class="sig-name descname">Node</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_label</span></em>, <em class="sig-param"><span class="n">n_coords</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#Node"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.Node" title="Permalink to this definition">¶</a></dt>
+<dd><p>used to create node objects from external data</p>
+<dl class="py attribute">
+<dt id="meshpresso.Node.label">
+<code class="sig-name descname">label</code><a class="headerlink" href="#meshpresso.Node.label" title="Permalink to this definition">¶</a></dt>
+<dd><p>node number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="meshpresso.Node.coordinates">
+<code class="sig-name descname">coordinates</code><a class="headerlink" href="#meshpresso.Node.coordinates" title="Permalink to this definition">¶</a></dt>
+<dd><p>node coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#tuple" title="(in Python v3.8)">tuple</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="meshpresso.Node.change_label">
+<code class="sig-name descname">change_label</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">new_label</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/meshpresso.html#Node.change_label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#meshpresso.Node.change_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>a function to change node label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>new_label</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – new node number</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./meshpresso"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+<div class="section">
+   
+</div>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Meshpresso Mesh Converter</a>
+    <a class='right-next' id="next-link" href="../fea_software/calculix.html" title="next page">Calculix</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By BlogTechniczny.pl<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

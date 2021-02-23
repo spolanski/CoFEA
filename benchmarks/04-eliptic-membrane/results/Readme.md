@@ -1,4 +1,2 @@
 # Results
-The results folder should contain all the files which either show results (eg images, graphs, plots) or were used at the postprocessing stage (Python scripts)
-
-It would be good, if the files are described here, so it easier to understand what they are.
+The results folder should contain results of every solver. The name of folder indicates what mesh was used to obtain the results. The files can be opened with Paraview (.vtu) or ParaVis (.rmed)

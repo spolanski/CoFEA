@@ -1,0 +1,22 @@
+!------ Skeleton for body section -----
+Body 1
+  Name = ELIPSE
+End
+
+!------ Skeleton for boundary section -----
+Boundary Condition 1
+  Name = AB
+End
+
+Boundary Condition 2
+  Name = CD
+End
+
+Boundary Condition 3
+  Name = BC
+End
+
+Boundary Condition 4
+  Name = bnry7
+End
+
