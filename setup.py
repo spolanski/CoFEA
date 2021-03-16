@@ -30,7 +30,6 @@ setup(name='CoFEA',
           'ipygany',
           'ipywidgets<8,>=7.0.0',
           'vtk',
-          'pyvista',
-          'colon_fence',  
+          'pyvista',          
           'sphinx-book-theme', ],
       )
