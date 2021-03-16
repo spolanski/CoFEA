@@ -74,7 +74,7 @@ ccx_input_file = ("model")
 
 for mesh_file_name in mesh_file_names:
 
-    change_model_inp(ccx_input_file, mesh_file_mame)
-    run_calculix(ccx_input_file, mesh_file_mame)
+    change_model_inp(ccx_input_file, mesh_file_name)
+    run_calculix(ccx_input_file, mesh_file_name)
 
 print ("All simualations are done!")

@@ -52,7 +52,7 @@ code_aster_input_file = ("RunCase_1")
 
 for mesh_file_name in mesh_file_names:
 
-    change_model_export(code_aster_input_file, mesh_file_mame)
-    run_code_aster(code_aster_input_file, mesh_file_mame)
+    change_model_export(code_aster_input_file, mesh_file_name)
+    run_code_aster(code_aster_input_file, mesh_file_name)
 
 print ("All simualations are done!")
