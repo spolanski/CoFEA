@@ -14,8 +14,6 @@ Simulation input files used in this study can be found on [CoFEA GitHub](https:/
   scene = Scene([mesh])
   scene
 
-
-
 ```{Tip}
 The tuning fork geometry shown above is interactive
 ```
