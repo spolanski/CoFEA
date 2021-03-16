@@ -26,7 +26,6 @@ extensions = [
     "sphinx.ext.viewcode",
     'sphinx.ext.githubpages',
     'sphinx.ext.napoleon',
-    'deflist',
     "ablog",
     "myst_parser",
 ]
