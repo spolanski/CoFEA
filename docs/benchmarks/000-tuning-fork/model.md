@@ -7,14 +7,14 @@ This benchmark checks as well if it is possible to run a free-free modal analysi
 
 Simulation input files used in this study can be found on [CoFEA GitHub](https://github.com/spolanski/CoFEA/tree/master/benchmarks/00-Tuning-Fork).
 
-```{jupyter-execute}
+.. jupyter-execute::
+  :hide-code:
+  from ipygany import Scene, TetraMesh
+  mesh = TetraMesh.from_vtk('benchmarks/000-tuning-fork/fork.vtk')
+  scene = Scene([mesh])
+  scene
 
-from ipygany import Scene, TetraMesh
-mesh = TetraMesh.from_vtk('benchmarks/000-tuning-fork/fork.vtk')
-benchmarks/000-tuning-fork/fork.vtk
-scene = Scene([mesh])
-scene
-```
+
 ```{Tip}
 The tuning fork geometry shown above is interactive
 ```
