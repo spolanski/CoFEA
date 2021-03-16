@@ -1,22 +1,25 @@
 # Model definition
 ## Benchmark aim
 
-The aim of this study is to compare the results from a modal analysis performed in different Finite-Element codes. A tuning fork geometry will be used to measure the software performance. For the tuning fork geometry used in this study, the first frequency of vibration is expected to be close to 440 Hz ([original study](http://pubs.sciepub.com/ajme/4/7/16/index.html)). 
+The aim of this study is to compare the results from a modal analysis performed in different Finite-Element codes. A tuning fork geometry will be used to measure the software performance. For the tuning fork geometry used in this study, the first frequency of vibration is expected to be close to 440 Hz ([original study](http://pubs.sciepub.com/ajme/4/7/16/index.html)).
 
 This benchmark checks as well if it is possible to run a free-free modal analysis and how easy it can be performed.
 
 Simulation input files used in this study can be found on [CoFEA GitHub](https://github.com/spolanski/CoFEA/tree/master/benchmarks/00-Tuning-Fork).
 
-```{jupyter-execute}
-:hide-code:
+.. jupyter-execute::
+  :hide-code:
   from ipygany import Scene, TetraMesh
   mesh = TetraMesh.from_vtk('benchmarks/000-tuning-fork/fork.vtk')
   scene = Scene([mesh])
   scene
-```
+
+
+
 ```{Tip}
 The tuning fork geometry shown above is interactive
 ```
+
 
 ```{figure} ./fork-geo-results.png
 ---
