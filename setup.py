@@ -31,5 +31,6 @@ setup(name='CoFEA',
           'ipywidgets<8,>=7.0.0',
           'vtk',
           'pyvista',
+          'colon_fence',  
           'sphinx-book-theme', ],
       )
