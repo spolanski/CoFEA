@@ -49,12 +49,9 @@ nitpick_ignore = [
 
 numfig = True
 
-myst_admonition_enable = False
-myst_deflist_enable = False
-myst_enable_extensions =[
-    "colon_fence",
-    "deflist",
-]
+myst_admonition_enable = True
+myst_deflist_enable = True
+
 myst_url_schemes = ("http", "https", "mailto")
 panels_add_bootstrap_css = False
 
