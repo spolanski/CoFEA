@@ -25,7 +25,7 @@ Simulation input files used in this study can be found on our [GitHub](https://g
 %  colored_mesh = IsoColor(mesh, input=('S','YY'), min=sigmayy_min, max=sigmayy_max)
 
   # Create a slider that will dynamically change the boundaries of the colormap
-  %colormap_slider_range = FloatRangeSlider(value=[sigmayy_min, sigmayy_max], min=sigmayy_min, max=sigmayy_max,  %step=(sigmayy_max - sigmayy_min) / 100.)
+%  colormap_slider_range = FloatRangeSlider(value=[sigmayy_min, sigmayy_max], min=sigmayy_min, max=sigmayy_max,  %step=(sigmayy_max - sigmayy_min) / 100.)
 
 %  jslink((colored_mesh, 'range'), (colormap_slider_range, 'value'))
 
