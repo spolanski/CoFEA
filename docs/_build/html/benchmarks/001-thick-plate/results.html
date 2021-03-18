@@ -1,0 +1,600 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Results &#8212; CoFEA Initiative</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cofea.readthedocs.io/benchmarks/001-thick-plate/results.html" />
+    <link rel="shortcut icon" href="../../_static/cofea-black.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tested Finite Element codes" href="tested-codes.html" />
+    <link rel="prev" title="Model definition" href="model.html" /> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cofea.readthedocs.io/benchmarks/001-thick-plate/results.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Results" />
+<meta property="og:description" content="Results  Number of simulations with different element types and mesh size have been performed for the thick plate under pressure model.  Conclusions  A few conc" />
+<meta property="og:image"       content="https://cofea.readthedocs.io/_static/cofea-black.png" />
+
+<meta name="twitter:card" content="summary" />
+
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../reference/blog/atom.xml"
+  title="Blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/cofea-black.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CoFEA Initiative</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Documentation structure
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/blog.html">
+   CoFEA Blog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/about_us.html">
+   CoFEA Team
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/contributor_guide.html">
+   Contributor Guide
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../meshpresso/index.html">
+   Meshpresso Mesh Converter
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../meshpresso/api.html">
+     Meshpresso module
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/spolanski/CoFEA">
+   GitHub repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  FEA Software
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fea_software/calculix.html">
+   Calculix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fea_software/code_aster.html">
+   Code_Aster Compilation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fea_software/elmer.html">
+   Elmer
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Benchmarks
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../000-tuning-fork/index.html">
+   Tuning fork benchmark
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../000-tuning-fork/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../000-tuning-fork/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../000-tuning-fork/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="index.html">
+   Thick plate under pressure
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../004-eliptic-membrane/index.html">
+   Eliptic membrane under pressure
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../004-eliptic-membrane/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../004-eliptic-membrane/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../004-eliptic-membrane/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../005-hemispherical-shell-point-load/index.html">
+   Hemispherical shell point load
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../005-hemispherical-shell-point-load/model.html">
+     Model definition
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/benchmarks/001-thick-plate/results.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/spolanski/CoFEA"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/spolanski/CoFEA/issues/new?title=Issue%20on%20page%20%2Fbenchmarks/001-thick-plate/results.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/spolanski/CoFEA/edit/master/docs/benchmarks/001-thick-plate/results.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusions">
+   Conclusions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-tetrahedral-mesh">
+   Linear tetrahedral mesh
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quadratic-tetrahedral-mesh">
+   Quadratic tetrahedral mesh
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-hexahedral-mesh">
+   Linear hexahedral mesh
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quadratic-hexahedral-mesh">
+   Quadratic hexahedral mesh
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                 <div class="section" id="results">
+<h1>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h1>
+<p>Number of simulations with different element types and mesh size have been performed for the thick plate under pressure model.</p>
+<div class="section" id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
+<p>A few conclusions can be derived from the presented study:</p>
+<ol class="simple">
+<li><p>It is possible to perform a structural analysis with pressure loading condition using open-source software and achieve a correct solution. In the current study, fairly coarse meshes have been tested and they allow to obtain a stress value close to the target of <span class="math notranslate nohighlight">\(\sigma_{yy}=5.38 MPa\)</span>. An additional test with a very fine mesh has been run and all tested FE codes converged to the target value.</p></li>
+<li><p>It can be seen that Calculix and Code_Aster generally provided similar output apart for the case of linear hex mesh. It may indicate that a slightly different element formulation for linear hexahedral meshes was used.</p></li>
+<li><p>The results from Elmer show a different convergence behaviour comparing to other FE codes. While this behaviour can be a result of different numerical scheme implementation, it should also be highlighted that FE meshes used in Elmer runs were slightly different compared to the runs in other codes. This difference was caused by the fact that the meshes used in Calculix and Code_Aster came as an output from meshpresso converter and those seem not to be compatible with Elmer. It looks like the 3D geometry requires all type of elements to be provided (3D hex/tet, 2D tri/quad and 1D wires) while at the current stage, the meshpresso provides only 3D or 2D elements. However, it was also noted that ElmerGUI struggles to import some type of .UNV meshes created in the Salome environment. Especially, the quadratic hexahedral mesh type seems to be problematic.</p></li>
+</ol>
+<div class="figure align-default" id="calculix-results">
+<a class="reference internal image-reference" href="../../_images/ccx_output.png"><img alt="Calculix results" src="../../_images/ccx_output.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Results obtained with Calculix software and quadratic hexahedral mesh</span><a class="headerlink" href="#calculix-results" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="linear-tetrahedral-mesh">
+<h2>Linear tetrahedral mesh<a class="headerlink" href="#linear-tetrahedral-mesh" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Solver</p></th>
+<th class="head"><p>Coarse Mesh</p></th>
+<th class="head"><p>Fine Mesh</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CalculiX</p></td>
+<td><p>-1.51 MPa</p></td>
+<td><p>-4.38 MPa</p></td>
+</tr>
+<tr class="row-odd"><td><p>Code_Aster</p></td>
+<td><p>-1.51 MPa</p></td>
+<td><p>-4.38 MPa</p></td>
+</tr>
+<tr class="row-even"><td><p>Elmer</p></td>
+<td><p>-2.64 MPa</p></td>
+<td><p>-5.49 MPa</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="quadratic-tetrahedral-mesh">
+<h2>Quadratic tetrahedral mesh<a class="headerlink" href="#quadratic-tetrahedral-mesh" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Solver</p></th>
+<th class="head"><p>Coarse Mesh</p></th>
+<th class="head"><p>Fine Mesh</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CalculiX</p></td>
+<td><p>-5.45 MPa</p></td>
+<td><p>-5.77 MPa</p></td>
+</tr>
+<tr class="row-odd"><td><p>Code_Aster</p></td>
+<td><p>-5.51 MPa</p></td>
+<td><p>-5.85 MPa</p></td>
+</tr>
+<tr class="row-even"><td><p>Elmer</p></td>
+<td><p>-4.58 MPa</p></td>
+<td><p>-5.50 MPa</p></td>
+</tr>
+</tbody>
+</table>
+<div class="figure align-default" id="tetrahedral-thick-plate-mesh-comparison">
+<a class="reference internal image-reference" href="../../_images/tet-comparison_thick_plate.png"><img alt="Tetrahedral thick plate mesh comparison" src="../../_images/tet-comparison_thick_plate.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Graph representing results of the simulation with tetrahedral mesh</span><a class="headerlink" href="#tetrahedral-thick-plate-mesh-comparison" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="linear-hexahedral-mesh">
+<h2>Linear hexahedral mesh<a class="headerlink" href="#linear-hexahedral-mesh" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Solver</p></th>
+<th class="head"><p>Coarse Mesh</p></th>
+<th class="head"><p>Fine Mesh</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CalculiX</p></td>
+<td><p>-2.75 MPa</p></td>
+<td><p>-3.08 MPa</p></td>
+</tr>
+<tr class="row-odd"><td><p>Code_Aster</p></td>
+<td><p>-4.05 MPa</p></td>
+<td><p>-5.42 MPa</p></td>
+</tr>
+<tr class="row-even"><td><p>Elmer</p></td>
+<td><p>-4.52 MPa</p></td>
+<td><p>-5.02 MPa</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="quadratic-hexahedral-mesh">
+<h2>Quadratic hexahedral mesh<a class="headerlink" href="#quadratic-hexahedral-mesh" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Solver</p></th>
+<th class="head"><p>Coarse Mesh</p></th>
+<th class="head"><p>Fine Mesh</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CalculiX</p></td>
+<td><p>-7.34 MPa</p></td>
+<td><p>-5.65 MPa</p></td>
+</tr>
+<tr class="row-odd"><td><p>Code_Aster</p></td>
+<td><p>-7.39 MPa</p></td>
+<td><p>-5.66 MPa</p></td>
+</tr>
+<tr class="row-even"><td><p>Elmer</p></td>
+<td><p>-5.56 MPa</p></td>
+<td><p>-5.65 MPa</p></td>
+</tr>
+</tbody>
+</table>
+<div class="figure align-default" id="hexahedral-thick-plate-mesh-comparison">
+<a class="reference internal image-reference" href="../../_images/hex-comparison_thick_plate.png"><img alt="Hexahedral thick plate mesh comparison" src="../../_images/hex-comparison_thick_plate.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Graph representing results of the simulation with hexahedral mesh</span><a class="headerlink" href="#hexahedral-thick-plate-mesh-comparison" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./benchmarks/001-thick-plate"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+<div class="section">
+   
+</div>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="model.html" title="previous page">Model definition</a>
+    <a class='right-next' id="next-link" href="tested-codes.html" title="next page">Tested Finite Element codes</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By BlogTechniczny.pl<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
