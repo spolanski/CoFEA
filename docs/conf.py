@@ -49,9 +49,6 @@ nitpick_ignore = [
 
 numfig = True
 
-myst_admonition_enable = True
-myst_deflist_enable = True
-
 myst_enable_extensions = [
     "colon_fence",
     "deflist",
