@@ -32,6 +32,7 @@ setup(name='CoFEA',
           'vtk',
           'pyvista',
           'meshpy',
-          'pygments==2.6.1',    
+          'jupyter-sphinx',
+          'pygments==2.6.1',
           'sphinx-book-theme', ],
       )

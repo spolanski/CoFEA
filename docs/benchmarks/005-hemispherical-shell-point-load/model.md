@@ -55,7 +55,7 @@ Simulation input files used in this study can be found on our [GitHub](https://g
 The benchmark geometry shown above is interactive and shows $u_x$ in [m].
 ```
 
-```{figure} .   /sketch.png
+```{figure} ./sketch.png
 ---
 width: 400px
 alt: Hemispherical shell point load benchmark
