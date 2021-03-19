@@ -12,9 +12,10 @@ Simulation input files used in this study can be found on [CoFEA GitHub](https:/
 
 ```{jupyter-execute}
    :hide-code:
-   print("hello world")
    from ipygany import Scene, TetraMesh
+
    mesh = TetraMesh.from_vtk('benchmarks/000-tuning-fork/fork.vtk')
+
    scene = Scene([mesh])
    scene
 
