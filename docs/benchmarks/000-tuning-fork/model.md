@@ -11,13 +11,17 @@ Simulation input files used in this study can be found on [CoFEA GitHub](https:/
 
 
 ```{jupyter-execute}
-%   :hide-code:
-%   from ipygany import Scene, TetraMesh
 
-%   mesh = TetraMesh.from_vtk('benchmarks/000-tuning-fork/fork.vtk')
+  import pyvista as pv
+  from ipygany import Scene, PolyMesh
 
-%   scene = Scene([mesh])
-%   scene
+  pvmesh = pv.read('benchmarks/000-tuning-fork/fork.vtk')
+  ugrid = pvmesh.cast_to_unstructured_grid()
+
+  mesh = PolyMesh.from_vtk(ugrid)
+
+  scene = Scene([mesh])
+  scene
 
 ```
 
