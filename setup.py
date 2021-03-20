@@ -33,7 +33,7 @@ setup(name='CoFEA',
           'vtk',
           'pyvista',
           'ipyvtk_simple',
-          'jupyter-sphinx',
+          'jupyter-sphinx==0.3.1',
           'pygments==2.6.1',
           'sphinx-book-theme', ],
       )
