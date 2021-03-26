@@ -1,0 +1,769 @@
+# ------------------------------------------------------------------------------------------
+# Impression du contenu du fichier de commandes à exécuter :
+# ------------------------------------------------------------------------------------------
+DEBUT(LANG='EN')
+
+
+mesh = LIRE_MAILLAGE(identifier='0:1',
+                     FORMAT='IDEAS',
+                     UNITE=80)
+
+mesh = MODI_MAILLAGE(identifier='1:1',
+                     reuse=mesh,
+                     MAILLAGE=mesh,
+                     ORIE_NORM_COQUE=_F(GROUP_MA=('Shell', )))
+
+model = AFFE_MODELE(identifier='2:1',
+                    AFFE=_F(GROUP_MA=('Shell', ),
+                            MODELISATION=('DST', ),
+                            PHENOMENE='MECANIQUE'),
+                    MAILLAGE=mesh)
+
+elempro0 = AFFE_CARA_ELEM(identifier='3:1',
+                          COQUE=_F(EPAIS=0.04,
+                                   GROUP_MA=('Shell', )),
+                          MODELE=model)
+
+mater = DEFI_MATERIAU(identifier='4:1',
+                      ELAS=_F(E=68250000000.0,
+                              NU=0.3))
+
+fieldmat = AFFE_MATERIAU(identifier='5:1',
+                         AFFE=_F(MATER=(mater, ),
+                                 TOUT='OUI'),
+                         MAILLAGE=mesh,
+                         MODELE=model)
+
+BC = AFFE_CHAR_MECA(identifier='6:1',
+                    DDL_IMPO=(_F(DX=0.0,
+                                 DY=0.0,
+                                 DZ=0.0,
+                                 GROUP_NO=('E', )),
+                              _F(DRX=0.0,
+                                 DRZ=0.0,
+                                 DY=0.0,
+                                 GROUP_MA=('AE', )),
+                              _F(DRY=0.0,
+                                 DRZ=0.0,
+                                 DX=0.0,
+                                 GROUP_MA=('CE', ))),
+                    MODELE=model)
+
+load0 = AFFE_CHAR_MECA(identifier='7:1',
+                       FORCE_NODALE=(_F(FX=2000.0,
+                                        GROUP_NO=('A', )),
+                                     _F(FY=-2000.0,
+                                        GROUP_NO=('C', ))),
+                       MODELE=model)
+
+reslin = MECA_STATIQUE(identifier='8:1',
+                       CARA_ELEM=elempro0,
+                       CHAM_MATER=fieldmat,
+                       EXCIT=(_F(CHARGE=BC),
+                              _F(CHARGE=load0)),
+                       MODELE=model)
+
+IMPR_RESU(identifier='9:1',
+          FORMAT='MED',
+          RESU=_F(MAILLAGE=mesh,
+                  RESULTAT=reslin),
+          UNITE=80)
+
+FIN()
+
+# ------------------------------------------------------------------------------------------
+
+  Ouverture en écriture du fichier ./vola.1
+
+ <INFO> Démarrage de l'exécution.
+                                                                                
+                                                                                
+              -- CODE_ASTER -- VERSION:  EXPLOITATION (stable) --               
+                                                                                
+                       Modified 14.6.0 version 11/06/2020                       
+                    the revision b3490fa3b76c - branch  v14                     
+                        Copyright EDF R & D 1991 - 2021                         
+                                                                                
+                    Exécution of:  Tue Mar 16 21:46:05 2021                     
+                  Name of the machine:  maciej-ThinkPad-T440p                   
+                               Structure:  64bit                                
+                               CPU type:  x86_64                                
+   Operating system:  Linux-5.4.0-67-generic-x86_64-with-Ubuntu-18.04-bionic    
+                     Language of the messages:  en (UTF-8)                      
+                                                                                
+                             Python version: 3.6.9                              
+                             NumPy version: 1.19.4                              
+                             Parallelism MPI: idle                              
+                           OpenMP parallelism: Nombre                           
+                          credit of processes used:  4                          
+                      Version of the HDF5 library : 1.10.3                      
+                       Version of the MED library : 4.0.0                       
+                       Librairie MFront : non disponible                        
+                          MUMPS library version: 5.1.2                          
+                          PETSc library: not available                          
+                     Version of the SCOTCH library : 6.0.4                      
+
+                  Mémoire limite pour l'exécution : 6000.00 Mo                  
+                   consommée par l'initialisation : 382.08 Mo                   
+                  par les objets du jeu de commandes : 3.03 Mo                  
+                 reste pour l'allocation dynamique : 5614.89 Mo                 
+                   Cut limiting files of exchange:  48.00 Go                    
+                                                                                
+
+.. __stg1_txt1
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0001 Concept of the type:  -
+  # ------------------------------------------------------------------------------------------
+  DEBUT(LANG='EN',
+        PAR_LOT='OUI',
+        IMPR_MACRO='NON',
+        DEBUG=_F(JXVERI='NON',
+                 SDVERI='NON',
+                 JEVEUX='NON',
+                 HIST_ETAPE='NON',),
+        MESURE_TEMPS=_F(NIVE_DETAIL=1,
+                        MOYENNE='NON',),
+        MEMOIRE=_F(TAILLE_BLOC=800.0,
+                   TAILLE_GROUP_ELEM=1000,),
+        RESERVE_CPU=_F(BORNE=900,),
+        INFO=1,)
+
+
+ Initial value of maximum time CPU = 900 second
+ Valeur of the maximum time CPU placed to the orders = 810 second
+ Réserve CPU envisaged = 90 seconds 
+
+  Ouverture en écriture du fichier ./glob.1
+
+  Ouverture en écriture du fichier ./vola.1
+
+  Ouverture en lecture du fichier /home/maciej/salome_meca/code_aster/14.6/lib/aster/elem.1
+
+     Nom de la base                          :  ELEMBASE
+     Créée avec la version                   :  14.06.00
+     Nombre d'enregistrements utilisés       :  43
+     Nombre d'enregistrements maximum        :  512
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre d'identificateurs utilisés       :  123
+     Taille maximum du répertoire            :  300
+     Pourcentage d'utilisation du répertoire :  41 %
+
+  Ouverture en lecture du fichier /home/maciej/salome_meca/code_aster/14.6/lib/aster/elem.1
+
+
+     Nom de la base                          :  ELEMBASE
+     Nombre d'enregistrements utilisés       :  43
+     Nombre d'enregistrements maximum        :  512
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre total d'accès en lecture         :  60
+     Volume des accès en lecture             :         46.88 Mo.
+     Nombre total d'accès en écriture        :  0
+     Volume des accès en écriture            :          0.00 Mo.
+     Nombre d'identificateurs utilisés       :  123
+     Taille maximum du répertoire            :  300
+     Pourcentage d'utilisation du répertoire :  41 %
+
+ Second reading of the catalogues of the elements made. 
+
+ End of reading (lasted 0.025027 S.)   
+  # Memory (Mo):    429.61 /    421.88 /     44.29 /     22.92 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0001 user+syst:          0.03S (syst:          0.02S, Elaps:          0.04S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_cmd0:1
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0002 Concept of the type:  maillage_sdaster
+  # ------------------------------------------------------------------------------------------
+  mesh = LIRE_MAILLAGE(FORMAT='IDEAS',
+                       UNITE=80,
+                       CREA_GROUP_COUL='NON',
+                       VERI_MAIL=_F(VERIF='OUI',
+                                    APLAT=1.E-3,),
+                       INFO=1,)
+
+ ON NE TRAITE PAS LE DATASET:                  164
+ NOMBRE DE NOEUDS :                 7654
+ NOMBRE DE MAILLES :                 7704
+Vérification du maillage.
+   
+   !-----------------------------------------------------------------------------------------!
+   ! <A> <MODELISA8_15>                                                                      !
+   !                                                                                         !
+   ! La maille M101 possède des noeuds confondus géométriquement.                            !
+   !     Rapport entre le plus petit côté et le plus grand = 0.000000, type de maille : SEG2 !
+   !                                                                                         !
+   !                                                                                         !
+   ! This is a warning. If you do not understand the meaning of this                         !
+   !  warning, you can obtain unexpected results!                                            !
+   !-----------------------------------------------------------------------------------------!
+   
+   
+   !-----------------------------------------------------------------------------------------!
+   ! <A> <MODELISA8_15>                                                                      !
+   !                                                                                         !
+   ! La maille M102 possède des noeuds confondus géométriquement.                            !
+   !     Rapport entre le plus petit côté et le plus grand = 0.000000, type de maille : SEG2 !
+   !                                                                                         !
+   !                                                                                         !
+   ! This is a warning. If you do not understand the meaning of this                         !
+   !  warning, you can obtain unexpected results!                                            !
+   !-----------------------------------------------------------------------------------------!
+   
+   
+   !-----------------------------------------------------------------------------------------!
+   ! <A> <MODELISA8_15>                                                                      !
+   !                                                                                         !
+   ! La maille M103 possède des noeuds confondus géométriquement.                            !
+   !     Rapport entre le plus petit côté et le plus grand = 0.000000, type de maille : SEG2 !
+   !                                                                                         !
+   !                                                                                         !
+   ! This is a warning. If you do not understand the meaning of this                         !
+   !  warning, you can obtain unexpected results!                                            !
+   !-----------------------------------------------------------------------------------------!
+   
+   
+   !-----------------------------------------------------------------------------------------!
+   ! <A> <MODELISA8_15>                                                                      !
+   !                                                                                         !
+   ! La maille M104 possède des noeuds confondus géométriquement.                            !
+   !     Rapport entre le plus petit côté et le plus grand = 0.000000, type de maille : SEG2 !
+   !                                                                                         !
+   !                                                                                         !
+   ! This is a warning. If you do not understand the meaning of this                         !
+   !  warning, you can obtain unexpected results!                                            !
+   !-----------------------------------------------------------------------------------------!
+   
+   
+   !----------------------------------------------------------------------------!
+   ! <A> <MODELISA4_9>                                                          !
+   !                                                                            !
+   !  - > Phase of checking of the mesh: presence of degenerated meshes.        !
+   !  The relationship between the smallest edge on largest is lower than 0,001 !
+   !                                                                            !
+   !  - > Risks & advices:                                                      !
+   !  Check your mesh. The presence of such meshes can lead to                  !
+   !  problems of convergence and harm the quality of the results.              !
+   !                                                                            !
+   !                                                                            !
+   ! This is a warning. If you do not understand the meaning of this            !
+   !  warning, you can obtain unexpected results!                               !
+   !----------------------------------------------------------------------------!
+   
+
+------------ MAILLAGE mesh     - IMPRESSIONS NIVEAU  1 ------------
+
+         AUTEUR=INTERFACE_IDEAS                 DATE=16/03/2021                 
+
+NOMBRE DE NOEUDS                        7654
+
+NOMBRE DE MAILLES                       7704
+                              SEG2                  204
+                              QUAD4                7500
+
+NOMBRE DE GROUPES DE NOEUDS                3
+                              E                                    1
+                              A                                    1
+                              C                                    1
+
+NOMBRE DE GROUPES DE MAILLES               3
+                              Shell                             7500
+                              AE                                 100
+                              CE                                 100
+
+--------------------------------------------------------------------------------
+
+  # Memory (Mo):    429.61 /    423.73 /     44.29 /     22.92 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0002 user+syst:          0.22S (syst:          0.00S, Elaps:          0.22S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_cmd1:1
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0009 Concept of the type:  maillage_sdaster
+  # ------------------------------------------------------------------------------------------
+  mesh = MODI_MAILLAGE(reuse=mesh,
+                       MAILLAGE=mesh,
+                       ORIE_NORM_COQUE=_F(GROUP_MA=('Shell', ),),
+                       INFO=1,)
+
+TRAITEMENT DU GROUP_MA: Shell                    DE    7500 MAILLES
+                              0 MAILLE(S) ONT ETE ORIENTEE(S)
+  # Memory (Mo):    429.61 /    424.03 /     44.29 /     22.92 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0009 user+syst:          0.10S (syst:          0.00S, Elaps:          0.10S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_cmd2:1
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0010 Concept of the type:  modele_sdaster
+  # ------------------------------------------------------------------------------------------
+  model = AFFE_MODELE(MAILLAGE=mesh,
+                      AFFE=_F(GROUP_MA=('Shell', ),
+                              PHENOMENE='MECANIQUE',
+                              MODELISATION=('DST', ),),
+                      INFO=1,
+                      DISTRIBUTION=_F(PARTITIONNEUR='METIS',
+                                      METHODE='SOUS_DOMAINE',),
+                      VERI_JACOBIEN='OUI',)
+
+
+Sur les 7704 mailles du maillage mesh, on a demandé l'affectation de 7500, on a pu en affecter 7500
+ Modélisation     Type maille  Élément fini     Nombre
+ DST              QUAD4        MEDSQU4          7500
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):      0.00      0.00      0.00
+  # Memory (Mo):    457.73 /    457.73 /     44.29 /     34.46 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0010 user+syst:          0.01S (syst:          0.01S, Elaps:          0.00S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_cmd3:1
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0011 Concept of the type:  cara_elem
+  # ------------------------------------------------------------------------------------------
+  elempro0 = AFFE_CARA_ELEM(MODELE=model,
+                            COQUE=_F(GROUP_MA=('Shell', ),
+                                     EPAIS=0.04,
+                                     A_CIS=0.8333333,
+                                     COEF_RIGI_DRZ=1.E-05,
+                                     COQUE_NCOU=1,
+                                     MODI_METRIQUE='NON',),
+                            INFO=1,)
+
+
+     LE MODELE model    CONTIENT : 
+                                     7500 ELEMENT(S) COQUE           
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):      0.01      0.00      0.00
+  # Memory (Mo):    459.02 /    458.78 /     44.29 /     34.60 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0011 user+syst:          0.06S (syst:          0.01S, Elaps:          0.02S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_cmd4:1
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0013 Concept of the type:  mater_sdaster
+  # ------------------------------------------------------------------------------------------
+  mater = DEFI_MATERIAU(ELAS=_F(E=6.8250000000E10,
+                                NU=0.3,
+                                COEF_AMOR=1.0,),
+                        INFO=1,)
+
+Propriétés définies dans le matériau: ELAS.
+  # Memory (Mo):    459.02 /    458.78 /     44.29 /     34.60 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0013 user+syst:          0.01S (syst:          0.00S, Elaps:          0.00S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_cmd5:1
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0014 Concept of the type:  cham_mater
+  # ------------------------------------------------------------------------------------------
+  fieldmat = AFFE_MATERIAU(MAILLAGE=mesh,
+                           MODELE=model,
+                           AFFE=_F(TOUT='OUI',
+                                   MATER=(mater, ),),
+                           INFO=1,)
+
+  # Memory (Mo):    459.02 /    458.78 /     44.29 /     34.60 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0014 user+syst:          0.01S (syst:          0.00S, Elaps:          0.00S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_cmd6:1
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0015 Concept of the type:  char_meca
+  # ------------------------------------------------------------------------------------------
+  BC = AFFE_CHAR_MECA(MODELE=model,
+                      DDL_IMPO=(_F(GROUP_NO=('E', ),
+                                   DX=0.0,
+                                   DY=0.0,
+                                   DZ=0.0,),
+                                _F(GROUP_MA=('AE', ),
+                                   DY=0.0,
+                                   DRX=0.0,
+                                   DRZ=0.0,),
+                                _F(GROUP_MA=('CE', ),
+                                   DX=0.0,
+                                   DRY=0.0,
+                                   DRZ=0.0,),
+                                ),
+                      VERI_NORM='OUI',
+                      DOUBLE_LAGRANGE='OUI',
+                      INFO=1,)
+
+  # Memory (Mo):    459.07 /    459.07 /     44.29 /     34.60 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0015 user+syst:          0.05S (syst:          0.00S, Elaps:          0.02S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_cmd7:1
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0016 Concept of the type:  char_meca
+  # ------------------------------------------------------------------------------------------
+  load0 = AFFE_CHAR_MECA(MODELE=model,
+                         FORCE_NODALE=(_F(GROUP_NO=('A', ),
+                                          FX=2000.0,),
+                                       _F(GROUP_NO=('C', ),
+                                          FY=-2000.0,),
+                                       ),
+                         VERI_NORM='OUI',
+                         DOUBLE_LAGRANGE='OUI',
+                         INFO=1,)
+
+  # Memory (Mo):    459.66 /    459.36 /     44.29 /     34.60 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0016 user+syst:          0.01S (syst:          0.00S, Elaps:          0.00S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_cmd8:1
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0017 Concept of the type:  evol_elas
+  # ------------------------------------------------------------------------------------------
+  reslin = MECA_STATIQUE(MODELE=model,
+                         CHAM_MATER=fieldmat,
+                         CARA_ELEM=elempro0,
+                         EXCIT=(_F(CHARGE=BC,
+                                   TYPE_CHARGE='FIXE_CSTE',),
+                                _F(CHARGE=load0,
+                                   TYPE_CHARGE='FIXE_CSTE',),
+                                ),
+                         OPTION='SIEF_ELGA',
+                         SOLVEUR=_F(RENUM='AUTO',
+                                    NPREC=8,
+                                    ELIM_LAGR='LAGR2',
+                                    STOP_SINGULIER='OUI',
+                                    TYPE_RESOL='AUTO',
+                                    ACCELERATION='AUTO',
+                                    LOW_RANK_SEUIL=0.0,
+                                    PRETRAITEMENTS='AUTO',
+                                    POSTTRAITEMENTS='AUTO',
+                                    PCENT_PIVOT=20,
+                                    RESI_RELA=1.E-06,
+                                    GESTION_MEMOIRE='AUTO',
+                                    MATR_DISTRIBUEE='NON',
+                                    METHODE='MUMPS',),
+                         INFO=1,)
+
+  Le système linéaire à résoudre a 47118 degrés de liberté:
+   - 45906 sont des degrés de liberté physiques
+     (ils sont portés par 7651 noeuds du maillage)
+   - 1212 sont les couples de paramètres de Lagrange associés
+     aux 606 relations linéaires dualisées.
+  La matrice est de taille 47118 équations.
+  Elle contient 1255161 termes non nuls si elle est symétrique et 2463204 termes non nuls si elle n'est pas symétrique.
+  Soit un taux de remplissage de   0.111 %.
+   
+   !--------------------------------------------------------------------!
+   ! <A> <ELEMENTS4_80>                                                 !
+   !                                                                    !
+   !   L'élément de plaque QUAD4 défini sur la maille : M206            !
+   !   n'est pas plan et peut conduire a des résultats faux.            !
+   !                                                                    !
+   !   Conseil : Si vous utilisez de l'excentrement, essayez de mailler !
+   !             en utilisant des triangles.                            !
+   !                                                                    !
+   !  Distance to the plane:  0.000031                                  !
+   !                                                                    !
+   !                                                                    !
+   ! This is a warning. If you do not understand the meaning of this    !
+   !  warning, you can obtain unexpected results!                       !
+   !--------------------------------------------------------------------!
+   
+   
+   !--------------------------------------------------------------------!
+   ! <A> <ELEMENTS4_80>                                                 !
+   !                                                                    !
+   !   L'élément de plaque QUAD4 défini sur la maille : M207            !
+   !   n'est pas plan et peut conduire a des résultats faux.            !
+   !                                                                    !
+   !   Conseil : Si vous utilisez de l'excentrement, essayez de mailler !
+   !             en utilisant des triangles.                            !
+   !                                                                    !
+   !  Distance to the plane:  0.000051                                  !
+   !                                                                    !
+   !                                                                    !
+   ! This is a warning. If you do not understand the meaning of this    !
+   !  warning, you can obtain unexpected results!                       !
+   !--------------------------------------------------------------------!
+   
+   
+   !--------------------------------------------------------------------!
+   ! <A> <ELEMENTS4_80>                                                 !
+   !                                                                    !
+   !   L'élément de plaque QUAD4 défini sur la maille : M208            !
+   !   n'est pas plan et peut conduire a des résultats faux.            !
+   !                                                                    !
+   !   Conseil : Si vous utilisez de l'excentrement, essayez de mailler !
+   !             en utilisant des triangles.                            !
+   !                                                                    !
+   !  Distance to the plane:  0.000071                                  !
+   !                                                                    !
+   !                                                                    !
+   ! This is a warning. If you do not understand the meaning of this    !
+   !  warning, you can obtain unexpected results!                       !
+   !--------------------------------------------------------------------!
+   
+   
+   !--------------------------------------------------------------------!
+   ! <A> <ELEMENTS4_80>                                                 !
+   !                                                                    !
+   !   L'élément de plaque QUAD4 défini sur la maille : M209            !
+   !   n'est pas plan et peut conduire a des résultats faux.            !
+   !                                                                    !
+   !   Conseil : Si vous utilisez de l'excentrement, essayez de mailler !
+   !             en utilisant des triangles.                            !
+   !                                                                    !
+   !  Distance to the plane:  0.000092                                  !
+   !                                                                    !
+   !                                                                    !
+   ! This is a warning. If you do not understand the meaning of this    !
+   !  warning, you can obtain unexpected results!                       !
+   !--------------------------------------------------------------------!
+   
+   
+   !--------------------------------------------------------------------!
+   ! <A> <ELEMENTS4_80>                                                 !
+   !                                                                    !
+   !   L'élément de plaque QUAD4 défini sur la maille : M210            !
+   !   n'est pas plan et peut conduire a des résultats faux.            !
+   !                                                                    !
+   !   Conseil : Si vous utilisez de l'excentrement, essayez de mailler !
+   !             en utilisant des triangles.                            !
+   !                                                                    !
+   !  Distance to the plane:  0.000112                                  !
+   !                                                                    !
+   !                                                                    !
+   ! This is a warning. If you do not understand the meaning of this    !
+   !  warning, you can obtain unexpected results!                       !
+   !--------------------------------------------------------------------!
+   
+   
+   !--------------------------------------------------------------------------------------!
+   ! <A> <CATAMESS_41>                                                                    !
+   !                                                                                      !
+   ! The warning message  ELEMENTS4_80 was emitted 5 time, it will not be displayed more. !
+   !                                                                                      !
+   !                                                                                      !
+   ! This is a warning. If you do not understand the meaning of this                      !
+   !  warning, you can obtain unexpected results!                                         !
+   !--------------------------------------------------------------------------------------!
+   
+    Field stored  DEPL at time  0.000000000000e+00 for the sequence number  1
+#1      Resolution des systemes lineaires                 CPU (USER+SYST/SYST/ELAPS):      4.58      1.09      1.32
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):      2.51      0.80      0.63
+  # Memory (Mo):    920.50 /    493.56 /     73.79 /     42.63 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0017 user+syst:          7.17S (syst:          1.90S, Elaps:          1.97S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_cmd9:1
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0018 Concept of the type:  -
+  # ------------------------------------------------------------------------------------------
+  IMPR_RESU(FORMAT='MED',
+            UNITE=80,
+            VERSION_MED='3.3.1',
+            RESU=_F(MAILLAGE=mesh,
+                    RESULTAT=reslin,
+                    INFO_MAILLAGE='NON',
+                    IMPR_NOM_VARI='OUI',),
+            PROC0='OUI',
+            INFO=1,)
+
+   
+   !---------------------------------------------------------------------------------------------------!
+   ! <A> <PREPOST3_7>                                                                                  !
+   !                                                                                                   !
+   !  Le fichier correspondant à l'unité logique renseignée pour l'écriture de résultats au format MED !
+   !  est de type ASCII. Cela peut engendrer l'affichage de messages intempestifs provenant de la      !
+   !  bibliothèque MED. Il n'y a toutefois aucun risque de résultats faux.                             !
+   !                                                                                                   !
+   !  Conseils : pour supprimer l'émission de ce message d'alarme, il faut donner la valeur BINARY au  !
+   !  mot-clé TYPE de DEFI_FICHIER."                                                                   !
+   !                                                                                                   !
+   !                                                                                                   !
+   ! This is a warning. If you do not understand the meaning of this                                   !
+   !  warning, you can obtain unexpected results!                                                      !
+   !---------------------------------------------------------------------------------------------------!
+   
+
+Création du fichier au format MED 3.3.1.
+  # Memory (Mo):    920.50 /    498.46 /     73.79 /     42.63 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0018 user+syst:          0.33S (syst:          0.14S, Elaps:          0.08S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt69
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0019 Concept of the type:  -
+  # ------------------------------------------------------------------------------------------
+  FIN(FORMAT_HDF='NON',
+      RETASSAGE='NON',
+      INFO_RESU='OUI',
+      PROC0='OUI',
+      )
+
+   
+   !-----------------------------------------------------------------!
+   ! <I> <CATAMESS_89>                                               !
+   !                                                                 !
+   !  List of warnings emitted during the execution of computation.  !
+   !                                                                 !
+   !  Warnings which you chose to ignore of are preceded by (*).     !
+   !  Number of occurrences for each warning:                        !
+   !              ELEMENTS4_80         emitted 20073 time            !
+   !              MODELISA4_9          emitted    1 time             !
+   !              MODELISA8_15         emitted    4 time             !
+   !              PREPOST3_7           emitted    1 time             !
+   !-----------------------------------------------------------------!
+   
+
+ ======>
+
+ STRUCTURE DU CONCEPT reslin   CALCULE POUR 1 NUMERO D'ORDRE
+
+ LISTE DES NOMS SYMBOLIQUES:
+ ! ---------- !----------------!----------------!
+ ! NUME_ORDRE !      DEPL      !   SIEF_ELGA    !
+ ! ---------- !----------------!----------------!
+ !          1 !     DEPL_R     !     SIEF_R     !
+ ! ---------- !----------------!----------------!
+
+ LISTE DES NOMS DE VARIABLES D'ACCES:
+                                      INST             DE TYPE  R
+
+ LISTE DES NOMS DE PARAMETRES:
+ ! ---------- !----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!
+ ! NUME_ORDRE !    CARAELEM    !    CHAMPMAT    !     EXCIT      !   ITER_GCPC    !    METHODE     !     MODELE     !     RENUM      !    STOCKAGE    !
+ ! ---------- !----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!
+ !          1 !       K8       !       K8       !      K24       !       I        !      K16       !       K8       !      K16       !      K16       !
+ ! ---------- !----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!
+ ---------------------------------------------------------------------------
+ Concepts de la base: G
+    Nom       Type                 Taille (Mo)         Nombre      Nombre de
+                                                     d'objets       segments
+    TOTAL                                36.17            172            319
+  
+    mesh       MAILLAGE_SDASTER           0.98             36             63
+    model      MODELE_SDASTER             0.53              8             13
+    elempro0   CARA_ELEM                  0.29             10             15
+    BC         CHAR_MECA                  0.52             23             43
+    reslin     EVOL_ELAS                  6.27             25             34
+    load0      CHAR_MECA                  0.29             14             29
+    mater      MATER_SDASTER              0.00              5              5
+    fieldmat   CHAM_MATER                 0.00              6             11
+    &FOZERO                               0.00              2              2
+    &&_NUM_C                              0.00              1              1
+    &CATA.AC                              0.00              2              4
+    &CATA.CL                              0.60              1              3
+    &CATA.GD                              0.14              4             11
+    &CATA.ME                              0.20              2              4
+    &CATA.OP                              0.30              4             19
+    &CATA.PH                              0.00              1              1
+    &CATA.PR                              0.00              2              4
+    &CATA.TE                             26.03             17             42
+    &CATA.TH                              0.01              2              4
+    &CATA.TM                              0.01              7             11
+ ---------------------------------------------------------------------------
+
+
+     Nom de la base                          :  GLOBALE
+     Nombre d'enregistrements utilisés       :  59
+     Nombre d'enregistrements maximum        :  62914
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre total d'accès en lecture         :  7
+     Volume des accès en lecture             :          5.47 Mo.
+     Nombre total d'accès en écriture        :  75
+     Volume des accès en écriture            :         58.59 Mo.
+     Nombre d'identificateurs utilisés       :  374
+     Taille maximum du répertoire            :  2000
+     Pourcentage d'utilisation du répertoire :  18 %
+
+
+     Nom de la base                          :  VOLATILE
+     Nombre d'enregistrements utilisés       :  24
+     Nombre d'enregistrements maximum        :  62914
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre total d'accès en lecture         :  1
+     Volume des accès en lecture             :          0.78 Mo.
+     Nombre total d'accès en écriture        :  28
+     Volume des accès en écriture            :         21.88 Mo.
+     Nombre d'identificateurs utilisés       :  552
+     Taille maximum du répertoire            :  2000
+     Pourcentage d'utilisation du répertoire :  27 %
+
+ <FIN> Arrêt normal dans "FIN".
+ <I> <FIN> ARRET NORMAL DANS "FIN" PAR APPEL A "JEFINI".
+
+ The memory requested from launching is over-estimated, it is of 6000.00 Mo. 
+ The peak report used is of 920.50 Mo. 
+ 
+
+
+     Nom de la base                          :  ELEMBASE
+     Nombre d'enregistrements utilisés       :  43
+     Nombre d'enregistrements maximum        :  512
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre total d'accès en lecture         :  60
+     Volume des accès en lecture             :         46.88 Mo.
+     Nombre total d'accès en écriture        :  0
+     Volume des accès en écriture            :          0.00 Mo.
+     Nombre d'identificateurs utilisés       :  123
+     Taille maximum du répertoire            :  300
+     Pourcentage d'utilisation du répertoire :  41 %
+  
+ <I> <FIN> MEMOIRE JEVEUX MINIMALE REQUISE POUR L'EXECUTION :                      42.63 Mo
+ <I> <FIN> MEMOIRE JEVEUX OPTIMALE REQUISE POUR L'EXECUTION :                      73.79 Mo
+ <I> <FIN> MAXIMUM DE MEMOIRE UTILISEE PAR LE PROCESSUS LORS DE L'EXECUTION :     920.50 Mo
+  
+ <I>       FERMETURE DES BASES EFFECTUEE
+  
+   STATISTIQUES CONCERNANT L'ALLOCATION DYNAMIQUE :
+     TAILLE CUMULEE MAXIMUM            :                   74  Mo.
+     TAILLE CUMULEE LIBEREE            :                   34  Mo.
+     NOMBRE TOTAL D'ALLOCATIONS        :                41566
+     NOMBRE TOTAL DE LIBERATIONS       :                41546
+     APPELS AU MECANISME DE LIBERATION :                    0
+     TAILLE MEMOIRE CUMULEE RECUPEREE  :                   13  Mo.
+     VOLUME DES LECTURES               :                    0  Mo.
+     VOLUME DES ECRITURES              :                   18  Mo.
+  
+   MEMOIRE JEVEUX MINIMALE REQUISE POUR L'EXECUTION :      42.63 Mo
+     - IMPOSE DE NOMBREUX ACCES DISQUE
+     - RALENTIT LA VITESSE D'EXECUTION
+   MEMOIRE JEVEUX OPTIMALE REQUISE POUR L'EXECUTION :      73.79 Mo
+     - LIMITE LES ACCES DISQUE
+     - AMELIORE LA VITESSE D'EXECUTION
+   MAXIMUM DE MEMOIRE UTILISEE PAR LE PROCESSUS     :     920.50 Mo
+     - COMPREND LA MEMOIRE CONSOMMEE PAR  JEVEUX, 
+       LE SUPERVISEUR PYTHON, LES LIBRAIRIES EXTERNES
+  
+ <I>       FIN D'EXECUTION LE : MA-16-MARS-2021 21:46:08
+
+
+  <I> Informations sur les temps d'exécution
+      Temps cpu user total                    6.25 s
+      Temps cpu systeme total                 2.16 s
+      Temps elapsed total                     2.77 s
+      Temps restant                         807.23 s
+
+
+ The signup of the saved base is (with the address 0): 
+  7a20561075b7af8f8a49cee9ea1adae225efb05f 
+
+ ********************************************************************************
+ * COMMAND                  :       USER :     SYSTEM :   USER+SYS :    ELAPSED *
+ ********************************************************************************
+ * init (jdc)               :       0.26 :       0.02 :       0.28 :       0.28 *
+ *  . compile               :       0.00 :       0.00 :       0.00 :       0.00 *
+ *  . exec_compile          :       0.07 :       0.00 :       0.07 :       0.08 *
+ *  . report                :       0.00 :       0.00 :       0.00 :       0.00 *
+ *  . build                 :       0.00 :       0.00 :       0.00 :       0.00 *
+ * DEBUT                    :       0.01 :       0.02 :       0.03 :       0.04 *
+ * LIRE_MAILLAGE            :       0.22 :       0.00 :       0.22 :       0.22 *
+ * MODI_MAILLAGE            :       0.10 :       0.00 :       0.10 :       0.10 *
+ * AFFE_MODELE              :       0.00 :       0.01 :       0.01 :       0.00 *
+ * AFFE_CARA_ELEM           :       0.05 :       0.01 :       0.06 :       0.02 *
+ * DEFI_MATERIAU            :       0.01 :       0.00 :       0.01 :       0.00 *
+ * AFFE_MATERIAU            :       0.01 :       0.00 :       0.01 :       0.00 *
+ * AFFE_CHAR_MECA           :       0.05 :       0.00 :       0.05 :       0.02 *
+ * AFFE_CHAR_MECA           :       0.01 :       0.00 :       0.01 :       0.00 *
+ * MECA_STATIQUE            :       5.27 :       1.90 :       7.17 :       1.97 *
+ * IMPR_RESU                :       0.19 :       0.14 :       0.33 :       0.08 *
+ * FIN                      :       0.07 :       0.04 :       0.11 :       0.05 *
+ *  . part Superviseur      :       0.34 :       0.07 :       0.41 :       0.35 *
+ *  . part Fortran          :       5.92 :       2.09 :       8.01 :       2.43 *
+ ********************************************************************************
+ * TOTAL_JOB                :       6.25 :       2.16 :       8.41 :       2.77 *
+ ********************************************************************************
+
+EXECUTION_CODE_ASTER_EXIT_6826=0
