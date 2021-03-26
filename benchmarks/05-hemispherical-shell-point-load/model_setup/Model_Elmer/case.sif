@@ -1,0 +1,116 @@
+Header
+  CHECK KEYWORDS Warn
+  Mesh DB "." "."
+  Include Path ""
+  Results Directory ""
+End
+
+Simulation
+  Max Output Level = 5
+  Coordinate System = Cartesian
+  Coordinate Mapping(3) = 1 2 3
+  Simulation Type = Steady state
+  Steady State Max Iterations = 1
+  Output Intervals = 1
+  Timestepping Method = BDF
+  BDF Order = 1
+  Solver Input File = case.sif
+  Post File = case.vtu
+End
+
+Constants
+  Gravity(4) = 0 -1 0 9.82
+  Stefan Boltzmann = 5.67e-08
+  Permittivity of Vacuum = 8.8542e-12
+  Boltzmann Constant = 1.3807e-23
+  Unit Charge = 1.602e-19
+End
+
+Body 1
+  Target Bodies(1) = 6
+  Name = "Body 1"
+  Equation = 1
+  Material = 1
+End
+
+Solver 1
+  Equation = "Director field"
+  Procedure = "SphereNormalSolver" "NormalSolver"
+  Exec Solver = "Before Simulation"
+
+  Normals Result Variable = String "Director"
+  Exported Variable 1 = Director[Director:3]
+
+  Linear System Solver = "Iterative"
+  Linear System Iterative Method = "IDRS"
+  Linear System Preconditioning = None
+  Linear System Residual Output = 10
+  Linear System Max Iterations = 500
+  Linear System Convergence Tolerance = 1.0e-10
+End
+
+Solver 2
+  Equation = "Shell equations"
+  Procedure = "ShellSolver" "ShellSolver"
+
+  Large Deflection = False
+
+  Linear System Solver = Direct
+  Linear System Preconditioning = ILU0
+!  Linear System Row Equilibration = Logical True
+  Linear System Max Iterations = 1000
+  Linear System Convergence Tolerance = 1e-8
+  Linear System Direct Method = Umfpack
+  Linear System GCR Restart = 300
+  Linear System Abort Not Converged = False
+  Steady State Convergence Tolerance = 1e-09
+End
+
+
+Equation 1
+  Name = "Equation 1"
+  Active Solvers(2) = 1 2
+End
+
+Material 1
+  Name = "Material 1"
+  Poisson ratio = .3
+  Youngs modulus = 68.25E9
+  Shell Thickness = 0.04
+End
+
+Boundary Condition 1
+  Target Boundaries(1) = 4 
+  Name = "XZ"
+  U 2 = 0
+  DNU 2 = 0
+End
+
+Boundary Condition 2
+  Target Boundaries(1) = 5 
+  Name = "Yz"
+  U 1 = 0
+  DNU 1 = 0
+End
+
+Boundary Condition 3
+  Target Nodes(1) = 5 
+U 3 = 0
+U 2 = 0
+U 1 = 0
+End
+
+Boundary Condition 4
+  Target Nodes(1) = 1
+  Name = "Load X"
+  U 1 Load  = Real 2000.0
+End
+
+Boundary Condition 5
+  Target Nodes(1) = 7
+  Name = "Load y"
+  U 2 Load = Real -2000.0
+End
+
+
+

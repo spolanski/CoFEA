@@ -1,0 +1,21 @@
+P actions make_etude
+P debug nodebug
+P memjob 6144000
+P memory_limit 6000.0
+P mode interactif
+P mpi_nbcpu 1
+P mpi_nbnoeud 1
+P nomjob RunCase_2_Stage_1
+P origine AsterStudy 0.11
+P rep_trav /tmp/maciej-maciej-ThinkPad-T440p-interactif_11930
+P server localhost
+P studyid 3152-0021-maciej-ThinkPad-T440p
+P time_limit 900.0
+P tpsjob 16
+P version stable
+A memjeveux 750.0
+A tpmax 900.0
+F comm /home/maciej/Documents/CoFEA/Shell/Code_Aster/try.comm D  1
+F libr /home/maciej/Documents/CoFEA/Shell/Code_Aster/Mesh_1.unv D  80
+F resu /home/maciej/Documents/CoFEA/Shell/Code_Aster/results.resu R  8
+F mess /home/maciej/Documents/CoFEA/Shell/Code_Aster/message R  6
