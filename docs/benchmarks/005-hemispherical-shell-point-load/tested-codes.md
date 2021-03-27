@@ -64,7 +64,7 @@ Code_Aster supports elastic simulation. Below there is an explanation of the inp
 ```
 DEBUT(LANG='EN')
 
-mesh = LIRE_MAILLAGE(identifier='0:1',                   	# Reading the mesh
+mesh = LIRE_MAILLAGE(identifier='0:1',                   	 # Reading the mesh
                      FORMAT='IDEAS',
                      UNITE=80)
 
@@ -95,7 +95,7 @@ fieldmat = AFFE_MATERIAU(AFFE=_F(MATER=(mater, ),         	# Assigning material 
                          MAILLAGE=Quad9,
                          MODELE=model)
 
-BC = AFFE_CHAR_MECA(DDL_IMPO=(_F(DX=0.0,                 	# Applying the boundary condition
+BC = AFFE_CHAR_MECA(DDL_IMPO=(_F(DX=0.0,                   	# Applying the boundary condition
                                  DY=0.0,
                                  DZ=0.0,
                                  GROUP_NO=('E', )),
@@ -115,13 +115,13 @@ load0 = AFFE_CHAR_MECA(FORCE_NODALE=(_F(FX=2000.0,          	# Applying forces
                                         GROUP_NO=('C', ))),
                        MODELE=model)
 
-reslin = MECA_STATIQUE(CARA_ELEM=elemprop,			# Defining results of simulation
+reslin = MECA_STATIQUE(CARA_ELEM=elemprop,			              # Defining results of simulation
                        CHAM_MATER=fieldmat,
                        EXCIT=(_F(CHARGE=BC),
                               _F(CHARGE=load0)),
                        MODELE=model)
 
-IMPR_RESU(FORMAT='RESULTAT',					# Saving the results
+IMPR_RESU(FORMAT='RESULTAT',					                        # Saving the results
           RESU=_F(RESULTAT=reslin,
 		  GROUP_NO=('A',)),
           UNITE=8)
