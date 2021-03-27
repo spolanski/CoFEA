@@ -1,0 +1,9 @@
+Mesh type,Size,Calculix,Code_Aster,Elmer
+Linear-Tri,coarse,0,0,0
+Linear-Tri,fine,0,0,0
+Linear-Quad,coarse,0.000306,0,0.009578
+Linear-Quad,fine,3.25E-05,0,0.033597
+Quad-Tri,coarse,0,0,0
+Quad-Tri,fine,88.42,0,0
+Quad-Quad,coarse,4.31E-05,0,0
+Quad-Quad,fine,7.92E-05,0,0
