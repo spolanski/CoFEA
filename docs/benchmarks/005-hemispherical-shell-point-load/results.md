@@ -6,9 +6,9 @@ Number of simulations with different element types and mesh size have been perfo
 
 A few conclusions can be derived from the presented study:
 
-1. It is possible to perform a plane stress analysis with pressure loading condition using open-source software and achieve a correct solution. In the current study, all solvers allow to obtain a stress value close to the target of $\sigma_{yy}=92.7 m$.
-2. It can be seen that Calculix and Code_Aster generally provided similar output, with CalculiX being a slightly more precise in finer meshes.
-3. Except of quadratic triangular meshes and fine quadratic quadrilateral mesh, Elmer was converging faster than others FE codes.
+1. It is hard to perform a shell analysis with force loading condition using open-source software and achieve a correct solution. In the current study, only code_aster benchmark mesh was able to obtain a displacement value close to the target of $\u_{x}=0.185 m$.
+2. To obtain precise results with Elmer it is needed to use finer meshes and calculate normal vectors before starting the calculations.
+3. Calculix was unable to produce correct results with shell elements.
 
 ```{figure} ./shell.png
 ---
@@ -36,11 +36,11 @@ Results obtained with Code_Aster software and linear hexahedral mesh
 | Code_Aster            | 0.147 m                 |  0.184 m                |
 | Elmer                 | no data                 | no data                 |
 
-```{figure} ./shell_comrison.png
+```{figure} ./shell_comparison.png
 ---
 width: 600px
-alt: Quadrilateral eliptic plate mesh comrison
-name: Quadrilateral eliptic plate mesh comrison
+alt: Quadrilateral shell mesh comparison
+name: Quadrilateral shell mesh comparison
 ---
 Graph representing results of the simulation with quadrilateral mesh
 ```
