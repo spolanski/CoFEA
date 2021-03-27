@@ -1,0 +1,26 @@
+!------ Skeleton for body section -----
+Body 1
+  Name = Shell
+End
+
+!------ Skeleton for boundary section -----
+Boundary Condition 1
+  Name = E
+End
+
+Boundary Condition 2
+  Name = A
+End
+
+Boundary Condition 3
+  Name = C
+End
+
+Boundary Condition 4
+  Name = AE
+End
+
+Boundary Condition 5
+  Name = CE
+End
+

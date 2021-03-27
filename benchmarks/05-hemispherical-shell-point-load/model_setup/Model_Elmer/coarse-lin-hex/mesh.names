@@ -1,0 +1,8 @@
+! ----- names for bodies -----
+$ Shell = 6
+! ----- names for boundaries -----
+$ E = 1
+$ A = 2
+$ C = 3
+$ AE = 4
+$ CE = 5
