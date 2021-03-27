@@ -7,7 +7,7 @@ Number of simulations with different element types and mesh size have been perfo
 A few conclusions can be derived from the presented study:
 
 1. It is hard to perform a shell analysis with force loading condition using open-source software and achieve a correct solution. In the current study, only code_aster benchmark mesh was able to obtain a displacement value close to the target of $u_{x}=0.185 m$.
-2. To obtain precise results with Elmer it is needed to use finer meshes and calculate normal vectors before starting the calculations.
+2. To obtain precise results with Elmer it is needed to use finer meshes and calculate normal vectors before starting the calculations. For now (27.03.2021) Elmer doesn't support quadratic shell elements.
 3. Calculix was unable to produce correct results with shell elements.
 
 ```{figure} ./shell.png
