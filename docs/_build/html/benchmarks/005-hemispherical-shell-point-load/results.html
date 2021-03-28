@@ -62,6 +62,7 @@
     <link rel="shortcut icon" href="../../_static/cofea-black.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tested Finite Element codes" href="tested-codes.html" />
     <link rel="prev" title="Model definition" href="model.html" /> 
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -291,6 +292,11 @@
      Results
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
@@ -398,6 +404,11 @@
    Quadratic quadrilateral mesh
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numerous-models-in-calculix">
+   Numerous models in Calculix
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -415,9 +426,10 @@
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
 <p>A few conclusions can be derived from the presented study:</p>
 <ol class="simple">
-<li><p>It is possible to perform a plane stress analysis with pressure loading condition using open-source software and achieve a correct solution. In the current study, all solvers allow to obtain a stress value close to the target of <span class="math notranslate nohighlight">\(\sigma_{yy}=92.7 MPa\)</span>.</p></li>
-<li><p>It can be seen that Calculix and Code_Aster generally provided similar output, with CalculiX being a slightly more precise in finer meshes.</p></li>
-<li><p>Except of quadratic triangular meshes and fine quadratic quadrilateral mesh, Elmer was converging faster than others FE codes.</p></li>
+<li><p>It is hard to perform a shell analysis with force loading condition using open-source software and achieve a correct solution. In the current study, only code_aster benchmark mesh was able to obtain a displacement value close to the target of <span class="math notranslate nohighlight">\(u_{x}=0.185 m\)</span>.</p></li>
+<li><p>To obtain precise results with Elmer it is needed to use finer meshes and calculate normal vectors before starting the calculations (mesh.director). For now (27.03.2021) Elmer doesn’t support quadratic shell elements. Please remember that shell solver is under development.</p></li>
+<li><p>Calculix was unable to produce correct results with shell and solid elements. For more detailed information please read chapter below.</p></li>
+<li><p>Code_Aster support QUAD_9 instead QUAD_8 elements. Fortunately the solver itself contains a mesh converter to this type of elements.</p></li>
 </ol>
 <div class="figure align-default" id="hemispherical-shell-membrane-results">
 <a class="reference internal image-reference" href="../../_images/shell.png"><img alt="Hemispherical shell membrane results" src="../../_images/shell.png" style="width: 600px;" /></a>
@@ -435,16 +447,16 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>CalculiX</p></td>
-<td><p>69.62 MPa</p></td>
-<td><p>85.55 MPa</p></td>
+<td><p>0.000306 m</p></td>
+<td><p>0.0000325 m</p></td>
 </tr>
 <tr class="row-odd"><td><p>Code_Aster</p></td>
-<td><p>70.49 MPa</p></td>
-<td><p>85.40 MPa</p></td>
+<td><p>0.163 m</p></td>
+<td><p>0.192 m</p></td>
 </tr>
 <tr class="row-even"><td><p>Elmer</p></td>
-<td><p>75.33 MPa</p></td>
-<td><p>86.91 MPa</p></td>
+<td><p>0.009578 m</p></td>
+<td><p>0.033597 m</p></td>
 </tr>
 </tbody>
 </table>
@@ -460,22 +472,36 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>CalculiX</p></td>
-<td><p>85.85 MPa</p></td>
-<td><p>92.99 MPa</p></td>
+<td><p>0.0000431 m</p></td>
+<td><p>0.0000792 m</p></td>
 </tr>
 <tr class="row-odd"><td><p>Code_Aster</p></td>
-<td><p>87 MPa</p></td>
-<td><p>92.21 MPa</p></td>
+<td><p>0.147 m</p></td>
+<td><p>0.184 m</p></td>
 </tr>
 <tr class="row-even"><td><p>Elmer</p></td>
-<td><p>89.65 MPa</p></td>
-<td><p>93.78 MPa</p></td>
+<td><p>no data</p></td>
+<td><p>no data</p></td>
 </tr>
 </tbody>
 </table>
-<div class="figure align-default" id="quadrilateral-eliptic-plate-mesh-comparison">
-<a class="reference internal image-reference" href="../../_images/shell_comparison.png"><img alt="Quadrilateral eliptic plate mesh comparison" src="../../_images/shell_comparison.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Graph representing results of the simulation with quadrilateral mesh</span><a class="headerlink" href="#quadrilateral-eliptic-plate-mesh-comparison" title="Permalink to this image">¶</a></p>
+<div class="figure align-default" id="quadrilateral-shell-mesh-comparison">
+<a class="reference internal image-reference" href="../../_images/shell_comparison.png"><img alt="Quadrilateral shell mesh comparison" src="../../_images/shell_comparison.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Graph representing results of the simulation with quadrilateral mesh</span><a class="headerlink" href="#quadrilateral-shell-mesh-comparison" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="numerous-models-in-calculix">
+<h2>Numerous models in Calculix<a class="headerlink" href="#numerous-models-in-calculix" title="Permalink to this headline">¶</a></h2>
+<p>In order to obtain correct results with Calculix 3 models were prepared:</p>
+<ul class="simple">
+<li><p>hemisphere model with use of shell S8 elements as described in NAFEMS benchmark,</p></li>
+<li><p>hemisphere model with use of solid C3D20R elements as described in NAFEMS benchmark,</p></li>
+<li><p>full hemisphere model with use of shell S8 elements modeled without symmetry Boundary conditions,</p></li>
+</ul>
+<p>Neither of these models produced correct results. With shell models is possible to obtain correct displacement contour but incorrect value of seeking variable. On the contrary with solid model is possible to obtain correct results in terms of specific displacement in point A, but not in contour plot. Please see the image below as proof of statement.</p>
+<div class="figure align-default" id="calculix-results-comparison">
+<a class="reference internal image-reference" href="../../_images/ccx_comparison.png"><img alt="CalculiX results comparison" src="../../_images/ccx_comparison.png" style="width: 700px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Graph representing results of different models results in CalculiX from left: S8 shell elements, solid C3D20R elements, S8 shell full hemisphere,</span><a class="headerlink" href="#calculix-results-comparison" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -512,6 +538,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="model.html" title="previous page">Model definition</a>
+    <a class='right-next' id="next-link" href="tested-codes.html" title="next page">Tested Finite Element codes</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
