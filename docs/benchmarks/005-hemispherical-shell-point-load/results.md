@@ -8,7 +8,7 @@ A few conclusions can be derived from the presented study:
 
 1. It is hard to perform a shell analysis with force loading condition using open-source software and achieve a correct solution. In the current study, only code_aster benchmark mesh was able to obtain a displacement value close to the target of $u_{x}=0.185 m$.
 2. To obtain precise results with Elmer it is needed to use finer meshes and calculate normal vectors before starting the calculations (mesh.director). For now (27.03.2021) Elmer doesn't support quadratic shell elements. Please remember that shell solver is under development.
-3. Calculix was unable to produce correct results with shell and solid elements. For more detailed information please read chapter below.
+3. CalculiX was unable to produce correct results with shell elements and symmetry boundary conditions. For more detailed information please read chapter below.
 4. Code_Aster support QUAD_9 instead QUAD_8 elements. Fortunately the solver itself contains a mesh converter to this type of elements.
 
 
@@ -47,14 +47,13 @@ name: Quadrilateral shell mesh comparison
 Graph representing results of the simulation with quadrilateral mesh
 ```
 
-## Numerous models in Calculix
-In order to obtain correct results with Calculix 3 models were prepared:
-- hemisphere model with use of shell S8 elements as described in NAFEMS benchmark,
-- hemisphere model with use of solid C3D20R elements as described in NAFEMS benchmark,
-- full hemisphere model with use of shell S8 elements modeled without symmetry boundary conditions,
+## Numerous models in CalculiX
+In order to obtain correct results with CalculiX 3 models were prepared:
+- quarter hemisphere model with use of shell S8 elements as described in NAFEMS benchmark,
+- quarter hemisphere model with use of solid C3D20R elements as described in NAFEMS benchmark,
+- half sphere model with use of shell S8 elements modeled without symmetry boundary conditions,
 
-Neither of these models produced correct results. With shell models is possible to obtain correct displacement contour but incorrect value of seeking variable. On the contrary with solid model is possible to obtain correct results in terms of specific displacement in point A, but not in contour plot. Please see the image below as proof of statement.
-
+Shell element types in CalculiX did not allow to achieve results close to the target value with symmetry boundary conditions. For the hemisphere shell model, the countour of displacement field seems to be similar to the expected one, although the values are still not correct. On the contrary, the solid model with 3 elements per thickness allows to obtain a satisfying result, but it required some time to estimate the response. These comparison proves that the CalculiX model was set up correctly, but it is the shell element type which is the source of non-satisfactory results.
 
 ```{figure} ./ccx_comparison.png
 ---
@@ -62,7 +61,7 @@ width: 700px
 alt: CalculiX results comparison
 name: CalculiX results comparison
 ---
-Graph representing results of different models results in CalculiX from left: S8 shell elements, solid C3D20R elements, S8 shell full hemisphere,
+Graph representing results of different models results in CalculiX from left: S8 shell elements quarter hemisphere model, S8 shell half sphere model, solid C3D20R elements quarter hemisphere model.
 
 ```
 ```{figure} ./solver_comparison.png
