@@ -63,3 +63,13 @@ alt: CalculiX results comparison
 name: CalculiX results comparison
 ---
 Graph representing results of different models results in CalculiX from left: S8 shell elements, solid C3D20R elements, S8 shell full hemisphere,
+
+```
+```{figure} ./solver_comparison.png
+---
+width: 700px
+alt: Solver results comparison
+name: Solver results comparison
+---
+Results from fine shell mesh in Code_Aster, very fine shell mesh in Elmer and very fine hexahedral mesh in Calculix'
+```
