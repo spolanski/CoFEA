@@ -51,7 +51,7 @@ Graph representing results of the simulation with quadrilateral mesh
 In order to obtain correct results with Calculix 3 models were prepared:
 - hemisphere model with use of shell S8 elements as described in NAFEMS benchmark,
 - hemisphere model with use of solid C3D20R elements as described in NAFEMS benchmark,
-- full hemisphere model with use of shell S8 elements modeled without symmetry Boundary conditions,
+- full hemisphere model with use of shell S8 elements modeled without symmetry boundary conditions,
 
 Neither of these models produced correct results. With shell models is possible to obtain correct displacement contour but incorrect value of seeking variable. On the contrary with solid model is possible to obtain correct results in terms of specific displacement in point A, but not in contour plot. Please see the image below as proof of statement.
 
