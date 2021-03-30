@@ -38,8 +38,8 @@ Results obtained with Calculix software and quadratic hexahedral mesh
 ```{figure} ./tet-comparison_thick_plate.png
 ---
 width: 600px
-alt: Tetrahedral mesh comparison
-name: Tetrahedral mesh comparison
+alt: Thick plate tetrahedral mesh comparison
+name: Thick plate tetrahedral mesh comparison
 ---
 Graph representing results of the simulation with tetrahedral mesh
 ```
@@ -63,8 +63,8 @@ Graph representing results of the simulation with tetrahedral mesh
 ```{figure} ./hex-comparison_thick_plate.png
 ---
 width: 600px
-alt: Hexahedral mesh comparison
-name: Hexahedral mesh comparison
+alt: Thick plate hexahedral mesh comparison
+name: Thick plate hexahedral mesh comparison
 ---
 Graph representing results of the simulation with hexahedral mesh
 ```
