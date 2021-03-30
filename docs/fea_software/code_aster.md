@@ -1,4 +1,6 @@
-# Code_Aster Compilation
+# Salome / Code_Aster
+
+<!-- Instalation of Salome on Ubuntu -->
 
 ## Setup and compilation from source
 To use Code_aster in multithreading mode on UBUNTU 18.04 it is needed to compile from source. In order to do so it is necessary to install required dependencies tools. The source code of Code_aster can be obtained from this repository or [link](https://www.code-aster.org/spip.php?rubrique21).
@@ -83,3 +85,33 @@ alt: ASTK Window 2
 name: ASTK Window 2
 ---
 ```
+
+<!-- How to install Salome-Meca 2020
+
+Cntrl + Alt + T for terminal.
+
+1. First thing is that your system should be up to date.
+    run this command " sudo apt-get update, sudo apt-get upgrade "
+  
+2. Create salome directory in home.
+    run this command " mkdir salome " make sure you are in system home directory" 
+
+3. Download Salome universal package from this link,
+"https://www.salome-platform.org/downloads/current-version" just copy-paste.
+https://www.code-aster.org/V2/spip.php?article295
+
+4. After downloading you have like this in your download directory "Salome-V8_4_0-univ_public.run"
+
+5. Then make a file as a program.
+   run this command " chmod +x Salome-V8_4_0-univ_public.run ".
+
+6. Now type "ls" in terminal and see 2 files.
+
+7. Then install salome in your PC.
+   run this command " ./Salome-V8_4_0-univ_public.run "
+
+8. press Just "Enter" and choose language English or French.
+
+9. after that you have a salome icon in your PC screen.
+
+Thanks to all. -->
