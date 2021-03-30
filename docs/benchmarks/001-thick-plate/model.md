@@ -41,16 +41,15 @@ colormap = Dropdown(
 jslink((colored_mesh, 'colormap'), (colormap, 'index'))
 
 AppLayout(
-    center=Scene([colored_mesh]),
-    header=Box((colormap, colorbar)),
-    footer=Box((colormap_slider_range,)),
-    pane_heights=['10%', 1, '10%'],
-    justify_content='center',
+    header=Scene([colored_mesh]),
+    left_sidebar=VBox((colormap, colormap_slider_range)),
+    right_sidebar=(colorbar),
+    pane_widths=[1, 0, 1],
+    pane_heights=['80%','20%',0],
+    footer=None,
 )
 
 ```
-
-
 
 ```{Tip}
 The benchmark geometry shown above is interactive and shows $\sigma_{yy}$ results in [Pa].
