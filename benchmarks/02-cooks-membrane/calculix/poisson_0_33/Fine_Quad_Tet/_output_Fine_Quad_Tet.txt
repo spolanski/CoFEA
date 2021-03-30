@@ -1,0 +1,6 @@
+03/11/2021 20:42:14
+
+Running command: C:\Program Files (x86)\bConverged\CalculiX\bin\ccx.bat Fine_Quad_Tet
+
+
+ Elapsed time [s]: 0.2810701

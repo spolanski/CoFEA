@@ -1,0 +1,11 @@
+,Mesh type,Size,Elmer
+1,Lin-Hex,Coarse,23.30457027232
+0,Lin-Hex,Fine,28.78246084647
+5,Lin-Tet,Coarse,24.16142612632
+8,Lin-Tet,Fine,29.76357725384
+6,Quad-Hex,Coarse,31.34095122117
+7,Quad-Hex,Fine,31.92112842632
+9,Quad-Hex,VeryFine,32.27046895699
+2,Quad-Tet,Coarse,31.5876587207
+3,Quad-Tet,Fine,32.01914793659
+4,Quad-Tet,VeryFine,32.27569501773

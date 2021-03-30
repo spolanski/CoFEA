@@ -1,0 +1,6 @@
+03/11/2021 20:37:25
+
+Running command: C:\Program Files (x86)\bConverged\CalculiX\bin\ccx.bat Coarse_Quad_Hex
+
+
+ Elapsed time [s]: 0.147858

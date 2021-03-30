@@ -1,0 +1,7 @@
+! ----- names for bodies -----
+$ body8 = 1
+! ----- names for boundaries -----
+$ BC = 1
+$ Load = 2
+$ ZSYMM = 3
+$ bnry8 = 4

@@ -1,0 +1,22 @@
+P actions make_etude
+P debug nodebug
+P memjob 2097152
+P memory_limit 2048.0
+P mode interactif
+P mpi_nbcpu 1
+P mpi_nbnoeud 1
+P nomjob RunCase_5_Stage_1
+P origine AsterStudy 0.11
+P rep_trav /tmp/spolanski-spolanski-linux-interactif_8928
+P server localhost
+P studyid 7098-0003-spolanski-linux
+P time_limit 900.0
+P tpsjob 16
+P version 14.6
+A memjeveux 256.0
+A tpmax 900.0
+F comm /home/spolanski/Desktop/Benchmarking/models/03-cook-membrane/Poisson_0_49/Results/Fine_Quad_Hex/study.comm D  1
+F libr /home/spolanski/Desktop/Benchmarking/models/03-cook-membrane/Poisson_0_49/Results/Fine_Quad_Hex/Fine_Quad_Hex.unv D  2
+F libr /home/spolanski/Desktop/Benchmarking/models/03-cook-membrane/Poisson_0_49/Results/Fine_Quad_Hex/study.rmed R  3
+F libr /home/spolanski/Desktop/Benchmarking/models/03-cook-membrane/Poisson_0_49/Results/Fine_Quad_Hex/table.txt R  4
+F mess /home/spolanski/Desktop/Benchmarking/models/03-cook-membrane/Poisson_0_49/Results/Fine_Quad_Hex/message R  6

@@ -1,0 +1,38 @@
+Elmer version: 9.0
+Elmer compilation date: 2021-03-07
+Solver input file: case.sif
+File started at: 2021/03/12 22:33:38
+ 
+Variables in columns of matrix: Results/Fine_Lin_Tet/results.dat
+   1: value: displacement 1 at node       5
+   2: value: displacement 2 at node       5
+   3: value: displacement 3 at node       5
+   4: value: stress_xx at node       5
+   5: value: stress_yy at node       5
+   6: value: stress_zz at node       5
+   7: value: stress_xy at node       5
+   8: value: stress_yz at node       5
+   9: value: stress_xz at node       5
+  10: value: vonmises at node       5
+  11: value: displacement loads 1 at node       5
+  12: value: displacement loads 2 at node       5
+  13: value: displacement loads 3 at node       5
+  14: value: coordinate 1 at node       5
+  15: value: coordinate 2 at node       5
+  16: value: coordinate 3 at node       5
+  17: value: displacement 1 at node       9
+  18: value: displacement 2 at node       9
+  19: value: displacement 3 at node       9
+  20: value: stress_xx at node       9
+  21: value: stress_yy at node       9
+  22: value: stress_zz at node       9
+  23: value: stress_xy at node       9
+  24: value: stress_yz at node       9
+  25: value: stress_xz at node       9
+  26: value: vonmises at node       9
+  27: value: displacement loads 1 at node       9
+  28: value: displacement loads 2 at node       9
+  29: value: displacement loads 3 at node       9
+  30: value: coordinate 1 at node       9
+  31: value: coordinate 2 at node       9
+  32: value: coordinate 3 at node       9

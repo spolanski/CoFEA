@@ -1,0 +1,66 @@
+DEBUT(LANG='EN')
+
+
+mesh = LIRE_MAILLAGE(identifier='0:1',
+                     FORMAT='IDEAS',
+                     UNITE=2)
+
+model = AFFE_MODELE(identifier='1:1',
+                    AFFE=_F(MODELISATION=('3D', ),
+                            PHENOMENE='MECANIQUE',
+                            TOUT='OUI'),
+                    MAILLAGE=mesh)
+
+mater = DEFI_MATERIAU(identifier='2:1',
+                      ELAS=_F(E=70.0,
+                              NU=0.3333))
+
+materfl = AFFE_MATERIAU(identifier='3:1',
+                        AFFE=_F(MATER=(mater, ),
+                                TOUT='OUI'),
+                        MODELE=model)
+
+mecabc = AFFE_CHAR_MECA(identifier='4:1',
+                        DDL_IMPO=(_F(DX=0.0,
+                                     DY=0.0,
+                                     DZ=0.0,
+                                     GROUP_MA=('BC', )),
+                                  _F(DZ=0.0,
+                                     GROUP_NO=('ZSYMM', ))),
+                        MODELE=model)
+
+mecach = AFFE_CHAR_MECA(identifier='5:1',
+                        FORCE_FACE=_F(FY=6.25,
+                                      GROUP_MA=('Load', )),
+                        MODELE=model)
+
+result = MECA_STATIQUE(identifier='7:1',
+                       CHAM_MATER=materfl,
+                       EXCIT=(_F(CHARGE=mecabc),
+                              _F(CHARGE=mecach)),
+                       MODELE=model)
+
+unnamed0 = CALC_CHAMP(identifier='8:1',
+                      CONTRAINTE=('SIEF_ELGA', 'SIEF_ELNO'),
+                      CRITERES=('SIEQ_ELGA', 'SIEQ_ELNO'),
+                      FORCE=('REAC_NODA', ),
+                      RESULTAT=result)
+
+table = POST_RELEVE_T(identifier='9:1',
+                      ACTION=_F(GROUP_NO=('Vertex', ),
+                                INTITULE='DISP',
+                                NOM_CHAM='DEPL',
+                                OPERATION=('EXTRACTION', ),
+                                RESULTANTE=('DY', ),
+                                RESULTAT=result))
+
+IMPR_RESU(identifier='10:1',
+          RESU=(_F(RESULTAT=unnamed0),
+                _F(RESULTAT=result)),
+          UNITE=3)
+
+IMPR_TABLE(identifier='11:1',
+           TABLE=table,
+           UNITE=4)
+
+FIN()

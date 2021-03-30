@@ -1,0 +1,22 @@
+!------ Skeleton for body section -----
+Body 1
+  Name = body9
+End
+
+!------ Skeleton for boundary section -----
+Boundary Condition 1
+  Name = BC
+End
+
+Boundary Condition 2
+  Name = Load
+End
+
+Boundary Condition 3
+  Name = ZSYMM
+End
+
+Boundary Condition 4
+  Name = bnry9
+End
+

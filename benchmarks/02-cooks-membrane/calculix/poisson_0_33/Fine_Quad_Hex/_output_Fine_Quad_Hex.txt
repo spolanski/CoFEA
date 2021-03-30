@@ -1,0 +1,6 @@
+03/11/2021 20:41:26
+
+Running command: C:\Program Files (x86)\bConverged\CalculiX\bin\ccx.bat Fine_Quad_Hex
+
+
+ Elapsed time [s]: 0.4912213

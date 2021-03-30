@@ -1,0 +1,6 @@
+03/11/2021 20:40:36
+
+Running command: C:\Program Files (x86)\bConverged\CalculiX\bin\ccx.bat Fine_Lin_Tet
+
+
+ Elapsed time [s]: 0.1641859

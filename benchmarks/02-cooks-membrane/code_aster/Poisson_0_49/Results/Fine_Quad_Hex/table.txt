@@ -1,0 +1,7 @@
+#
+#--------------------------------------------------------------------------------
+##ASTER 14.06.00 CONCEPT table CALCULE LE 09/03/2021 A 22:27:45 DE TYPE           
+#TABLE_SDASTER                                                                   
+INTITULE         RESU     NOM_CHAM         NUME_ORDRE   INST         DY          
+DISP             result   DEPL                        1  0.00000E+00  2.60319E+01
+

@@ -1,0 +1,6 @@
+03/11/2021 20:38:41
+
+Running command: C:\Program Files (x86)\bConverged\CalculiX\bin\ccx.bat Coarse_Quad_Tet
+
+
+ Elapsed time [s]: 0.3690197
