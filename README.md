@@ -5,7 +5,7 @@
 * numbers of benchmark and real-life problems will be analysed to increase confidence in using open-source software,
 * information on how to set up the simulation environment correctly will be gathered in one place, so anyone could set it up,
 * a simulation workflow enhanced by scripts & tools will be established to make usage of open-source tools easier,
-* message about the open-source software will be spread all over the internet to help the community grows,
+* message about the open-source software will be spread all over the internet to help the community grows.
 
 # How to contribute?
 
