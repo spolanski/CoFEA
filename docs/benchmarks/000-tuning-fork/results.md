@@ -30,9 +30,14 @@ A few conclusions can be derived from the presented study:
 |              4 |     1827.55 Hz     |  1825.55 Hz |   1825.63 Hz  | 1825.63 Hz | 1825.7 Hz |
 |              5 |     2788.66 Hz     |  2777.73 Hz |   2777.56 Hz  | 2777.56 Hz | 2781.3 Hz |
 
-.. chart:: charts/test.json
-
-    This is the caption of the chart
+```{figure} ./code-comparison.png
+---
+width: 600px
+alt: FE codes comparison
+name: FE codes comparison
+---
+Comparison of FE codes for the tuning fork example
+```
 
 ## Linear tetrahedral mesh
 
@@ -56,7 +61,7 @@ width: 600px
 alt: Tetrahedral mesh comparison
 name: Tetrahedral mesh comparison
 ---
-Graph representing results of the simulation with tetrahedral mesh
+Graph representing results of the simulation with tetrahedral mesh 
 ```
 
 ## Linear hexahedral mesh
@@ -81,5 +86,5 @@ width: 600px
 alt: Hexahedral mesh comparison
 name: Hexahedral mesh comparison
 ---
-Graph representing results of the simulation with hexahedral mesh
+Graph representing results of the simulation with hexahedral mesh 
 ```
