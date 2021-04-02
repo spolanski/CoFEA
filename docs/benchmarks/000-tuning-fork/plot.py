@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 plt.close('all')
 import pandas as pd
 import numpy as np
+import json
+import mpld3 as mpld3
 
 def mesh_study():
     plot_title = 'Tetrahedral mesh comparison'
@@ -20,7 +22,7 @@ def mesh_study():
     x = np.arange(len(labels))  # the label locations
 
     width = 0.2  # the width of the bars
-    # plt.style.use('seaborn-white') 
+    # plt.style.use('seaborn-white')
     fig, ax = plt.subplots(figsize=(10,6))
     ax.bar(x - 0.2, ccx_values, width, label='Calculix')
     ax.bar(x, code_aster_values, width, label='Code_Aster')
@@ -56,7 +58,7 @@ def code_comparison():
     x = np.arange(len(labels))  # the label locations
 
     width = 0.15  # the width of the bars
-    # plt.style.use('seaborn-white') 
+    # plt.style.use('seaborn-white')
     fig, ax = plt.subplots(figsize=(10,6))
     ax.bar(x - (1.5 * width), ccx_values, width, label='Calculix')
     ax.bar(x - (0.5 * width), code_aster_values, width, label='Code_Aster')
@@ -79,7 +81,9 @@ def code_comparison():
     plt.grid(color='gray', linestyle='-.', linewidth=0.5)
     fig.savefig(file_name)
     plt.show()
-    
+
+    mpld3.save_json(fig,"figure.json")
+
 if __name__ == "__main__":
     # mesh_study()
     code_comparison()
