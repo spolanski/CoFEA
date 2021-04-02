@@ -27,6 +27,7 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinx.ext.napoleon',
     "ablog",
+    'sphinx_charts.charts',
     "myst_parser",
 ]
 
