@@ -32,6 +32,5 @@ setup(name='CoFEA',
           'vtk',
           'pyvista',
           'sphinx-book-theme',
-          'sphinx_charts',
           "ipykernel==5.4.3"],
       )
