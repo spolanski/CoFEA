@@ -22,6 +22,8 @@ There are plenty of ways on how you could contribute:
 * if you are good at writing then you can help writing the docs
 * finally, if you don't think you have anything from the above, but you are eager to learn just let us know!
 
+In any situation that you would like to contact us, please send an email to cofea.project(at)gmail.com
+
 :::{important}
 If you have some old FEA models which are validated experimentally and you could share them - do let us know! We will give them another life by checking them once again in the open-source software.
 :::
@@ -30,21 +32,19 @@ If you have some old FEA models which are validated experimentally and you could
 For more details on how to contribute, please look into [Contributor Guide](reference/contributor_guide).
 :::
 
-In any situation that you would like to contact us at cofea.project(at)gmail.com
 
 # License
-Copyright (c) 2021, CoFEA Team
-All rights reserved.
+Any technical content created for the purpose of the CoFEA Initiative is licencsed under Creative Commons BY-NC-SA 4.0 license. In simple terms, one can share and adapt the content under two conditions:
+- if content is shared in any form one must give appropriate credit to CoFEA Initiative,
+- one must not redistribute the content commercially.
 
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3. All advertising materials mentioning features or use of this software must display the following acknowledgement: This product includes software developed by the CoFEA Team.
-4. Neither the name of the CoFEA Team nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY CoFEA Team ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL CoFEA Team BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+```{figure} https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
+---
+alt: license
+name: creative commons license
+target: https://creativecommons.org/licenses/by-nc-sa/4.0/
+---
+```
 
 # Site contents
 
