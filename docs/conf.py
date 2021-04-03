@@ -49,8 +49,15 @@ nitpick_ignore = [
 
 numfig = True
 
-myst_admonition_enable = True
-myst_deflist_enable = True
+#myst_admonition_enable = True
+#myst_deflist_enable = True
+myst_enable_extensions = [
+
+    'colon_fence',
+    'deflist',
+
+]
+
 myst_url_schemes = ("http", "https", "mailto")
 panels_add_bootstrap_css = False
 
@@ -119,8 +126,8 @@ blog_path = "reference/blog"
 blog_post_pattern = "reference/blog/*.md"
 blog_baseurl = "https://cofea.readthedocs.io"
 fontawesome_included = True
-post_auto_image = 0
-post_auto_excerpt = 1
+post_auto_image = 1
+post_auto_excerpt = 2
 execution_show_tb = "READTHEDOCS" in os.environ
 # ------------
 
