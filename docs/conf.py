@@ -119,8 +119,8 @@ blog_path = "reference/blog"
 blog_post_pattern = "reference/blog/*.md"
 blog_baseurl = "https://cofea.readthedocs.io"
 fontawesome_included = True
-post_auto_image = 0
-post_auto_excerpt = 1
+post_auto_image = 1
+post_auto_excerpt = 2
 execution_show_tb = "READTHEDOCS" in os.environ
 # ------------
 
