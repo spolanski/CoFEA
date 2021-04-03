@@ -22,7 +22,6 @@ There are plenty of ways on how you could contribute:
 * if you are good at writing then you can help writing the docs
 * finally, if you don't think you have anything from the above, but you are eager to learn just let us know!
 
-In any situation that you would like to contact us, please send an email to cofea.project(at)gmail.com
 
 :::{important}
 If you have some old FEA models which are validated experimentally and you could share them - do let us know! We will give them another life by checking them once again in the open-source software.
@@ -32,6 +31,10 @@ If you have some old FEA models which are validated experimentally and you could
 For more details on how to contribute, please look into [Contributor Guide](reference/contributor_guide).
 :::
 
+# Contact
+If you would like to have a chat then you can send an email to cofea.project(at)gmail.com.
+
+You can also find us on the social media like [LinkedIn](https://www.linkedin.com/company/cofea-initiative) and [Twitter](https://twitter.com/_CoFEA_).
 
 # License
 Any technical content created for the purpose of the CoFEA Initiative is licencsed under Creative Commons BY-NC-SA 4.0 license. In simple terms, one can share and adapt the content under two conditions:
