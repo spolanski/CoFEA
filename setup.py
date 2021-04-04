@@ -14,7 +14,7 @@ setup(name='CoFEA',
           'jinja2',
           'pyyaml',
           'docutils==0.16',
-          'decorator==5.03'  
+          'decorator==5.03',  
           'sphinx>=2.0',
           'click',
           'pydata-sphinx-theme~=0.4.1',
