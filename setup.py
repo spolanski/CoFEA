@@ -13,7 +13,7 @@ setup(name='CoFEA',
       install_requires=[
           'jinja2',
           'pyyaml',
-          'docutils~=0.16',
+          'docutils==0.16',
           'sphinx>=2.0',
           'click',
           'pydata-sphinx-theme~=0.4.1',
