@@ -24,5 +24,6 @@ setup(name='CoFEA',
         "sphinxcontrib-bibtex~=2.2",
         "sphinx-thebe",
         "ablog~=0.10.13",
+        'ipywidgets<8,>=7.0.0',
         ],
     )
