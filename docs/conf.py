@@ -52,10 +52,16 @@ numfig = True
 #myst_admonition_enable = True
 #myst_deflist_enable = True
 myst_enable_extensions = [
-
-    'colon_fence',
-    'deflist',
-
+    "amsmath",
+    "colon_fence",
+    "deflist",
+    "dollarmath",
+    "html_admonition",
+    "html_image",
+    "linkify",
+    "replacements",
+    "smartquotes",
+    "substitution"
 ]
 
 myst_url_schemes = ("http", "https", "mailto")
