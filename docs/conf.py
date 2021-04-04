@@ -2,6 +2,9 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../meshpresso'))
+import pkg_resources
+pkg_resources.require("docutils==0.16")
+import docutils
 
 project = "CoFEA Initiative"
 copyright = "2020"
