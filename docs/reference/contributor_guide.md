@@ -1,6 +1,6 @@
 # Contributor Guide
 
-Here is a quick introduction on how to start contributing to the CoFEA Initiative. At first, you can acknowledge yourself with the rules we try to follow and which we also recommend following:
+Here is a quick introduction on how to start contributing to the CoFEA Initiative. At first, you can acknowledge yourself with the rules we try to follow:
 - if you are not familiar with programming, compilation etc, we recommend using Ubuntu 18.0 (or any Debian based Linux) as your main environment. We tend to use this distribution and all guidelines presented in this docs have been validated with this OS.
 - we use GitHub website as a place to store the code, docs and everything else. As a result of that, if you would like to contribute to CoFEA you should have an account on this platform to be able to fork the [CoFEA repository](https://github.com/spolanski/CoFEA), add your changes and send a modified version back. That also implies that you ought to have basic understanding of *git* version control system and the nomenclature used on GitHub (such as pull request, fork etc.)
 - while it would be nice to use Python 3.x only, some FE codes (for example Salome) are still using Python version 2.7. Due to that, all scripts which are developed should be developed in a way that is more or less compatible with 2.x and 3.x versions.
@@ -9,52 +9,32 @@ Here is a quick introduction on how to start contributing to the CoFEA Initiativ
 
 ## Documentation contribution
 
-Your journey as a contributor should start with getting the copy CoFEA onto your hard-drive. You can do it by clicking the [download link](https://github.com/spolanski/CoFEA/archive/master.zip) or by running *git clone https://github.com/spolanski/CoFEA.git* command if you are using git.
+Your journey as a contributor should start with getting the copy CoFEA docs onto your hard-drive. It is actually very simple to recreate the website locally. You can do it by running folowing commands from terminal:
 
-CoFEA uses [Sphinx Book Theme](https://sphinx-book-theme.readthedocs.io/en/latest/index.html) to automatically create this website. So the next step will be to to install Sphinx and some additional prerequisites. In this instruction it will be shown how to do that and covert the *.md files into html ones.
-
-### Sphinx prerequisites
-
-1. Install the required tools for Sphinx:
-    - jinja2,
-    - pyyaml,
-    - docutils>=0.15,
-    - sphinx,
-    - click,
-    - pydata-sphinx-theme~=0.4.1,
-    - beautifulsoup4,
-    - importlib-resources~=3.0.0; python_version < 3.7,
-    - myst-nb,
-    - sphinx-copybutton,
-    - sphinx-togglebutton,
-    - sphinxcontrib-bibtex,
-    - sphinx-thebe,
-    - ablog,
-    - sphinx-book-theme,
-
-using your python package manager. For Ubuntu and Debian-oriented system the command can be like:
-
-```
-pip3 install jinja2
-```
-
-or if you are using anaconda just type:
-
-```
-conda install -c anaconda jinja2
-```
-
-### Building html website from .MD files
-
-Navigate to github CoFEA/docs directory in your terminal, then simply type:
-
-```
+```bash
+# Install python3.7 version; skip the step if you have it
+sudo apt install python3.7
+# Install virtualenv module for python3.7
+python3.7 -m pip install virtualenv
+# Download CoFEA repo
+git clone https://github.com/spolanski/CoFEA.git
+# open CoFEA folder
+cd CoFEA/
+# set up python virtualenv
+python3.7 -m venv cofea_env
+# activate the virtualenv
+source cofea_env/bin/activate
+# install all the modules which are required by CoFEA
+python3.7 setup.py install
+# go to docs folder
+cd docs/
+# execute sphinx to compile the website
 make html
+# open the local website in firefox
+firefox _build/html/index
 ```
 
-After this command Sphinx will automatically convert Markdown files into HTML. If you are curious how they look like, open the file from docs/_build/html/index.html in your web browser. You should see the local copy of this webpage.
-
-Once you add some modifications, you can send a pull request. Once accepted, the .md files will be converted and the conversion status can be seen on the [Read the Docs](https://readthedocs.org/projects/cofea/builds/) page.
+That's it! if you follow the steps above, you will compile the website locally. Then you can modify the files and send them back to the CoFEA github using git push command. We are looking forward to your contribution! 
 
 :::{hint}
 Looking for a task to do? Check [CoFEA documentation issue](https://github.com/spolanski/CoFEA/issues/27). It contains several things that we would like to implement. Pick one and [create a Github issue](https://github.com/spolanski/CoFEA/issues/new/choose), so everyone knows that someone is working on it. After that send a pull request and your work will be merged soon.
