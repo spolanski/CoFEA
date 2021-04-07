@@ -24,8 +24,8 @@ A few conclusions can be derived from the presented study:
 
 | Frequency | Commercial code    | Calculix    | Code Aster    |  Elmer     |  MoFEM     |
 |----------------|:------------------:|:-----------:|:-------------:|:----------:|:----------:|
-|              2 |      675.80 Hz     |  673.51 Hz  |   673.57 Hz   |  673.57 Hz |  674.4 Hz |
 |              1 |      440.33 Hz     |  440.05 Hz  |   440.91 Hz   |  440.91 Hz |  441.0 Hz |
+|              2 |      675.80 Hz     |  673.51 Hz  |   673.57 Hz   |  673.57 Hz |  674.4 Hz |
 |              3 |     1689.51 Hz     |  1689.30 Hz |   1689.37 Hz  | 1689.37 Hz | 1690.3 Hz |
 |              4 |     1827.55 Hz     |  1825.55 Hz |   1825.63 Hz  | 1825.63 Hz | 1825.7 Hz |
 |              5 |     2788.66 Hz     |  2777.73 Hz |   2777.56 Hz  | 2777.56 Hz | 2781.3 Hz |
