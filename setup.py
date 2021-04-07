@@ -25,5 +25,6 @@ setup(name='CoFEA',
         "sphinx-thebe",
         "ablog~=0.10.13",
         'ipywidgets<8,>=7.0.0',
+        'jupyter-client==6.1.12'
         ],
     )
