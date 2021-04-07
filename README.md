@@ -30,10 +30,4 @@ Any technical content created for the purpose of the CoFEA Initiative is licencs
 - if content is shared in any form one must give appropriate credit to CoFEA Initiative,
 - one must not redistribute the content commercially.
 
-```{figure} https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
----
-alt: license
-name: creative commons license
-target: https://creativecommons.org/licenses/by-nc-sa/4.0/
----
-```
+![license](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)
