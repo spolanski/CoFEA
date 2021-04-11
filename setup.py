@@ -7,7 +7,7 @@ setup(name='CoFEA',
     python_requires=">=3.7",
     author='Slawomir Polanski',
     author_email='polanski.slawomir@gmail.com',
-    license='TODO',
+    license='Creative Commons BY-NC-SA 4.0',
     packages=['meshpresso', 'docs'],
     zip_safe=False,
     install_requires=[
