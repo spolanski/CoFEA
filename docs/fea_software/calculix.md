@@ -1,9 +1,12 @@
 # Calculix
-<!-- https://github.com/calculix/ccx2paraview -->
+
+```{contents} Table of Contents
+:local: 
+```
 ## Setup and compilation from source
 To use Calculix in multithreading mode it is needed to compile from source. In order to do so it is necessary to compile ARPACK and SPOOLES library and install the required tools. The code which is presented here is already changed and ready for compilation. Please read the original documentation first from [here](http://www.dhondt.de/ccx_2.17.README.INSTALL).
 
-## Tools
+### Tools
 1. Install the required tools for Calculix:
     -   gfortran
     -   make
@@ -19,13 +22,10 @@ To use Calculix in multithreading mode it is needed to compile from source. In o
 
 using your package manager. For Ubuntu and Debian-oriented system the command should be like:
 
-
 ```
 sudo apt-get install gfortran make f2c liblapack3 liblapack-dev libexodusii-dev libgl1-mesa-dev libglu1-mesa-dev libxi-dev libxmu-dev
 ```
-
-
-## SPOOLES
+### SPOOLES
 
 SPOOLES library should be obtained from this [site](http://www.netlib.org/linalg/spooles/spooles.2.2.tgz) using wget command.
 
@@ -69,7 +69,7 @@ Then it is needed to compile the MT library. It is done with following commands:
 cd MT/src/
 make   
 ```
-## ARPACK
+### ARPACK
 
 Next step is to compile ARPACK library. It is needed to download 2 seperate archives. Obtain it from [here](https://www.caam.rice.edu/software/ARPACK/SRC/arpack96.tar.gz) and [here](https://www.caam.rice.edu/software/ARPACK/SRC/patch.tar.gz).
 
@@ -100,7 +100,7 @@ Then mowe to ARPACK directory and run:
 ```
 make lib   
 ```
-## Calculix compilation
+### Calculix compilation
 
 Obtain Calculix [source code](http://www.dhondt.de/ccx_2.17.src.tar.bz2) using wget to your Calculix directory.
 
@@ -132,6 +132,11 @@ Happy meshing!
 
 ## Interesting projects with CalculiX
 
+[CAE](https://github.com/calculix/cae) is a software package mainly consisting of CalculiX GraphiX, CrunchiX and keyword editor.
+
+[unv2ccx](https://github.com/calculix/unv2ccx) is a mesh converter that allows to convert Salome UNV file into CalculiX INP file.
+
+[ccx2paraview](https://github.com/calculix/ccx2paraview) is a Calculix results converter which creates a Paraview compatible file.
+
 [pycalculix](https://github.com/spacether/pycalculix) is a Python 3 library to automate and build finite element analysis (FEA) models in Calculix.
 
-[CAE](https://github.com/calculix/cae) is a software package mainly consisting of CalculiX GraphiX, CrunchiX and keyword editor.
