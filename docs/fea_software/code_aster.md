@@ -1,11 +1,37 @@
 # Salome / Code_Aster
 
-<!-- Instalation of Salome on Ubuntu -->
+```{contents} Table of Contents
+:local:
+:depth: 1
+```
+## Salome-Meca 2020 installation in Ubuntu 20.04
 
-## Setup and compilation from source
+The following manual describes how to install the latest version of Salome-Meca environment.
+```bash
+# first thing is that your system should be up to date.
+sudo apt-get update
+sudo apt-get upgrade
+# create salome directory in your HOME directory. Run this command
+cd $HOME
+mkdir salome_meca
+cd salome_meca
+# download Salome tar files
+wget https://www.code-aster.org/FICHIERS/salome_meca-2020.0.1-1-universal.tgz
+# untar the file
+tar -xvf salome_meca-2020.0.1-1-universal.tgz
+# the untared file should be named as Salome-V8_4_0-univ_public.run or something similar
+# the file needs to be changed with the command
+chmod +x Salome-V8_4_0-univ_public.run
+# now you should be able to install Salome with the command
+./Salome-V8_4_0-univ_public.run
+# press "Enter" and choose language English or French.
+# after the installation you should have a salome icon in your PC screen.
+```
+
+## Code_Aster compilation under Ubuntu 18.04
 To use Code_aster in multithreading mode on UBUNTU 18.04 it is needed to compile from source. In order to do so it is necessary to install required dependencies tools. The source code of Code_aster can be obtained from this repository or [link](https://www.code-aster.org/spip.php?rubrique21).
 
-## Prerequisities
+### Prerequisities
 1. Install the required tools for Code_aster:
       - gcc, g++, gfortran,
       - cmake,
@@ -24,7 +50,7 @@ using your package manager. For Ubuntu and Debian-oriented system the command sh
 ```
 sudo apt-get install gfortran
 ```
-## Compilation
+### Compilation
 
 In order to compile Code_aster please download the source code to the installation directory.
 
@@ -85,33 +111,3 @@ alt: ASTK Window 2
 name: ASTK Window 2
 ---
 ```
-
-<!-- How to install Salome-Meca 2020
-
-Cntrl + Alt + T for terminal.
-
-1. First thing is that your system should be up to date.
-    run this command " sudo apt-get update, sudo apt-get upgrade "
-  
-2. Create salome directory in home.
-    run this command " mkdir salome " make sure you are in system home directory" 
-
-3. Download Salome universal package from this link,
-"https://www.salome-platform.org/downloads/current-version" just copy-paste.
-https://www.code-aster.org/V2/spip.php?article295
-
-4. After downloading you have like this in your download directory "Salome-V8_4_0-univ_public.run"
-
-5. Then make a file as a program.
-   run this command " chmod +x Salome-V8_4_0-univ_public.run ".
-
-6. Now type "ls" in terminal and see 2 files.
-
-7. Then install salome in your PC.
-   run this command " ./Salome-V8_4_0-univ_public.run "
-
-8. press Just "Enter" and choose language English or French.
-
-9. after that you have a salome icon in your PC screen.
-
-Thanks to all. -->

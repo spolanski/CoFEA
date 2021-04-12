@@ -1,5 +1,10 @@
 # Elmer
 
+```{contents} Table of Contents
+:local: 
+:depth: 1
+```
+
 ## Setup and compilation from source
 Instalation process of ElmerGUI is straightforward. It is needed to add Elmer sources and then just download the package. To do so please use following commands:
 
@@ -13,7 +18,6 @@ sudo apt-get install elmerfem-csc-eg
 ## How  to use ElmerGUI with Benchmarks
 
 Please start ElmerGUI with:
-
 
 ```
 ElmerGUI
