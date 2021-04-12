@@ -2,6 +2,7 @@
 
 ```{contents} Table of Contents
 :local: 
+:depth: 1
 ```
 ## Setup and compilation from source
 To use Calculix in multithreading mode it is needed to compile from source. In order to do so it is necessary to compile ARPACK and SPOOLES library and install the required tools. The code which is presented here is already changed and ready for compilation. Please read the original documentation first from [here](http://www.dhondt.de/ccx_2.17.README.INSTALL).

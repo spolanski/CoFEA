@@ -1,7 +1,8 @@
 # Salome / Code_Aster
 
 ```{contents} Table of Contents
-:local: 
+:local:
+:depth: 1
 ```
 ## Salome-Meca 2020 installation in Ubuntu 20.04
 

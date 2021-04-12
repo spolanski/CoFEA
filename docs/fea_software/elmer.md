@@ -2,6 +2,7 @@
 
 ```{contents} Table of Contents
 :local: 
+:depth: 1
 ```
 
 ## Setup and compilation from source
