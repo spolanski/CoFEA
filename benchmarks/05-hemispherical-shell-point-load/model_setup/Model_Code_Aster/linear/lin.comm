@@ -1,37 +1,38 @@
 DEBUT(LANG='EN')
 
+
 mesh = LIRE_MAILLAGE(identifier='0:1',
                      FORMAT='IDEAS',
                      UNITE=80)
 
+mesh = MODI_MAILLAGE(identifier='1:1',
+                     reuse=mesh,
+                     MAILLAGE=mesh,
+                     ORIE_NORM_COQUE=_F(GROUP_MA=('Shell', )))
 
-Quad8 = CREA_MAILLAGE(LINE_QUAD=_F(PREF_NOEUD='NQ',
-                                   TOUT='OUI'),
-                      MAILLAGE=mesh)
+model = AFFE_MODELE(identifier='2:1',
+                    AFFE=_F(GROUP_MA=('Shell', ),
+                            MODELISATION=('DST', ),
+                            PHENOMENE='MECANIQUE'),
+                    MAILLAGE=mesh)
 
-Quad9 = CREA_MAILLAGE(MAILLAGE=Quad8,
-                      MODI_MAILLE=_F(OPTION='QUAD8_9',
-                                     PREF_NOEUD='NS',
-                                     TOUT='OUI'))
-
-model = AFFE_MODELE(AFFE=_F(MODELISATION=('COQUE_3D', ),
-                            PHENOMENE='MECANIQUE',
-                            TOUT='OUI'),
-                    MAILLAGE=Quad9)
-
-elemprop = AFFE_CARA_ELEM(COQUE=_F(EPAIS=0.04,
+elempro0 = AFFE_CARA_ELEM(identifier='3:1',
+                          COQUE=_F(EPAIS=0.04,
                                    GROUP_MA=('Shell', )),
                           MODELE=model)
 
-mater = DEFI_MATERIAU(ELAS=_F(E=68250000000.0,
+mater = DEFI_MATERIAU(identifier='4:1',
+                      ELAS=_F(E=68250000000.0,
                               NU=0.3))
 
-fieldmat = AFFE_MATERIAU(AFFE=_F(MATER=(mater, ),
+fieldmat = AFFE_MATERIAU(identifier='5:1',
+                         AFFE=_F(MATER=(mater, ),
                                  TOUT='OUI'),
-                         MAILLAGE=Quad9,
+                         MAILLAGE=mesh,
                          MODELE=model)
 
-BC = AFFE_CHAR_MECA(DDL_IMPO=(_F(DX=0.0,
+BC = AFFE_CHAR_MECA(identifier='6:1',
+                    DDL_IMPO=(_F(DX=0.0,
                                  DY=0.0,
                                  DZ=0.0,
                                  GROUP_NO=('E', )),
@@ -45,22 +46,24 @@ BC = AFFE_CHAR_MECA(DDL_IMPO=(_F(DX=0.0,
                                  GROUP_NO=('CE', ))),
                     MODELE=model)
 
-load0 = AFFE_CHAR_MECA(FORCE_NODALE=(_F(FX=2000.0,
+load0 = AFFE_CHAR_MECA(identifier='7:1',
+                       FORCE_NODALE=(_F(FX=2000.0,
                                         GROUP_NO=('A', )),
                                      _F(FY=-2000.0,
                                         GROUP_NO=('C', ))),
                        MODELE=model)
 
-reslin = MECA_STATIQUE(CARA_ELEM=elemprop,
+reslin = MECA_STATIQUE(identifier='8:1',
+                       CARA_ELEM=elempro0,
                        CHAM_MATER=fieldmat,
                        EXCIT=(_F(CHARGE=BC),
                               _F(CHARGE=load0)),
                        MODELE=model)
 
-IMPR_RESU(FORMAT='RESULTAT',
-          RESU=_F(RESULTAT=reslin,
-		  GROUP_NO=('A',)),
-          UNITE=8)
-
+IMPR_RESU(identifier='9:1',
+          FORMAT='MED',
+          RESU=_F(MAILLAGE=mesh,
+                  RESULTAT=reslin),
+          UNITE=80)
 
 FIN()
