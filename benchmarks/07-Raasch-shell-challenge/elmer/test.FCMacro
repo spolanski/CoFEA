@@ -1,0 +1,47 @@
+# -*- coding: utf-8 -*-
+
+
+import FreeCAD
+import Part
+import numpy as np
+from collections import defaultdict
+
+import os
+rootdir = '/home/spolanski/Desktop/Benchmarking/models/07-raasch-challenge/elmer/Mesh'
+
+for subdir, dirs, files in os.walk(rootdir):
+    for dir in dirs:
+        mesh_name = rootdir + '/' + dir + '/mesh.nodes'
+        print(mesh_name)
+        
+        with open(mesh_name, 'r') as f:
+            nodes = f.read().split('\n')
+            coords = defaultdict(list)
+            for row in nodes[:-1]:
+                node, t, c_x, c_y, c_z = row.split(' ')
+                coords[node] = tuple([float(i) for i in [c_x, c_y, c_z]])
+
+        Part.open(u"/home/spolanski/Desktop/Benchmarking/models/07-raasch-challenge/Raash.brep")
+
+        txt = ''
+        test = lambda f, pt: f.distToShape(pt)[0]
+        shell_faces = App.ActiveDocument.Objects[0].Shape.Faces
+        for key, coord in coords.items():
+            x, y, z = coord
+            face = shell_faces
+            # d=face.distToShape(pt)
+            p=Part.Point(App.Vector(x,y,z)).toShape()
+            # ps=p
+            # d=face.distToShape(ps)
+            temp = [test(fe, p) for fe in face]
+            min_dist_face = face[temp.index(min(temp))]
+            # print(min_dist_face)
+            face_surf = min_dist_face.Surface
+            pt = FreeCAD.Base.Vector(x, y, z)
+            uv = face_surf.parameter(pt)
+            nv = min_dist_face.normalAt(uv[0], uv[1])
+            nv = np.array(nv.normalize())
+            txt += '{} {:.6f} {:.6f} {:.6f}\n'.format(key, nv[0], nv[1], nv[2])
+
+        with open(rootdir + '/' + dir + '/mesh.director','w') as f:
+            f.write(txt)

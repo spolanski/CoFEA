@@ -1,0 +1,15 @@
+Elmer version: 9.0
+Elmer compilation date: 2021-04-19
+Solver input file: case.sif
+File started at: 2021/04/22 23:52:03
+ 
+Variables in columns of matrix: Results/L_F_Q/results.dat
+   1: value: u 1 at node       6
+   2: value: u 2 at node       6
+   3: value: u 3 at node       6
+   4: value: dnu 1 at node       6
+   5: value: dnu 2 at node       6
+   6: value: dnu 3 at node       6
+   7: value: coordinate 1 at node       6
+   8: value: coordinate 2 at node       6
+   9: value: coordinate 3 at node       6

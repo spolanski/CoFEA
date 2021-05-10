@@ -1,0 +1,6 @@
+! ----- names for bodies -----
+$ main = 1
+! ----- names for boundaries -----
+$ fixedge = 1
+$ load = 2
+$ bnry20 = 3

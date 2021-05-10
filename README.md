@@ -19,7 +19,7 @@ There are plenty of ways on how you could contribute:
 If you posses some old FEA models which are validated experimentally and you could share them - do let us know! We will give them another life by checking them once again in the open-source software.
 
 
-In any situation that you would like to contact us at cofea.project(at)gmail.com
+In any situation that you would like to contact us at cofea.project(at)gmail.com or join our [Discord](https://discord.gg/K7yqupnEc9) channel.
 
 Follow us on our social media!  
 [Twitter](https://twitter.com/_CoFEA_)  

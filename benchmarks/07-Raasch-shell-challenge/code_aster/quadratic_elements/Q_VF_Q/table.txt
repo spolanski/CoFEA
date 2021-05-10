@@ -1,0 +1,7 @@
+#
+#--------------------------------------------------------------------------------
+##ASTER 15.02.00 CONCEPT 0000001f CALCULE LE 22/04/2021 A 21:18:29 DE TYPE        
+#TABLE_SDASTER                                                                   
+INTITULE         RESU     NOM_CHAM         NUME_ORDRE   INST         DZ          
+DISP             00000011 DEPL                        1  0.00000E+00  1.27620E-01
+
