@@ -40,12 +40,70 @@ It is worth mentioning that the current shell implementation in Elmer requires a
 | Code_Aster |          0.116 / 0.129         |         0.118 / 0.128        |           0.116 / 0.128          |
 |    Elmer   |          0.040 / -             |         0.055 / -            |           0.084 / -              |
 
-```{figure} .   /triangle_raasch.png
----
-width: 600px
-name: Mesh convergence study for the Raasch challenge test with triangle mesh
----
-Graph representing the displacement [m] results from the simulations with linear and quadratic triangle elements
+
+```{jupyter-execute}
+:hide-code:
+import plotly.graph_objects as go
+import plotly.express as px
+import pandas as pd
+import numpy as np
+
+
+plot_title = 'Triangle mesh comparison'
+results = pd.read_csv('benchmarks/007-raasch-challenge/raasch.csv')
+
+lin_type = results['Mesh type'] == 'Lin-Tri'
+quad_type = results['Mesh type'] == 'Quad-Tri'
+mesh_type = results[lin_type | quad_type]
+zipped = zip(mesh_type['Mesh type'],mesh_type['Size'])
+labels = ["{} {}".format(i[0], i[1]) for i in zipped]
+code_aster_values = mesh_type['Code_Aster'].tolist()
+elmer_values = mesh_type['Elmer'].tolist()
+x = np.arange(len(labels))  # the label locations
+
+layout = go.Layout(
+    title=dict(
+        text=plot_title,
+        font=dict(
+            size=20,
+        ),
+        y=0.90,
+        x=0.5),
+    plot_bgcolor="#FFF",  # Sets background color to white
+    xaxis=dict(
+        linecolor="#BCCCDC",  # Sets color of X-axis line
+        showgrid=True  # Removes X-axis grid lines
+    ),
+    yaxis=dict(
+        title="Displacement [m]",  
+        linecolor="#BCCCDC",  # Sets color of Y-axis line
+        showgrid=True,  # Removes Y-axis grid lines    
+    ),
+    legend=dict(
+        orientation="v",
+        y=0.5,
+    )
+)
+
+colours = px.colors.qualitative.Vivid
+fig = go.Figure(layout=layout)
+
+fig.add_trace(go.Bar(
+    x=labels,
+    y=code_aster_values,
+    name='Code_Aster',
+    marker_color=colours[0]
+))
+fig.add_trace(go.Bar(
+    x=labels,
+    y=elmer_values,
+    name='Elmer',
+    marker_color=colours[1]
+))
+
+# Here we modify the tickangle of the xaxis, resulting in rotated labels.
+fig.update_layout(barmode='group', xaxis_tickangle=-45)
+fig.show()
 ```
 
 ### Linear and Quadratic Quadrilateral mesh
@@ -55,10 +113,67 @@ Graph representing the displacement [m] results from the simulations with linear
 | Code_Aster |           0.112 / 0.130          |          0.118 / 0.128         |            0.116 / 0.127           |
 |    Elmer   |           0.0304 / -             |          0.052 / -             |            0.125 / -               |
 
-```{figure} ./quadrilateral_raasch.png
----
-width: 600px
-name: Mesh convergence study for the Raasch challenge test with quadrilateral mesh
----
-Graph representing the displacement [m] results from the simulations with linear and quadratic quadrilateral elements
+```{jupyter-execute}
+:hide-code:
+import plotly.graph_objects as go
+import plotly.express as px
+import pandas as pd
+import numpy as np
+
+
+plot_title = 'Quadrilateral mesh comparison'
+results = pd.read_csv('benchmarks/007-raasch-challenge/raasch.csv')
+
+lin_type = results['Mesh type'] == 'Lin-Quad'
+quad_type = results['Mesh type'] == 'Quad-Quad'
+mesh_type = results[lin_type | quad_type]
+zipped = zip(mesh_type['Mesh type'],mesh_type['Size'])
+labels = ["{} {}".format(i[0], i[1]) for i in zipped]
+code_aster_values = mesh_type['Code_Aster'].tolist()
+elmer_values = mesh_type['Elmer'].tolist()
+x = np.arange(len(labels))  # the label locations
+
+layout = go.Layout(
+    title=dict(
+        text=plot_title,
+        font=dict(
+            size=20,
+        ),
+        y=0.90,
+        x=0.5),
+    plot_bgcolor="#FFF",  # Sets background color to white
+    xaxis=dict(
+        linecolor="#BCCCDC",  # Sets color of X-axis line
+        showgrid=True  # Removes X-axis grid lines
+    ),
+    yaxis=dict(
+        title="Displacement [m]",  
+        linecolor="#BCCCDC",  # Sets color of Y-axis line
+        showgrid=True,  # Removes Y-axis grid lines    
+    ),
+    legend=dict(
+        orientation="v",
+        y=0.5,
+    )
+)
+
+colours = px.colors.qualitative.Vivid
+fig = go.Figure(layout=layout)
+
+fig.add_trace(go.Bar(
+    x=labels,
+    y=code_aster_values,
+    name='Code_Aster',
+    marker_color=colours[0]
+))
+fig.add_trace(go.Bar(
+    x=labels,
+    y=elmer_values,
+    name='Elmer',
+    marker_color=colours[1]
+))
+
+# Here we modify the tickangle of the xaxis, resulting in rotated labels.
+fig.update_layout(barmode='group', xaxis_tickangle=-45)
+fig.show()
 ```
