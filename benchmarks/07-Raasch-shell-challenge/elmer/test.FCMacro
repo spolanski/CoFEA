@@ -1,0 +1,48 @@
+# -*- coding: utf-8 -*-
+import FreeCAD
+import Part
+import numpy as np
+from collections import defaultdict
+
+import os
+rootdir = '07-raasch-challenge/elmer/Mesh'
+
+# The following script loops over all mesh.node files
+# that can be found in rootdir
+for subdir, dirs, files in os.walk(rootdir):
+    for dir in dirs:
+        mesh_name = rootdir + '/' + dir + '/mesh.nodes'
+        with open(mesh_name, 'r') as f:
+            # parse the file to obtain node & coordinate definition
+            # then save the output to the dictionary coords
+            nodes = f.read().split('\n')
+            coords = defaultdict(list)
+            for row in nodes[:-1]:
+                node, t, c_x, c_y, c_z = row.split(' ')
+                coords[node] = tuple([float(i) for i in [c_x, c_y, c_z]])
+
+        # Open BREP file in FreeCAD
+        Part.open(u"07-raasch-challenge/Raash.brep")
+
+        txt = ''
+        test = lambda f, pt: f.distToShape(pt)[0]
+        shell_faces = App.ActiveDocument.Objects[0].Shape.Faces
+        # the loop below goes over node and coordinates
+        # then tries to compute normal vector for a given node
+        # at the coordinate.
+        for key, coord in coords.items():
+            x, y, z = coord
+            face = shell_faces
+            p=Part.Point(App.Vector(x,y,z)).toShape()
+            temp = [test(fe, p) for fe in face]
+            min_dist_face = face[temp.index(min(temp))]
+            face_surf = min_dist_face.Surface
+            pt = FreeCAD.Base.Vector(x, y, z)
+            uv = face_surf.parameter(pt)
+            nv = min_dist_face.normalAt(uv[0], uv[1])
+            nv = np.array(nv.normalize())
+            txt += '{} {:.6f} {:.6f} {:.6f}\n'.format(key, nv[0], nv[1], nv[2])
+
+        # the txt variable is printed into the mesh.director file
+        with open(rootdir + '/' + dir + '/mesh.director','w') as f:
+            f.write(txt)

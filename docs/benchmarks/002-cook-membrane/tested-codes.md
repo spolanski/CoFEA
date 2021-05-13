@@ -1,4 +1,8 @@
 # Tested Finite Element codes
+```{contents} Table of Contents
+:local: 
+:depth: 1
+```
 ## CalculiX
 
 The below section describes how the Cook's membrane model was created for Calculix solver. As mentioned in the results section, in order to define surface traction a separate app called PrePoMax has to be used. This application converts surface traction definition into the set of nodal loads.

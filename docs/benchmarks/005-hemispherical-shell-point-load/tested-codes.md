@@ -1,4 +1,8 @@
 # Tested Finite Element codes
+```{contents} Table of Contents
+:local: 
+:depth: 1
+```
 ## CalculiX
 
 CalculiX supports elastic simulation. Below there is an explanation of the input file.

@@ -1,0 +1,69 @@
+DEBUT(LANG='EN')
+
+mesh = LIRE_MAILLAGE(FORMAT='IDEAS',
+                     UNITE=2)
+
+m_quad = CREA_MAILLAGE(MAILLAGE=mesh,
+                       MODI_MAILLE=_F(OPTION='QUAD8_9',
+                                      PREF_NOEUD='NS',
+                                      TOUT='OUI'))
+
+pallet = AFFE_MODELE(AFFE=_F(MODELISATION=('COQUE_3D', ),
+                             PHENOMENE='MECANIQUE',
+                             TOUT='OUI'),
+                     MAILLAGE=m_quad)
+
+elemprop = AFFE_CARA_ELEM(COQUE=_F(EPAIS=0.0508,
+                                   GROUP_MA=('main', )),
+                          MODELE=pallet)
+
+Postpro = AFFE_MODELE(AFFE=_F(MODELISATION=('3D', ),
+                              PHENOMENE='MECANIQUE',
+                              TOUT='OUI'),
+                      MAILLAGE=mesh)
+
+mater = DEFI_MATERIAU(ELAS=_F(E=22770000.0,
+                              NU=0.35))
+
+materfl = AFFE_MATERIAU(AFFE=_F(MATER=(mater, ),
+                                TOUT='OUI'),
+                        MODELE=pallet)
+
+mecabc = AFFE_CHAR_MECA(DDL_IMPO=_F(DRX=0.0,
+                                    DRY=0.0,
+                                    DRZ=0.0,
+                                    DX=0.0,
+                                    DY=0.0,
+                                    DZ=0.0,
+                                    GROUP_MA=('fixedge', )),
+                        MODELE=pallet)
+
+mecach = AFFE_CHAR_MECA(FORCE_ARETE=_F(FZ=8.7563,
+                                       GROUP_MA=('load', )),
+                        MODELE=pallet)
+
+result = MECA_STATIQUE(CARA_ELEM=elemprop,
+                       CHAM_MATER=materfl,
+                       EXCIT=(_F(CHARGE=mecabc),
+                              _F(CHARGE=mecach)),
+                       MODELE=pallet)
+
+PROJ = PROJ_CHAMP(MODELE_1=pallet,
+                  MODELE_2=Postpro,
+                  RESULTAT=result)
+
+table = POST_RELEVE_T(ACTION=_F(GROUP_NO=('Disp', ),
+                                INTITULE='DISP',
+                                NOM_CHAM='DEPL',
+                                OPERATION=('EXTRACTION', ),
+                                RESULTANTE=('DZ', ),
+                                RESULTAT=result))
+
+IMPR_RESU(FORMAT='MED',
+          RESU=_F(RESULTAT=PROJ),
+          UNITE=3)
+
+IMPR_TABLE(TABLE=table,
+           UNITE=4)
+
+FIN()

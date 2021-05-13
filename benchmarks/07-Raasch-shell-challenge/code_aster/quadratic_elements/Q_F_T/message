@@ -1,0 +1,781 @@
+
+ La plate-forme utilisée ne permet pas d'avoir accès aux valeurs VmPeak/VmSize.
+
+  Ouverture en écriture du fichier ./vola.1
+
+ <INFO> Démarrage de l'exécution.
+                                                                                
+                                                                                
+              -- CODE_ASTER -- VERSION : EXPLOITATION (stable) --               
+                                                                                
+                     Version 15.2.0 modifiée le 26/10/2020                      
+                 révision 082cb0005ce9 - branche 'v15.2_smeca'                  
+                         Copyright EDF R&D 1991 - 2021                          
+                                                                                
+                    Exécution du : Thu Apr 22 21:16:55 2021                     
+                      Nom de la machine : spolanski-linux                       
+                              Architecture : 64bit                              
+                          Type de processeur : x86_64                           
+ Système d'exploitation : Linux-5.4.0-72-generic-x86_64-with-debian-buster-sid  
+                        Langue des messages : en (UTF-8)                        
+                                                                                
+                           Version de Python : 3.6.5                            
+                           Version de NumPy : 1.15.1                            
+                           Parallélisme MPI : inactif                           
+                          Parallélisme OpenMP : actif                           
+                        Nombre de processus utilisés : 2                        
+                     Version de la librairie HDF5 : 1.10.3                      
+                      Version de la librairie MED : 4.0.0                       
+                     Version de la librairie MFront : 3.2.1                     
+                     Version de la librairie MUMPS : 5.2.1                      
+                        Librairie PETSc : non disponible                        
+                     Version de la librairie SCOTCH : 6.0.4                     
+
+                  Mémoire limite pour l'exécution : 2048.00 Mo                  
+                 reste pour l'allocation dynamique : 2048.00 Mo                 
+                Taille limite des fichiers d'échange : 46.88 Go                 
+                                                                                
+
+.. _stg1_txt112
+----------------------------------------------------------------------------------------------------
+Command #0001 from file '/home/spolanski/salome_meca/V2020.0.1_universal_universal/tools/Code_aster_testing-v152_smeca/lib/aster/code_aster/Commands/debut.py', line 112:
+DEBUT(DEBUG=_F(HIST_ETAPE='NON',
+               JEVEUX='NON',
+               JXVERI='NON',
+               SDVERI='NON'),
+      IMPR_MACRO='NON',
+      INFO=1,
+      LANG='EN',
+      MEMOIRE=_F(TAILLE_BLOC=800.0,
+                 TAILLE_GROUP_ELEM=1000),
+      MESURE_TEMPS=_F(MOYENNE='NON',
+                      NIVE_DETAIL=1),
+      PAR_LOT='OUI',
+      RESERVE_CPU=_F(BORNE=900))
+
+starting the execution...
+
+ Initial value of maximum time CPU = 900 second
+ Valeur of the maximum time CPU placed to the orders = 810 second
+ Réserve CPU envisaged = 90 seconds 
+
+  Ouverture en écriture du fichier ./glob.1
+
+  Ouverture en écriture du fichier ./vola.1
+
+  Ouverture en lecture du fichier
+/home/spolanski/salome_meca/V2020.0.1_universal_universal/tools/Code_aster_testing-v152_smeca/lib/aster/elem.1
+
+     Nom de la base                          :  ELEMBASE
+     Créée avec la version                   :  15.02.00
+     Nombre d'enregistrements utilisés       :  43
+     Nombre d'enregistrements maximum        :  512
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre d'identificateurs utilisés       :  123
+     Taille maximum du répertoire            :  300
+     Pourcentage d'utilisation du répertoire :  41 %
+
+  Ouverture en lecture du fichier
+/home/spolanski/salome_meca/V2020.0.1_universal_universal/tools/Code_aster_testing-v152_smeca/lib/aster/elem.1
+
+
+     Nom de la base                          :  ELEMBASE
+     Nombre d'enregistrements utilisés       :  43
+     Nombre d'enregistrements maximum        :  512
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre total d'accès en lecture         :  61
+     Volume des accès en lecture             :         47.66 Mo.
+     Nombre total d'accès en écriture        :  0
+     Volume des accès en écriture            :          0.00 Mo.
+     Nombre d'identificateurs utilisés       :  123
+     Taille maximum du répertoire            :  300
+     Pourcentage d'utilisation du répertoire :  41 %
+
+ Second reading of the catalogues of the elements made. 
+
+ End of reading (lasted 0.030363 S.)   
+Statistics: user+syst:        0.04s (syst:        0.02s, elaps:        0.07s)
+----------------------------------------------------------------------------------------------------
+
+.. _stg1_txt12
+----------------------------------------------------------------------------------------------------
+Command #0002 from file 'fort.1', line 12:
+mesh = LIRE_MAILLAGE(CREA_GROUP_COUL='NON',
+                     FORMAT='IDEAS',
+                     INFO=1,
+                     UNITE=2,
+                     VERI_MAIL=_F(APLAT=0.001,
+                                  VERIF='OUI'))
+
+ ON NE TRAITE PAS LE DATASET:                  164
+ NOMBRE DE NOEUDS :                  671
+ NOMBRE DE MAILLES :                  375
+Vérification du maillage.
+
+------------ MAILLAGE 00000001 - IMPRESSIONS NIVEAU  1 ------------
+
+         AUTEUR=INTERFACE_IDEAS                 DATE=22/04/2021                 
+
+NOMBRE DE NOEUDS                         671
+
+NOMBRE DE MAILLES                        375
+                              SEG3                   75
+                              TRIA6                 300
+
+NOMBRE DE GROUPES DE NOEUDS                4
+                              fixedge                             11
+                              load                                11
+                              main                               671
+                              Disp                                 1
+
+NOMBRE DE GROUPES DE MAILLES               3
+                              fixedge                              5
+                              load                                 5
+                              main                               300
+
+--------------------------------------------------------------------------------
+
+Result of command #0002 (LIRE_MAILLAGE): mesh ('<00000001>') of type <Mesh>
+Statistics: user+syst:        0.02s (syst:        0.01s, elaps:        0.03s)
+----------------------------------------------------------------------------------------------------
+
+.. _stg1_txt17
+----------------------------------------------------------------------------------------------------
+Command #0006 from file 'fort.1', line 17:
+m_quad = CREA_MAILLAGE(INFO=1,
+                       MAILLAGE=mesh,
+                       MODI_MAILLE=_F(OPTION='TRIA6_7',
+                                      PREF_NOEUD='NS',
+                                      PREF_NUME=1,
+                                      TOUT='OUI'))
+
+MOT CLE FACTEUR "MODI_MAILLE", OCCURRENCE    1
+  MODIFICATION DE    300 MAILLES    TRIA6 EN    TRIA7
+
+------------ MAILLAGE 00000002 - IMPRESSIONS NIVEAU  1 ------------
+
+ASTER 15.02.00 CONCEPT 00000002 CALCULE LE 22/04/2021 A 21:16:55 DE TYPE        
+MAILLAGE_SDASTER                                                                
+
+NOMBRE DE NOEUDS                         971
+
+NOMBRE DE MAILLES                        375
+                              SEG3                   75
+                              TRIA7                 300
+
+NOMBRE DE GROUPES DE NOEUDS                4
+                              fixedge                             11
+                              load                                11
+                              main                               671
+                              Disp                                 1
+
+NOMBRE DE GROUPES DE MAILLES               3
+                              fixedge                              5
+                              load                                 5
+                              main                               300
+
+--------------------------------------------------------------------------------
+
+Result of command #0006 (CREA_MAILLAGE): m_quad ('<00000002>') of type <Mesh>
+Statistics: user+syst:        0.01s (syst:        0.00s, elaps:        0.00s)
+----------------------------------------------------------------------------------------------------
+
+.. _stg1_txt22
+----------------------------------------------------------------------------------------------------
+Command #0007 from file 'fort.1', line 22:
+pallet = AFFE_MODELE(AFFE=_F(MODELISATION='COQUE_3D',
+                             PHENOMENE='MECANIQUE',
+                             TOUT='OUI'),
+                     DISTRIBUTION=_F(METHODE='SOUS_DOMAINE',
+                                     PARTITIONNEUR='METIS'),
+                     INFO=1,
+                     MAILLAGE=m_quad,
+                     VERI_JACOBIEN='OUI')
+
+Sur les 375 mailles du maillage 00000002, on a demandé l'affectation de 375, on a pu en affecter 375.
+ Modélisation     Formulation      Type maille  Élément fini     Nombre
+ COQUE_3D                          SEG3         MEBOCQ3          75
+ COQUE_3D                          TRIA7        MEC3TR7H         300
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):      0.00      0.00      0.00
+Result of command #0007 (AFFE_MODELE): pallet ('<00000003>') of type <Model>
+Statistics: user+syst:        0.02s (syst:        0.01s, elaps:        0.02s)
+----------------------------------------------------------------------------------------------------
+
+.. _stg1_txt26
+----------------------------------------------------------------------------------------------------
+Command #0008 from file 'fort.1', line 26:
+elemprop = AFFE_CARA_ELEM(COQUE=_F(A_CIS=0.8333333,
+                                   COEF_RIGI_DRZ=1e-05,
+                                   COQUE_NCOU=1,
+                                   EPAIS=0.0508,
+                                   GROUP_MA='main',
+                                   MODI_METRIQUE='NON'),
+                          INFO=1,
+                          MODELE=pallet)
+
+
+     LE MODELE 00000003 CONTIENT : 
+                                      375 ELEMENT(S) COQUE           
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):      0.00      0.00      0.00
+Result of command #0008 (AFFE_CARA_ELEM): elemprop ('<00000004>') of type <ElementaryCharacteristics>
+Statistics: user+syst:        0.02s (syst:        0.01s, elaps:        0.02s)
+----------------------------------------------------------------------------------------------------
+
+.. _stg1_txt31
+----------------------------------------------------------------------------------------------------
+Command #0009 from file 'fort.1', line 31:
+Postpro = AFFE_MODELE(AFFE=_F(MODELISATION='3D',
+                              PHENOMENE='MECANIQUE',
+                              TOUT='OUI'),
+                      DISTRIBUTION=_F(METHODE='SOUS_DOMAINE',
+                                      PARTITIONNEUR='METIS'),
+                      INFO=1,
+                      MAILLAGE=mesh,
+                      VERI_JACOBIEN='OUI')
+
+   
+   !------------------------------------------------------------------------------------!
+   ! <A> <MODELE1_71>                                                                   !
+   !                                                                                    !
+   !  Possible erreur utilisateur dans la commande AFFE_MODELE :                        !
+   !    Un problème a été détecté lors de l'affectation des éléments finis.             !
+   !    Pour l'occurrence AFFE de numéro 1, aucune maille de même dimension topologique !
+   !    que la modélisation (ici dimension = 3) n'a pu être affectée.                   !
+   !                                                                                    !
+   !    Cela veut dire que cette occurrence n'a aucun effet.                            !
+   !                                                                                    !
+   !                                                                                    !
+   ! This is a warning. If you do not understand the meaning of this                    !
+   !  warning, you can obtain unexpected results!                                       !
+   !------------------------------------------------------------------------------------!
+   
+Sur les 375 mailles du maillage 00000001, on a demandé l'affectation de 375, on a pu en affecter 375.
+   
+   !-----------------------------------------------------------------------------------------------------!
+   ! <A> <MODELE1_63>                                                                                    !
+   !                                                                                                     !
+   ! La maille M76 porte un élément fini de bord, mais elle ne borde aucun élément ayant une "rigidité". !
+   !                                                                                                     !
+   !   -> Risque & Conseil :                                                                             !
+   !      Cela peut entraîner des problèmes de "pivot nul" lors de la résolution.                        !
+   !      Si la résolution des systèmes linéaires ne pose pas de problèmes, vous                         !
+   !      pouvez ignorer ce message.                                                                     !
+   !      Sinon, vérifier la définition du modèle (AFFE_MODELE) en évitant l'utilisation                 !
+   !      de l'opérande TOUT='OUI'.                                                                      !
+   !                                                                                                     !
+   !                                                                                                     !
+   ! This is a warning. If you do not understand the meaning of this                                     !
+   !  warning, you can obtain unexpected results!                                                        !
+   !-----------------------------------------------------------------------------------------------------!
+   
+   
+   !-----------------------------------------------------------------------------------------------------!
+   ! <A> <MODELE1_63>                                                                                    !
+   !                                                                                                     !
+   ! La maille M77 porte un élément fini de bord, mais elle ne borde aucun élément ayant une "rigidité". !
+   !                                                                                                     !
+   !   -> Risque & Conseil :                                                                             !
+   !      Cela peut entraîner des problèmes de "pivot nul" lors de la résolution.                        !
+   !      Si la résolution des systèmes linéaires ne pose pas de problèmes, vous                         !
+   !      pouvez ignorer ce message.                                                                     !
+   !      Sinon, vérifier la définition du modèle (AFFE_MODELE) en évitant l'utilisation                 !
+   !      de l'opérande TOUT='OUI'.                                                                      !
+   !                                                                                                     !
+   !                                                                                                     !
+   ! This is a warning. If you do not understand the meaning of this                                     !
+   !  warning, you can obtain unexpected results!                                                        !
+   !-----------------------------------------------------------------------------------------------------!
+   
+   
+   !-----------------------------------------------------------------------------------------------------!
+   ! <A> <MODELE1_63>                                                                                    !
+   !                                                                                                     !
+   ! La maille M78 porte un élément fini de bord, mais elle ne borde aucun élément ayant une "rigidité". !
+   !                                                                                                     !
+   !   -> Risque & Conseil :                                                                             !
+   !      Cela peut entraîner des problèmes de "pivot nul" lors de la résolution.                        !
+   !      Si la résolution des systèmes linéaires ne pose pas de problèmes, vous                         !
+   !      pouvez ignorer ce message.                                                                     !
+   !      Sinon, vérifier la définition du modèle (AFFE_MODELE) en évitant l'utilisation                 !
+   !      de l'opérande TOUT='OUI'.                                                                      !
+   !                                                                                                     !
+   !                                                                                                     !
+   ! This is a warning. If you do not understand the meaning of this                                     !
+   !  warning, you can obtain unexpected results!                                                        !
+   !-----------------------------------------------------------------------------------------------------!
+   
+   
+   !-----------------------------------------------------------------------------------------------------!
+   ! <A> <MODELE1_63>                                                                                    !
+   !                                                                                                     !
+   ! La maille M79 porte un élément fini de bord, mais elle ne borde aucun élément ayant une "rigidité". !
+   !                                                                                                     !
+   !   -> Risque & Conseil :                                                                             !
+   !      Cela peut entraîner des problèmes de "pivot nul" lors de la résolution.                        !
+   !      Si la résolution des systèmes linéaires ne pose pas de problèmes, vous                         !
+   !      pouvez ignorer ce message.                                                                     !
+   !      Sinon, vérifier la définition du modèle (AFFE_MODELE) en évitant l'utilisation                 !
+   !      de l'opérande TOUT='OUI'.                                                                      !
+   !                                                                                                     !
+   !                                                                                                     !
+   ! This is a warning. If you do not understand the meaning of this                                     !
+   !  warning, you can obtain unexpected results!                                                        !
+   !-----------------------------------------------------------------------------------------------------!
+   
+   
+   !-----------------------------------------------------------------------------------------------------!
+   ! <A> <MODELE1_63>                                                                                    !
+   !                                                                                                     !
+   ! La maille M80 porte un élément fini de bord, mais elle ne borde aucun élément ayant une "rigidité". !
+   !                                                                                                     !
+   !   -> Risque & Conseil :                                                                             !
+   !      Cela peut entraîner des problèmes de "pivot nul" lors de la résolution.                        !
+   !      Si la résolution des systèmes linéaires ne pose pas de problèmes, vous                         !
+   !      pouvez ignorer ce message.                                                                     !
+   !      Sinon, vérifier la définition du modèle (AFFE_MODELE) en évitant l'utilisation                 !
+   !      de l'opérande TOUT='OUI'.                                                                      !
+   !                                                                                                     !
+   !                                                                                                     !
+   ! This is a warning. If you do not understand the meaning of this                                     !
+   !  warning, you can obtain unexpected results!                                                        !
+   !-----------------------------------------------------------------------------------------------------!
+   
+   
+   !------------------------------------------------------------------------------------!
+   ! <A> <CATAMESS_41>                                                                  !
+   !                                                                                    !
+   ! The warning message  MODELE1_63 was emitted 5 time, it will not be displayed more. !
+   !                                                                                    !
+   !                                                                                    !
+   ! This is a warning. If you do not understand the meaning of this                    !
+   !  warning, you can obtain unexpected results!                                       !
+   !------------------------------------------------------------------------------------!
+   
+   
+   !--------------------------------------------------------------------------------------------------!
+   ! <A> <MODELE1_64>                                                                                 !
+   !                                                                                                  !
+   ! Le modèle n'a pas d'éléments sachant calculer la rigidité.                                       !
+   !                                                                                                  !
+   !   -> Risque & Conseil :                                                                          !
+   !      Ce modèle ne pourra donc pas (en général) être utilisé pour faire des calculs.              !
+   !      Vérifier la définition du modèle (AFFE_MODELE) et assurez-vous que les                      !
+   !      types de mailles du maillage (SEG2, TRIA3, QUAD4, ...) sont compatibles avec votre          !
+   !      modélisation.                                                                               !
+   !      Exemples d'erreur :                                                                         !
+   !        * affecter une modélisation "3D" sur un maillage formé de facettes.                       !
+   !        * affecter une modélisation qui ne sait pas traiter tous les types de mailles du maillage !
+   !          (par exemple 'PLAN_DIAG' en thermique, 'AXIS_SI' en mécanique)                          !
+   !                                                                                                  !
+   !                                                                                                  !
+   ! This is a warning. If you do not understand the meaning of this                                  !
+   !  warning, you can obtain unexpected results!                                                     !
+   !--------------------------------------------------------------------------------------------------!
+   
+ Modélisation     Formulation      Type maille  Élément fini     Nombre
+                                   SEG3         MECA_ARETE3      75
+                                   TRIA6        MECA_FACE6       300
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):      0.00      0.00      0.00
+Result of command #0009 (AFFE_MODELE): Postpro ('<00000005>') of type <Model>
+Statistics: user+syst:        0.05s (syst:        0.02s, elaps:        0.04s)
+----------------------------------------------------------------------------------------------------
+
+.. _stg1_txt34
+----------------------------------------------------------------------------------------------------
+Command #0010 from file 'fort.1', line 34:
+mater = DEFI_MATERIAU(ELAS=_F(COEF_AMOR=1.0,
+                              E=22770000.0,
+                              NU=0.35),
+                      INFO=1)
+
+Result of command #0010 (DEFI_MATERIAU): mater ('<00000006>') of type <Material>
+Statistics: user+syst:        0.03s (syst:        0.01s, elaps:        0.01s)
+----------------------------------------------------------------------------------------------------
+
+.. _stg1_txt38
+----------------------------------------------------------------------------------------------------
+Command #0011 from file 'fort.1', line 38:
+materfl = AFFE_MATERIAU(AFFE=_F(MATER=mater,
+                                TOUT='OUI'),
+                        INFO=1,
+                        LIST_NOM_VARC=('TEMP', 'GEOM', 'CORR', 'IRRA', 'HYDR', 'SECH', 'EPSA', 'M_ACIER', 'M_ZIRC', 'NEUT1', 'NEUT2', 'NEUT3', 'PTOT', 'DIVU'),
+                        MODELE=pallet,
+                        VARC_CORR=_F(CMP_GD='CORR',
+                                     CMP_VARC='CORR',
+                                     GRANDEUR='CORR_R',
+                                     NOM_VARC='CORR'),
+                        VARC_DIVU=_F(CMP_GD='DIVU',
+                                     CMP_VARC='DIVU',
+                                     GRANDEUR='EPSI_R',
+                                     NOM_VARC='DIVU'),
+                        VARC_EPSA=_F(CMP_GD=('EPXX', 'EPYY', 'EPZZ', 'EPXY', 'EPXZ', 'EPYZ'),
+                                     CMP_VARC=('EPSAXX', 'EPSAYY', 'EPSAZZ', 'EPSAXY', 'EPSAXZ', 'EPSAYZ'),
+                                     GRANDEUR='EPSI_R',
+                                     NOM_VARC='EPSA'),
+                        VARC_GEOM=_F(CMP_GD=('X', 'Y', 'Z'),
+                                     CMP_VARC=('X', 'Y', 'Z'),
+                                     GRANDEUR='GEOM_R',
+                                     NOM_VARC='GEOM'),
+                        VARC_HYDR=_F(CMP_GD='HYDR',
+                                     CMP_VARC='HYDR',
+                                     GRANDEUR='HYDR_R',
+                                     NOM_VARC='HYDR'),
+                        VARC_IRRA=_F(CMP_GD='IRRA',
+                                     CMP_VARC='IRRA',
+                                     GRANDEUR='IRRA_R',
+                                     NOM_VARC='IRRA'),
+                        VARC_M_ACIER=_F(CMP_GD=('V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9'),
+                                        CMP_VARC=('PFERRITE', 'PPERLITE', 'PBAINITE', 'PMARTENS', 'PAUSTENI', 'PCOLDSUM', 'TAUSTE', 'TRANSF', 'TACIER'),
+                                        GRANDEUR='VARI_R',
+                                        NOM_VARC='M_ACIER'),
+                        VARC_M_ZIRC=_F(CMP_GD=('V1', 'V2', 'V3', 'V4', 'V5'),
+                                       CMP_VARC=('ALPHPUR', 'ALPHBETA', 'BETA', 'TZIRC', 'TEMPS'),
+                                       GRANDEUR='VARI_R',
+                                       NOM_VARC='M_ZIRC'),
+                        VARC_NEUT1=_F(CMP_GD='X1',
+                                      CMP_VARC='NEUT1',
+                                      GRANDEUR='NEUT_R',
+                                      NOM_VARC='NEUT1'),
+                        VARC_NEUT2=_F(CMP_GD='X1',
+                                      CMP_VARC='NEUT2',
+                                      GRANDEUR='NEUT_R',
+                                      NOM_VARC='NEUT2'),
+                        VARC_NEUT3=_F(CMP_GD='X1',
+                                      CMP_VARC='NEUT3',
+                                      GRANDEUR='NEUT_R',
+                                      NOM_VARC='NEUT3'),
+                        VARC_PTOT=_F(CMP_GD='PTOT',
+                                     CMP_VARC='PTOT',
+                                     GRANDEUR='DEPL_R',
+                                     NOM_VARC='PTOT'),
+                        VARC_SECH=_F(CMP_GD='TEMP',
+                                     CMP_VARC='SECH',
+                                     GRANDEUR='TEMP_R',
+                                     NOM_VARC='SECH'),
+                        VARC_TEMP=_F(CMP_GD=('TEMP', 'TEMP_MIL', 'TEMP_INF', 'TEMP_SUP', 'DTX', 'DTY', 'DTZ'),
+                                     CMP_VARC=('TEMP', 'TEMP_MIL', 'TEMP_INF', 'TEMP_SUP', 'DTX', 'DTY', 'DTZ'),
+                                     GRANDEUR='TEMP_R',
+                                     NOM_VARC='TEMP'))
+
+Result of command #0011 (AFFE_MATERIAU): materfl ('<00000007>') of type <MaterialField>
+Statistics: user+syst:        0.03s (syst:        0.00s, elaps:        0.02s)
+----------------------------------------------------------------------------------------------------
+
+.. _stg1_txt47
+----------------------------------------------------------------------------------------------------
+Command #0012 from file 'fort.1', line 47:
+mecabc = AFFE_CHAR_MECA(DDL_IMPO=_F(DRX=0.0,
+                                    DRY=0.0,
+                                    DRZ=0.0,
+                                    DX=0.0,
+                                    DY=0.0,
+                                    DZ=0.0,
+                                    GROUP_MA='fixedge'),
+                        DOUBLE_LAGRANGE='OUI',
+                        INFO=1,
+                        MODELE=pallet,
+                        VERI_NORM='OUI')
+
+Result of command #0012 (AFFE_CHAR_MECA): mecabc ('<00000008>') of type <GenericMechanicalLoad>
+Statistics: user+syst:        0.07s (syst:        0.01s, elaps:        0.05s)
+----------------------------------------------------------------------------------------------------
+
+.. _stg1_txt51
+----------------------------------------------------------------------------------------------------
+Command #0013 from file 'fort.1', line 51:
+mecach = AFFE_CHAR_MECA(DOUBLE_LAGRANGE='OUI',
+                        FORCE_ARETE=_F(FZ=8.7563,
+                                       GROUP_MA='load'),
+                        INFO=1,
+                        MODELE=pallet,
+                        VERI_NORM='OUI')
+
+Result of command #0013 (AFFE_CHAR_MECA): mecach ('<00000009>') of type <GenericMechanicalLoad>
+Statistics: user+syst:        0.00s (syst:        0.01s, elaps:        0.00s)
+----------------------------------------------------------------------------------------------------
+
+.. _stg1_txt57
+----------------------------------------------------------------------------------------------------
+Command #0014 from file 'fort.1', line 57:
+result = MECA_STATIQUE(CARA_ELEM=elemprop,
+                       CHAM_MATER=materfl,
+                       EXCIT=(_F(CHARGE=mecabc,
+                                 TYPE_CHARGE='FIXE_CSTE'),
+                              _F(CHARGE=mecach,
+                                 TYPE_CHARGE='FIXE_CSTE')),
+                       INFO=1,
+                       MODELE=pallet,
+                       OPTION='SIEF_ELGA',
+                       SOLVEUR=_F(ACCELERATION='AUTO',
+                                  ELIM_LAGR='LAGR2',
+                                  GESTION_MEMOIRE='AUTO',
+                                  LOW_RANK_SEUIL=0.0,
+                                  MATR_DISTRIBUEE='NON',
+                                  METHODE='MUMPS',
+                                  NPREC=8,
+                                  PCENT_PIVOT=20,
+                                  POSTTRAITEMENTS='AUTO',
+                                  PRETRAITEMENTS='AUTO',
+                                  RENUM='AUTO',
+                                  RESI_RELA=1e-06,
+                                  STOP_SINGULIER='OUI',
+                                  TYPE_RESOL='AUTO'))
+
+  Le système linéaire à résoudre a 5058 degrés de liberté:
+   - 4926 sont des degrés de liberté physiques
+     (ils sont portés par 971 noeuds du maillage)
+   - 132 sont les couples de paramètres de Lagrange associés
+     aux 66 relations linéaires dualisées.
+  La matrice est de taille 5058 équations.
+  Elle contient 166461 termes non nuls si elle est symétrique et 327864 termes non nuls si elle n'est pas symétrique.
+  Soit un taux de remplissage de   1.282 %.
+   
+   !-------------------------------------------------------------------------------------------------------------!
+   ! <A> <FACTOR_82>                                                                                             !
+   !                                                                                                             !
+   ! Solveur MUMPS :                                                                                             !
+   !   Les informations concernant la mémoire disponible ne sont pas utilisables.                                !
+   !   Si vous avez choisi le mode GESTION_MEMOIRE='AUTO', par précaution on bascule en mode OUT_OF_CORE.        !
+   !   Si vous avez choisi le mode GESTION_MEMOIRE='EVAL', seules les évaluations des consommations MUMPS        !
+   !      seront pertinentes, les autres chiffres ne seront pas à prendre en compte.                             !
+   !   Si vous avez choisi un autre mode, les vérifications liées aux consommations mémoires seront débranchées. !
+   !                                                                                                             !
+   !                                                                                                             !
+   ! This is a warning. If you do not understand the meaning of this                                             !
+   !  warning, you can obtain unexpected results!                                                                !
+   !-------------------------------------------------------------------------------------------------------------!
+   
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):      0.06      0.01      0.03
+Result of command #0014 (MECA_STATIQUE): '<00000011>' of type <ElasticResult>
+Statistics: user+syst:        0.41s (syst:        0.13s, elaps:        0.31s)
+----------------------------------------------------------------------------------------------------
+
+.. _stg1_txt61
+----------------------------------------------------------------------------------------------------
+Command #0016 from file 'fort.1', line 61:
+PROJ = PROJ_CHAMP(ALARME='OUI',
+                  INFO=1,
+                  METHODE='AUTO',
+                  MODELE_1=pallet,
+                  MODELE_2=Postpro,
+                  PROJECTION='OUI',
+                  PROL_ZERO='NON',
+                  RESULTAT='<00000011>')
+
+Result of command #0016 (PROJ_CHAMP): PROJ ('<0000001e>') of type <ElasticResult>
+Statistics: user+syst:        0.04s (syst:        0.00s, elaps:        0.04s)
+----------------------------------------------------------------------------------------------------
+
+.. _stg1_txt68
+----------------------------------------------------------------------------------------------------
+Command #0017 from file 'fort.1', line 68:
+table = POST_RELEVE_T(ACTION=_F(CRITERE='RELATIF',
+                                FORMAT_C='MODULE',
+                                GROUP_NO='Disp',
+                                INTITULE='DISP',
+                                MOYE_NOEUD='OUI',
+                                NOM_CHAM='DEPL',
+                                OPERATION='EXTRACTION',
+                                PRECISION=1e-06,
+                                REPERE='GLOBAL',
+                                RESULTANTE='DZ',
+                                RESULTAT='<00000011>'),
+                      INFO=1)
+
+Result of command #0017 (POST_RELEVE_T): table ('<0000001f>') of type <Table>
+Statistics: user+syst:        0.01s (syst:        0.00s, elaps:        0.01s)
+----------------------------------------------------------------------------------------------------
+
+.. _stg1_txt72
+----------------------------------------------------------------------------------------------------
+Command #0018 from file 'fort.1', line 72:
+IMPR_RESU(FORMAT='MED',
+          INFO=1,
+          PROC0='OUI',
+          RESU=_F(IMPR_NOM_VARI='OUI',
+                  INFO_MAILLAGE='NON',
+                  RESULTAT=PROJ),
+          UNITE=3,
+          VERSION_MED='3.3.1')
+
+
+Création du fichier au format MED 3.3.1.
+Statistics: user+syst:        0.02s (syst:        0.00s, elaps:        0.02s)
+----------------------------------------------------------------------------------------------------
+
+.. _stg1_txt75
+----------------------------------------------------------------------------------------------------
+Command #0019 from file 'fort.1', line 75:
+IMPR_TABLE(COMMENTAIRE='#',
+           COMM_PARA='',
+           DEBUT_LIGNE='',
+           FIN_LIGNE='\n',
+           FIN_TABLE='',
+           FORMAT='TABLEAU',
+           FORMAT_R='E12.5',
+           IMPR_FONCTION='NON',
+           INFO=1,
+           SEPARATEUR=' ',
+           TABLE=table,
+           UNITE=4)
+
+Statistics: user+syst:        0.01s (syst:        0.00s, elaps:        0.01s)
+----------------------------------------------------------------------------------------------------
+
+.. _stg1_txt77
+----------------------------------------------------------------------------------------------------
+Command #0020 from file 'fort.1', line 77:
+FIN(FORMAT_HDF='NON',
+    INFO_RESU='OUI',
+    PROC0='OUI',
+    RETASSAGE='NON',
+    STATUT=0)
+
+Saving objects...
+pi                       <class 'float'>
+e                        <class 'float'>
+tau                      <class 'float'>
+inf                      <class 'float'>
+nan                      <class 'float'>
+mesh                     <class 'libaster.Mesh'>
+m_quad                   <class 'libaster.Mesh'>
+pallet                   <class 'libaster.Model'>
+elemprop                 <class 'libaster.ElementaryCharacteristics'>
+Postpro                  <class 'libaster.Model'>
+mater                    <class 'libaster.Material'>
+materfl                  <class 'libaster.MaterialField'>
+mecabc                   <class 'libaster.GenericMechanicalLoad'>
+mecach                   <class 'libaster.GenericMechanicalLoad'>
+result                   <class 'libaster.ElasticResult'>
+PROJ                     <class 'libaster.ElasticResult'>
+table                    <class 'libaster.Table'>
+   
+   !-----------------------------------------------------------------!
+   ! <I> <CATAMESS_89>                                               !
+   !                                                                 !
+   !  List of warnings emitted during the execution of computation.  !
+   !                                                                 !
+   !  Warnings which you chose to ignore of are preceded by (*).     !
+   !  Number of occurrences for each warning:                        !
+   !              FACTOR_82            emitted    1 time             !
+   !              MODELE1_63           emitted  375 time             !
+   !              MODELE1_64           emitted    1 time             !
+   !              MODELE1_71           emitted    1 time             !
+   !-----------------------------------------------------------------!
+   
+ ---------------------------------------------------------------------------
+ Concepts de la base: G
+    Nom       Type                 Taille (Mo)         Nombre      Nombre de
+                                                     d'objets       segments
+    TOTAL                                31.49            326            527
+  
+    00000001   MAILLAGE_SDASTER           0.07             37             65
+    00000002   MAILLAGE_SDASTER           0.09             36             64
+    00000003   MODELE_SDASTER             0.07              9             14
+    00000004   CARA_ELEM                  0.01             23             28
+    0000001f   TABLE_SDASTER              0.00             17             17
+    00000008   CHAR_MECA                  0.09             46             66
+    00000005   MODELE_SDASTER             0.05              9             14
+    00000006   MATER_SDASTER              0.00              6              6
+    00000007   CHAM_MATER                 0.00              9             14
+    00000009   CHAR_MECA                  0.00             31             36
+    00000011   EVOL_ELAS                  0.55             27             36
+    0000001e   EVOL_ELAS                  0.19             21             27
+    &FOZERO                               0.00              2              2
+    &&_NUM_C                              0.00              1              1
+    &CATA.AC                              0.00              2              4
+    &CATA.CL                              0.61              1              3
+    &CATA.GD                              0.19              4             11
+    &CATA.ME                              0.20              2              4
+    &CATA.OP                              0.31              4             19
+    &CATA.PH                              0.00              1              1
+    &CATA.PR                              0.00              2              4
+    &CATA.TE                             27.22             17             42
+    &CATA.TH                              0.01              2              4
+    &CATA.TM                              0.01              7             11
+    0000000b                              0.00              4              4
+    00000014                              1.79              6             30
+ ---------------------------------------------------------------------------
+
+
+     Nom de la base                          :  GLOBALE
+     Nombre d'enregistrements utilisés       :  50
+     Nombre d'enregistrements maximum        :  61440
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre total d'accès en lecture         :  7
+     Volume des accès en lecture             :          5.47 Mo.
+     Nombre total d'accès en écriture        :  68
+     Volume des accès en écriture            :         53.12 Mo.
+     Nombre d'identificateurs utilisés       :  615
+     Taille maximum du répertoire            :  2000
+     Pourcentage d'utilisation du répertoire :  30 %
+
+
+     Nom de la base                          :  VOLATILE
+     Nombre d'enregistrements utilisés       :  4
+     Nombre d'enregistrements maximum        :  61440
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre total d'accès en lecture         :  1
+     Volume des accès en lecture             :          0.78 Mo.
+     Nombre total d'accès en écriture        :  8
+     Volume des accès en écriture            :          6.25 Mo.
+     Nombre d'identificateurs utilisés       :  663
+     Taille maximum du répertoire            :  2000
+     Pourcentage d'utilisation du répertoire :  33 %
+<I> <FIN> ARRET NORMAL DANS "FIN" PAR APPEL A "JEFINI".
+  
+ <I> <FIN> MEMOIRE JEVEUX MINIMALE REQUISE POUR L'EXECUTION :                      38.79 Mo
+ <I> <FIN> MEMOIRE JEVEUX OPTIMALE REQUISE POUR L'EXECUTION :                      45.87 Mo
+  
+ <I>       FERMETURE DES BASES EFFECTUEE
+  
+   STATISTIQUES CONCERNANT L'ALLOCATION DYNAMIQUE :
+     TAILLE CUMULEE MAXIMUM            :                   46  Mo.
+     TAILLE CUMULEE LIBEREE            :                   10  Mo.
+     NOMBRE TOTAL D'ALLOCATIONS        :                10602
+     NOMBRE TOTAL DE LIBERATIONS       :                10582
+     APPELS AU MECANISME DE LIBERATION :                    0
+     TAILLE MEMOIRE CUMULEE RECUPEREE  :                    1  Mo.
+     VOLUME DES LECTURES               :                    0  Mo.
+     VOLUME DES ECRITURES              :                    3  Mo.
+  
+   MEMOIRE JEVEUX MINIMALE REQUISE POUR L'EXECUTION :      38.79 Mo
+     - IMPOSE DE NOMBREUX ACCES DISQUE
+     - RALENTIT LA VITESSE D'EXECUTION
+   MEMOIRE JEVEUX OPTIMALE REQUISE POUR L'EXECUTION :      45.87 Mo
+     - LIMITE LES ACCES DISQUE
+     - AMELIORE LA VITESSE D'EXECUTION
+  
+ <I>       FIN D'EXECUTION LE : JE-22-AVRI-2021 21:16:56
+Signature of pickled file   : 36f9fc42c5acdaa1c856969aca7df6a12dd8f6bf7a63a13749d562289fc87c8c
+Signature of info file      : 9ec27b691022a5cc01570a4099c4db36abe0e86120ff5ab030374982db104b5e
+Signature of Jeveux database: 9988c2fcdc11e31ca13705b02efb6feec621547c077309b43bb66729cd346dde
+
+ ********************************************************************************
+ * COMMAND                  :       USER :     SYSTEM :   USER+SYS :    ELAPSED *
+ ********************************************************************************
+ * DEBUT                    :       0.04 :       0.02 :       0.06 :       0.07 *
+ * LIRE_MAILLAGE            :       0.02 :       0.01 :       0.03 :       0.03 *
+ * CREA_MAILLAGE            :       0.01 :       0.00 :       0.01 :       0.00 *
+ * AFFE_MODELE              :       0.02 :       0.01 :       0.03 :       0.02 *
+ * AFFE_CARA_ELEM           :       0.02 :       0.01 :       0.03 :       0.02 *
+ * AFFE_MODELE              :       0.05 :       0.02 :       0.07 :       0.04 *
+ * DEFI_MATERIAU            :       0.03 :       0.01 :       0.04 :       0.01 *
+ * AFFE_MATERIAU            :       0.03 :       0.00 :       0.03 :       0.02 *
+ * AFFE_CHAR_MECA           :       0.07 :       0.01 :       0.08 :       0.05 *
+ * AFFE_CHAR_MECA           :       0.00 :       0.01 :       0.01 :       0.00 *
+ * MECA_STATIQUE            :       0.41 :       0.13 :       0.54 :       0.31 *
+ * PROJ_CHAMP               :       0.04 :       0.00 :       0.04 :       0.04 *
+ * POST_RELEVE_T            :       0.01 :       0.00 :       0.01 :       0.01 *
+ * IMPR_RESU                :       0.02 :       0.00 :       0.02 :       0.02 *
+ * IMPR_TABLE               :       0.01 :       0.00 :       0.01 :       0.01 *
+ * FIN                      :       0.05 :       0.04 :       0.09 :       0.08 *
+ *  . check syntax          :       0.11 :       0.01 :       0.12 :       0.12 *
+ *  . fortran               :       0.32 :       0.13 :       0.45 :       0.31 *
+ ********************************************************************************
+ * TOTAL_JOB                :       0.84 :       0.28 :       1.12 :       0.74 *
+ ********************************************************************************
+
+Statistics: user+syst:        0.05s (syst:        0.04s, elaps:        0.08s)
+----------------------------------------------------------------------------------------------------
+EXECUTION_CODE_ASTER_EXIT_8507=0

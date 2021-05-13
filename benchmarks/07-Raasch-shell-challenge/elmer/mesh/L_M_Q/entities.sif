@@ -1,0 +1,18 @@
+!------ Skeleton for body section -----
+Body 1
+  Name = main
+End
+
+!------ Skeleton for boundary section -----
+Boundary Condition 1
+  Name = fixedge
+End
+
+Boundary Condition 2
+  Name = load
+End
+
+Boundary Condition 3
+  Name = bnry8
+End
+
