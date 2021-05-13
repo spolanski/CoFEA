@@ -67,9 +67,8 @@ layout = go.Layout(
         font=dict(
             size=20,
         ),
-        y=0.90,
+        y=0.95,
         x=0.5),
-    plot_bgcolor="#FFF",  # Sets background color to white
     xaxis=dict(
         linecolor="#BCCCDC",  # Sets color of X-axis line
         showgrid=True  # Removes X-axis grid lines
@@ -78,15 +77,25 @@ layout = go.Layout(
         title="Displacement [m]",  
         linecolor="#BCCCDC",  # Sets color of Y-axis line
         showgrid=True,  # Removes Y-axis grid lines    
-    ),
-    legend=dict(
-        orientation="v",
-        y=0.5,
     )
 )
 
+
 colours = px.colors.qualitative.Vivid
 fig = go.Figure(layout=layout)
+
+fig.update_layout( # customize font and legend orientation & position
+    font_family="Rockwell",
+    legend=dict(
+        title=None, orientation="h", y=1, yanchor="bottom", x=0.5, xanchor="center"
+    )
+)
+
+fig.add_shape( # add a horizontal "target" line
+    type="line", line_color="black", line_width=3, opacity=1, line_dash="dot",
+    x0=0, x1=1, xref="paper", y0=0.125, y1=0.125, yref="y"
+)
+
 
 fig.add_trace(go.Bar(
     x=labels,
@@ -139,9 +148,8 @@ layout = go.Layout(
         font=dict(
             size=20,
         ),
-        y=0.90,
+        y=0.95,
         x=0.5),
-    plot_bgcolor="#FFF",  # Sets background color to white
     xaxis=dict(
         linecolor="#BCCCDC",  # Sets color of X-axis line
         showgrid=True  # Removes X-axis grid lines
@@ -150,15 +158,24 @@ layout = go.Layout(
         title="Displacement [m]",  
         linecolor="#BCCCDC",  # Sets color of Y-axis line
         showgrid=True,  # Removes Y-axis grid lines    
-    ),
-    legend=dict(
-        orientation="v",
-        y=0.5,
     )
 )
 
+
 colours = px.colors.qualitative.Vivid
 fig = go.Figure(layout=layout)
+
+fig.update_layout( # customize font and legend orientation & position
+    font_family="Rockwell",
+    legend=dict(
+        title=None, orientation="h", y=1, yanchor="bottom", x=0.5, xanchor="center"
+    )
+)
+
+fig.add_shape( # add a horizontal "target" line
+    type="line", line_color="black", line_width=3, opacity=1, line_dash="dot",
+    x0=0, x1=1, xref="paper", y0=0.125, y1=0.125, yref="y"
+)
 
 fig.add_trace(go.Bar(
     x=labels,
