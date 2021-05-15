@@ -4,7 +4,7 @@
 ### Calculix
 The shell implementation in Calculix did not allow to achieve the target solution. The target solution has been achieved using solid type of elements which proved that the input parameters are correct. A similar conclusion has been derived in the [Hemispherical shell point load](../005-hemispherical-shell-point-load/index) study.
 
-It is also not possible in Calculix to directly specify a load distibuted over an edge. However, one can use a third party software called [PrePoMax](http://lace.fs.uni-mb.si/wordpress/borovinsek/) that allows to define the surface traction load on an edge, which is converted into *CLOAD keyword afterwards. The loading scenario was also approximated with the rigid-body constraint which resulted in the same, incorrect value of displacemt. The last test implies that the source of the error is directly related to the shell element implementation. The provided tests highlight the fact that the shell element in Calculix does not seem to capture the response from the structures with complex shapes.
+It is also not possible in Calculix to directly specify a load distributed over an edge. However, one can use a third party software called [PrePoMax](http://lace.fs.uni-mb.si/wordpress/borovinsek/) that allows to define the surface traction load on an edge, which is converted into *CLOAD keyword afterwards. The loading scenario was also approximated with the rigid-body constraint which resulted in the same, incorrect value of displacemt. The last test implies that the source of the error is directly related to the shell element implementation. The provided tests highlight the fact that the shell element in Calculix does not seem to capture the response from the structures with complex shapes.
 
 ```{figure} ./calculix.png
 ---
@@ -15,7 +15,7 @@ Difference between the results with shell elements (left) and the solid elements
 ```
 
 ### Code_Aster
-Code_Aster allows to run this particular benchmark almost in a frictionless manner. A solution close to the expected value has been achieved even for the linear type of elements. Additionaly, the code has a built-in keyword called FORCE_ARETE that allows to specify a load distributed over an edge.
+Code_Aster allows to run this particular benchmark almost in a frictionless manner. A solution close to the expected value has been achieved even for the linear type of elements. Additionally, the code has a built-in keyword called FORCE_ARETE that allows to specify a load distributed over an edge.
 
 While setting up the solver is straightforward, the post-processing of results with the second-order shell elements might be confusing. Code_Aster solver uses TRIA6_7 or QUAD8_9 element formulation which have an additional node in the middle of element. At the current moment, it is not possible to directly visualise the displacement field in this place. A possible workaround is to run the simulation with the mesh that includes the additional nodes and then project the results onto mesh without them. The section [Tested Finite Element codes](./tested-codes) presents an example of input deck that take advantage of the mentioned workaround.
 
