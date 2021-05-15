@@ -72,7 +72,7 @@ make
 ```
 ### ARPACK
 
-Next step is to compile ARPACK library. It is needed to download 2 seperate archives. Obtain it from [here](https://www.caam.rice.edu/software/ARPACK/SRC/arpack96.tar.gz) and [here](https://www.caam.rice.edu/software/ARPACK/SRC/patch.tar.gz).
+Next step is to compile ARPACK library. It is needed to download 2 separate archives. Obtain it from [here](https://www.caam.rice.edu/software/ARPACK/SRC/arpack96.tar.gz) and [here](https://www.caam.rice.edu/software/ARPACK/SRC/patch.tar.gz).
 
 
 ```

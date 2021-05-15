@@ -28,7 +28,7 @@ def run_code_aster(input_file, mesh_file_unv):
     name_fild_dir =  mesh_file_unv.replace('.unv','')
     new_name_fil_dir =  name_fild_dir.replace('Mesh/','')
 
-    # Run the Code_Aster solver with as_run commnad
+    # Run the Code_Aster solver with as_run command
     input_full_name = input_file + ".export"
     subprocess.run(["as_run", input_full_name])
     os.mkdir("Results/" + new_name_fil_dir)

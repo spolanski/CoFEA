@@ -28,7 +28,7 @@ def run_calculix(input_file, mesh_files_inp):
     name_fild_dir =  mesh_files_inp.replace('.inp','')
     new_name_fil_dir =  name_fild_dir.replace('Mesh/','')
 
-    # Run the CalculiX solver with ccx_2.17_MT commnad
+    # Run the CalculiX solver with ccx_2.17_MT command
     subprocess.run(["ccx_2.17_MT", input_file])
     os.mkdir("Results/" + new_name_fil_dir)
 

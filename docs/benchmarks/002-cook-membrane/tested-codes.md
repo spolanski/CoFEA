@@ -137,7 +137,7 @@ The following section describes how to set up a model in Elmer software
 ```
 Header
   CHECK KEYWORDS Warn
-  Mesh DB "." "Mesh/VeryFine_Quad_Hex"      # Mesh defintion
+  Mesh DB "." "Mesh/VeryFine_Quad_Hex"      # Mesh definition
   Include Path ""
   Results Directory "Results/VeryFine_Quad_Hex" # Results directory
 End
