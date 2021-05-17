@@ -1,0 +1,30 @@
+!------ Skeleton for body section -----
+Body 1
+  Name = All
+End
+
+!------ Skeleton for boundary section -----
+Boundary Condition 1
+  Name = bnry2
+End
+
+Boundary Condition 2
+  Name = SYMMX
+End
+
+Boundary Condition 3
+  Name = TOP
+End
+
+Boundary Condition 4
+  Name = BOT
+End
+
+Boundary Condition 5
+  Name = C_SLV
+End
+
+Boundary Condition 6
+  Name = C_MST
+End
+
