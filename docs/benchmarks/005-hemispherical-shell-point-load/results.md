@@ -53,7 +53,7 @@ In order to obtain correct results with CalculiX 3 models were prepared:
 - quarter hemisphere model with use of solid C3D20R elements as described in NAFEMS benchmark,
 - half sphere model with use of shell S8 elements modeled without symmetry boundary conditions,
 
-Shell element types in CalculiX did not allow to achieve results close to the target value with symmetry boundary conditions. For the hemisphere shell model, the countour of displacement field seems to be similar to the expected one, although the values are still not correct. On the contrary, the solid model with 3 elements per thickness allows to obtain a satisfying result, but it required some time to estimate the response. These comparison proves that the CalculiX model was set up correctly, but it is the shell element type which is the source of non-satisfactory results.
+Shell element types in CalculiX did not allow to achieve results close to the target value with symmetry boundary conditions. For the hemisphere shell model, the contour of displacement field seems to be similar to the expected one, although the values are still not correct. On the contrary, the solid model with 3 elements per thickness allows to obtain a satisfying result, but it required some time to estimate the response. These comparison proves that the CalculiX model was set up correctly, but it is the shell element type which is the source of non-satisfactory results.
 
 ```{figure} ./ccx_comparison.png
 ---

@@ -35,7 +35,7 @@ def change_case_sif (input_file, change_mesh):
 
 # Function which starts ElmerSolver
 def run_elmer(input_file, directory):
-    # Run the Elmer solver with ElmerSolver commnad
+    # Run the Elmer solver with ElmerSolver command
     call_elmer = "ElmerSolver " + input_file
     subprocess.call([call_elmer], shell = True)
 
