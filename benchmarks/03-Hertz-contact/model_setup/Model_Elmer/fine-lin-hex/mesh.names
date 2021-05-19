@@ -1,0 +1,9 @@
+! ----- names for bodies -----
+$ All = 1
+! ----- names for boundaries -----
+$ bnry2 = 1
+$ SYMMX = 2
+$ TOP = 3
+$ BOT = 4
+$ C_SLV = 5
+$ C_MST = 6

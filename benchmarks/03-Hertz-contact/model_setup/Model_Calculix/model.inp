@@ -1,0 +1,30 @@
+*INCLUDE, INPUT=Mesh/fine-lin-hex.inp
+*INCLUDE, INPUT=master_surface/mst-fine-lin-hex.sur
+*INCLUDE, INPUT=slave_surface/slv-fine-lin-hex.sur
+
+*MATERIAL,NAME=Steel
+*ELASTIC
+200000,0.3
+
+*SOLID SECTION, Elset=All, Material=steel
+
+*SURFACE INTERACTION, NAME=contact
+*SURFACE BEHAVIOR, PRESSURE-OVERCLOSURE=LINEAR
+10000000,0.1,0.01
+*CONTACT PAIR, INTERACTION=contact, TYPE=SURFACE TO SURFACE, ADJUST=-1
+SC_SLV, SC_MST
+** step with pressure control
+*STEP, NLGEOM, INC=10
+*STATIC
+*boundary, op=new
+TOP,2,2,0
+SYMMX,1,1,0
+*dload
+*INCLUDE, INPUT=Pressure/fine-lin-hex.dlo
+*NODE FILE,OUTPUT=2D
+U,
+*EL FILE
+S, E
+*CONTACT FILE
+CDIS,CSTR
+*END STEP

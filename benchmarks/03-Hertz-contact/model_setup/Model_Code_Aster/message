@@ -1,0 +1,976 @@
+# ------------------------------------------------------------------------------------------
+# Impression du contenu du fichier de commandes à exécuter :
+# ------------------------------------------------------------------------------------------
+DEBUT(LANG="EN")
+
+
+oldmesh = LIRE_MAILLAGE(identifier='0:1',
+                     FORMAT='IDEAS',
+                     UNITE=80)
+
+oldmesh = MODI_MAILLAGE(reuse=oldmesh,
+                        MAILLAGE=oldmesh,
+                        ORIE_PEAU_2D=_F(GROUP_MA=('C_SLV', 'C_MST')))
+
+#comment: mesh = DEFI_GROUP(CREA_GROUP_NO=_F(GROUP_MA=('C_SLV', 'CONT1'),
+#comment:                                    NOM='noed_ordo',
+#comment:                                    OPTION='NOEUD_ORDO'),
+#comment:                   MAILLAGE=oldmesh)
+
+model = AFFE_MODELE(AFFE=_F(MODELISATION=('D_PLAN', ),
+                            PHENOMENE='MECANIQUE',
+                            TOUT='OUI'),
+                    MAILLAGE=oldmesh)
+
+mater = DEFI_MATERIAU(ELAS=_F(E=200000.0,
+                              NU=0.3))
+
+fieldmat = AFFE_MATERIAU(AFFE=_F(MATER=(mater, ),
+                                 TOUT='OUI'),
+                         MODELE=model)
+
+listr = DEFI_LIST_REEL(DEBUT=0.0,
+                       INTERVALLE=_F(JUSQU_A=1.0,
+                                     NOMBRE=5))
+
+RAMP = DEFI_FONCTION(NOM_PARA='INST',
+                     VALE=(0.0, 0.0, 1.0, 1.0))
+
+load = AFFE_CHAR_MECA(DDL_IMPO=(_F(DY=0.0,
+                                   GROUP_MA=('TOP', )),
+                                _F(DX=0.0,
+                                   GROUP_MA=('SYMMX', ))),
+                      MODELE=model,
+                      PRES_REP=_F(GROUP_MA=('BOT', ),
+                                  PRES=10.0))
+
+contact = DEFI_CONTACT(ALGO_RESO_CONT='POINT_FIXE',
+                       ALGO_RESO_GEOM='POINT_FIXE',
+                       FORMULATION='CONTINUE',
+                       FROTTEMENT='SANS',
+                       LISSAGE='OUI',
+                       MODELE=model,
+                       NB_ITER_GEOM=5,
+                       REAC_GEOM='CONTROLE',
+                       ZONE=_F(GROUP_MA_ESCL=('C_SLV', ),
+                               GROUP_MA_MAIT=('C_MST', )))
+
+resnonl = STAT_NON_LINE(CHAM_MATER=fieldmat,
+                        CONTACT=contact,
+                        EXCIT=_F(CHARGE=load,
+                                 FONC_MULT=RAMP),
+                        INCREMENT=_F(LIST_INST=listr),
+                        METHODE='NEWTON',
+                        MODELE=model,
+                        NEWTON=_F(REAC_INCR=1))
+
+resnonl = CALC_CHAMP(reuse=resnonl,
+                     CONTRAINTE=('SIEF_ELNO', 'SIEF_NOEU', 'SIGM_ELNO'),
+                     CRITERES=('SIEQ_NOEU', 'SIEQ_ELNO', 'SIEQ_ELGA'),
+                     RESULTAT=resnonl)
+
+IMPR_RESU(FORMAT='MED',
+          RESU=_F(RESULTAT=resnonl),
+          UNITE=80)
+
+FIN()
+
+# ------------------------------------------------------------------------------------------
+
+  Ouverture en écriture du fichier ./vola.1
+
+ <INFO> Démarrage de l'exécution.
+                                                                                
+                                                                                
+              -- CODE_ASTER -- VERSION:  EXPLOITATION (stable) --               
+                                                                                
+                       Modified 14.6.0 version 11/06/2020                       
+                    the revision b3490fa3b76c - branch  v14                     
+                        Copyright EDF R & D 1991 - 2021                         
+                                                                                
+                    Exécution of:  Sat May 15 14:23:10 2021                     
+                  Name of the machine:  maciej-ThinkPad-T440p                   
+                               Structure:  64bit                                
+                               CPU type:  x86_64                                
+   Operating system:  Linux-5.4.0-73-generic-x86_64-with-Ubuntu-18.04-bionic    
+                     Language of the messages:  en (UTF-8)                      
+                                                                                
+                             Python version: 3.6.9                              
+                             NumPy version: 1.19.4                              
+                             Parallelism MPI: idle                              
+                           OpenMP parallelism: Nombre                           
+                          credit of processes used:  4                          
+                      Version of the HDF5 library : 1.10.3                      
+                       Version of the MED library : 4.0.0                       
+                       Librairie MFront : non disponible                        
+                          MUMPS library version: 5.1.2                          
+                          PETSc library: not available                          
+                     Version of the SCOTCH library : 6.0.4                      
+
+                 Mémoire limite pour l'exécution : 10000.00 Mo                  
+                   consommée par l'initialisation : 382.10 Mo                   
+                  par les objets du jeu de commandes : 3.04 Mo                  
+                 reste pour l'allocation dynamique : 9614.86 Mo                 
+                   Cut limiting files of exchange:  48.00 Go                    
+                                                                                
+
+.. __stg1_txt1
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0001 Concept of the type:  -
+  # ------------------------------------------------------------------------------------------
+  DEBUT(LANG='EN',
+        PAR_LOT='OUI',
+        IMPR_MACRO='NON',
+        DEBUG=_F(JXVERI='NON',
+                 SDVERI='NON',
+                 JEVEUX='NON',
+                 HIST_ETAPE='NON',),
+        MESURE_TEMPS=_F(NIVE_DETAIL=1,
+                        MOYENNE='NON',),
+        MEMOIRE=_F(TAILLE_BLOC=800.0,
+                   TAILLE_GROUP_ELEM=1000,),
+        RESERVE_CPU=_F(BORNE=900,),
+        INFO=1,)
+
+
+ Initial value of maximum time CPU = 900 second
+ Valeur of the maximum time CPU placed to the orders = 810 second
+ Réserve CPU envisaged = 90 seconds 
+
+  Ouverture en écriture du fichier ./glob.1
+
+  Ouverture en écriture du fichier ./vola.1
+
+  Ouverture en lecture du fichier /home/maciej/salome_meca/code_aster/14.6/lib/aster/elem.1
+
+     Nom de la base                          :  ELEMBASE
+     Créée avec la version                   :  14.06.00
+     Nombre d'enregistrements utilisés       :  43
+     Nombre d'enregistrements maximum        :  512
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre d'identificateurs utilisés       :  123
+     Taille maximum du répertoire            :  300
+     Pourcentage d'utilisation du répertoire :  41 %
+
+  Ouverture en lecture du fichier /home/maciej/salome_meca/code_aster/14.6/lib/aster/elem.1
+
+
+     Nom de la base                          :  ELEMBASE
+     Nombre d'enregistrements utilisés       :  43
+     Nombre d'enregistrements maximum        :  512
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre total d'accès en lecture         :  60
+     Volume des accès en lecture             :         46.88 Mo.
+     Nombre total d'accès en écriture        :  0
+     Volume des accès en écriture            :          0.00 Mo.
+     Nombre d'identificateurs utilisés       :  123
+     Taille maximum du répertoire            :  300
+     Pourcentage d'utilisation du répertoire :  41 %
+
+ Second reading of the catalogues of the elements made. 
+
+ End of reading (lasted 0.025353 S.)   
+  # Memory (Mo):    429.68 /    421.93 /     44.29 /     22.92 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0001 user+syst:          0.03S (syst:          0.02S, Elaps:          0.04S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_cmd0:1
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0002 Concept of the type:  maillage_sdaster
+  # ------------------------------------------------------------------------------------------
+  oldmesh = LIRE_MAILLAGE(FORMAT='IDEAS',
+                          UNITE=80,
+                          CREA_GROUP_COUL='NON',
+                          VERI_MAIL=_F(VERIF='OUI',
+                                       APLAT=1.E-3,),
+                          INFO=1,)
+
+ ON NE TRAITE PAS LE DATASET:                  164
+ NOMBRE DE NOEUDS :                25488
+ NOMBRE DE MAILLES :                 8829
+Vérification du maillage.
+
+------------ MAILLAGE oldmesh  - IMPRESSIONS NIVEAU  1 ------------
+
+         AUTEUR=INTERFACE_IDEAS                 DATE=15/05/2021                 
+
+NOMBRE DE NOEUDS                       25488
+
+NOMBRE DE MAILLES                       8829
+                              SEG3                  461
+                              TRIA6                  79
+                              QUAD8                8289
+
+NOMBRE DE GROUPES DE MAILLES               6
+                              All                               8368
+                              SYMMX                               97
+                              TOP                                 50
+                              BOT                                 94
+                              C_SLV                               79
+                              C_MST                               94
+
+--------------------------------------------------------------------------------
+
+  # Memory (Mo):    429.68 /    424.87 /     44.29 /     22.92 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0002 user+syst:          0.49S (syst:          0.01S, Elaps:          0.50S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt10
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0009 Concept of the type:  maillage_sdaster
+  # ------------------------------------------------------------------------------------------
+  oldmesh = MODI_MAILLAGE(reuse=oldmesh,
+                          MAILLAGE=oldmesh,
+                          ORIE_PEAU_2D=_F(GROUP_MA=('C_SLV', 'C_MST'),),
+                          INFO=1,)
+
+TRAITEMENT DU GROUP_MA: C_SLV                    DE      79 MAILLES
+                              0 MAILLE(S) ONT ETE ORIENTEE(S)
+TRAITEMENT DU GROUP_MA: C_MST                    DE      94 MAILLES
+                              0 MAILLE(S) ONT ETE ORIENTEE(S)
+  # Memory (Mo):    429.68 /    424.87 /     44.29 /     22.92 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0009 user+syst:          0.01S (syst:          0.00S, Elaps:          0.02S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt20
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0010 Concept of the type:  modele_sdaster
+  # ------------------------------------------------------------------------------------------
+  model = AFFE_MODELE(MAILLAGE=oldmesh,
+                      AFFE=_F(TOUT='OUI',
+                              PHENOMENE='MECANIQUE',
+                              MODELISATION=('D_PLAN', ),),
+                      INFO=1,
+                      DISTRIBUTION=_F(PARTITIONNEUR='METIS',
+                                      METHODE='SOUS_DOMAINE',),
+                      VERI_JACOBIEN='OUI',)
+
+
+Sur les 8829 mailles du maillage oldmesh, on a demandé l'affectation de 8829, on a pu en affecter 8829
+ Modélisation     Type maille  Élément fini     Nombre
+ D_PLAN           QUAD8        MEDPQU8          8289
+ D_PLAN           TRIA6        MEDPTR6          79
+                  SEG3         MEPLSE3          461
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):      0.02      0.00      0.01
+  # Memory (Mo):    459.89 /    459.64 /     44.29 /     35.99 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0010 user+syst:          0.06S (syst:          0.02S, Elaps:          0.01S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt23
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0011 Concept of the type:  mater_sdaster
+  # ------------------------------------------------------------------------------------------
+  mater = DEFI_MATERIAU(ELAS=_F(E=2.E5,
+                                NU=0.3,
+                                COEF_AMOR=1.0,),
+                        INFO=1,)
+
+Propriétés définies dans le matériau: ELAS.
+  # Memory (Mo):    459.89 /    459.64 /     44.29 /     35.99 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0011 user+syst:          0.02S (syst:          0.01S, Elaps:          0.01S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt27
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0012 Concept of the type:  cham_mater
+  # ------------------------------------------------------------------------------------------
+  fieldmat = AFFE_MATERIAU(MODELE=model,
+                           AFFE=_F(TOUT='OUI',
+                                   MATER=(mater, ),),
+                           INFO=1,)
+
+  # Memory (Mo):    459.89 /    459.64 /     44.29 /     35.99 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0012 user+syst:          0.01S (syst:          0.00S, Elaps:          0.00S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt31
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0013 Concept of the type:  listr8_sdaster
+  # ------------------------------------------------------------------------------------------
+  listr = DEFI_LIST_REEL(DEBUT=0.0,
+                         INTERVALLE=_F(JUSQU_A=1.0,
+                                       NOMBRE=5,),
+                         INFO=1,)
+
+  # Memory (Mo):    459.89 /    459.64 /     44.29 /     35.99 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0013 user+syst:          0.01S (syst:          0.00S, Elaps:          0.00S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt34
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0014 Concept of the type:  fonction_sdaster
+  # ------------------------------------------------------------------------------------------
+  RAMP = DEFI_FONCTION(NOM_PARA='INST',
+                       VALE=(0.0, 0.0, 1.0, 1.0),
+                       NOM_RESU='TOUTRESU',
+                       INTERPOL=('LIN', ),
+                       PROL_DROITE='EXCLU',
+                       PROL_GAUCHE='EXCLU',
+                       VERIF='CROISSANT',
+                       INFO=1,)
+
+  # Memory (Mo):    459.89 /    459.64 /     44.29 /     35.99 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0014 user+syst:          0.00S (syst:          0.00S, Elaps:          0.00S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt42
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0015 Concept of the type:  char_meca
+  # ------------------------------------------------------------------------------------------
+  load = AFFE_CHAR_MECA(MODELE=model,
+                        DDL_IMPO=(_F(GROUP_MA=('TOP', ),
+                                     DY=0.0,),
+                                  _F(GROUP_MA=('SYMMX', ),
+                                     DX=0.0,),
+                                  ),
+                        PRES_REP=_F(GROUP_MA=('BOT', ),
+                                    PRES=10.0,),
+                        VERI_NORM='OUI',
+                        DOUBLE_LAGRANGE='OUI',
+                        INFO=1,)
+
+  # Memory (Mo):    462.26 /    460.76 /     44.29 /     35.99 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0015 user+syst:          0.12S (syst:          0.03S, Elaps:          0.03S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt53
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0016 Concept of the type:  char_contact
+  # ------------------------------------------------------------------------------------------
+  contact = DEFI_CONTACT(MODELE=model,
+                         FORMULATION='CONTINUE',
+                         FROTTEMENT='SANS',
+                         LISSAGE='OUI',
+                         STOP_INTERP='NON',
+                         VERI_NORM='OUI',
+                         ALGO_RESO_GEOM='POINT_FIXE',
+                         REAC_GEOM='CONTROLE',
+                         NB_ITER_GEOM=5,
+                         ALGO_RESO_CONT='POINT_FIXE',
+                         ITER_CONT_MAXI=30,
+                         ITER_CONT_TYPE='MAXI',
+                         RESI_CONT=-1,
+                         ZONE=_F(COEF_CONT=100.0,
+                                 ADAPTATION='CYCLAGE',
+                                 GROUP_MA_MAIT='C_MST',
+                                 GROUP_MA_ESCL='C_SLV',
+                                 APPARIEMENT='MAIT_ESCL',
+                                 NORMALE='MAIT',
+                                 VECT_MAIT='AUTO',
+                                 VECT_ESCL='AUTO',
+                                 TYPE_PROJECTION='ORTHOGONALE',
+                                 DIST_APPA=-1.0,
+                                 TOLE_PROJ_EXT=0.5,
+                                 DIST_POUTRE='NON',
+                                 DIST_COQUE='NON',
+                                 INTEGRATION='AUTO',
+                                 RESOLUTION='OUI',
+                                 CONTACT_INIT='INTERPENETRE',
+                                 GLISSIERE='NON',
+                                 ALGO_CONT='STANDARD',),
+                         )
+
+  # Memory (Mo):    463.95 /    461.87 /     44.35 /     35.99 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0016 user+syst:          0.16S (syst:          0.07S, Elaps:          0.04S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt62
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0017 Concept of the type:  evol_noli
+  # ------------------------------------------------------------------------------------------
+  resnonl = STAT_NON_LINE(MODELE=model,
+                          CHAM_MATER=fieldmat,
+                          CONTACT=contact,
+                          METHODE='NEWTON',
+                          EXCIT=_F(CHARGE=load,
+                                   FONC_MULT=RAMP,
+                                   TYPE_CHARGE='FIXE_CSTE',),
+                          INCREMENT=_F(LIST_INST=listr,
+                                       PRECISION=1.E-06,),
+                          NEWTON=_F(REAC_INCR=1,
+                                    MATRICE='TANGENTE',
+                                    REAC_ITER=1,
+                                    REAC_ITER_ELAS=0,
+                                    MATR_RIGI_SYME='NON',),
+                          CONVERGENCE=_F(ITER_GLOB_MAXI=10,
+                                         ITER_GLOB_ELAS=25,
+                                         ARRET='OUI',),
+                          SOLVEUR=_F(RENUM='AUTO',
+                                     NPREC=8,
+                                     ELIM_LAGR='LAGR2',
+                                     STOP_SINGULIER='OUI',
+                                     TYPE_RESOL='AUTO',
+                                     ACCELERATION='AUTO',
+                                     LOW_RANK_SEUIL=0.0,
+                                     PRETRAITEMENTS='AUTO',
+                                     POSTTRAITEMENTS='AUTO',
+                                     PCENT_PIVOT=20,
+                                     RESI_RELA=-1.0,
+                                     GESTION_MEMOIRE='AUTO',
+                                     FILTRAGE_MATRICE=-1.0,
+                                     MIXER_PRECISION='NON',
+                                     MATR_DISTRIBUEE='NON',
+                                     METHODE='MUMPS',),
+                          MESURE=_F(TABLE='NON',),
+                          ARCHIVAGE=_F(PRECISION=1.E-06,
+                                       CRITERE='RELATIF',),
+                          )
+
+
+Comme vous n'avez pas défini explicitement le comportement, tout le modèle est supposé élastique en petites perturbations.
+   Liste des comportements
+   Affecté sur 8829 éléments
+     Relation                             : ELAS
+     Déformation                          : PETIT
+     Nombre total de variables internes   : 1
+            V1 : VIDE
+  Le système linéaire à résoudre a 51729 degrés de liberté:
+   - 51135 sont des degrés de liberté physiques
+     (ils sont portés par 25488 noeuds du maillage)
+   - 594 sont les couples de paramètres de Lagrange associés
+     aux 297 relations linéaires dualisées.
+  La matrice est de taille 51729 équations.
+  Elle contient 817783 termes non nuls si elle est symétrique et 1583837 termes non nuls si elle n'est pas symétrique.
+  Soit un taux de remplissage de   0.059 %.
+      Il n'y a pas d'état initial défini. On prend un état initial nul.
+      Le champ <DEPL> est initialisé a zéro
+      Le champ <SIEF_ELGA> est initialisé a zéro
+      Le champ <VARI_ELGA> est initialisé a zéro
+
+ Filing of the initial state
+
+ Filing of the fields 
+    Field stored  DEPL at time  0.000000000000e+00 for the sequence number  0
+    Field stored  SIEF_ELGA at time  0.000000000000e+00 for the sequence number  0
+    Field stored  VARI_ELGA at time  0.000000000000e+00 for the sequence number  0
+    Field stored  COMPORTEMENT at time  0.000000000000e+00 for the sequence number  0
+    Field stored  CONT_NOEU at time  0.000000000000e+00 for the sequence number  0
+   Il y a 0 points initialement en contact et 0 points exclus.
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+ Time of computation:   2.000000000000e-01 - Level of cutting:  1 
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     CONTACT    |     CONTACT    |     NEWTON     |     RESIDU     |     RESIDU     |     OPTION     |     CONTACT    |     CONTACT    |
+|    BCL. GEOM.  |    BCL. CONT.  |    ITERATION   |     RELATIF    |     ABSOLU     |   ASSEMBLAGE   |    PRESSURE    |     CRITERE    |
+|    ITERATION   |    ITERATION   |                | RESI_GLOB_RELA | RESI_GLOB_MAXI |                |    ERROR       |    VALEUR      |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     1        X |     1        X |     0          | 6.27294E-13    | 3.52170E-11    |TANGENTE        | 1.00000E+03    |                |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     1        X |     2          |     0          | 1.50042E-12    | 5.16455E-11    |TANGENTE        | 4.05062E+01    | 1.00000E-01    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     2        X |     1        X |     0          | 1.48137E-12    | 4.51101E-11    |TANGENTE        | 2.35532E+00    |                |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     2        X |     2          |     0          | 1.30242E-12    | 3.70868E-11    |TANGENTE        | 8.22538E+00    | 7.90282E-02    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     3        X |     1        X |     0          | 1.39612E-12    | 3.61356E-11    |TANGENTE        | 2.59542E+00    |                |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     3        X |     2          |     0          | 2.10650E-12    | 5.20952E-11    |TANGENTE        | 5.50979E+00    | 3.65143E-02    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     4        X |     1          |     0          | 1.75923E-12    | 4.35246E-11    |TANGENTE        | 1.57367E+00    | 1.40979E-05    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     5          |     1          |     0          | 1.57432E-12    | 3.89498E-11    |TANGENTE        | 5.05843E-04    | 5.96463E-08    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+ Criterion (S) of convergence reached (S) 
+    The residue of the  type RESI_GLOB_RELA is worth  1.574318488731e-12 with the node and  degree of freedom N16794  DY
+
+  Temps CPU consommé dans ce pas de temps    : 10.991 s
+    * Nombre d'itérations de Newton                     : 8
+    * Temps total intégration comportement              : 2.492 s (16 intégrations)
+    * Temps total factorisation matrice                 : 6.655 s (8 factorisations)
+    * Temps construction second membre                  : 0.535 s
+    * Temps total résolution K.U=F                      : 0.286 s (8 résolutions)
+    * Temps appariement contact                         : 0.092 s (5 appariements)
+    * Temps préparation données contact                 : 0.020 s (8 préparations)
+    * Temps calculs élémentaires contact                : 0.072 s
+    * Temps assemblage matrice                          : 0.000 s
+    * Nombre de liaisons de contact                     : 6
+    * Nombre de cycles de type contact/pas contact      : 0
+    * Nombre de cycles de type glissement/adhérence     : 0
+    * Nombre de cycles de type glissement avant/arrière : 0
+    * Nombre de cycles de type point fixe contact       : 0
+    * Temps autres opérations                           : 0.838 s
+
+ Memory (Mo):    799.00 /    770.11 /    132.73 /     54.31 (VmPeak / VmSize / Optimum / Minimum) 
+
+ Filing of the fields 
+    Field stored  DEPL at time  2.000000000000e-01 for the sequence number  1
+    Field stored  SIEF_ELGA at time  2.000000000000e-01 for the sequence number  1
+    Field stored  VARI_ELGA at time  2.000000000000e-01 for the sequence number  1
+    Field stored  COMPORTEMENT at time  2.000000000000e-01 for the sequence number  1
+    Field stored  CONT_NOEU at time  2.000000000000e-01 for the sequence number  1
+[ 20%] Instant calculé : 2.00000e-01, dernier instant archivé : 1.00000e+00, au numéro d'ordre :     1
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+ Time of computation:   4.000000000000e-01 - Level of cutting:  1 
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     CONTACT    |     CONTACT    |     NEWTON     |     RESIDU     |     RESIDU     |     OPTION     |     CONTACT    |     CONTACT    |
+|    BCL. GEOM.  |    BCL. CONT.  |    ITERATION   |     RELATIF    |     ABSOLU     |   ASSEMBLAGE   |    PRESSURE    |     CRITERE    |
+|    ITERATION   |    ITERATION   |                | RESI_GLOB_RELA | RESI_GLOB_MAXI |                |    ERROR       |    VALEUR      |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     1        X |     1        X |     0          | 1.35771E-12    | 6.12774E-11    |TANGENTE        | 1.45488E-05    |                |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     1        X |     2          |     0          | 1.00317E-12    | 4.38783E-11    |TANGENTE        | 1.41916E+01    | 1.00000E-01    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     2        X |     1          |     0          | 8.67897E-13    | 3.79118E-11    |TANGENTE        | 4.33486E+00    | 1.11464E-04    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     3        X |     1          |     0          | 1.13802E-12    | 4.97119E-11    |TANGENTE        | 2.65851E-03    | 6.38013E-07    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     4        X |     1          |     0          | 1.10958E-12    | 4.84696E-11    |TANGENTE        | 9.44777E-05    | 7.21400E-09    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     5          |     1          |     0          | 1.56164E-12    | 6.82164E-11    |TANGENTE        | 3.28274E-07    | 7.19944E-11    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+ Criterion (S) of convergence reached (S) 
+    The residue of the  type RESI_GLOB_RELA is worth  1.561637442629e-12 with the node and  degree of freedom N17724  DY
+
+  Temps CPU consommé dans ce pas de temps    : 8.787 s
+    * Nombre d'itérations de Newton                     : 6
+    * Temps total intégration comportement              : 1.924 s (12 intégrations)
+    * Temps total factorisation matrice                 : 5.131 s (6 factorisations)
+    * Temps construction second membre                  : 0.569 s
+    * Temps total résolution K.U=F                      : 0.243 s (6 résolutions)
+    * Temps appariement contact                         : 0.090 s (5 appariements)
+    * Temps préparation données contact                 : 0.019 s (6 préparations)
+    * Temps calculs élémentaires contact                : 0.057 s
+    * Temps assemblage matrice                          : 0.000 s
+    * Nombre de liaisons de contact                     : 8
+    * Nombre de cycles de type contact/pas contact      : 0
+    * Nombre de cycles de type glissement/adhérence     : 0
+    * Nombre de cycles de type glissement avant/arrière : 0
+    * Nombre de cycles de type point fixe contact       : 0
+    * Temps autres opérations                           : 0.753 s
+
+ Memory (Mo):    804.89 /    777.69 /    137.63 /     54.31 (VmPeak / VmSize / Optimum / Minimum) 
+
+ Filing of the fields 
+    Field stored  DEPL at time  4.000000000000e-01 for the sequence number  2
+    Field stored  SIEF_ELGA at time  4.000000000000e-01 for the sequence number  2
+    Field stored  VARI_ELGA at time  4.000000000000e-01 for the sequence number  2
+    Field stored  COMPORTEMENT at time  4.000000000000e-01 for the sequence number  2
+    Field stored  CONT_NOEU at time  4.000000000000e-01 for the sequence number  2
+[ 40%] Instant calculé : 4.00000e-01, dernier instant archivé : 1.00000e+00, au numéro d'ordre :     2
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+ Time of computation:   6.000000000000e-01 - Level of cutting:  1 
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     CONTACT    |     CONTACT    |     NEWTON     |     RESIDU     |     RESIDU     |     OPTION     |     CONTACT    |     CONTACT    |
+|    BCL. GEOM.  |    BCL. CONT.  |    ITERATION   |     RELATIF    |     ABSOLU     |   ASSEMBLAGE   |    PRESSURE    |     CRITERE    |
+|    ITERATION   |    ITERATION   |                | RESI_GLOB_RELA | RESI_GLOB_MAXI |                |    ERROR       |    VALEUR      |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     1        X |     1        X |     0          | 8.96730E-13    | 5.28491E-11    |TANGENTE        | 6.51846E-09    |                |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     1        X |     2          |     0          | 1.08536E-12    | 6.35596E-11    |TANGENTE        | 1.48584E+01    | 1.00000E-01    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     2        X |     1          |     0          | 9.51950E-13    | 5.57165E-11    |TANGENTE        | 2.34917E+00    | 1.11916E-04    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     3        X |     1          |     0          | 1.13349E-12    | 6.63420E-11    |TANGENTE        | 9.59688E-04    | 7.02730E-07    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     4        X |     1          |     0          | 1.03729E-12    | 6.07115E-11    |TANGENTE        | 6.82367E-06    | 8.27652E-09    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     5          |     1          |     0          | 9.24615E-13    | 5.41168E-11    |TANGENTE        | 1.70719E-07    | 7.76839E-11    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+ Criterion (S) of convergence reached (S) 
+    The residue of the  type RESI_GLOB_RELA is worth  9.246150149101e-13 with the node and  degree of freedom N16794  DY
+
+  Temps CPU consommé dans ce pas de temps    : 8.057 s
+    * Nombre d'itérations de Newton                     : 6
+    * Temps total intégration comportement              : 1.867 s (12 intégrations)
+    * Temps total factorisation matrice                 : 4.566 s (6 factorisations)
+    * Temps construction second membre                  : 0.490 s
+    * Temps total résolution K.U=F                      : 0.243 s (6 résolutions)
+    * Temps appariement contact                         : 0.092 s (5 appariements)
+    * Temps préparation données contact                 : 0.018 s (6 préparations)
+    * Temps calculs élémentaires contact                : 0.057 s
+    * Temps assemblage matrice                          : 0.000 s
+    * Nombre de liaisons de contact                     : 9
+    * Nombre de cycles de type contact/pas contact      : 0
+    * Nombre de cycles de type glissement/adhérence     : 0
+    * Nombre de cycles de type glissement avant/arrière : 0
+    * Nombre de cycles de type point fixe contact       : 0
+    * Temps autres opérations                           : 0.724 s
+
+ Memory (Mo):    808.71 /    781.38 /    141.43 /     54.31 (VmPeak / VmSize / Optimum / Minimum) 
+
+ Filing of the fields 
+    Field stored  DEPL at time  6.000000000000e-01 for the sequence number  3
+    Field stored  SIEF_ELGA at time  6.000000000000e-01 for the sequence number  3
+    Field stored  VARI_ELGA at time  6.000000000000e-01 for the sequence number  3
+    Field stored  COMPORTEMENT at time  6.000000000000e-01 for the sequence number  3
+    Field stored  CONT_NOEU at time  6.000000000000e-01 for the sequence number  3
+[ 60%] Instant calculé : 6.00000e-01, dernier instant archivé : 1.00000e+00, au numéro d'ordre :     3
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+ Time of computation:   8.000000000000e-01 - Level of cutting:  1 
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     CONTACT    |     CONTACT    |     NEWTON     |     RESIDU     |     RESIDU     |     OPTION     |     CONTACT    |     CONTACT    |
+|    BCL. GEOM.  |    BCL. CONT.  |    ITERATION   |     RELATIF    |     ABSOLU     |   ASSEMBLAGE   |    PRESSURE    |     CRITERE    |
+|    ITERATION   |    ITERATION   |                | RESI_GLOB_RELA | RESI_GLOB_MAXI |                |    ERROR       |    VALEUR      |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     1        X |     1        X |     0          | 8.46364E-13    | 6.14153E-11    |TANGENTE        | 3.81213E-09    |                |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     1        X |     2          |     0          | 6.63302E-13    | 4.78698E-11    |TANGENTE        | 2.22409E+01    | 1.00000E-01    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     2        X |     1          |     0          | 7.86731E-13    | 5.63154E-11    |TANGENTE        | 2.93837E+00    | 1.10916E-02    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     3        X |     1          |     0          | 7.40204E-13    | 5.29898E-11    |TANGENTE        | 1.87188E+00    | 2.64447E-05    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     4        X |     1          |     0          | 9.14072E-13    | 6.54367E-11    |TANGENTE        | 3.52840E-05    | 1.53166E-07    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     5          |     1          |     0          | 8.04093E-13    | 5.75636E-11    |TANGENTE        | 2.33909E-05    | 2.59619E-09    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+ Criterion (S) of convergence reached (S) 
+    The residue of the  type RESI_GLOB_RELA is worth  8.040934355252e-13 with the node and  degree of freedom N16891  DY
+
+  Temps CPU consommé dans ce pas de temps    : 8.852 s
+    * Nombre d'itérations de Newton                     : 6
+    * Temps total intégration comportement              : 2.008 s (12 intégrations)
+    * Temps total factorisation matrice                 : 5.183 s (6 factorisations)
+    * Temps construction second membre                  : 0.482 s
+    * Temps total résolution K.U=F                      : 0.225 s (6 résolutions)
+    * Temps appariement contact                         : 0.098 s (5 appariements)
+    * Temps préparation données contact                 : 0.025 s (6 préparations)
+    * Temps calculs élémentaires contact                : 0.056 s
+    * Temps assemblage matrice                          : 0.000 s
+    * Nombre de liaisons de contact                     : 10
+    * Nombre de cycles de type contact/pas contact      : 0
+    * Nombre de cycles de type glissement/adhérence     : 0
+    * Nombre de cycles de type glissement avant/arrière : 0
+    * Nombre de cycles de type point fixe contact       : 0
+    * Temps autres opérations                           : 0.776 s
+
+ Memory (Mo):    811.57 /    781.96 /    145.23 /     54.31 (VmPeak / VmSize / Optimum / Minimum) 
+
+ Filing of the fields 
+    Field stored  DEPL at time  8.000000000000e-01 for the sequence number  4
+    Field stored  SIEF_ELGA at time  8.000000000000e-01 for the sequence number  4
+    Field stored  VARI_ELGA at time  8.000000000000e-01 for the sequence number  4
+    Field stored  COMPORTEMENT at time  8.000000000000e-01 for the sequence number  4
+    Field stored  CONT_NOEU at time  8.000000000000e-01 for the sequence number  4
+[ 80%] Instant calculé : 8.00000e-01, dernier instant archivé : 1.00000e+00, au numéro d'ordre :     4
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+ Time of computation:   1.000000000000e+00 - Level of cutting:  1 
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     CONTACT    |     CONTACT    |     NEWTON     |     RESIDU     |     RESIDU     |     OPTION     |     CONTACT    |     CONTACT    |
+|    BCL. GEOM.  |    BCL. CONT.  |    ITERATION   |     RELATIF    |     ABSOLU     |   ASSEMBLAGE   |    PRESSURE    |     CRITERE    |
+|    ITERATION   |    ITERATION   |                | RESI_GLOB_RELA | RESI_GLOB_MAXI |                |    ERROR       |    VALEUR      |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     1        X |     1        X |     0          | 9.86561E-13    | 8.28777E-11    |TANGENTE        | 1.29320E-07    |                |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     1        X |     2          |     0          | 8.73802E-13    | 7.30991E-11    |TANGENTE        | 1.41757E+01    | 1.00000E-01    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     2        X |     1          |     0          | 7.66641E-13    | 6.41142E-11    |TANGENTE        | 2.45961E+00    | 1.09758E-04    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     3        X |     1          |     0          | 6.69467E-13    | 5.59878E-11    |TANGENTE        | 8.95055E-04    | 8.27881E-07    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     4        X |     1          |     0          | 6.45632E-13    | 5.39944E-11    |TANGENTE        | 2.50869E-06    | 1.36010E-08    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|     5          |     1          |     0          | 6.54381E-13    | 5.47261E-11    |TANGENTE        | 7.66799E-08    | 1.83575E-10    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+ Criterion (S) of convergence reached (S) 
+    The residue of the  type RESI_GLOB_RELA is worth  6.543812188129e-13 with the node and  degree of freedom N17912  DY
+
+  Temps CPU consommé dans ce pas de temps    : 9.004 s
+    * Nombre d'itérations de Newton                     : 6
+    * Temps total intégration comportement              : 2.056 s (12 intégrations)
+    * Temps total factorisation matrice                 : 5.349 s (6 factorisations)
+    * Temps construction second membre                  : 0.441 s
+    * Temps total résolution K.U=F                      : 0.219 s (6 résolutions)
+    * Temps appariement contact                         : 0.095 s (5 appariements)
+    * Temps préparation données contact                 : 0.019 s (6 préparations)
+    * Temps calculs élémentaires contact                : 0.054 s
+    * Temps assemblage matrice                          : 0.000 s
+    * Nombre de liaisons de contact                     : 11
+    * Nombre de cycles de type contact/pas contact      : 0
+    * Nombre de cycles de type glissement/adhérence     : 0
+    * Nombre de cycles de type glissement avant/arrière : 0
+    * Nombre de cycles de type point fixe contact       : 0
+    * Temps autres opérations                           : 0.770 s
+
+ Memory (Mo):    815.05 /    787.12 /    149.03 /     54.31 (VmPeak / VmSize / Optimum / Minimum) 
+
+ Filing of the fields 
+    Field stored  DEPL at time  1.000000000000e+00 for the sequence number  5
+    Field stored  SIEF_ELGA at time  1.000000000000e+00 for the sequence number  5
+    Field stored  VARI_ELGA at time  1.000000000000e+00 for the sequence number  5
+    Field stored  COMPORTEMENT at time  1.000000000000e+00 for the sequence number  5
+    Field stored  CONT_NOEU at time  1.000000000000e+00 for the sequence number  5
+[100%] Instant calculé : 1.00000e+00, dernier instant archivé : 1.00000e+00, au numéro d'ordre :     5
+
+  Temps CPU consommé dans le calcul          : 45.775 s
+    dont temps CPU "perdu" dans les découpes            : 0.000 s
+    * Nombre de pas de temps                            : 5
+    * Nombre d'itérations de Newton                     : 32
+    * Temps dans l'archivage                            : 0.021 s
+    * Temps dans le post-traitement                     : 0.028 s
+    * Temps total intégration comportement              : 10.348 s (64 intégrations)
+    * Temps total factorisation matrice                 : 26.883 s (32 factorisations)
+    * Temps construction second membre                  : 2.517 s
+    * Temps total résolution K.U=F                      : 1.218 s (32 résolutions)
+    * Temps appariement contact                         : 0.467 s (25 appariements)
+    * Temps préparation données contact                 : 0.101 s (32 préparations)
+    * Temps calculs élémentaires contact                : 0.296 s
+    * Temps assemblage matrice                          : 0.000 s
+    * Nombre de liaisons de contact                     : 11
+    * Nombre de cycles de type contact/pas contact      : 0
+    * Nombre de cycles de type glissement/adhérence     : 0
+    * Nombre de cycles de type glissement avant/arrière : 0
+    * Nombre de cycles de type point fixe contact       : 0
+#1      Resolution des systemes lineaires                 CPU (USER+SYST/SYST/ELAPS):    105.81     23.67     30.38
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):     32.93      9.56     13.63
+  # Memory (Mo):    815.05 /    532.90 /    149.03 /     54.31 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0017 user+syst:        144.93S (syst:         35.35S, Elaps:         46.05S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt67
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0018 Concept of the type:  evol_noli
+  # ------------------------------------------------------------------------------------------
+  resnonl = CALC_CHAMP(reuse=resnonl,
+                       RESULTAT=resnonl,
+                       PRECISION=1.E-06,
+                       CONTRAINTE=('SIEF_ELNO', 'SIEF_NOEU', 'SIGM_ELNO'),
+                       CRITERES=('SIEQ_NOEU', 'SIEQ_ELNO', 'SIEQ_ELGA'),
+                       CRITERE='RELATIF',
+                       INFO=1,)
+
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):      0.85      0.17      0.57
+  # Memory (Mo):    815.05 /    703.25 /    267.18 /     54.31 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0018 user+syst:          1.81S (syst:          0.27S, Elaps:          1.46S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt71
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0019 Concept of the type:  -
+  # ------------------------------------------------------------------------------------------
+  IMPR_RESU(FORMAT='MED',
+            UNITE=80,
+            VERSION_MED='3.3.1',
+            RESU=_F(RESULTAT=resnonl,
+                    INFO_MAILLAGE='NON',
+                    IMPR_NOM_VARI='OUI',),
+            PROC0='OUI',
+            INFO=1,)
+
+   
+   !---------------------------------------------------------------------------------------------------!
+   ! <A> <PREPOST3_7>                                                                                  !
+   !                                                                                                   !
+   !  Le fichier correspondant à l'unité logique renseignée pour l'écriture de résultats au format MED !
+   !  est de type ASCII. Cela peut engendrer l'affichage de messages intempestifs provenant de la      !
+   !  bibliothèque MED. Il n'y a toutefois aucun risque de résultats faux.                             !
+   !                                                                                                   !
+   !  Conseils : pour supprimer l'émission de ce message d'alarme, il faut donner la valeur BINARY au  !
+   !  mot-clé TYPE de DEFI_FICHIER."                                                                   !
+   !                                                                                                   !
+   !                                                                                                   !
+   ! This is a warning. If you do not understand the meaning of this                                   !
+   !  warning, you can obtain unexpected results!                                                      !
+   !---------------------------------------------------------------------------------------------------!
+   
+
+Création du fichier au format MED 3.3.1.
+
+ - > Your model seems to be made up of several modelizations, the components
+ of DEPL which do not exist for part of the model were
+ resettings. 
+ 
+ In certain cases, file MED produced can become bulky. In this case,
+ the use of key word NOM_CMP is advised. 
+  # Memory (Mo):    815.05 /    703.25 /    271.43 /     54.31 (VmPeak / VmSize / Optimum / Minimum)
+  # Fin orders No:  0019 user+syst:          2.09S (syst:          0.20S, Elaps:          2.09S)
+  # ------------------------------------------------------------------------------------------
+
+.. __stg1_txt73
+  # ------------------------------------------------------------------------------------------
+  # Commands No:  0020 Concept of the type:  -
+  # ------------------------------------------------------------------------------------------
+  FIN(FORMAT_HDF='NON',
+      RETASSAGE='NON',
+      INFO_RESU='OUI',
+      PROC0='OUI',
+      )
+
+   
+   !-----------------------------------------------------------------!
+   ! <I> <CATAMESS_89>                                               !
+   !                                                                 !
+   !  List of warnings emitted during the execution of computation.  !
+   !                                                                 !
+   !  Warnings which you chose to ignore of are preceded by (*).     !
+   !  Number of occurrences for each warning:                        !
+   !              PREPOST3_7           emitted    1 time             !
+   !-----------------------------------------------------------------!
+   
+
+ ======>
+
+ STRUCTURE DU CONCEPT resnonl  CALCULE POUR          6 NUMEROS D'ORDRE
+
+ LISTE DES NOMS SYMBOLIQUES:
+ ! ---------- !----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!
+ ! NUME_ORDRE !      DEPL      !   SIEF_ELGA    !   SIEF_ELNO    !   SIEF_NOEU    !   SIGM_ELNO    !   SIEQ_ELGA    !   SIEQ_ELNO    !   SIEQ_NOEU    !   VARI_ELGA    !  COMPORTEMENT  !   CONT_NOEU    !
+ ! ---------- !----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!
+ !          0 !     DEPL_R     !     SIEF_R     !     SIEF_R     !     SIEF_R     !     SIEF_R     !     SIEF_R     !     SIEF_R     !     SIEF_R     !     VARI_R     !     COMPOR     !     INFC_R     !
+ !        ... !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !
+ !          5 !     DEPL_R     !     SIEF_R     !     SIEF_R     !     SIEF_R     !     SIEF_R     !     SIEF_R     !     SIEF_R     !     SIEF_R     !     VARI_R     !     COMPOR     !     INFC_R     !
+ ! ---------- !----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!
+
+ LISTE DES NOMS DE VARIABLES D'ACCES:
+                                      INST             DE TYPE  R
+
+ LISTE DES NOMS DE PARAMETRES:
+ ! ---------- !----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!
+ ! NUME_ORDRE !    CARAELEM    !    CHAMPMAT    !     MODELE     !     EXCIT      !  ETA_PILOTAGE  !   ITER_GLOB    !   CHAR_MINI    ! TRAN_GENE_NOLI !
+ ! ---------- !----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!
+ !          0 !       K8       !       K8       !       K8       !      K24       !       R        !       I        !       R        !      K24       !
+ !        ... !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !      ...       !
+ !          5 !       K8       !       K8       !       K8       !      K24       !       R        !       I        !       R        !      K24       !
+ ! ---------- !----------------!----------------!----------------!----------------!----------------!----------------!----------------!----------------!
+ ---------------------------------------------------------------------------
+ Concepts de la base: G
+    Nom       Type                 Taille (Mo)         Nombre      Nombre de
+                                                     d'objets       segments
+    TOTAL                               241.24            445            610
+  
+    resnonl    EVOL_NOLI                208.32            272            317
+    oldmesh    MAILLAGE_SDASTER           2.06             34             53
+    model      MODELE_SDASTER             1.24              8             13
+    mater      MATER_SDASTER              0.00              5              5
+    fieldmat   CHAM_MATER                 0.00              6             11
+    listr      LISTR8_SDASTER             0.00              6              6
+    RAMP       FONCTION_SDASTER           0.00              4              4
+    load       CHAR_MECA                  1.09             28             53
+    contact    CHAR_CONTACT               1.24             37             42
+    &FOZERO                               0.00              2              2
+    &&_NUM_C                              0.00              1              1
+    &CATA.AC                              0.00              2              4
+    &CATA.CL                              0.60              1              3
+    &CATA.GD                              0.14              4             11
+    &CATA.ME                              0.20              2              4
+    &CATA.OP                              0.30              4             19
+    &CATA.PH                              0.00              1              1
+    &CATA.PR                              0.00              2              4
+    &CATA.TE                             26.03             17             42
+    &CATA.TH                              0.01              2              4
+    &CATA.TM                              0.01              7             11
+ ---------------------------------------------------------------------------
+
+
+     Nom de la base                          :  GLOBALE
+     Nombre d'enregistrements utilisés       :  376
+     Nombre d'enregistrements maximum        :  62914
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre total d'accès en lecture         :  71
+     Volume des accès en lecture             :         55.47 Mo.
+     Nombre total d'accès en écriture        :  440
+     Volume des accès en écriture            :        343.75 Mo.
+     Nombre d'identificateurs utilisés       :  633
+     Taille maximum du répertoire            :  2000
+     Pourcentage d'utilisation du répertoire :  31 %
+
+
+     Nom de la base                          :  VOLATILE
+     Nombre d'enregistrements utilisés       :  67
+     Nombre d'enregistrements maximum        :  62914
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre total d'accès en lecture         :  181
+     Volume des accès en lecture             :        141.41 Mo.
+     Nombre total d'accès en écriture        :  495
+     Volume des accès en écriture            :        386.72 Mo.
+     Nombre d'identificateurs utilisés       :  1187
+     Taille maximum du répertoire            :  2000
+     Pourcentage d'utilisation du répertoire :  59 %
+
+ <FIN> Arrêt normal dans "FIN".
+ <I> <FIN> ARRET NORMAL DANS "FIN" PAR APPEL A "JEFINI".
+
+ The memory requested from launching is over-estimated, it is of 10000.00 Mo. 
+ The peak report used is of 815.05 Mo. 
+ 
+
+
+     Nom de la base                          :  ELEMBASE
+     Nombre d'enregistrements utilisés       :  43
+     Nombre d'enregistrements maximum        :  512
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre total d'accès en lecture         :  60
+     Volume des accès en lecture             :         46.88 Mo.
+     Nombre total d'accès en écriture        :  0
+     Volume des accès en écriture            :          0.00 Mo.
+     Nombre d'identificateurs utilisés       :  123
+     Taille maximum du répertoire            :  300
+     Pourcentage d'utilisation du répertoire :  41 %
+  
+ <I> <FIN> MEMOIRE JEVEUX MINIMALE REQUISE POUR L'EXECUTION :                      54.31 Mo
+ <I> <FIN> MEMOIRE JEVEUX OPTIMALE REQUISE POUR L'EXECUTION :                     271.43 Mo
+ <I> <FIN> MAXIMUM DE MEMOIRE UTILISEE PAR LE PROCESSUS LORS DE L'EXECUTION :     815.05 Mo
+  
+ <I>       FERMETURE DES BASES EFFECTUEE
+  
+   STATISTIQUES CONCERNANT L'ALLOCATION DYNAMIQUE :
+     TAILLE CUMULEE MAXIMUM            :                  271  Mo.
+     TAILLE CUMULEE LIBEREE            :                  885  Mo.
+     NOMBRE TOTAL D'ALLOCATIONS        :               395834
+     NOMBRE TOTAL DE LIBERATIONS       :               395814
+     APPELS AU MECANISME DE LIBERATION :                    0
+     TAILLE MEMOIRE CUMULEE RECUPEREE  :                  288  Mo.
+     VOLUME DES LECTURES               :                    0  Mo.
+     VOLUME DES ECRITURES              :                  420  Mo.
+  
+   MEMOIRE JEVEUX MINIMALE REQUISE POUR L'EXECUTION :      54.31 Mo
+     - IMPOSE DE NOMBREUX ACCES DISQUE
+     - RALENTIT LA VITESSE D'EXECUTION
+   MEMOIRE JEVEUX OPTIMALE REQUISE POUR L'EXECUTION :     271.43 Mo
+     - LIMITE LES ACCES DISQUE
+     - AMELIORE LA VITESSE D'EXECUTION
+   MAXIMUM DE MEMOIRE UTILISEE PAR LE PROCESSUS     :     815.05 Mo
+     - COMPREND LA MEMOIRE CONSOMMEE PAR  JEVEUX, 
+       LE SUPERVISEUR PYTHON, LES LIBRAIRIES EXTERNES
+  
+ <I>       FIN D'EXECUTION LE : SA-15-MAI -2021 14:24:00
+
+
+  <I> Informations sur les temps d'exécution
+      Temps cpu user total                  114.08 s
+      Temps cpu systeme total                36.17 s
+      Temps elapsed total                    50.75 s
+      Temps restant                         759.25 s
+
+
+ The signup of the saved base is (with the address 0): 
+  0ea85f2b9827d3dc01215373fb8b27811f9fc74b 
+
+ ********************************************************************************
+ * COMMAND                  :       USER :     SYSTEM :   USER+SYS :    ELAPSED *
+ ********************************************************************************
+ * init (jdc)               :       0.28 :       0.03 :       0.31 :       0.31 *
+ *  . compile               :       0.00 :       0.00 :       0.00 :       0.00 *
+ *  . exec_compile          :       0.07 :       0.01 :       0.08 :       0.08 *
+ *  . report                :       0.00 :       0.00 :       0.00 :       0.00 *
+ *  . build                 :       0.00 :       0.00 :       0.00 :       0.00 *
+ * DEBUT                    :       0.01 :       0.02 :       0.03 :       0.04 *
+ * LIRE_MAILLAGE            :       0.48 :       0.01 :       0.49 :       0.50 *
+ * MODI_MAILLAGE            :       0.01 :       0.00 :       0.01 :       0.02 *
+ * AFFE_MODELE              :       0.04 :       0.02 :       0.06 :       0.01 *
+ * DEFI_MATERIAU            :       0.01 :       0.01 :       0.02 :       0.01 *
+ * AFFE_MATERIAU            :       0.01 :       0.00 :       0.01 :       0.00 *
+ * DEFI_LIST_REEL           :       0.01 :       0.00 :       0.01 :       0.00 *
+ * DEFI_FONCTION            :       0.00 :       0.00 :       0.00 :       0.00 *
+ * AFFE_CHAR_MECA           :       0.09 :       0.03 :       0.12 :       0.03 *
+ * DEFI_CONTACT             :       0.09 :       0.07 :       0.16 :       0.04 *
+ * STAT_NON_LINE            :     109.58 :      35.35 :     144.93 :      46.05 *
+ * CALC_CHAMP               :       1.54 :       0.27 :       1.81 :       1.46 *
+ * IMPR_RESU                :       1.89 :       0.20 :       2.09 :       2.09 *
+ * FIN                      :       0.04 :       0.15 :       0.19 :       0.20 *
+ *  . part Superviseur      :       0.31 :       0.08 :       0.39 :       0.37 *
+ *  . part Fortran          :     113.78 :      36.09 :     149.87 :      50.40 *
+ ********************************************************************************
+ * TOTAL_JOB                :     114.08 :      36.17 :     150.25 :      50.75 *
+ ********************************************************************************
+
+EXECUTION_CODE_ASTER_EXIT_26864=0

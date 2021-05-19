@@ -201,7 +201,7 @@ Body 1
   Material = 1
 End
 
-# Define shell solver definiton
+# Define shell solver definition
 Solver 1
   Equation = "Shell equations"
   Procedure = "ShellSolver" "ShellSolver"

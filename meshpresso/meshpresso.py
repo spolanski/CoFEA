@@ -351,7 +351,7 @@ class PartMesh(object):
         return list_of_nodes
 
     def get_elements_from_label_list(self, label_list):
-        """function to retreive the elements from list of
+        """function to retrieve the elements from list of
         elements labels.
 
         parameters
@@ -406,7 +406,7 @@ class PartMesh(object):
         temp_element_by_type = defaultdict(list)
         # iterate over all element types in the dict
         for el_type_name, el_values in self.elements_by_type.items():
-            # get new format for each type fo element
+            # get new format for each type of element
             new_el_type = element_library.convert_to_specific_format(general_format=el_type_name,
                                                                      output=new_format)
             # new_el_type = self.get_diff_format_for_el_type(old_el_type=el_type_name,
@@ -417,7 +417,7 @@ class PartMesh(object):
         self.elements_by_type = temp_element_by_type
     
     def reorder_nodes_in_el_definition(self, mesh_format):
-        """function used to reoder nodes. by default the node
+        """function used to reorder nodes. by default the node
         order is the same as in abaqus.
 
         parameters
@@ -802,7 +802,7 @@ class Mesh(object):
             surf_name, surf_value = surf_items
             # set temporary storage for nodes
             temp_surf_def = []
-            # for each element in surface definiton
+            # for each element in surface definition
             for e in surf_value['elements']:
                 # find list of pairs [(element type, [nd_1, nd_2, nd_3])]
                 el_surf_nodes = e.get_salome_nodes_from_three_dim_elements(surf_nodes=surf_value['nodes'])

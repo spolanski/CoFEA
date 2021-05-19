@@ -80,7 +80,7 @@ Sometimes this operation need root privileges so add sudo at the beginnings of t
 
 ## How to use ASTK with Code_aster
 
-Change your directory to the simulation directory. In this directory there should be solver input file (*.comm) and mesh file  Create two dummy files result.rmed (there will be the results of the simulation) and error.mess (logfile of the solver) and .astk file for ASTK enviroment. Use touch command:
+Change your directory to the simulation directory. In this directory there should be solver input file (*.comm) and mesh file  Create two dummy files result.rmed (there will be the results of the simulation) and error.mess (logfile of the solver) and .astk file for ASTK environment. Use touch command:
 
 ```
 touch result.rmed

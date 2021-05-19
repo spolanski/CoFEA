@@ -1,0 +1,106 @@
+Header
+  CHECK KEYWORDS Warn
+  Mesh DB "." "."
+  Include Path ""
+  Results Directory ""
+End
+
+Simulation
+  Max Output Level = 5
+  Coordinate System = Cartesian
+  Coordinate Mapping(3) = 1 2 3
+  Simulation Type = Steady state
+  Steady State Max Iterations = 1
+  Output Intervals = 1
+  Timestepping Method = BDF
+  BDF Order = 1
+  Solver Input File = case.sif
+  Post File = case.vtu
+End
+
+
+Constants
+  Gravity(4) = 0 -1 0 9.82
+End
+
+Body 1
+  Name = "Hertz"
+  Target Bodies(1) = 1
+  Equation = 1
+  Material = 1
+End
+
+Solver 1
+  Equation = "NonlinElast"
+  Procedure = "ElasticSolve" "ElasticSolver"
+!  Procedure = "StressSolve" "StressSolver"
+  Variable = -dofs 2 Displacement
+  Large Deflection = True
+  Nonlinear System Convergence Tolerance = 1.0e-5
+  Nonlinear System Max Iterations = 100
+  Linear System Solver = "Iterative"
+  Linear System Preconditioning = Ilu0
+  Linear System Residual Output = 10
+  Linear System Max Iterations = 100000
+  Linear System Iterative Method = Bicgstab
+  Linear System Convergence Tolerance = 1.0e-7
+  Calculate Stresses = Logical True
+  Linear System Residual Mode = True
+  Apply Contact BCs = Logical True
+  Nonlinear System Convergence Without Constraints = Logical True
+End
+
+Equation 1
+  Name = "Deformation"
+  Active Solvers(1) = 1 
+End
+
+Material 1
+  Name = "Material" 
+  Youngs modulus = 200000
+  Poisson ratio = 0.3
+End
+
+Boundary Condition 1
+  Name = "Contact"
+  Target Boundaries(1) = 5
+  Mortar BC = 5
+  !Mortar BC Nonlinear = Logical True
+  !Contact Depth Offset Initial = Real 1.0e-1
+  Contact Active Set Minimum = Integer 3
+
+! Create a projector by choosing a plane where to integrate
+  Plane Projector = Logical True
+! a) Use weak projector or not
+  Galerkin Projector = Logical False
+  Normal-Tangential Displacement = Logical True
+  Mass Consistent Normals = Logical True
+
+
+! b) Use more tailored projector able to do accurate integration
+  Level Projector = Logical True
+  Level Projector Generic = True
+  Contact Type = String friction
+End
+
+Boundary Condition 2
+  Name = "Symmetry Y"
+  Target Boundaries(1) = 2
+  Displacement 1 = 0.0
+End
+
+Boundary Condition 3
+  Name = "Symmetry X"
+  Target Boundaries(1) = 3
+  Displacement 2 = 0.0
+End
+
+Boundary Condition 4
+  Target Boundaries(1) = 4
+  Name = "BOT"
+  Normal Force = -10
+End
+
+Boundary Condition 5
+  Target Boundaries(1) = 6
+End
