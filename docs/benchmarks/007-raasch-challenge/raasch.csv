@@ -1,13 +1,13 @@
-1,Mesh type,Size,Code_Aster,Elmer,CalculiX
-2,Lin-Quad,Coarse,0.11792,0.03040,
-3,Lin-Quad,Fine,0.11845,0.05236,
-4,Lin-Quad,VeryFine,0.11665,0.12479,
-5,Lin-Tri,Coarse,0.11647,0.04035,
-6,Lin-Tri,Fine,0.11801,0.05559,
-7,Lin-Tri,VeryFine,0.11689,0.08452,
-8,Quad-Quad,Coarse,0.12967,,
-9,Quad-Quad,Fine,0.12785,,
-10,Quad-Quad,VeryFine,0.12762,,
-11,Quad-Tri,Coarse,0.12947,,
-12,Quad-Tri,Fine,0.12785,,
-13,Quad-Tri,VeryFine,0.12765,,
+1,Mesh type,Size,CalculiX,Code_Aster,Elmer
+2,Lin-Quad,Coarse,0.12578,0.11792,0.0304
+3,Lin-Quad,Fine,0.12704,0.11845,0.05236
+4,Lin-Quad,VeryFine,0.12867,0.11665,0.12479
+5,Lin-Tri,Coarse,0.01716,0.11647,0.04035
+6,Lin-Tri,Fine,0.03624,0.11801,0.05559
+7,Lin-Tri,VeryFine,0.06773,0.11689,0.08452
+8,Quad-Quad,Coarse,0.12857,0.12967,
+9,Quad-Quad,Fine,0.12954,0.12785,
+10,Quad-Quad,VeryFine,0.13031,0.12762,
+11,Quad-Tri,Coarse,0.12732,0.12947,
+12,Quad-Tri,Fine,0.13108,0.12785,
+13,Quad-Tri,VeryFine,0.13176,0.12765,

@@ -57,7 +57,7 @@ width: 400px
 alt: Raasch challenge test
 name: Raasch challenge test
 ---
-Sketch of the Raasch challenge test
+Sketch of the Raasch challenge test (width=0.508m)
 ```
 
 ## Target solution
