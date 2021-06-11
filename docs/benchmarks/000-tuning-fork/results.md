@@ -86,7 +86,7 @@ for n, label in enumerate(csv_file.columns[1:]):
     ))
 
 # modify the tickangle of the xaxis, resulting in rotated labels.
-fig.update_layout(barmode='group', xaxis_tickangle=-45)
+# fig.update_layout(barmode='group', xaxis_tickangle=-45)
 fig.show()
 ```
 

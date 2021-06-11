@@ -3,7 +3,7 @@
 ## Conclusions
 ### Calculix
 
-Initial tests with S4R elements revealed that Calculix is not able to capture the behaviour correctly, even for fine mesh. However, it turns out that for the presented loadcase, the wrong displacement value was caused by the reduced integration scheme. Calculix is able to predict the correct response once the fully integrated elements are used.
+Some initial tests with the S4R elements revealed that Calculix is not able to capture the behaviour correctly (even for the fine mesh). However, it turns out that for the presented loadcase, the wrong displacement value was caused by the reduced integration scheme. Calculix is able to predict the correct response once the fully integrated elements are used.
 
 This study also revealed that it is not possible within the Calculix solver to directly impose a load distributed over an edge. However, one can use a third party software called [PrePoMax](http://lace.fs.uni-mb.si/wordpress/borovinsek/) that allows to define the surface traction load on an edge, which is converted into *CLOAD keyword afterwards.
 

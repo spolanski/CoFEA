@@ -1,0 +1,9 @@
+Mesh type,Size,Calculix,Code_Aster,Elmer
+Lin-Tri,Coarse,33.79,33.58,39.37
+Lin-Tri,Fine,54.84,54.88,65.19
+Lin-Quad,Coarse,69.62,70.49,75.33
+Lin-Quad,Fine,85.55,85.4,86.91
+Quad-Tri,Coarse,73.09,73.13,69.26
+Quad-Tri,Fine,88.42,88.33,85.46
+Quad-Quad,Coarse,85.85,87,89.65
+Quad-Quad,Fine,92.99,92.21,93.78
