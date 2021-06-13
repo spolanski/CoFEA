@@ -1,7 +1,7 @@
-# Benchmark name
+# Example model
 
 ```{toctree}
 model
 results
-solver name
+tested-codes
 ```
