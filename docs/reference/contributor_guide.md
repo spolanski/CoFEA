@@ -9,7 +9,7 @@ Here is a quick introduction on how to start contributing to the CoFEA Initiativ
 
 ## Documentation contribution
 
-Your journey as a contributor should start with getting the copy CoFEA docs onto your hard-drive. It is actually very simple to recreate the website locally. You can do it by running folowing commands from terminal:
+Your journey as a contributor should start with getting the copy CoFEA docs onto your hard-drive. It is actually very simple to recreate the website locally. You can do it by running following commands from terminal:
 
 ```bash
 # Install python3.7 version; skip the step if you have it

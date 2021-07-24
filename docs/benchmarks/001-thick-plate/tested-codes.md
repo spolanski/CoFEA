@@ -122,7 +122,7 @@ for ind, mesh_num in enumerate(mesh_nums.keys()):
                                   );  			
 
     # Create groups of nodes according to all groups of elements
-    # Additionaly create group with one node for comparison the results
+    # Additionally create group with one node for comparison the results
     mesh_list[ind] = DEFI_GROUP(
                                 reuse = mesh_list[ind],
                                 MAILLAGE = mesh_list[ind],
@@ -225,7 +225,7 @@ for ind, mesh_num in enumerate(mesh_nums.keys()):
     resi=ResD.EXTR_TABLE()
     mesh_nums[mesh_num].append("{:e}".format(resi.SIYY.values()[0]))
 
-    # Additionaly prepare mesh output enriched with fields of displacement, stresses in gauss points, and  stresses extrapolated to nodes
+    # Additionally prepare mesh output enriched with fields of displacement, stresses in gauss points, and  stresses extrapolated to nodes
     IMPR_RESU(
               FORMAT = 'MED',
               UNITE = 80,

@@ -163,8 +163,8 @@ Regular_1Dd = mesh_s2.Segment(geom=groups_edges["d3"]).NumberOfSegments(1*MESH_M
 
 mesh_s2.Compute()
 
-# Rename groups to be consistent with bechmark meshes
-# Create groups of entities on mesh and use name to be consistent with bechmark meshes
+# Rename groups to be consistent with benchmark meshes
+# Create groups of entities on mesh and use name to be consistent with benchmark meshes
 mesh_s2.GroupOnGeom(group_of_faces["Pressure"], "E_2_DIST", SMESH.FACE)
 mesh_s2.GroupOnGeom(group_of_faces["Uy"], "N_4_DC", SMESH.FACE)
 mesh_s2.GroupOnGeom(group_of_faces["Ux"], "N_2_AB", SMESH.FACE)

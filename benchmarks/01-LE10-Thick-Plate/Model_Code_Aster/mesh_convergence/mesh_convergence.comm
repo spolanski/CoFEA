@@ -22,7 +22,7 @@ mesh = LIRE_MAILLAGE(
                   );
 
 # Create groups of nodes according to all groups of elements
-# Additionaly create group with one node for comparison the results
+# Additionally create group with one node for comparison the results
 mesh = DEFI_GROUP(
                 reuse = mesh,
                 MAILLAGE = mesh,
@@ -133,7 +133,7 @@ resi=ResD.EXTR_TABLE()
 value_SIYY_D = resi.SIYY.values()[0]
 #mesh_nums[mesh_num].append("{:e}".format(resi.SIYY.values()[0]))
 
-# Additionaly prepare mesh output enriched with fields of displacement, stresses in gauss points, and  stresses extrapolated to nodes
+# Additionally prepare mesh output enriched with fields of displacement, stresses in gauss points, and  stresses extrapolated to nodes
 # IMPR_RESU(
 #           FORMAT = 'MED',
 #           UNITE = 80,

@@ -38,7 +38,7 @@ def run_elmer(input_file, directory):
     #os.mkdir("Results/" + directory)
 
 
-    # Run the Elmer solver with ElmerSolver commnad
+    # Run the Elmer solver with ElmerSolver command
     call_elmer = "ElmerSolver " + input_file
     subprocess.call([call_elmer], shell = True)
 

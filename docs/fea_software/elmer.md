@@ -6,7 +6,7 @@
 ```
 
 ## Setup and compilation from source
-Instalation process of ElmerGUI is straightforward. It is needed to add Elmer sources and then just download the package. To do so please use following commands:
+Installation process of ElmerGUI is straightforward. It is needed to add Elmer sources and then just download the package. To do so please use following commands:
 
 
 ```
