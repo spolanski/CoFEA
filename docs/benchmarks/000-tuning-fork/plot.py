@@ -17,6 +17,7 @@ def mesh_study():
     ccx_values = mesh_type['Calculix'].tolist()
     code_aster_values = mesh_type['Code_Aster'].tolist()
     elmer_values = mesh_type['Elmer'].tolist()
+    getfem_values = mesh_type['GetFEM'].tolist()
     x = np.arange(len(labels))  # the label locations
 
     width = 0.2  # the width of the bars
@@ -25,8 +26,9 @@ def mesh_study():
     ax.bar(x - 0.2, ccx_values, width, label='Calculix')
     ax.bar(x, code_aster_values, width, label='Code_Aster')
     ax.bar(x + 0.2, elmer_values, width, label='Elmer')
+    ax.bar(x + 0.4, getfem_values, width, label='GetFEM')
 
-    target_value_x = [-1.5 * width, len(mesh_type) - 1 + 1.5 * width]
+    target_value_x = [-1.5 * width, len(mesh_type) - 1 + 2.5 * width]
     ax.plot(target_value_x, 440.0 * np.ones_like(target_value_x), c='black',
             ls=('dashed'), label='Target 440Hz')
 
@@ -51,6 +53,7 @@ def code_comparison():
     ccx_values = results['Calculix'].tolist()
     code_aster_values = results['Code_Aster'].tolist()
     elmer_values = results['Elmer'].tolist()
+    getfem_values = results['GetFEM'].tolist()
     commercial = results['Commercial code'].tolist()
     mofem = results['MoFEM'].tolist()
     x = np.arange(len(labels))  # the label locations
@@ -63,6 +66,7 @@ def code_comparison():
     ax.bar(x + (0.5 * width), elmer_values, width, label='Elmer')
     ax.bar(x + (1.5 * width), commercial, width, label='Commercial')
     ax.bar(x + (2.5 * width), mofem, width, label='MoFEM')
+    ax.bar(x + (3.5 * width), getfem_values, width, label='GetFEM')
 
     # target_value_x = [-1.5 * width, len(results) - 1 + 1.5 * width]
     # ax.plot(target_value_x, 440.0 * np.ones_like(target_value_x), c='black',
@@ -81,5 +85,5 @@ def code_comparison():
     plt.show()
     
 if __name__ == "__main__":
-    # mesh_study()
+    mesh_study()
     code_comparison()
