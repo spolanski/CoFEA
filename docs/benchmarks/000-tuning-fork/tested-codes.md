@@ -199,4 +199,4 @@ Users who would like to check how the MoFEM model was created are advised to loo
 
 ## GetFEM
 
-.. literalinclude:: tuning_fork.py
+.. include:: tuning_fork.py
