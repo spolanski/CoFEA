@@ -197,4 +197,6 @@ The simulation input file used in this study can be found on our [GitHub](https:
 
 Users who would like to check how the MoFEM model was created are advised to look into the MoFEM tutorials section [VEC-1: Eigen elastic](http://mofem.eng.gla.ac.uk/mofem/html/tutorial_eigen_elastic.html)
 
+## GetFEM
 
+.. literalinclude:: ../../../benchmarks/00-Tuning-Fork/MODEL_GetFEM/tuning_fork.py
