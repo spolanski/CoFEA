@@ -1,4 +1,4 @@
-# Raasch challenge test
+# Hertz contact
 
 ```{toctree}
 model
