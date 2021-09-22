@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://cofea.readthedocs.io</id>
+  <title>Blog</title>
+  <updated>2021-09-22T20:45:45.671137+00:00</updated>
+  <link href="https://cofea.readthedocs.io"/>
+  <link href="https://cofea.readthedocs.io/reference/blog/atom.xml"/>
+  <generator uri="https://ablog.readthedocs.org" version="0.10.12">ABlog</generator>
+  <entry>
+    <id>https://cofea.readthedocs.io/reference/blog/2020-12-10.html</id>
+    <title>Engineering simulations without limits. The origin of CoFEA Initiative ☕</title>
+    <updated>2020-10-12T00:00:00+02:00</updated>
+    <author>
+      <name>Slawomir Polanski</name>
+    </author>
+    <content type="html">&lt;p&gt;Although the numerical simulations have been available for engineers for more than 50 years, I don’t feel they are as popular as they deserve to be. Some software vendors want to ‘democratize’ the simulation by simplifying its usage. It might be a way to make simulations more popular, but I am not sure if the term ‘democratization’ is the right word. As far as I remember the economic status should not matter in a real democracy, but it does matter in the proposed type of democratization. It is very likely that more engineers would use simulations if they weren’t that expensive. There is also another flip side of this approach… How much the developers can simplify the usage of software before it becomes a black-box solution? I bet some people would even argue that any software which is not open-source is essentially a black-box, but I am not that strict with the rules.&lt;/p&gt;
+
+    &lt;script type="text/x-thebe-config"&gt;
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./reference"
+        },
+        predefinedOutput: true
+    }
+    &lt;/script&gt;
+    &lt;script&gt;kernelName = 'python3'&lt;/script&gt;</content>
+    <link href="https://cofea.readthedocs.io/reference/blog/2020-12-10.html" rel="alternate"/>
+    <published>2020-10-12T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>https://cofea.readthedocs.io/reference/blog/2021-04-01.html</id>
+    <title>April 2021</title>
+    <updated>2021-04-01T00:00:00+02:00</updated>
+    <author>
+      <name>Slawomir Polanski &amp; Maciej Dudek</name>
+    </author>
+    <content type="html">&lt;p&gt;Few months have passed since the last update from CoFEA Initiative, but it does not mean nothing has been done. Quite contrary! We tested five models, improved the website and connected some dots to establish a simulation workflow based on available open-source software.&lt;/p&gt;
+
+    &lt;script type="text/x-thebe-config"&gt;
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./reference"
+        },
+        predefinedOutput: true
+    }
+    &lt;/script&gt;
+    &lt;script&gt;kernelName = 'python3'&lt;/script&gt;</content>
+    <link href="https://cofea.readthedocs.io/reference/blog/2021-04-01.html" rel="alternate"/>
+    <published>2021-04-01T00:00:00+02:00</published>
+  </entry>
+</feed>
