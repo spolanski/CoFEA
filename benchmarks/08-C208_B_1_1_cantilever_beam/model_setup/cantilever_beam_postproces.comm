@@ -1,0 +1,318 @@
+POURSUITE(
+          PAR_LOT='NON',
+          LANG='IN',
+         );
+
+import numpy as np
+
+vari_elno_noeu = False
+epeq_elno = False
+sieq_elga = True
+reaction = False
+
+if vari_elno_noeu:
+    results  = CALC_CHAMP(
+                		  reuse = results,
+                		  RESULTAT = results,
+            		      GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+            		      VARI_INTERNE = ('VARI_ELNO',));
+            		      
+            		      
+    pl_res = [None]*lpCal;
+    for i in range(lpCal):
+    	pl_res[i] = POST_CHAMP(
+        		    	       RESULTAT = results,
+        		    	       TOUT_ORDRE='OUI',
+        		    	       GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+        		    	       EXTR_COQUE = (
+                    					     _F(
+                    				  	        NOM_CHAM = ('VARI_ELNO',),
+                    				  	        NUME_COUCHE = i+1,
+                    				  	        NIVE_COUCHE = 'INF',
+                     			 	 	       ),
+                    			       	    ),
+            		  	      );
+    
+    
+    	pl_res[i] = CALC_CHAMP(
+        		    	       reuse = pl_res[i],
+        		    	       RESULTAT = pl_res[i],
+        		    	       GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+        		    	       VARI_INTERNE = 'VARI_NOEU',
+        		   	      );
+    
+    
+    	IMPR_RESU(
+                  FORMAT = 'MED',
+                  UNITE = 80,
+            	  RESU = (
+                          _F(
+                    		 MAILLAGE = qu9_mesh,
+                    		 RESULTAT = pl_res[i],		  
+                		     NOM_CHAM = ('VARI_NOEU', 'VARI_ELNO'),
+                		    ),
+                	     ),
+             	 );     
+                    		      
+
+if epeq_elno:
+
+    results  = CALC_CHAMP(
+                		  reuse = results,
+                		  RESULTAT = results,
+            		      GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+            		      CRITERES = ('EPEQ_ELNO', )
+            		     );
+
+    res_epeq_elno = [None]*lpCal;
+
+    for i in range(lpCal):
+        res_epeq_elno[i] = POST_CHAMP(
+                		    	     RESULTAT = results,
+                		    	     TOUT_ORDRE = 'OUI',
+                		    	     GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+                		    	     EXTR_COQUE = _F(
+                            				  	     NOM_CHAM = ('EPEQ_ELNO', ),
+                            				  	     NUME_COUCHE = i+1,
+                            				  	     NIVE_COUCHE = 'MOY',
+                             			 	 	    ),
+                		  	   );            		     
+
+        res_epeq_elno[i] = CALC_CHAMP(
+                		    	      reuse = res_epeq_elno[i],
+                		    	      RESULTAT = res_epeq_elno[i],
+                		    	      GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+                		    	      CRITERES = ('EPEQ_NOEU'),
+                		   	         );
+
+        IMPR_RESU(
+                  FORMAT='MED',
+                  UNITE=80,
+            	  RESU = _F(
+                		    MAILLAGE = qu9_mesh,
+                		    RESULTAT = res_epeq_elno[i],		  
+                		    NOM_CHAM = ('EPEQ_ELNO', 'EPEQ_NOEU'),
+                		   ),
+             	 );                        		     
+
+
+if sieq_elga:
+
+    results  = CALC_CHAMP(
+                		  reuse = results,
+                		  RESULTAT = results,
+            		      GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+            		      CRITERES = ('SIEQ_ELGA', )
+            		     );
+
+
+    sieq_max = POST_CHAMP(
+            	    	  RESULTAT = results,
+        	    	      TOUT_ORDRE='OUI',
+        	    	      GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+        	    	      MIN_MAX_SP = (
+                    			        _F(
+                        			  	   NOM_CHAM=('SIEQ_ELGA',),	#tylko SIEQ_ELGA dziala z SIEQ
+                        				   NOM_CMP=('VMIS'),
+                        			  	   TYPE_MAXI='MAXI',
+                        				   NUME_CHAM_RESU=1,
+                        		 	 	  ),
+                    	       	 	   ),
+                         );
+		   	      
+    IMPR_RESU(
+              FORMAT = 'MED',
+              UNITE = 80,
+        	  RESU = (_F(
+            		    MAILLAGE = qu9_mesh,
+            		    RESULTAT = sieq_max,		  
+            		   ),
+            		   )
+         	 );
+ 	 
+ 	 
+"""
+Res_SQ=[None]*lpCal;
+Res_PQ=[None]*lpCal;
+
+for i in np.arange(0,lpCal,1):	#zrob wektor o dlugosci liczby pkt. calkowania
+	Res_SQ[i]=POST_CHAMP(
+		    	     RESULTAT=results,
+		    	     TOUT_ORDRE='OUI',
+		    	     GROUP_MA=('vertical_plate', 'horizontal_plate'),
+		    	     EXTR_COQUE=(
+					 _F(
+				  	    NOM_CHAM=('SIGM_ELNO', 'VARI_ELNO'),
+				  	    NUME_COUCHE=i+1,
+				  	    NIVE_COUCHE='MOY',  #MOY
+ 			 	 	   ),
+			       	 	),
+		  	   );
+
+	Res_SQ[i]=CALC_CHAMP(
+		    	       reuse=Res_SQ[i],
+		    	       RESULTAT=Res_SQ[i],
+		    	       GROUP_MA=('vertical_plate', 'horizontal_plate'),
+		    	       CRITERES= ('SIEQ_NOEU',),
+		   	      );
+
+    Res_PQ[i]=POST_CHAMP(
+		    	       RESULTAT=results,
+		    	       TOUT_ORDRE='OUI',
+		    	       GROUP_MA=('vertical_plate', 'horizontal_plate'),
+		    	       EXTR_COQUE=(
+					   _F(
+				  	      NOM_CHAM= (#'VARI_ELNO', 
+            				  	      #'ESPI_ELNO',
+            				  	      'SIGM_ELNO'
+            				  	      ),
+				  	      NUME_COUCHE=i+1,
+				  	      NIVE_COUCHE='INF',  #MOY
+ 			 	 	     ),
+			       	 	  ),
+		  	     );
+
+
+    Res_PQ[i]=CALC_CHAMP(
+		    	       reuse=Res_PQ[i],
+		    	       RESULTAT=Res_PQ[i],
+		    	       GROUP_MA=('vertical_plate', 'horizontal_plate'), #TOUT='OUI',
+		    	       # CRITERES = 'EPEQ_NOEU',
+		    	       VARI_INTERNE= ('VARI_NOEU', ),
+		   	      );
+
+
+    IMPR_RESU(
+          FORMAT='MED',
+          UNITE=82,
+	  RESU=(
+		#_F(
+		#   MAILLAGE=qu9_mesh ,
+		#   RESULTAT=Res_SQ[i],		  
+		#   NOM_CHAM=('SIEQ_NOEU',),
+		#  ),
+		_F(
+		   MAILLAGE=qu9_mesh,
+		   RESULTAT=Res_PQ[i],		  
+		   NOM_CHAM=('VARI_NOEU', )#'EPEQ_NOEU'),
+		  ),
+	       ),
+ 	 );
+
+"""
+
+
+"""
+MeshQ1=CREA_MAILLAGE(
+		    MAILLAGE=Mesh,
+                    QUAD_LINE=(
+				 _F(
+				    TOUT='OUI',
+				   ),
+				),
+		   );
+
+MeshQ=CREA_MAILLAGE(
+		    MAILLAGE=MeshQ1,
+                    LINE_QUAD=(
+				 _F(
+				    TOUT='OUI',
+				   ),
+				),
+		   );
+
+
+ModelDep=AFFE_MODELE(
+		     MAILLAGE=MeshQ,
+                     AFFE=_F(
+			     TOUT='OUI',
+                             PHENOMENE='MECANIQUE',
+                             MODELISATION='3D',
+			    ),
+		    );
+
+
+FielDep=PROJ_CHAMP(
+		   RESULTAT=Wyniki,
+                   MODELE_1=Model,
+                   MODELE_2=ModelDep,
+		  );
+
+
+IMPR_RESU(
+          FORMAT='MED',
+          UNITE=81,
+	  RESU=(
+		_F(
+		   MAILLAGE=MeshQ,
+		   RESULTAT=FielDep,		  
+		   NOM_CHAM=('DEPL'),
+		  ),
+	       ),
+ 	 );
+
+
+
+
+
+
+DepVal=POST_RELEVE_T(
+   		  ACTION=(
+      			  _F(
+			     INTITULE='Depl', 
+			     OPERATION='EXTRACTION', 
+			     RESULTAT=Wyniki,
+         		     NOM_CHAM='DEPL', 
+			     NOM_CMP=('DX','DY','DZ',), 
+			     NOEUD='N1181',
+			    ),
+   			 ),
+		 );
+
+IMPR_TABLE(TABLE=DepVal,UNITE=51)
+"""
+
+#####################
+#	TABELE
+#####################
+
+if reaction:
+    results  = CALC_CHAMP(
+                		  reuse = results,
+                		  RESULTAT = results,
+            		      GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+            		      FORCE = 'REAC_NODA',
+            		     );
+    
+    
+    nod_for  = POST_RELEVE_T(
+                   		     ACTION = (
+                          			   _F(
+                        			      INTITULE = 'Rea', 
+                        			      OPERATION = 'EXTRACTION', 
+                        			      RESULTAT = results,
+                             		      NOM_CHAM='REAC_NODA', 
+                        			      RESULTANTE=('DX','DY','DZ'), 
+                        			      GROUP_NO=('restraint'),
+                        			     ),
+                           			  ),
+                		    );
+    
+    IMPR_TABLE(TABLE=nod_for,UNITE=50)
+    
+    nod_form = POST_RELEVE_T(
+                   		     ACTION = (
+                          			   _F(
+                        			      INTITULE = 'Rea', 
+                        			      OPERATION = 'MOYENNE_ARITH', 
+                        			      RESULTAT = results,
+                             		      NOM_CHAM='REAC_NODA', 
+                        			      #RESULTANTE=('DX','DY','DZ',), 
+                        			      GROUP_NO=('restraint'),
+                        			     ),
+                           			  ),
+                		    );
+    
+    IMPR_TABLE(TABLE=nod_form,UNITE=51)
+
+FIN();

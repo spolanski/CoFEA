@@ -1,0 +1,328 @@
+DEBUT(
+      PAR_LOT='NON',
+      LANG='IN',
+     );
+
+import numpy as np
+
+# User inputs:
+current_path = r"/home/filon/salome_projects/C208/master/model_setup"
+create_modified_mesh = False
+##
+
+
+qu4_mesh = LIRE_MAILLAGE(
+        		         UNITE=20,
+                         FORMAT='MED',
+            		    );
+
+qu4_mesh = DEFI_GROUP(
+            		  reuse = qu4_mesh,
+            		  MAILLAGE = qu4_mesh,
+            		  CREA_GROUP_NO = (
+                 				       _F(
+                 				          NOM = 'force_no',
+                 				          GROUP_MA = 'force',
+                 				         ),
+                 				      ),
+ 				     );
+
+qu8_mesh = CREA_MAILLAGE(
+                          MAILLAGE = qu4_mesh,
+                          LINE_QUAD = _F(
+                                         TOUT = 'OUI',
+                                         PREF_NOEUD = 'NQ',
+                                        ),
+                         );
+
+qu9_mesh = CREA_MAILLAGE(
+                         MAILLAGE = qu8_mesh,
+                         MODI_MAILLE = _F(
+                                          TOUT = 'OUI',
+                                          OPTION = 'QUAD8_9',
+                                          PREF_NOEUD = 'NT'
+                                         ),
+                        );
+
+qu9_mesh = DEFI_GROUP(
+            		  reuse = qu9_mesh,
+            		  MAILLAGE = qu9_mesh,
+            		  CREA_GROUP_NO = (
+                 				       _F(TOUT_GROUP_MA = 'OUI',),
+                 				      ),
+ 				     );
+
+
+qu9_mesh = MODI_MAILLAGE(
+        		         reuse = qu9_mesh,
+                         MAILLAGE = qu9_mesh,
+                         ORIE_NORM_COQUE = _F(
+                        					  GROUP_MA = (
+                            						      'horizontal_plate','vertical_plate',
+                        						         ),
+                        					 ),
+        		        );
+
+
+model    = AFFE_MODELE(	
+        		       MAILLAGE = qu9_mesh,
+                       AFFE = (
+                               _F(
+                			      TOUT = 'OUI',
+                                  PHENOMENE = 'MECANIQUE',
+                                  MODELISATION = 'COQUE_3D',
+                			     ),
+                		       _F(
+                			      GROUP_MA = ('aux_point'),		
+                			      PHENOMENE = 'MECANIQUE',
+                			      MODELISATION = 'DIS_TR',
+                			     ),            			      
+        			          ),
+        		      );
+
+
+##############################
+lpCal=5
+##############################
+
+th_shell = AFFE_CARA_ELEM(
+                		  MODELE = model,
+                          COQUE = (
+                                  _F(
+                                     GROUP_MA='horizontal_plate',
+                                     EPAIS=40.0,
+                                     COQUE_NCOU=lpCal,
+                                     ANGL_REP=(0.0,90.0),
+                                    ),
+                                  _F(
+                                     GROUP_MA='vertical_plate',
+                                     EPAIS=8.0,
+                                     COQUE_NCOU=lpCal,
+                                     ANGL_REP=(0.0,0.0),
+                                    ),
+        			             ),
+		        DISCRET=(
+		                 _F(
+		                 REPERE='GLOBAL',
+		                 CARA='K_TR_D_N',
+		                 GROUP_MA=('aux_point',),
+		                 VALE=(0.0001,0.0001,0.0001,0.0001,0.0001,0.0001,),
+		                 ), 	
+			           ),         			             
+        		        );
+
+coef_cor16= 319.5e-3 / 210.0
+
+steel16f = DEFI_FONCTION(
+                         NOM_PARA = 'EPSI',
+                         NOM_RESU = 'SIGMA',
+                         VALE = (
+                                 0.000 + coef_cor16, 319.5e-3,                         
+                                 0.004 + coef_cor16, 355.0e-3,
+                                 0.020 + coef_cor16, 358.4e-3,
+                                 0.150 + coef_cor16, 470.0e-3,
+                                 0.300 + coef_cor16, 470.0e-3,
+                                ),
+                         INTERPOL = 'LIN',
+                         PROL_DROITE = 'LINEAIRE',
+                         PROL_GAUCHE = 'LINEAIRE',
+                        );
+
+
+steel16  = DEFI_MATERIAU(
+            			 ELAS = _F(
+                         		   E = 210.0,
+                                   NU = 0.3,
+            			          ),
+    			         TRACTION = _F(
+                			           SIGM = steel16f,
+                			          ),            			          
+        		        );
+
+coef_cor40= 310.5e-3 / 210.0
+
+steel40f = DEFI_FONCTION(
+                         NOM_PARA='EPSI',
+                         NOM_RESU='SIGMA',
+                         VALE=(
+                                 0.000 + coef_cor40, 310.5e-3,                         
+                                 0.004 + coef_cor40, 345.0e-3,
+                                 0.020 + coef_cor40, 348.4e-3,
+                                 0.150 + coef_cor40, 470.0e-3,
+                                 0.300 + coef_cor40, 470.0e-3,
+                              ),
+                        INTERPOL = 'LIN',
+                        PROL_DROITE = 'LINEAIRE',
+                        PROL_GAUCHE = 'LINEAIRE',
+                       );
+
+steel40  = DEFI_MATERIAU(
+            			 ELAS = _F(
+                         		   E = 210.0,
+                                   NU = 0.3,
+            			          ),
+    			         TRACTION = _F(
+                			           SIGM = steel40f,
+                			          ),
+        		        );
+
+as_mat   = AFFE_MATERIAU(
+        		         MAILLAGE = qu9_mesh,
+                         AFFE = (
+                                 _F(
+                			        GROUP_MA = 'vertical_plate',
+                                    MATER = steel16,
+                			       ),
+            			         _F(
+                 			        GROUP_MA = 'horizontal_plate',
+                                    MATER = steel40,
+                 			       ),
+            			        )
+        		        );
+
+
+restr    = AFFE_CHAR_MECA(
+            			  MODELE = model,
+                          DDL_IMPO = (
+                    				  _F(
+                    				     GROUP_NO = 'restraint',
+                                         DX = 0.0, DRX = 0.0,
+                                         DY = 0.0, DRY = 0.0,
+                                         DZ = 0.0, DRZ = 0.0,
+                    				    ),
+                 		      		 ),
+     		      		 LIAISON_SOLIDE=_F(GROUP_NO=('aux_point','force_no'))
+        		         );
+
+
+force_f  = DEFI_FONCTION(
+                         NOM_PARA = 'INST',
+                         VALE = (
+            			         0.0 ,0.0 ,
+                                 1.0 ,1.0 ,
+            			        ),
+        		        );
+
+
+VALUE_N = 500.0 * 2
+VALUE_P = -0.15 * VALUE_N
+VALUE_M = -0.45 * VALUE_N
+
+force    = AFFE_CHAR_MECA(
+                		  MODELE=model,
+                          FORCE_NODALE = _F(
+                        					GROUP_NO = 'aux_point',
+                                            FY = VALUE_P,
+                                            FX = VALUE_N,
+                                            MZ = VALUE_M
+                    				       ),
+        		         );
+
+if create_modified_mesh:
+    DEFI_FICHIER(
+            	 ACTION = 'ASSOCIER',
+                 UNITE = 71,
+                 FICHIER = current_path + '/qu9_mesh.med',
+                 TYPE = 'ASCII',
+                 ACCES = 'NEW',
+                );
+
+    IMPR_CONCEPT(
+                 UNITE = 71,
+                 FORMAT = 'MED',
+                 CONCEPT = _F(
+                              CARA_ELEM = th_shell, 
+                              REPERE_LOCAL = 'ELEM',
+                              MODELE=model,
+                             ),
+                );
+
+vec_step = np.arange(0.0, 1.1, 0.1)
+
+vec_ca   = DEFI_LIST_REEL(VALE = vec_step,);
+
+time     = DEFI_LIST_INST(
+                          METHODE = 'MANUEL',
+            			  DEFI_LIST = _F(
+                                         LIST_INST = vec_ca,
+                    				    ),
+                          #ECHEC = _F(
+                    		#		 EVENEMENT='ERREUR',
+                             #    	 SUBD_PAS=2,
+                              #   	 SUBD_NIVEAU=2,
+                               #  	 SUBD_PAS_MINI=0.0,
+                                # 	 PCENT_ITER_PLUS=20,
+                                 #	 SUBD_METHODE='MANUEL',
+                                 #	 ACTION='ITER_SUPPL',
+                                 #	),
+                          INFO=1,
+        		         );
+
+
+War_ITER_INTE_MAXI = 20;
+Wsp_RESI_INTE_RELA = 1e-05;
+Wsp_RESI_CPLAN_RELA = 1e-05;
+War_ITER_GLOB_MAXI = 20;
+Wsp_RESI_GLOB_RELA = 1e-05;
+try:
+    results  = STAT_NON_LINE(
+            		         MODELE = model,
+                             CHAM_MATER = as_mat,
+                             CARA_ELEM = th_shell,
+                             EXCIT = (
+                    			      _F(CHARGE = restr,),
+                                      _F(
+                                         CHARGE = force,
+                                         FONC_MULT = force_f,
+                                        ),
+                                     ),
+                             COMPORTEMENT = ( 
+                                             _F(
+                                                GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+                        				        RELATION = 'VMIS_ISOT_TRAC', 
+                                                DEFORMATION = 'GROT_GDEP',
+                                                #RESI_CPLAN_RELA=Wsp_RESI_CPLAN_RELA,
+                                                #ITER_CPLAN_MAXI=1,
+                                                #RESI_INTE_RELA=Wsp_RESI_INTE_RELA,
+                                                #ITER_INTE_MAXI=War_ITER_INTE_MAXI,
+                                               ),
+                                             _F(
+                                                GROUP_MA = 'aux_point',
+                        				        RELATION = 'ELAS', 
+                                                DEFORMATION = 'PETIT', 
+                                                #RESI_CPLAN_RELA=Wsp_RESI_CPLAN_RELA,
+                                                #ITER_CPLAN_MAXI=1,
+                                                #RESI_INTE_RELA=Wsp_RESI_INTE_RELA,
+                                                #ITER_INTE_MAXI=War_ITER_INTE_MAXI,
+                                               ),
+                                           ),
+                             INCREMENT = _F(LIST_INST = time,),
+                             NEWTON = _F(
+                        				 REAC_INCR = 1,
+                        				 PREDICTION='TANGENTE',
+                                         MATRICE = 'TANGENTE',
+                                         REAC_ITER = 1,
+                        				),
+                             CONVERGENCE = _F(
+                        				      RESI_GLOB_RELA = Wsp_RESI_GLOB_RELA,
+                                              ITER_GLOB_MAXI = War_ITER_GLOB_MAXI,
+                        				     ),
+                             SOLVEUR = _F(
+                                          METHODE = 'MUMPS',
+                                          RENUM = 'METIS',
+                                          NPREC = 8,
+                                          ELIM_LAGR = 'NON',
+                                          STOP_SINGULIER = 'OUI',
+                                          MATR_DISTRIBUEE = 'OUI',
+                                         ),
+                             ARCHIVAGE = _F(LIST_INST = vec_ca,),
+                             AFFICHAGE=_F(
+                                          INFO_RESIDU='NON',
+                                          INFO_TEMPS='OUI',
+                                          UNITE=31,
+                                         ),
+                            );
+except:
+    pass
+
+FIN();
