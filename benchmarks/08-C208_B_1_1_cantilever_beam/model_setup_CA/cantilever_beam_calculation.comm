@@ -6,8 +6,8 @@ DEBUT(
 import numpy as np
 
 # User inputs:
-current_path = r"/home/filon/salome_projects/C208/master/model_setup"
-create_modified_mesh = False
+current_path = r"/home/filon/salome_projects/CoFEA/benchmarks/08-C208_B_1_1_cantilever_beam/model_setup_CA"
+create_modified_mesh = True
 ##
 
 
@@ -88,40 +88,42 @@ lpCal=5
 th_shell = AFFE_CARA_ELEM(
                 		  MODELE = model,
                           COQUE = (
-                                  _F(
-                                     GROUP_MA='horizontal_plate',
-                                     EPAIS=40.0,
-                                     COQUE_NCOU=lpCal,
-                                     ANGL_REP=(0.0,90.0),
-                                    ),
-                                  _F(
-                                     GROUP_MA='vertical_plate',
-                                     EPAIS=8.0,
-                                     COQUE_NCOU=lpCal,
-                                     ANGL_REP=(0.0,0.0),
-                                    ),
-        			             ),
-		        DISCRET=(
-		                 _F(
-		                 REPERE='GLOBAL',
-		                 CARA='K_TR_D_N',
-		                 GROUP_MA=('aux_point',),
-		                 VALE=(0.0001,0.0001,0.0001,0.0001,0.0001,0.0001,),
-		                 ), 	
-			           ),         			             
-        		        );
+                                   _F(
+                                      GROUP_MA = 'horizontal_plate',
+                                      EPAIS = 40.0,
+                                      COQUE_NCOU = lpCal,
+                                      ANGL_REP = (0.0,90.0),
+                                     ),
+                                   _F(
+                                      GROUP_MA = 'vertical_plate',
+                                      EPAIS = 8.0,
+                                      COQUE_NCOU = lpCal,
+                                      ANGL_REP = (0.0,0.0),
+                                     ),
+        			              ),
+        		          DISCRET = (
+            		                 _F(
+                		                REPERE = 'GLOBAL',
+                		                CARA = 'K_TR_D_N',
+                		                GROUP_MA = ('aux_point',),
+                		                VALE = (
+                            		            0.0001,0.0001,0.0001,
+                            		            0.0001,0.0001,0.0001,
+                            		           ),
+            		                   ), 	
+            			            ),         			             
+                    	 );
 
-coef_cor16= 319.5e-3 / 210.0
 
 steel16f = DEFI_FONCTION(
                          NOM_PARA = 'EPSI',
                          NOM_RESU = 'SIGMA',
                          VALE = (
-                                 0.000 + coef_cor16, 319.5e-3,                         
-                                 0.004 + coef_cor16, 355.0e-3,
-                                 0.020 + coef_cor16, 358.4e-3,
-                                 0.150 + coef_cor16, 470.0e-3,
-                                 0.300 + coef_cor16, 470.0e-3,
+                                 0.0015, 	 320,
+                                 0.0055, 	 357,
+                                 0.0212, 	 366,
+                                 0.1406, 	 541,
+                                 0.2797, 	 541,
                                 ),
                          INTERPOL = 'LIN',
                          PROL_DROITE = 'LINEAIRE',
@@ -131,7 +133,7 @@ steel16f = DEFI_FONCTION(
 
 steel16  = DEFI_MATERIAU(
             			 ELAS = _F(
-                         		   E = 210.0,
+                         		   E = 210.0e3,
                                    NU = 0.3,
             			          ),
     			         TRACTION = _F(
@@ -139,18 +141,17 @@ steel16  = DEFI_MATERIAU(
                 			          ),            			          
         		        );
 
-coef_cor40= 310.5e-3 / 210.0
 
 steel40f = DEFI_FONCTION(
-                         NOM_PARA='EPSI',
-                         NOM_RESU='SIGMA',
-                         VALE=(
-                                 0.000 + coef_cor40, 310.5e-3,                         
-                                 0.004 + coef_cor40, 345.0e-3,
-                                 0.020 + coef_cor40, 348.4e-3,
-                                 0.150 + coef_cor40, 470.0e-3,
-                                 0.300 + coef_cor40, 470.0e-3,
-                              ),
+                         NOM_PARA = 'EPSI',
+                         NOM_RESU = 'SIGMA',
+                         VALE = (
+                                 0.0015, 	 311,
+                                 0.0055, 	 346.9,
+                                 0.0212, 	 355.9,
+                                 0.1406, 	 541.6,
+                                 0.2797, 	 541.6,
+                                ),
                         INTERPOL = 'LIN',
                         PROL_DROITE = 'LINEAIRE',
                         PROL_GAUCHE = 'LINEAIRE',
@@ -158,7 +159,7 @@ steel40f = DEFI_FONCTION(
 
 steel40  = DEFI_MATERIAU(
             			 ELAS = _F(
-                         		   E = 210.0,
+                         		   E = 210.0e3,
                                    NU = 0.3,
             			          ),
     			         TRACTION = _F(
@@ -204,9 +205,9 @@ force_f  = DEFI_FONCTION(
         		        );
 
 
-VALUE_N = 500.0 * 2
+VALUE_N = 500.0e3
 VALUE_P = -0.15 * VALUE_N
-VALUE_M = -0.45 * VALUE_N
+VALUE_M = -0.45 * VALUE_N * 1000 # * 1000 here means convertion to metres
 
 force    = AFFE_CHAR_MECA(
                 		  MODELE=model,
@@ -237,7 +238,7 @@ if create_modified_mesh:
                              ),
                 );
 
-vec_step = np.arange(0.0, 1.1, 0.1)
+vec_step = np.arange(0.0, 1.05, 0.05)
 
 vec_ca   = DEFI_LIST_REEL(VALE = vec_step,);
 
@@ -246,19 +247,10 @@ time     = DEFI_LIST_INST(
             			  DEFI_LIST = _F(
                                          LIST_INST = vec_ca,
                     				    ),
-                          #ECHEC = _F(
-                    		#		 EVENEMENT='ERREUR',
-                             #    	 SUBD_PAS=2,
-                              #   	 SUBD_NIVEAU=2,
-                               #  	 SUBD_PAS_MINI=0.0,
-                                # 	 PCENT_ITER_PLUS=20,
-                                 #	 SUBD_METHODE='MANUEL',
-                                 #	 ACTION='ITER_SUPPL',
-                                 #	),
                           INFO=1,
         		         );
 
-
+print(dipa)
 War_ITER_INTE_MAXI = 20;
 Wsp_RESI_INTE_RELA = 1e-05;
 Wsp_RESI_CPLAN_RELA = 1e-05;
@@ -281,25 +273,25 @@ try:
                                                 GROUP_MA = ('vertical_plate', 'horizontal_plate'),
                         				        RELATION = 'VMIS_ISOT_TRAC', 
                                                 DEFORMATION = 'GROT_GDEP',
-                                                #RESI_CPLAN_RELA=Wsp_RESI_CPLAN_RELA,
-                                                #ITER_CPLAN_MAXI=1,
-                                                #RESI_INTE_RELA=Wsp_RESI_INTE_RELA,
-                                                #ITER_INTE_MAXI=War_ITER_INTE_MAXI,
+                                                #RESI_CPLAN_RELA = Wsp_RESI_CPLAN_RELA,
+                                                #ITER_CPLAN_MAXI = 1,
+                                                #RESI_INTE_RELA = Wsp_RESI_INTE_RELA,
+                                                #ITER_INTE_MAXI = War_ITER_INTE_MAXI,
                                                ),
                                              _F(
                                                 GROUP_MA = 'aux_point',
                         				        RELATION = 'ELAS', 
                                                 DEFORMATION = 'PETIT', 
-                                                #RESI_CPLAN_RELA=Wsp_RESI_CPLAN_RELA,
-                                                #ITER_CPLAN_MAXI=1,
-                                                #RESI_INTE_RELA=Wsp_RESI_INTE_RELA,
-                                                #ITER_INTE_MAXI=War_ITER_INTE_MAXI,
+                                                #RESI_CPLAN_RELA = Wsp_RESI_CPLAN_RELA,
+                                                #ITER_CPLAN_MAXI = 1,
+                                                #RESI_INTE_RELA = Wsp_RESI_INTE_RELA,
+                                                #ITER_INTE_MAXI = War_ITER_INTE_MAXI,
                                                ),
                                            ),
                              INCREMENT = _F(LIST_INST = time,),
                              NEWTON = _F(
                         				 REAC_INCR = 1,
-                        				 PREDICTION='TANGENTE',
+                        				 PREDICTION = 'TANGENTE',
                                          MATRICE = 'TANGENTE',
                                          REAC_ITER = 1,
                         				),

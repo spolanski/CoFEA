@@ -6,9 +6,11 @@ POURSUITE(
 import numpy as np
 
 vari_elno_noeu = False
-epeq_elno = False
-sieq_elga = True
+epeq_elno = True
+sieq_elga = False
 reaction = False
+
+
 
 if vari_elno_noeu:
     results  = CALC_CHAMP(
@@ -53,6 +55,25 @@ if vari_elno_noeu:
                 		    ),
                 	     ),
              	 );     
+                    	
+    tab = MACR_LIGN_COUPE(
+        RESULTAT = pl_res[0],
+        NOM_CHAM = 'VARI_ELNO',
+        INST=(0.95, 1.0),                   
+         LIGN_COUPE = _F(
+                        TYPE='SEGMENT',
+                        NB_POINTS=30,
+                        COOR_ORIG = (32.2581, 480.0, 0.0), # 48.3871
+                        COOR_EXTR = (32.2581, 0.0, 0.0),
+                        DISTANCE_MAX=0.01,       
+                        NOM_CMP='V1'
+         
+         )       
+            );
+    print(tab)
+    
+    IMPR_TABLE(TABLE=tab,UNITE=51)
+                   	
                     		      
 
 if epeq_elno:
@@ -95,6 +116,23 @@ if epeq_elno:
                 		   ),
              	 );                        		     
 
+    
+    tab = MACR_LIGN_COUPE(
+        RESULTAT = res_epeq_elno[int(ceil(lpCal/2))-1],
+        NOM_CHAM = 'EPEQ_ELNO',
+        INST=(0.95, 1.0),                   
+         LIGN_COUPE = _F(
+                        TYPE='SEGMENT',
+                        NB_POINTS=60,
+                        COOR_ORIG = (40.3226, 480.0, 0.0), 
+                        COOR_EXTR = (40.3226, 0.0, 0.0),
+                        DISTANCE_MAX=0.1,       
+                        NOM_CMP='PRIN_3'
+                         ),       
+            );
+    
+    IMPR_TABLE(TABLE=tab,UNITE=50)
+    
 
 if sieq_elga:
 
@@ -314,5 +352,7 @@ if reaction:
                 		    );
     
     IMPR_TABLE(TABLE=nod_form,UNITE=51)
+
+
 
 FIN();
