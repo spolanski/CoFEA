@@ -1,35 +1,64 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-digitized_values = np.loadtxt(
-    "digitized_plastic_curve/beam_strain_profile_digitization.csv",
-    skiprows=6, 
-    delimiter=",",
-    )
 
+def load_resu_epeq(path):
 
-c_a_values = np.loadtxt(
-    "../results/C_A_epeq_elno_PRIN_3.resu",
-    skiprows=5, 
-    delimiter=" ",
-    usecols = [29, 31, 39]
-    )
+    # Load .resu file, and use columns with coordinate and principal plastic strain
+    array = np.loadtxt(
+        path,
+        skiprows=5, 
+        delimiter=" ",
+        usecols = [31, 39]
+        )    
+    
+    # Reorient coordinate column
+    array[:,0] = array[:,0][::-1]
+    
+    return array
 
-c_a_values_475kN  = c_a_values[:int(len(c_a_values)/2)]
-c_a_values_500kN  = c_a_values[int(len(c_a_values)/2):]
+if __name__ == "__main__":
+        
+    # Load values digitized from standard DNV C208 
+    c208_res = np.loadtxt(
+        "digitized_plastic_curve/beam_strain_profile_digitization.csv",
+        skiprows=6, 
+        delimiter=",",
+        )
+    # Linearized values from DNV C208
+    c208_res_lin = np.array(
+        [[0.0, -0.01],
+        [480.0, 0.039]]
+        )
 
+    # Load results obtained in Code Aster, based on engineering stres-strain material curve    
+    c_a_engi = load_resu_epeq("../results/C_A_epeq_elno_PRIN_3_engi.resu")
+    # Linearize values
+    c_a_engi_lin_coefs = np.polyfit(c_a_engi[:,0], c_a_engi[:,1],1)
+    c_a_engi_lin = np.polyval(c_a_engi_lin_coefs, c_a_engi[:,0])
+    
+    # Load results obtained in Code Aster, based on true stres-strain material curve    
+    c_a_true = load_resu_epeq("../results/C_A_epeq_elno_PRIN_3_true.resu")
+    # Linearize values
+    c_a_true_lin_coefs = np.polyfit(c_a_true[:,0], c_a_true[:,1],1)
+    c_a_true_lin = np.polyval(c_a_true_lin_coefs, c_a_true[:,0])
 
-print(c_a_values)
-
-plt.figure()
-plt.xlabel("Maximum principal plastic strain [-]")
-plt.ylabel("Web height [mm]")
-plt.plot(digitized_values[:,0], digitized_values[:,1], label="DNV C208 standard, 489kN")
-
-plt.plot(c_a_values_475kN[:,2][::-1], c_a_values_475kN[:,1], label ="Code_Aster, 475kN")
-plt.plot(c_a_values_500kN[:,2][::-1], c_a_values_500kN[:,1], label ="Code_Aster, 500kN")
-plt.yticks(np.arange(0,500+20, 20))
-plt.xticks(np.arange(0, 0.05+0.005, 0.005))
-plt.legend()
-plt.grid()
-plt.show()
+    # Plot results
+    plt.figure()
+    plt.xlabel("Maximum principal plastic strain [-]")
+    plt.ylabel("Web height [mm]")
+    
+    plt.plot(c208_res[:,0], c208_res[:,1], color="blue", label="DNV C208 standard, 489kN")
+    plt.plot(c208_res_lin[:,1], c208_res_lin[:,0], color="blue", linestyle ="-.", label="DNV C208 standard - linearized, 489kN")
+    
+    plt.plot(c_a_engi[:,1], c_a_engi[:,0], color="orange", label ="Code_Aster, engineering stress-strain input, 489kN")
+    plt.plot(c_a_engi_lin, c_a_engi[:,0], color="orange", linestyle ="-.", label ="Code_Aster, engineering stress-strain input, linearized, 489kN")
+    
+    plt.plot(c_a_true[:,1], c_a_true[:,0], color="grey", label ="Code_Aster, true stress-strain input, 489kN")
+    plt.plot(c_a_true_lin, c_a_true[:,0], color="grey", linestyle ="-.", label ="Code_Aster, true stress-strain input, linearized, 489kN")
+    
+    plt.yticks(np.arange(0,500+20, 20))
+    plt.xticks(np.arange(-0.02, 0.05+0.005, 0.005))
+    plt.legend(loc=4)
+    plt.grid()
+    plt.show()

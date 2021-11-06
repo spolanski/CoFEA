@@ -5,9 +5,11 @@ DEBUT(
 
 import numpy as np
 
+use_true_stress_strain = False
+
 # User inputs:
 current_path = r"/home/filon/salome_projects/CoFEA/benchmarks/08-C208_B_1_1_cantilever_beam/model_setup_CA"
-create_modified_mesh = True
+create_modified_mesh = False
 ##
 
 
@@ -114,21 +116,36 @@ th_shell = AFFE_CARA_ELEM(
             			            ),         			             
                     	 );
 
-
-steel16f = DEFI_FONCTION(
-                         NOM_PARA = 'EPSI',
-                         NOM_RESU = 'SIGMA',
-                         VALE = (
-                                 0.0015, 	 320,
-                                 0.0055, 	 357,
-                                 0.0212, 	 366,
-                                 0.1406, 	 541,
-                                 0.2797, 	 541,
-                                ),
-                         INTERPOL = 'LIN',
-                         PROL_DROITE = 'LINEAIRE',
-                         PROL_GAUCHE = 'LINEAIRE',
-                        );
+if use_true_stress_strain:
+    steel16f = DEFI_FONCTION(
+                             NOM_PARA = 'EPSI',
+                             NOM_RESU = 'SIGMA',
+                             VALE = (
+                                     0.0015, 	 320,
+                                     0.0055, 	 357,
+                                     0.0212, 	 366,
+                                     0.1406, 	 541,
+                                     0.2797, 	 541,
+                                    ),
+                             INTERPOL = 'LIN',
+                             PROL_DROITE = 'LINEAIRE',
+                             PROL_GAUCHE = 'LINEAIRE',
+                            );
+else:
+    steel16f = DEFI_FONCTION(
+                             NOM_PARA = 'EPSI',
+                             NOM_RESU = 'SIGMA',
+                             VALE = (
+                                     0.0015, 	 319.5,
+                                     0.0055, 	 355,
+                                     0.0215, 	 358.4,
+                                     0.1515, 	 470,
+                                     0.3015, 	 470,
+                                    ),
+                             INTERPOL = 'LIN',
+                             PROL_DROITE = 'LINEAIRE',
+                             PROL_GAUCHE = 'LINEAIRE',
+                            );    
 
 
 steel16  = DEFI_MATERIAU(
@@ -141,22 +158,38 @@ steel16  = DEFI_MATERIAU(
                 			          ),            			          
         		        );
 
-
-steel40f = DEFI_FONCTION(
-                         NOM_PARA = 'EPSI',
-                         NOM_RESU = 'SIGMA',
-                         VALE = (
-                                 0.0015, 	 311,
-                                 0.0055, 	 346.9,
-                                 0.0212, 	 355.9,
-                                 0.1406, 	 541.6,
-                                 0.2797, 	 541.6,
-                                ),
-                        INTERPOL = 'LIN',
-                        PROL_DROITE = 'LINEAIRE',
-                        PROL_GAUCHE = 'LINEAIRE',
-                       );
-
+if use_true_stress_strain:
+    steel40f = DEFI_FONCTION(
+                             NOM_PARA = 'EPSI',
+                             NOM_RESU = 'SIGMA',
+                             VALE = (
+                                     0.0015, 	 311,
+                                     0.0055, 	 346.9,
+                                     0.0212, 	 355.9,
+                                     0.1406, 	 541.6,
+                                     0.2797, 	 541.6,
+                                    ),
+                            INTERPOL = 'LIN',
+                            PROL_DROITE = 'LINEAIRE',
+                            PROL_GAUCHE = 'LINEAIRE',
+                           );
+else:
+    steel40f = DEFI_FONCTION(
+                             NOM_PARA = 'EPSI',
+                             NOM_RESU = 'SIGMA',
+                             VALE = (
+                                     0.0015, 	 310.5,
+                                     0.0055, 	 345,
+                                     0.0212, 	 348.4,
+                                     0.1515, 	 470,
+                                     0.3015, 	 470,
+                                    ),
+                            INTERPOL = 'LIN',
+                            PROL_DROITE = 'LINEAIRE',
+                            PROL_GAUCHE = 'LINEAIRE',
+                           );
+                           
+                           
 steel40  = DEFI_MATERIAU(
             			 ELAS = _F(
                          		   E = 210.0e3,
@@ -239,6 +272,7 @@ if create_modified_mesh:
                 );
 
 vec_step = np.arange(0.0, 1.05, 0.05)
+vec_step = np.insert(vec_step, len(vec_step)-1, 489/500)
 
 vec_ca   = DEFI_LIST_REEL(VALE = vec_step,);
 
@@ -250,7 +284,6 @@ time     = DEFI_LIST_INST(
                           INFO=1,
         		         );
 
-print(dipa)
 War_ITER_INTE_MAXI = 20;
 Wsp_RESI_INTE_RELA = 1e-05;
 Wsp_RESI_CPLAN_RELA = 1e-05;

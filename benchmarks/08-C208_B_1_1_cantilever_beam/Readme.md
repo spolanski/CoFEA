@@ -13,8 +13,8 @@ Set a picture:
 (Source of the picture - [1])
 
 #### Centroid assessment
-Model description in [1] lacks of height of center of section.
-Coordinates of center of area shall be calculated based on first moments of rectangles.
+Model description in [1] lacks of section center height.
+Center coordinates of the area shall be calculated based on first moments of rectangles.
 
 Subscript 'v' stands for 'vertical plate' - flange  
 Subscript 'h' stands for 'horizontal plate' - web
@@ -42,11 +42,12 @@ Plastic strain benchmark curve was digitized with [2]. Digitized .xml is put in 
 
 
 # Material
-Beam plates are modeled as plastic S355 acc. to [1] s.4.7.5. using true stress strain.
+Beam plates are modeled as plastic S355 acc. to [1] s.4.7.5. using true or engineering stress strain (standard doesn't definite this matter unambiguously).
 Vertical and horizontal plates have relevantly various thicknesses, what shall be taken into account.  
 Material is ideally plastic in range above material tensile strength.
 ![Kiku](readme_images/B_1_1_material_definition.png)  
 
+###### Material definition based on true stress-strain
 Values to implement in material definition for 16mm thickness S355:  
 strain 	 stress  
 0.0000 	 0  
@@ -56,7 +57,7 @@ strain 	 stress
 0.1406 	 541  
 0.2797 	 541  
 
-Values to implement in material definition for 16-40 mm thickness S355:  
+Values to implement in material definition for 16-40 mm   thickness S355:  
 strain 	 stress  
 0.0000 	 0  
 0.0015 	 311  
@@ -64,6 +65,25 @@ strain 	 stress
 0.0212 	 355.9  
 0.1406 	 541.6  
 0.2797 	 541.6  
+
+###### Material definition based on engineering stress-strain:
+Values to implement in material definition for 16mm thickness S355:  
+strain 	 stress  
+0.0000 	 0  
+0.0015 	 319.5  
+0.0055 	 355  
+0.0215 	 358.4  
+0.1515 	 470  
+0.3015 	 470  
+
+Values to implement in material definition for 16-40 mm thickness S355:  
+strain 	 stress  
+0.0000 	 0  
+0.0015 	 310.5  
+0.0055 	 345  
+0.0215 	 348.4  
+0.1515 	 470  
+0.3015 	 470  
 
 # Boundary conditions and loads
 Nx = 500 kN  
@@ -77,8 +97,7 @@ On 'force' group of nodes are imposed loads N, P, M indirectly by point cross se
 Geometrical nonlinearity shall be taken into account, because significant angles of rotation are presumed.
 
 ###### Note about boundaries used with Code_Aster
-Load was imposed simultaneously increasingly by 5% on each step. It means that results for the last two steps reflect Nx = 475 kN and Nx = 500 kN.
-
+Load was imposed simultaneously increasingly by 5% on each step with one extra step corresponding to Nx = 489kN. The last one step corresponds to Nx=500kN
 
 # Mesh
 Mesh is created approximately with mesh size 16mmx16mm.
@@ -92,21 +111,16 @@ Mesh contains also auxiliary point named 'aux_point' - point indirectly through 
 Mesh comprises of 2 order shell elements with  additional node inside. Other types of shell elements are unavailable to use with geometrical and material nonlinearities.
 
 # Results
-Values of first principal plastic strain were extracted across line between points (40.3226, 480.0, 0.0) and (40.3226, 0.0, 0.0).
+Values of first principal plastic strain were extracted across line between points (40.3226, 480.0, 0.0) and (40.3226, 0.0, 0.0). Values were extracted from elements averaged by gauss points.
 
 ![Kiku](results/figure_with_plastic_strains.png)  
 
-
 ###### Note about results extracted with Code_Aster
 Values of plastic strains from middle layer were extracted.
-Values averaged by elements were extracted.
+Values averaged by nodes are presented below.
 
-Maximum plastic strains for 475 kN:
-![Kiku](results/C_A_epeq_elno_PRIN_3_middle_layer_475kN.png)  
-
-Maximum plastic strains for 500 kN:
-![Kiku](results/C_A_epeq_elno_PRIN_3_middle_layer_500kN.png)  
-
+Maximum plastic strains for 489 kN (lower-results for true stress-strain material curve, upper - for engineering):
+![Kiku](results/C_A_epeq_noeu_PRIN_3.png)  
 
 
 ### Run model in Code_Aster in a few steps:  
