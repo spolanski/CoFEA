@@ -35,7 +35,6 @@ Results obtained with Calculix software and quadratic hexahedral mesh
 | Code_Aster            | 73.13 MPa               |  88.33 MPa              |
 | Elmer                 | 69.26 MPa               |  85.46 MPa              |
 
-<<<<<<< HEAD
 ```{jupyter-execute}
 :hide-code:
 import plotly.graph_objects as go
@@ -109,15 +108,6 @@ for n, label in enumerate(columns[start_index:]):
 fig.update_layout(barmode='group', xaxis_tickangle=-45)
 fig.update_yaxes(range=[0.0,100.0])
 fig.show()
-=======
-```{figure} ./tri-comparison_eliptic_membrane.png
----
-width: 600px
-alt: Triangular eliptic plate mesh comparison
-name: Triangular eliptic plate mesh comparison
----
-Graph representing results of the simulation with triangular mesh
->>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
 ```
 
 ## Linear quadrilateral mesh
@@ -136,7 +126,6 @@ Graph representing results of the simulation with triangular mesh
 | Code_Aster            | 87 MPa                  |  92.21 MPa              |
 | Elmer                 | 89.65 MPa               |  93.78 MPa              |
 
-<<<<<<< HEAD
 ```{jupyter-execute}
 :hide-code:
 import plotly.graph_objects as go
@@ -211,13 +200,3 @@ fig.update_layout(barmode='group', xaxis_tickangle=-45)
 fig.update_yaxes(range=[0.0,100.0])
 fig.show()
 ```
-=======
-```{figure} ./quad-comparison_eliptic_membrane.png
----
-width: 600px
-alt: Quadrilateral eliptic plate mesh comparison
-name: Quadrilateral eliptic plate mesh comparison
----
-Graph representing results of the simulation with quadrilateral mesh
-```
->>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491

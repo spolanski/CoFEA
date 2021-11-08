@@ -1,0 +1,13 @@
+Mesh type,Size,CalculiX,Code_Aster,Elmer
+Lin-Quad,Coarse,1,2,3
+Lin-Quad,Fine,2,3,4
+Lin-Quad,VeryFine,3,4,5
+Lin-Tri,Coarse,4,5,6
+Lin-Tri,Fine,5,6,7
+Lin-Tri,VeryFine,6,7,8
+Quad-Quad,Coarse,7,8,9
+Quad-Quad,Fine,8,9,10
+Quad-Quad,VeryFine,9,10,11
+Quad-Tri,Coarse,10,11,12
+Quad-Tri,Fine,11,12,13
+Quad-Tri,VeryFine,12,13,14

@@ -79,11 +79,7 @@ fea_software/elmer.md
 benchmarks/000-tuning-fork/index
 benchmarks/001-thick-plate/index
 benchmarks/002-cook-membrane/index
-<<<<<<< HEAD
-benchmarks/003-hertz-contact/index
-=======
 benchmarks/003-Hertz-contact/index
->>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
 benchmarks/004-eliptic-membrane/index
 benchmarks/005-hemispherical-shell-point-load/index
 benchmarks/007-raasch-challenge/index

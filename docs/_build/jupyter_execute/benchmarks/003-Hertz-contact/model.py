@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import numpy as np
 import pyvista as pv
 from ipywidgets import FloatSlider, FloatRangeSlider, Dropdown, Select, Box, AppLayout, jslink, Layout, VBox, HBox
@@ -41,4 +35,3 @@ AppLayout(
     pane_heights=['80%','20%',0],
     footer=None,
 )
-

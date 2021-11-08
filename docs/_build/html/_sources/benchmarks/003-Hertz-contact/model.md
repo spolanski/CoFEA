@@ -77,4 +77,4 @@ Sketch of the Hertz contact model
 - symmetry along horizontal axis.
 
 ## Loading
--pressure of 10MPa along horizontal edge of roller,
+-pressure of 10MPa along horizontal lower edge of block,

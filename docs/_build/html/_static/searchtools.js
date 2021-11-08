@@ -4,11 +4,7 @@
  *
  * Sphinx JavaScript utilities for the full-text search.
  *
-<<<<<<< HEAD
  * :copyright: Copyright 2007-2021 by the Sphinx team, see AUTHORS.
-=======
- * :copyright: Copyright 2007-2020 by the Sphinx team, see AUTHORS.
->>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
  * :license: BSD, see LICENSE for details.
  *
  */
@@ -252,11 +248,7 @@ var Search = {
       // results left, load the summary and display it
       if (results.length) {
         var item = results.pop();
-<<<<<<< HEAD
         var listItem = $('<li></li>');
-=======
-        var listItem = $('<li style="display:none"></li>');
->>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
         var requestUrl = "";
         var linkUrl = "";
         if (DOCUMENTATION_OPTIONS.BUILDER === 'dirhtml') {
@@ -281,15 +273,9 @@ var Search = {
         if (item[3]) {
           listItem.append($('<span> (' + item[3] + ')</span>'));
           Search.output.append(listItem);
-<<<<<<< HEAD
           setTimeout(function() {
             displayNextItem();
           }, 5);
-=======
-          listItem.slideDown(5, function() {
-            displayNextItem();
-          });
->>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
         } else if (DOCUMENTATION_OPTIONS.HAS_SOURCE) {
           $.ajax({url: requestUrl,
                   dataType: "text",
@@ -299,28 +285,16 @@ var Search = {
                       listItem.append(Search.makeSearchSummary(data, searchterms, hlterms));
                     }
                     Search.output.append(listItem);
-<<<<<<< HEAD
                     setTimeout(function() {
                       displayNextItem();
                     }, 5);
-=======
-                    listItem.slideDown(5, function() {
-                      displayNextItem();
-                    });
->>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
                   }});
         } else {
           // no source available, just display title
           Search.output.append(listItem);
-<<<<<<< HEAD
           setTimeout(function() {
             displayNextItem();
           }, 5);
-=======
-          listItem.slideDown(5, function() {
-            displayNextItem();
-          });
->>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
         }
       }
       // search finished, update title and status message
@@ -406,7 +380,6 @@ var Search = {
   },
 
   /**
-<<<<<<< HEAD
    * See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
    */
   escapeRegExp : function(string) {
@@ -414,8 +387,6 @@ var Search = {
   },
 
   /**
-=======
->>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
    * search for full-text terms in the index
    */
   performTermsSearch : function(searchterms, excluded, terms, titleterms) {
@@ -438,23 +409,14 @@ var Search = {
       ];
       // add support for partial matches
       if (word.length > 2) {
-<<<<<<< HEAD
         var word_regex = this.escapeRegExp(word);
         for (var w in terms) {
           if (w.match(word_regex) && !terms[word]) {
-=======
-        for (var w in terms) {
-          if (w.match(word) && !terms[word]) {
->>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
             _o.push({files: terms[w], score: Scorer.partialTerm})
           }
         }
         for (var w in titleterms) {
-<<<<<<< HEAD
           if (w.match(word_regex) && !titleterms[word]) {
-=======
-          if (w.match(word) && !titleterms[word]) {
->>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
               _o.push({files: titleterms[w], score: Scorer.partialTitle})
           }
         }

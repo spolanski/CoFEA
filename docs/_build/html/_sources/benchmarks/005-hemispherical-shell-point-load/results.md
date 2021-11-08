@@ -20,11 +20,6 @@ name: Hemispherical shell membrane results
 ---
 Results obtained with Code_Aster software and linear hexahedral mesh
 ```
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
 ## Linear quadrilateral mesh
 
 | Solver                |Coarse Mesh              |Fine Mesh                |
@@ -41,7 +36,6 @@ Results obtained with Code_Aster software and linear hexahedral mesh
 | Code_Aster            | 0.147 m                 |  0.184 m                |
 | Elmer                 | no data                 | no data                 |
 
-<<<<<<< HEAD
 ```{jupyter-execute}
 :hide-code:
 import plotly.graph_objects as go
@@ -114,15 +108,6 @@ for n, label in enumerate(columns[start_index:]):
 # modify the tickangle of the xaxis, resulting in rotated labels.
 fig.update_layout(barmode='group', xaxis_tickangle=-45)
 fig.show()
-=======
-```{figure} ./shell_comparison.png
----
-width: 600px
-alt: Quadrilateral shell mesh comparison
-name: Quadrilateral shell mesh comparison
----
-Graph representing results of the simulation with quadrilateral mesh
->>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
 ```
 
 ## Numerous models in CalculiX
