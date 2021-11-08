@@ -1,0 +1,854 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tested Finite Element codes &#8212; CoFEA Initiative</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cofea.readthedocs.io/benchmarks/007-raasch-challenge/tested-codes.html" />
+    <link rel="shortcut icon" href="../../_static/cofea-black.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Results" href="results.html" /> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cofea.readthedocs.io/benchmarks/007-raasch-challenge/tested-codes.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Tested Finite Element codes" />
+<meta property="og:description" content="Tested Finite Element codes  CalculiX  The below section describes how the Raasch challenge model was created for Calculix solver. Although the model response d" />
+<meta property="og:image"       content="https://cofea.readthedocs.io/_static/cofea-black.png" />
+
+<meta name="twitter:card" content="summary" />
+
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../reference/blog/atom.xml"
+  title="Blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/cofea-black.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CoFEA Initiative</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Documentation structure
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/blog.html">
+   CoFEA Blog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/about_us.html">
+   CoFEA Team
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/contributor_guide.html">
+   Contributor Guide
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../meshpresso/index.html">
+   Meshpresso Mesh Converter
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../meshpresso/api.html">
+     Meshpresso module
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/spolanski/CoFEA">
+   GitHub repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  FEA Software
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fea_software/calculix.html">
+   Calculix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fea_software/code_aster.html">
+   Salome / Code_Aster
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fea_software/elmer.html">
+   Elmer
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Benchmarks
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../000-tuning-fork/index.html">
+   Tuning fork benchmark
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../000-tuning-fork/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../000-tuning-fork/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../000-tuning-fork/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../001-thick-plate/index.html">
+   Thick plate under pressure
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../001-thick-plate/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../001-thick-plate/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../001-thick-plate/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../002-cook-membrane/index.html">
+   Cook’s membrane
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../002-cook-membrane/model.html">
+     Model setup
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../002-cook-membrane/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../002-cook-membrane/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../003-hertz-contact/index.html">
+   Hertz contact
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../003-hertz-contact/model.html">
+     Model setup
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../003-hertz-contact/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../003-hertz-contact/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../004-eliptic-membrane/index.html">
+   Eliptic membrane under pressure
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../004-eliptic-membrane/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../004-eliptic-membrane/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../004-eliptic-membrane/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../005-hemispherical-shell-point-load/index.html">
+   Hemispherical shell point load
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../005-hemispherical-shell-point-load/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../005-hemispherical-shell-point-load/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../005-hemispherical-shell-point-load/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="index.html">
+   Raasch challenge test
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="model.html">
+     Model setup
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/benchmarks/007-raasch-challenge/tested-codes.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/spolanski/CoFEA"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/spolanski/CoFEA/issues/new?title=Issue%20on%20page%20%2Fbenchmarks/007-raasch-challenge/tested-codes.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/spolanski/CoFEA/edit/master/docs/benchmarks/007-raasch-challenge/tested-codes.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculix">
+   CalculiX
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-aster">
+   Code_Aster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#elmer">
+   Elmer
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                 <div class="section" id="tested-finite-element-codes">
+<h1>Tested Finite Element codes<a class="headerlink" href="#tested-finite-element-codes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="calculix">
+<h2>CalculiX<a class="headerlink" href="#calculix" title="Permalink to this headline">¶</a></h2>
+<p>The below section describes how the Raasch challenge model was created for Calculix solver. Although the model response does not give a correct result, the setup should still be provided in case someone would like to replicate the issue. As mentioned in the results section, in order to define distributed load over an edge a separate app called PrePoMax has to be used. This application converts distributed load definition into the set of nodal loads.</p>
+<p>The simulation input file used in this study can be found on our <a class="reference external" href="https://github.com/spolanski/CoFEA/tree/master/benchmarks/07-Raasch-shell-challenge">GitHub</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">**</span> <span class="c1"># Material - material definition in Pa, m</span>
+<span class="o">*</span><span class="n">Material</span><span class="p">,</span> <span class="n">Name</span><span class="o">=</span><span class="n">Material</span><span class="o">-</span><span class="mi">1</span>
+<span class="o">*</span><span class="n">Elastic</span>
+<span class="mi">22770000</span><span class="p">,</span> <span class="mf">0.35</span>
+
+<span class="o">**</span> <span class="c1"># Section - shell thickness definition</span>
+<span class="o">*</span><span class="n">Shell</span> <span class="n">section</span><span class="p">,</span> <span class="n">Elset</span><span class="o">=</span><span class="n">S4R</span><span class="p">,</span> <span class="n">Material</span><span class="o">=</span><span class="n">Material</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">Offset</span><span class="o">=</span><span class="mi">0</span>
+<span class="mf">0.0508</span>
+
+<span class="o">**</span> <span class="c1"># Step-1 - Static step definition</span>
+<span class="o">*</span><span class="n">Step</span>
+<span class="o">*</span><span class="n">Static</span>
+
+<span class="o">**</span> <span class="c1"># Boundary conditions definition</span>
+<span class="o">**</span> <span class="c1"># Name: Displacement fix</span>
+<span class="o">*</span><span class="n">Boundary</span><span class="p">,</span> <span class="n">Fixed</span>
+<span class="n">fixedge</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">fixedge</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span>
+<span class="n">fixedge</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span>
+
+<span class="o">**</span> <span class="c1"># Loads definition</span>
+<span class="o">**</span> <span class="c1"># Name: Distributed load approximated with concentrated loads</span>
+<span class="o">*</span><span class="n">Cload</span>
+<span class="mi">269</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630782702</span>
+<span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.085542315391351</span>
+<span class="mi">268</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630782702</span>
+<span class="mi">267</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.17108463073892</span>
+<span class="mi">266</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.17108463073892</span>
+<span class="mi">265</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630782702</span>
+<span class="mi">264</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630782702</span>
+<span class="mi">263</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630782702</span>
+<span class="mi">262</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630782702</span>
+<span class="mi">261</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.17108463073892</span>
+<span class="mi">260</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.17108463073892</span>
+<span class="mi">259</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630782702</span>
+<span class="mi">258</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630782702</span>
+<span class="mi">257</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630782702</span>
+<span class="mi">256</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630782702</span>
+<span class="mi">255</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630782702</span>
+<span class="mi">254</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630738921</span>
+<span class="mi">253</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.17108463073892</span>
+<span class="mi">252</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630782702</span>
+<span class="mi">251</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630782702</span>
+<span class="mi">250</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630773946</span>
+<span class="mi">249</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630765189</span>
+<span class="mi">248</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630769568</span>
+<span class="mi">247</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630769568</span>
+<span class="mi">246</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630769568</span>
+<span class="mi">245</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.171084630769568</span>
+<span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.0855423153825947</span>
+
+<span class="o">**</span> <span class="c1"># Field outputs - output definition</span>
+<span class="o">*</span><span class="n">Node</span> <span class="n">file</span>
+<span class="n">RF</span><span class="p">,</span> <span class="n">U</span>
+<span class="o">*</span><span class="n">El</span> <span class="n">file</span>
+<span class="n">S</span><span class="p">,</span> <span class="n">E</span>
+
+<span class="o">**</span> <span class="c1"># End step</span>
+<span class="o">*</span><span class="n">End</span> <span class="n">step</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="code-aster">
+<h2>Code_Aster<a class="headerlink" href="#code-aster" title="Permalink to this headline">¶</a></h2>
+<p>This section describes how the model has been set up in Code_Aster solver. As mentioned in the Results chapter, at the current stage of Code_Aster development it is not straightforward to postprocess second order type of element (QUAD8_9 and TRI6_7). This section describes how to achieve it</p>
+<p>The simulation input file used in this study can be found on our <a class="reference external" href="https://github.com/spolanski/CoFEA/tree/master/benchmarks/07-Raasch-shell-challenge">GitHub</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read mesh from UNV file</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">LIRE_MAILLAGE</span><span class="p">(</span><span class="n">FORMAT</span><span class="o">=</span><span class="s1">&#39;IDEAS&#39;</span><span class="p">,</span>
+                     <span class="n">UNITE</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Define quadratic element type</span>
+<span class="n">m_quad</span> <span class="o">=</span> <span class="n">CREA_MAILLAGE</span><span class="p">(</span><span class="n">MAILLAGE</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span>
+                       <span class="n">MODI_MAILLE</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">OPTION</span><span class="o">=</span><span class="s1">&#39;QUAD8_9&#39;</span><span class="p">,</span>
+                                      <span class="n">PREF_NOEUD</span><span class="o">=</span><span class="s1">&#39;NS&#39;</span><span class="p">,</span>
+                                      <span class="n">TOUT</span><span class="o">=</span><span class="s1">&#39;OUI&#39;</span><span class="p">))</span>
+
+<span class="c1"># Create shell definition for quadratic elements</span>
+<span class="n">pallet</span> <span class="o">=</span> <span class="n">AFFE_MODELE</span><span class="p">(</span><span class="n">AFFE</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">MODELISATION</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;COQUE_3D&#39;</span><span class="p">,</span> <span class="p">),</span>
+                             <span class="n">PHENOMENE</span><span class="o">=</span><span class="s1">&#39;MECANIQUE&#39;</span><span class="p">,</span>
+                             <span class="n">TOUT</span><span class="o">=</span><span class="s1">&#39;OUI&#39;</span><span class="p">),</span>
+                     <span class="n">MAILLAGE</span><span class="o">=</span><span class="n">m_quad</span><span class="p">)</span>
+
+<span class="c1"># Define shell thickness</span>
+<span class="n">elemprop</span> <span class="o">=</span> <span class="n">AFFE_CARA_ELEM</span><span class="p">(</span><span class="n">COQUE</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">EPAIS</span><span class="o">=</span><span class="mf">0.0508</span><span class="p">,</span>
+                                   <span class="n">GROUP_MA</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="p">)),</span>
+                          <span class="n">MODELE</span><span class="o">=</span><span class="n">pallet</span><span class="p">)</span>
+
+<span class="c1"># Define type of element section</span>
+<span class="c1"># Notice that mesh, not m_quad variable is used</span>
+<span class="n">Postpro</span> <span class="o">=</span> <span class="n">AFFE_MODELE</span><span class="p">(</span><span class="n">AFFE</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">MODELISATION</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;3D&#39;</span><span class="p">,</span> <span class="p">),</span>
+                              <span class="n">PHENOMENE</span><span class="o">=</span><span class="s1">&#39;MECANIQUE&#39;</span><span class="p">,</span>
+                              <span class="n">TOUT</span><span class="o">=</span><span class="s1">&#39;OUI&#39;</span><span class="p">),</span>
+                      <span class="n">MAILLAGE</span><span class="o">=</span><span class="n">mesh</span><span class="p">)</span>
+
+<span class="c1"># Define material properties</span>
+<span class="n">mater</span> <span class="o">=</span> <span class="n">DEFI_MATERIAU</span><span class="p">(</span><span class="n">ELAS</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">E</span><span class="o">=</span><span class="mf">22770000.0</span><span class="p">,</span>
+                              <span class="n">NU</span><span class="o">=</span><span class="mf">0.35</span><span class="p">))</span>
+
+<span class="c1"># Assign material to the elements</span>
+<span class="n">materfl</span> <span class="o">=</span> <span class="n">AFFE_MATERIAU</span><span class="p">(</span><span class="n">AFFE</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">MATER</span><span class="o">=</span><span class="p">(</span><span class="n">mater</span><span class="p">,</span> <span class="p">),</span>
+                                <span class="n">TOUT</span><span class="o">=</span><span class="s1">&#39;OUI&#39;</span><span class="p">),</span>
+                        <span class="n">MODELE</span><span class="o">=</span><span class="n">pallet</span><span class="p">)</span>
+
+<span class="c1"># Define boundary conditions</span>
+<span class="n">mecabc</span> <span class="o">=</span> <span class="n">AFFE_CHAR_MECA</span><span class="p">(</span><span class="n">DDL_IMPO</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">DRX</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="n">DRY</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="n">DRZ</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="n">DX</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="n">DY</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="n">DZ</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="n">GROUP_MA</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;fixedge&#39;</span><span class="p">,</span> <span class="p">)),</span>
+                        <span class="n">MODELE</span><span class="o">=</span><span class="n">pallet</span><span class="p">)</span>
+
+<span class="c1"># Define distributed load</span>
+<span class="n">mecach</span> <span class="o">=</span> <span class="n">AFFE_CHAR_MECA</span><span class="p">(</span><span class="n">FORCE_ARETE</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">FZ</span><span class="o">=</span><span class="mf">8.7563</span><span class="p">,</span>
+                                       <span class="n">GROUP_MA</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="p">)),</span>
+                        <span class="n">MODELE</span><span class="o">=</span><span class="n">pallet</span><span class="p">)</span>
+
+<span class="c1"># Define result output </span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">MECA_STATIQUE</span><span class="p">(</span><span class="n">CARA_ELEM</span><span class="o">=</span><span class="n">elemprop</span><span class="p">,</span>
+                       <span class="n">CHAM_MATER</span><span class="o">=</span><span class="n">materfl</span><span class="p">,</span>
+                       <span class="n">EXCIT</span><span class="o">=</span><span class="p">(</span><span class="n">_F</span><span class="p">(</span><span class="n">CHARGE</span><span class="o">=</span><span class="n">mecabc</span><span class="p">),</span>
+                              <span class="n">_F</span><span class="p">(</span><span class="n">CHARGE</span><span class="o">=</span><span class="n">mecach</span><span class="p">)),</span>
+                       <span class="n">MODELE</span><span class="o">=</span><span class="n">pallet</span><span class="p">)</span>
+
+<span class="c1"># Project the result from quadratic elements onto elements with central node </span>
+<span class="n">PROJ</span> <span class="o">=</span> <span class="n">PROJ_CHAMP</span><span class="p">(</span><span class="n">MODELE_1</span><span class="o">=</span><span class="n">pallet</span><span class="p">,</span>
+                  <span class="n">MODELE_2</span><span class="o">=</span><span class="n">Postpro</span><span class="p">,</span>
+                  <span class="n">RESULTAT</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+
+<span class="c1"># Define a variable which will be printed to a text file</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">POST_RELEVE_T</span><span class="p">(</span><span class="n">ACTION</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">GROUP_NO</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Disp&#39;</span><span class="p">,</span> <span class="p">),</span>
+                                <span class="n">INTITULE</span><span class="o">=</span><span class="s1">&#39;DISP&#39;</span><span class="p">,</span>
+                                <span class="n">NOM_CHAM</span><span class="o">=</span><span class="s1">&#39;DEPL&#39;</span><span class="p">,</span>
+                                <span class="n">OPERATION</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;EXTRACTION&#39;</span><span class="p">,</span> <span class="p">),</span>
+                                <span class="n">RESULTANTE</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;DZ&#39;</span><span class="p">,</span> <span class="p">),</span>
+                                <span class="n">RESULTAT</span><span class="o">=</span><span class="n">result</span><span class="p">))</span>
+
+<span class="c1"># Define the results file with projected values</span>
+<span class="n">IMPR_RESU</span><span class="p">(</span><span class="n">FORMAT</span><span class="o">=</span><span class="s1">&#39;MED&#39;</span><span class="p">,</span>
+          <span class="n">RESU</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">RESULTAT</span><span class="o">=</span><span class="n">PROJ</span><span class="p">),</span>
+          <span class="n">UNITE</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Define a text file where the extracted value will be printed</span>
+<span class="n">IMPR_TABLE</span><span class="p">(</span><span class="n">TABLE</span><span class="o">=</span><span class="n">table</span><span class="p">,</span>
+           <span class="n">UNITE</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="elmer">
+<h2>Elmer<a class="headerlink" href="#elmer" title="Permalink to this headline">¶</a></h2>
+<p>The following section describes how to set up a model in Elmer software. The section also presents a structure of macro that can be run in FreeCAD</p>
+<p>The simulation input file used in this study can be found on our <a class="reference external" href="https://github.com/spolanski/CoFEA/tree/master/benchmarks/07-Raasch-shell-challenge">GitHub</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load mesh and define the path for the path</span>
+<span class="n">Header</span>
+  <span class="n">CHECK</span> <span class="n">KEYWORDS</span> <span class="n">Warn</span>
+  <span class="n">Mesh</span> <span class="n">DB</span> <span class="s2">&quot;.&quot;</span> <span class="s2">&quot;Mesh/L_VF_T&quot;</span>
+  <span class="n">Include</span> <span class="n">Path</span> <span class="s2">&quot;&quot;</span>
+  <span class="n">Results</span> <span class="n">Directory</span> <span class="s2">&quot;Results/L_VF_T&quot;</span>
+<span class="n">End</span>
+
+<span class="c1"># Define type of simulation, CSYS and output file</span>
+<span class="n">Simulation</span>
+  <span class="n">Max</span> <span class="n">Output</span> <span class="n">Level</span> <span class="o">=</span> <span class="mi">5</span>
+  <span class="n">Coordinate</span> <span class="n">System</span> <span class="o">=</span> <span class="n">Cartesian</span>
+  <span class="n">Coordinate</span> <span class="n">Mapping</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span>
+  <span class="n">Simulation</span> <span class="n">Type</span> <span class="o">=</span> <span class="n">Steady</span> <span class="n">state</span>
+  <span class="n">Steady</span> <span class="n">State</span> <span class="n">Max</span> <span class="n">Iterations</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">Output</span> <span class="n">Intervals</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">Solver</span> <span class="n">Input</span> <span class="n">File</span> <span class="o">=</span> <span class="n">case</span><span class="o">.</span><span class="n">sif</span>
+  <span class="n">Post</span> <span class="n">File</span> <span class="o">=</span> <span class="n">case</span><span class="o">.</span><span class="n">vtu</span>
+<span class="n">End</span>
+
+<span class="c1"># Define constants</span>
+<span class="n">Constants</span>
+  <span class="n">Gravity</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span> <span class="mf">9.82</span>
+  <span class="n">Stefan</span> <span class="n">Boltzmann</span> <span class="o">=</span> <span class="mf">5.670374419e-08</span>
+  <span class="n">Permittivity</span> <span class="n">of</span> <span class="n">Vacuum</span> <span class="o">=</span> <span class="mf">8.85418781e-12</span>
+  <span class="n">Permeability</span> <span class="n">of</span> <span class="n">Vacuum</span> <span class="o">=</span> <span class="mf">1.25663706e-6</span>
+  <span class="n">Boltzmann</span> <span class="n">Constant</span> <span class="o">=</span> <span class="mf">1.380649e-23</span>
+  <span class="n">Unit</span> <span class="n">Charge</span> <span class="o">=</span> <span class="mf">1.6021766e-19</span>
+<span class="n">End</span>
+
+<span class="c1"># Assign material and section definition</span>
+<span class="n">Body</span> <span class="mi">1</span>
+  <span class="n">Target</span> <span class="n">Bodies</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;Body 1&quot;</span>
+  <span class="n">Equation</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">Material</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">End</span>
+
+<span class="c1"># Define shell solver definition</span>
+<span class="n">Solver</span> <span class="mi">1</span>
+  <span class="n">Equation</span> <span class="o">=</span> <span class="s2">&quot;Shell equations&quot;</span>
+  <span class="n">Procedure</span> <span class="o">=</span> <span class="s2">&quot;ShellSolver&quot;</span> <span class="s2">&quot;ShellSolver&quot;</span>
+  <span class="n">Large</span> <span class="n">Deflection</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="n">Linear</span> <span class="n">System</span> <span class="n">Solver</span> <span class="o">=</span> <span class="n">Direct</span>
+  <span class="n">Linear</span> <span class="n">System</span> <span class="n">Preconditioning</span> <span class="o">=</span> <span class="n">ILU0</span>
+  <span class="n">Linear</span> <span class="n">System</span> <span class="n">Row</span> <span class="n">Equilibration</span> <span class="o">=</span> <span class="n">Logical</span> <span class="kc">True</span>
+  <span class="n">Linear</span> <span class="n">System</span> <span class="n">Max</span> <span class="n">Iterations</span> <span class="o">=</span> <span class="mi">1000</span>
+  <span class="n">Linear</span> <span class="n">System</span> <span class="n">Convergence</span> <span class="n">Tolerance</span> <span class="o">=</span> <span class="mf">1e-8</span>
+  <span class="n">Linear</span> <span class="n">System</span> <span class="n">Direct</span> <span class="n">Method</span> <span class="o">=</span> <span class="n">Umfpack</span>
+  <span class="n">Linear</span> <span class="n">System</span> <span class="n">GCR</span> <span class="n">Restart</span> <span class="o">=</span> <span class="mi">300</span>
+  <span class="n">Linear</span> <span class="n">System</span> <span class="n">Abort</span> <span class="n">Not</span> <span class="n">Converged</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="n">Steady</span> <span class="n">State</span> <span class="n">Convergence</span> <span class="n">Tolerance</span> <span class="o">=</span> <span class="mf">1e-09</span>
+<span class="n">End</span>
+
+<span class="c1"># Define solver to output displacement into the file</span>
+<span class="n">Solver</span> <span class="mi">2</span> 
+  <span class="n">Equation</span> <span class="o">=</span> <span class="n">SaveScalars</span>
+  <span class="n">Procedure</span> <span class="o">=</span> <span class="s2">&quot;SaveData&quot;</span> <span class="s2">&quot;SaveScalars&quot;</span>
+  <span class="n">Filename</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">dat</span>
+  <span class="n">Variable</span> <span class="mi">1</span> <span class="o">=</span> <span class="n">String</span> <span class="n">u</span>
+  <span class="n">Operator</span> <span class="mi">1</span> <span class="o">=</span> <span class="n">String</span> <span class="mi">3</span>
+  <span class="n">Save</span> <span class="n">Points</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">End</span>
+
+<span class="c1"># Define shell behaviour</span>
+<span class="n">Equation</span> <span class="mi">1</span>
+  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;ShellSolver&quot;</span>
+  <span class="n">Active</span> <span class="n">Solvers</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">End</span>
+
+<span class="c1"># Define material properties</span>
+<span class="n">Material</span> <span class="mi">1</span>
+  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;Material 1&quot;</span>
+  <span class="n">Shell</span> <span class="n">Thickness</span> <span class="o">=</span> <span class="mf">0.0508</span>
+  <span class="n">Poisson</span> <span class="n">ratio</span> <span class="o">=</span> <span class="mf">0.35</span>
+  <span class="n">Youngs</span> <span class="n">modulus</span> <span class="o">=</span> <span class="mf">22.77e6</span>
+<span class="n">End</span>
+
+<span class="c1"># Define encastre conditions</span>
+<span class="n">Boundary</span> <span class="n">Condition</span> <span class="mi">1</span>
+  <span class="n">Target</span> <span class="n">Boundaries</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> 
+  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;Fix&quot;</span>
+  <span class="n">U</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">U</span> <span class="mi">3</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">U</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">DNU</span> <span class="mi">3</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">DNU</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">DNU</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">End</span>
+
+<span class="c1"># Define distributed load</span>
+<span class="n">Boundary</span> <span class="n">Condition</span> <span class="mi">2</span>
+  <span class="n">Target</span> <span class="n">Boundaries</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span> 
+  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;Force&quot;</span>
+  <span class="n">Resultant</span> <span class="n">Force</span> <span class="mi">3</span> <span class="o">=</span> <span class="n">Real</span> <span class="mf">8.7563</span>
+<span class="n">End</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">FreeCAD</span>
+<span class="kn">import</span> <span class="nn">Part</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">rootdir</span> <span class="o">=</span> <span class="s1">&#39;07-raasch-challenge/elmer/Mesh&#39;</span>
+
+<span class="c1"># The following script loops over all mesh.node files</span>
+<span class="c1"># that can be found in rootdir</span>
+<span class="k">for</span> <span class="n">subdir</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">rootdir</span><span class="p">):</span>
+    <span class="k">for</span> <span class="nb">dir</span> <span class="ow">in</span> <span class="n">dirs</span><span class="p">:</span>
+        <span class="n">mesh_name</span> <span class="o">=</span> <span class="n">rootdir</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nb">dir</span> <span class="o">+</span> <span class="s1">&#39;/mesh.nodes&#39;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">mesh_name</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="c1"># parse the file to obtain node &amp; coordinate definition</span>
+            <span class="c1"># then save the output to the dictionary coords</span>
+            <span class="n">nodes</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">coords</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">node</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">c_x</span><span class="p">,</span> <span class="n">c_y</span><span class="p">,</span> <span class="n">c_z</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+                <span class="n">coords</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="n">c_x</span><span class="p">,</span> <span class="n">c_y</span><span class="p">,</span> <span class="n">c_z</span><span class="p">]])</span>
+
+        <span class="c1"># Open BREP file in FreeCAD</span>
+        <span class="n">Part</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;07-raasch-challenge/Raash.brep&quot;</span><span class="p">)</span>
+
+        <span class="n">txt</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">test</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="n">pt</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">distToShape</span><span class="p">(</span><span class="n">pt</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">shell_faces</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">Objects</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Shape</span><span class="o">.</span><span class="n">Faces</span>
+        <span class="c1"># the loop below goes over node and coordinates</span>
+        <span class="c1"># then tries to compute normal vector for a given node</span>
+        <span class="c1"># at the coordinate.</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">coord</span> <span class="ow">in</span> <span class="n">coords</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">coord</span>
+            <span class="n">face</span> <span class="o">=</span> <span class="n">shell_faces</span>
+            <span class="n">p</span><span class="o">=</span><span class="n">Part</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="n">App</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">))</span><span class="o">.</span><span class="n">toShape</span><span class="p">()</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="p">[</span><span class="n">test</span><span class="p">(</span><span class="n">fe</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">fe</span> <span class="ow">in</span> <span class="n">face</span><span class="p">]</span>
+            <span class="n">min_dist_face</span> <span class="o">=</span> <span class="n">face</span><span class="p">[</span><span class="n">temp</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">temp</span><span class="p">))]</span>
+            <span class="n">face_surf</span> <span class="o">=</span> <span class="n">min_dist_face</span><span class="o">.</span><span class="n">Surface</span>
+            <span class="n">pt</span> <span class="o">=</span> <span class="n">FreeCAD</span><span class="o">.</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+            <span class="n">uv</span> <span class="o">=</span> <span class="n">face_surf</span><span class="o">.</span><span class="n">parameter</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
+            <span class="n">nv</span> <span class="o">=</span> <span class="n">min_dist_face</span><span class="o">.</span><span class="n">normalAt</span><span class="p">(</span><span class="n">uv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">uv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">nv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nv</span><span class="o">.</span><span class="n">normalize</span><span class="p">())</span>
+            <span class="n">txt</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> </span><span class="si">{:.6f}</span><span class="s1"> </span><span class="si">{:.6f}</span><span class="s1"> </span><span class="si">{:.6f}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">nv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">nv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+        <span class="c1"># the txt variable is printed into the mesh.director file</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">rootdir</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nb">dir</span> <span class="o">+</span> <span class="s1">&#39;/mesh.director&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./benchmarks/007-raasch-challenge"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+<div class="section">
+   
+</div>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="results.html" title="previous page">Results</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By BlogTechniczny.pl<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

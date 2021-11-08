@@ -1,0 +1,611 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contributor Guide &#8212; CoFEA Initiative</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cofea.readthedocs.io/reference/contributor_guide.html" />
+    <link rel="shortcut icon" href="../_static/cofea-black.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Meshpresso Mesh Converter" href="../meshpresso/index.html" />
+    <link rel="prev" title="CoFEA Team" href="about_us.html" /> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cofea.readthedocs.io/reference/contributor_guide.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Contributor Guide" />
+<meta property="og:description" content="Contributor Guide  Here is a quick introduction on how to start contributing to the CoFEA Initiative. At first, you can acknowledge yourself with the rules we t" />
+<meta property="og:image"       content="https://cofea.readthedocs.io/_static/cofea-black.png" />
+
+<meta name="twitter:card" content="summary" />
+
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="blog/atom.xml"
+  title="Blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/cofea-black.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CoFEA Initiative</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Documentation structure
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="blog.html">
+   CoFEA Blog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="about_us.html">
+   CoFEA Team
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Contributor Guide
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../meshpresso/index.html">
+   Meshpresso Mesh Converter
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../meshpresso/api.html">
+     Meshpresso module
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/spolanski/CoFEA">
+   GitHub repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  FEA Software
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fea_software/calculix.html">
+   Calculix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fea_software/code_aster.html">
+   Salome / Code_Aster
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fea_software/elmer.html">
+   Elmer
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Benchmarks
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../benchmarks/000-tuning-fork/index.html">
+   Tuning fork benchmark
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/000-tuning-fork/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/000-tuning-fork/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/000-tuning-fork/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../benchmarks/001-thick-plate/index.html">
+   Thick plate under pressure
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/001-thick-plate/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/001-thick-plate/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/001-thick-plate/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../benchmarks/002-cook-membrane/index.html">
+   Cook’s membrane
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/002-cook-membrane/model.html">
+     Model setup
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/002-cook-membrane/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/002-cook-membrane/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../benchmarks/003-hertz-contact/index.html">
+   Hertz contact
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/003-hertz-contact/model.html">
+     Model setup
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/003-hertz-contact/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/003-hertz-contact/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../benchmarks/004-eliptic-membrane/index.html">
+   Eliptic membrane under pressure
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/004-eliptic-membrane/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/004-eliptic-membrane/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/004-eliptic-membrane/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../benchmarks/005-hemispherical-shell-point-load/index.html">
+   Hemispherical shell point load
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/005-hemispherical-shell-point-load/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/005-hemispherical-shell-point-load/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/005-hemispherical-shell-point-load/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../benchmarks/007-raasch-challenge/index.html">
+   Raasch challenge test
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/007-raasch-challenge/model.html">
+     Model setup
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/007-raasch-challenge/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../benchmarks/007-raasch-challenge/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/reference/contributor_guide.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/spolanski/CoFEA"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/spolanski/CoFEA/issues/new?title=Issue%20on%20page%20%2Freference/contributor_guide.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/spolanski/CoFEA/edit/master/docs/reference/contributor_guide.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#documentation-contribution">
+   Documentation contribution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fe-work-contribution">
+   FE work contribution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-scripts-contribution">
+   Python scripts contribution
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                 <div class="section" id="contributor-guide">
+<h1>Contributor Guide<a class="headerlink" href="#contributor-guide" title="Permalink to this headline">¶</a></h1>
+<p>Here is a quick introduction on how to start contributing to the CoFEA Initiative. At first, you can acknowledge yourself with the rules we try to follow:</p>
+<ul class="simple">
+<li><p>if you are not familiar with programming, compilation etc, we recommend using Ubuntu 18.0 (or any Debian based Linux) as your main environment. We tend to use this distribution and all guidelines presented in this docs have been validated with this OS.</p></li>
+<li><p>we use GitHub website as a place to store the code, docs and everything else. As a result of that, if you would like to contribute to CoFEA you should have an account on this platform to be able to fork the <a class="reference external" href="https://github.com/spolanski/CoFEA">CoFEA repository</a>, add your changes and send a modified version back. That also implies that you ought to have basic understanding of <em>git</em> version control system and the nomenclature used on GitHub (such as pull request, fork etc.)</p></li>
+<li><p>while it would be nice to use Python 3.x only, some FE codes (for example Salome) are still using Python version 2.7. Due to that, all scripts which are developed should be developed in a way that is more or less compatible with 2.x and 3.x versions.</p></li>
+<li><p>All the tasks we are currently working on are presented in the <a class="reference external" href="https://github.com/spolanski/CoFEA/issues">CoFEA Github issues</a></p></li>
+<li><p>While still not in place, please use snake_case for naming instead of camelCase rule or any different</p></li>
+</ul>
+<div class="section" id="documentation-contribution">
+<h2>Documentation contribution<a class="headerlink" href="#documentation-contribution" title="Permalink to this headline">¶</a></h2>
+<p>Your journey as a contributor should start with getting the copy CoFEA docs onto your hard-drive. It is actually very simple to recreate the website locally. You can do it by running following commands from terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install python3.7 version; skip the step if you have it</span>
+sudo apt install python3.7
+<span class="c1"># Install virtualenv module for python3.7</span>
+python3.7 -m pip install virtualenv
+<span class="c1"># Download CoFEA repo</span>
+git clone https://github.com/spolanski/CoFEA.git
+<span class="c1"># open CoFEA folder</span>
+<span class="nb">cd</span> CoFEA/
+<span class="c1"># set up python virtualenv</span>
+python3.7 -m venv cofea_env
+<span class="c1"># activate the virtualenv</span>
+<span class="nb">source</span> cofea_env/bin/activate
+<span class="c1"># install all the modules which are required by CoFEA</span>
+python3.7 setup.py install
+<span class="c1"># go to docs folder</span>
+<span class="nb">cd</span> docs/
+<span class="c1"># execute sphinx to compile the website</span>
+make html
+<span class="c1"># open the local website in firefox</span>
+firefox _build/html/index
+</pre></div>
+</div>
+<p>That’s it! if you follow the steps above, you will compile the website locally. Then you can modify the files and send them back to the CoFEA github using git push command. We are looking forward to your contribution!</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Looking for a task to do? Check <a class="reference external" href="https://github.com/spolanski/CoFEA/issues/27">CoFEA documentation issue</a>. It contains several things that we would like to implement. Pick one and <a class="reference external" href="https://github.com/spolanski/CoFEA/issues/new/choose">create a Github issue</a>, so everyone knows that someone is working on it. After that send a pull request and your work will be merged soon.</p>
+</div>
+</div>
+<div class="section" id="fe-work-contribution">
+<h2>FE work contribution<a class="headerlink" href="#fe-work-contribution" title="Permalink to this headline">¶</a></h2>
+<p>Once the documentation works, you can set up the simulation environment. The CoFEA workflow currently used by contributors is following:</p>
+<ol class="simple">
+<li><p>Salome_Meca 2019.3 is used to build/import geometries and meshes</p></li>
+<li><p>Established model is tested in Code_Aster</p></li>
+<li><p>Meshes are converted into format appropriate to run study in Calculix and Elmer</p></li>
+<li><p>Optionally, the same setup is tested in different codes which are also free and open-source.</p></li>
+</ol>
+<p>The best way way to contribute is to install Salome_Meca with Code_Aster, Calculix and Elmer, so that you could build your own models and contribute to the CoFEA initiative.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Looking for a task to do? Check <a class="reference external" href="https://github.com/spolanski/CoFEA/issues/51">FEA work issue</a>. It contains several examples that we would like to test. Pick one and <a class="reference external" href="https://github.com/spolanski/CoFEA/issues/new/choose">create a Github issue</a>, so everyone knows that someone is working on it. After that send a pull request and your work will be merged soon.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you are an FE code developer and you would like to submit your own example or show results for already existing benchmark, feel free to add your contribution to the Benchmarks folder and send pull request.</p>
+</div>
+</div>
+<div class="section" id="python-scripts-contribution">
+<h2>Python scripts contribution<a class="headerlink" href="#python-scripts-contribution" title="Permalink to this headline">¶</a></h2>
+<p>At the moment, the most work is done on the <a class="reference internal" href="../meshpresso/index.html"><span class="doc std std-doc">Meshpresso Mesh Converter</span></a>. More information on how to contribute will be provided soon.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./reference"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+<div class="section">
+   
+</div>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="about_us.html" title="previous page">CoFEA Team</a>
+    <a class='right-next' id="next-link" href="../meshpresso/index.html" title="next page">Meshpresso Mesh Converter</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By BlogTechniczny.pl<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

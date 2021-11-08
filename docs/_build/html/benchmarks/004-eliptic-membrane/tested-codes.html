@@ -1,0 +1,796 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tested Finite Element codes &#8212; CoFEA Initiative</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cofea.readthedocs.io/benchmarks/004-eliptic-membrane/tested-codes.html" />
+    <link rel="shortcut icon" href="../../_static/cofea-black.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Hemispherical shell point load" href="../005-hemispherical-shell-point-load/index.html" />
+    <link rel="prev" title="Results" href="results.html" /> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cofea.readthedocs.io/benchmarks/004-eliptic-membrane/tested-codes.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Tested Finite Element codes" />
+<meta property="og:description" content="Tested Finite Element codes  Table of Contents  CalculiX  Code_Aster  Elmer  CalculiX  CalculiX supports elastic simulation. Below there is an explanation of th" />
+<meta property="og:image"       content="https://cofea.readthedocs.io/_static/cofea-black.png" />
+
+<meta name="twitter:card" content="summary" />
+
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../reference/blog/atom.xml"
+  title="Blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/cofea-black.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CoFEA Initiative</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Documentation structure
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/blog.html">
+   CoFEA Blog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/about_us.html">
+   CoFEA Team
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/contributor_guide.html">
+   Contributor Guide
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../meshpresso/index.html">
+   Meshpresso Mesh Converter
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../meshpresso/api.html">
+     Meshpresso module
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/spolanski/CoFEA">
+   GitHub repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  FEA Software
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fea_software/calculix.html">
+   Calculix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fea_software/code_aster.html">
+   Salome / Code_Aster
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../fea_software/elmer.html">
+   Elmer
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Benchmarks
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../000-tuning-fork/index.html">
+   Tuning fork benchmark
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../000-tuning-fork/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../000-tuning-fork/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../000-tuning-fork/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../001-thick-plate/index.html">
+   Thick plate under pressure
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../001-thick-plate/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../001-thick-plate/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../001-thick-plate/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../002-cook-membrane/index.html">
+   Cook’s membrane
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../002-cook-membrane/model.html">
+     Model setup
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../002-cook-membrane/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../002-cook-membrane/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../003-hertz-contact/index.html">
+   Hertz contact
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../003-hertz-contact/model.html">
+     Model setup
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../003-hertz-contact/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../003-hertz-contact/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="index.html">
+   Eliptic membrane under pressure
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../005-hemispherical-shell-point-load/index.html">
+   Hemispherical shell point load
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../005-hemispherical-shell-point-load/model.html">
+     Model definition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../005-hemispherical-shell-point-load/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../005-hemispherical-shell-point-load/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../007-raasch-challenge/index.html">
+   Raasch challenge test
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../007-raasch-challenge/model.html">
+     Model setup
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../007-raasch-challenge/results.html">
+     Results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../007-raasch-challenge/tested-codes.html">
+     Tested Finite Element codes
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/benchmarks/004-eliptic-membrane/tested-codes.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/spolanski/CoFEA"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/spolanski/CoFEA/issues/new?title=Issue%20on%20page%20%2Fbenchmarks/004-eliptic-membrane/tested-codes.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/spolanski/CoFEA/edit/master/docs/benchmarks/004-eliptic-membrane/tested-codes.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculix">
+   CalculiX
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-apply-pressure-boundary-condition">
+     How to apply pressure boundary condition
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-aster">
+   Code_Aster
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#elmer">
+   Elmer
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                 <div class="section" id="tested-finite-element-codes">
+<h1>Tested Finite Element codes<a class="headerlink" href="#tested-finite-element-codes" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#calculix" id="id1">CalculiX</a></p></li>
+<li><p><a class="reference internal" href="#code-aster" id="id2">Code_Aster</a></p></li>
+<li><p><a class="reference internal" href="#elmer" id="id3">Elmer</a></p></li>
+</ul>
+</div>
+<div class="section" id="calculix">
+<h2><a class="toc-backref" href="#id1">CalculiX</a><a class="headerlink" href="#calculix" title="Permalink to this headline">¶</a></h2>
+<p>CalculiX supports elastic simulation. Below there is an explanation of the input file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">**</span> <span class="n">Mesh</span> <span class="o">++++++++++++++++++++++++++++++++++++++++++++++++++++</span>
+
+<span class="o">*</span><span class="n">INCLUDE</span><span class="p">,</span> <span class="n">INPUT</span><span class="o">=</span><span class="n">Mesh</span><span class="o">/</span><span class="n">fine</span><span class="o">-</span><span class="n">lin</span><span class="o">-</span><span class="nb">hex</span><span class="o">.</span><span class="n">inp</span>		<span class="c1"># Path to mesh for ccx solver</span>
+
+<span class="o">**</span> <span class="n">Mesh</span> <span class="o">++++++++++++++++++++++++++++++++++++++++++++++++++++</span>
+
+<span class="o">*</span><span class="n">MATERIAL</span><span class="p">,</span> <span class="n">NAME</span><span class="o">=</span><span class="n">Steel</span>				<span class="c1"># Defining a material</span>
+<span class="o">*</span><span class="n">DENSITY</span>
+ <span class="mi">7800</span>						<span class="c1"># Defining a density</span>
+<span class="o">*</span><span class="n">ELASTIC</span><span class="p">,</span>
+<span class="mf">2.1e11</span><span class="p">,</span> <span class="mf">0.3</span>					<span class="c1"># Defining Young modulus and Poisson&#39;s ratio</span>
+
+<span class="o">**</span> <span class="n">Sections</span> <span class="o">++++++++++++++++++++++++++++++++++++++++++++++++</span>
+
+<span class="o">*</span><span class="n">SOLID</span> <span class="n">SECTION</span><span class="p">,</span> <span class="n">ELSET</span><span class="o">=</span><span class="n">ELIPSE</span><span class="p">,</span> <span class="n">MATERIAL</span><span class="o">=</span><span class="n">Steel</span> 	<span class="c1"># Assigning material and plane stress elements</span>
+<span class="mf">0.1</span><span class="p">,</span>						<span class="c1"># to the elements sets in mesh and adding thickness</span>
+
+<span class="o">**</span> <span class="n">Steps</span> <span class="o">+++++++++++++++++++++++++++++++++++++++++++++++++++</span>
+
+<span class="o">*</span><span class="n">STEP</span>						<span class="c1"># Begin of analysis</span>
+<span class="o">*</span><span class="n">STATIC</span><span class="p">,</span> <span class="n">SOLVER</span><span class="o">=</span><span class="n">SPOOLES</span>				<span class="c1"># Selection of elastic analysis</span>
+
+<span class="o">**</span> <span class="n">Field</span> <span class="n">outputs</span> <span class="o">+++++++++++++++++++++++++++++++++++++++++++</span>
+
+<span class="o">*</span><span class="n">EL</span> <span class="n">FILE</span>					<span class="c1"># Commands responsible for saving results</span>
+<span class="n">E</span><span class="p">,</span> <span class="n">S</span>
+<span class="o">*</span><span class="n">NODE</span> <span class="n">FILE</span>
+<span class="n">U</span>
+
+<span class="o">**</span> <span class="n">Boundary</span> <span class="n">conditions</span> <span class="o">+++++++++++++++++++++++++++++++++++++</span>
+
+<span class="o">*</span><span class="n">BOUNDARY</span><span class="p">,</span>					<span class="c1"># Applying translation = 0 on desired nodes</span>
+<span class="n">AB</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span>
+<span class="o">*</span><span class="n">BOUNDARY</span>
+<span class="n">CD</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span>
+
+<span class="o">**</span> <span class="n">Boundary</span> <span class="n">conditions</span><span class="p">(</span><span class="n">adding</span> <span class="n">pressure</span><span class="p">)</span> <span class="o">++++++++++++++++++++</span>
+
+<span class="o">*</span><span class="n">DLOAD</span>
+<span class="o">*</span><span class="n">INCLUDE</span><span class="p">,</span> <span class="n">INPUT</span><span class="o">=</span><span class="n">Pressure</span><span class="o">/</span><span class="n">fine</span><span class="o">-</span><span class="n">lin</span><span class="o">-</span><span class="nb">hex</span><span class="o">.</span><span class="n">dlo</span>
+
+<span class="o">**</span> <span class="n">End</span> <span class="n">step</span> <span class="o">++++++++++++++++++++++++++++++++++++++++++++++++</span>
+
+<span class="o">*</span><span class="n">END</span> <span class="n">STEP</span>					<span class="c1"># End on analysis</span>
+
+
+</pre></div>
+</div>
+<p>The simulation input file used in this study can be found on our <a class="reference external" href="https://github.com/spolanski/CoFEA/tree/master/benchmarks/04-eliptic-membrane/model_setup/Model_CalculiX">GitHub</a>!</p>
+<div class="section" id="how-to-apply-pressure-boundary-condition">
+<h3>How to apply pressure boundary condition<a class="headerlink" href="#how-to-apply-pressure-boundary-condition" title="Permalink to this headline">¶</a></h3>
+<p>Please open your mesh with CalculiX GraphiX in read mode using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cgx</span> <span class="o">-</span><span class="n">c</span> <span class="n">mesh_file</span><span class="o">.</span><span class="n">inp</span>
+</pre></div>
+</div>
+<p>Then in CGX window please click right button of mouse and choose Toggle command line. In command line please write:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">comp</span> <span class="n">NODESET</span> <span class="n">do</span>
+<span class="n">send</span> <span class="n">NODESET</span> <span class="n">abq</span> <span class="n">press</span> <span class="n">value_of_press</span>
+</pre></div>
+</div>
+<p>In the same directory should appear file called NODESET.dlo which need to be included in *DLOAD section to apply pressure to boundary.
+Positive value of pressure goes is compressing the element face.</p>
+</div>
+</div>
+<div class="section" id="code-aster">
+<h2><a class="toc-backref" href="#id2">Code_Aster</a><a class="headerlink" href="#code-aster" title="Permalink to this headline">¶</a></h2>
+<p>Code_Aster supports elastic simulation. Below there is an explanation of the input file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mesh</span> <span class="o">=</span> <span class="n">LIRE_MAILLAGE</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="s1">&#39;0:1&#39;</span><span class="p">,</span>				<span class="c1"># Reading a mesh</span>
+                     <span class="n">FORMAT</span><span class="o">=</span><span class="s1">&#39;IDEAS&#39;</span><span class="p">,</span>
+                     <span class="n">UNITE</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">AFFE_MODELE</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="s1">&#39;1:1&#39;</span><span class="p">,</span>				<span class="c1"># Assignig plane stress</span>
+                    <span class="n">AFFE</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">MODELISATION</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;C_PLAN&#39;</span><span class="p">,</span> <span class="p">),</span>		<span class="c1"># elements to mesh</span>
+                            <span class="n">PHENOMENE</span><span class="o">=</span><span class="s1">&#39;MECANIQUE&#39;</span><span class="p">,</span>
+                            <span class="n">TOUT</span><span class="o">=</span><span class="s1">&#39;OUI&#39;</span><span class="p">),</span>
+                    <span class="n">MAILLAGE</span><span class="o">=</span><span class="n">mesh</span><span class="p">)</span>
+
+<span class="n">mater</span> <span class="o">=</span> <span class="n">DEFI_MATERIAU</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="s1">&#39;2:1&#39;</span><span class="p">,</span>				<span class="c1"># Defining elastic material</span>
+                      <span class="n">ELAS</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">E</span><span class="o">=</span><span class="mf">210000000000.0</span><span class="p">,</span>
+                              <span class="n">NU</span><span class="o">=</span><span class="mf">0.3</span><span class="p">))</span>
+
+<span class="n">materfl</span> <span class="o">=</span> <span class="n">AFFE_MATERIAU</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="s1">&#39;3:1&#39;</span><span class="p">,</span>			<span class="c1"># Assigning material to model</span>
+                        <span class="n">AFFE</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">MATER</span><span class="o">=</span><span class="p">(</span><span class="n">mater</span><span class="p">,</span> <span class="p">),</span>
+                                <span class="n">TOUT</span><span class="o">=</span><span class="s1">&#39;OUI&#39;</span><span class="p">),</span>
+                        <span class="n">MODELE</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
+
+<span class="n">mecabc</span> <span class="o">=</span> <span class="n">AFFE_CHAR_MECA</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="s1">&#39;4:1&#39;</span><span class="p">,</span>			<span class="c1"># Applying boundary conditions</span>
+                        <span class="n">DDL_IMPO</span><span class="o">=</span><span class="p">(</span><span class="n">_F</span><span class="p">(</span><span class="n">DX</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>			<span class="c1"># displacement = 0</span>
+                                     <span class="n">GROUP_MA</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;AB&#39;</span><span class="p">,</span> <span class="p">)),</span>	<span class="c1"># to the selected group of elements</span>
+                                  <span class="n">_F</span><span class="p">(</span><span class="n">DY</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                                     <span class="n">GROUP_MA</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;CD&#39;</span><span class="p">,</span> <span class="p">))),</span>
+                        <span class="n">MODELE</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
+
+<span class="n">mecach</span> <span class="o">=</span> <span class="n">AFFE_CHAR_MECA</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="s1">&#39;5:1&#39;</span><span class="p">,</span>			<span class="c1"># Applying pressure to the</span>
+                        <span class="n">MODELE</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>				<span class="c1"># group of elements</span>
+                        <span class="n">PRES_REP</span><span class="o">=</span><span class="n">_F</span><span class="p">(</span><span class="n">GROUP_MA</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;BC&#39;</span><span class="p">,</span> <span class="p">),</span>
+                                    <span class="n">PRES</span><span class="o">=-</span><span class="mf">10000000.0</span><span class="p">))</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">MECA_STATIQUE</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="s1">&#39;6:1&#39;</span><span class="p">,</span>			<span class="c1"># Defining the results of</span>
+                       <span class="n">CHAM_MATER</span><span class="o">=</span><span class="n">materfl</span><span class="p">,</span>			<span class="c1"># simulation</span>
+                       <span class="n">EXCIT</span><span class="o">=</span><span class="p">(</span><span class="n">_F</span><span class="p">(</span><span class="n">CHARGE</span><span class="o">=</span><span class="n">mecabc</span><span class="p">),</span>
+                              <span class="n">_F</span><span class="p">(</span><span class="n">CHARGE</span><span class="o">=</span><span class="n">mecach</span><span class="p">)),</span>
+                       <span class="n">MODELE</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
+
+<span class="n">SYY</span> <span class="o">=</span> <span class="n">CALC_CHAMP</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="s1">&#39;7:1&#39;</span><span class="p">,</span>				<span class="c1"># Calculating stresses in</span>
+                 <span class="n">CHAM_MATER</span><span class="o">=</span><span class="n">materfl</span><span class="p">,</span>				<span class="c1"># computed domain</span>
+                 <span class="n">CONTRAINTE</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;SIGM_NOEU&#39;</span><span class="p">,</span> <span class="p">),</span>
+                 <span class="n">MODELE</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+                 <span class="n">RESULTAT</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+
+<span class="n">IMPR_RESU</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="s1">&#39;8:1&#39;</span><span class="p">,</span>					<span class="c1"># Saving the results</span>
+          <span class="n">FORMAT</span><span class="o">=</span><span class="s1">&#39;MED&#39;</span><span class="p">,</span>	  
+          <span class="n">RESU</span><span class="o">=</span><span class="p">(</span><span class="n">_F</span><span class="p">(</span><span class="n">RESULTAT</span><span class="o">=</span><span class="n">result</span><span class="p">),</span>
+                <span class="n">_F</span><span class="p">(</span><span class="n">RESULTAT</span><span class="o">=</span><span class="n">SYY</span><span class="p">)),</span>
+          <span class="n">UNITE</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+
+<span class="n">FIN</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p>The simulation input file used in this study can be found on our <a class="reference external" href="https://github.com/spolanski/CoFEA/tree/master/benchmarks/04-eliptic-membrane/model_setup//Model_Code_Aster">GitHub</a>!</p>
+</div>
+<div class="section" id="elmer">
+<h2><a class="toc-backref" href="#id3">Elmer</a><a class="headerlink" href="#elmer" title="Permalink to this headline">¶</a></h2>
+<p>Elmer supports elastic simulations out of the box. Below there is an explanation of solver input file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Header</span>
+  <span class="n">CHECK</span> <span class="n">KEYWORDS</span> <span class="n">Warn</span>
+  <span class="n">Mesh</span> <span class="n">DB</span> <span class="s2">&quot;.&quot;</span> <span class="s2">&quot;.&quot;</span>				<span class="c1"># Path to the mesh</span>
+  <span class="n">Include</span> <span class="n">Path</span> <span class="s2">&quot;&quot;</span>
+  <span class="n">Results</span> <span class="n">Directory</span> <span class="s2">&quot;&quot;</span>				<span class="c1"># Path to results directory</span>
+<span class="n">End</span>
+
+<span class="n">Simulation</span>					<span class="c1"># Settings and constants for simulation</span>
+  <span class="n">Max</span> <span class="n">Output</span> <span class="n">Level</span> <span class="o">=</span> <span class="mi">5</span>
+  <span class="n">Coordinate</span> <span class="n">System</span> <span class="o">=</span> <span class="n">Cartesian</span>
+  <span class="n">Coordinate</span> <span class="n">Mapping</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span>
+  <span class="n">Simulation</span> <span class="n">Type</span> <span class="o">=</span> <span class="n">Steady</span> <span class="n">state</span>
+  <span class="n">Steady</span> <span class="n">State</span> <span class="n">Max</span> <span class="n">Iterations</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">Output</span> <span class="n">Intervals</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">Timestepping</span> <span class="n">Method</span> <span class="o">=</span> <span class="n">BDF</span>
+  <span class="n">BDF</span> <span class="n">Order</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">Solver</span> <span class="n">Input</span> <span class="n">File</span> <span class="o">=</span> <span class="n">case</span><span class="o">.</span><span class="n">sif</span>
+  <span class="n">Post</span> <span class="n">File</span> <span class="o">=</span> <span class="n">case</span><span class="o">.</span><span class="n">vtu</span>
+<span class="n">End</span>
+
+<span class="n">Constants</span>
+  <span class="n">Gravity</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span> <span class="mf">9.82</span>
+  <span class="n">Stefan</span> <span class="n">Boltzmann</span> <span class="o">=</span> <span class="mf">5.67e-08</span>
+  <span class="n">Permittivity</span> <span class="n">of</span> <span class="n">Vacuum</span> <span class="o">=</span> <span class="mf">8.8542e-12</span>
+  <span class="n">Boltzmann</span> <span class="n">Constant</span> <span class="o">=</span> <span class="mf">1.3807e-23</span>
+  <span class="n">Unit</span> <span class="n">Charge</span> <span class="o">=</span> <span class="mf">1.602e-19</span>
+<span class="n">End</span>
+
+<span class="n">Body</span> <span class="mi">1</span>						<span class="c1"># Assigning the material and equations to the mesh</span>
+  <span class="n">Target</span> <span class="n">Bodies</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">10</span>
+  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;Body Property 1&quot;</span>
+  <span class="n">Equation</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">Material</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">End</span>
+
+<span class="n">Solver</span> <span class="mi">2</span>					<span class="c1"># Solver settings</span>
+  <span class="n">Equation</span> <span class="o">=</span> <span class="n">Linear</span> <span class="n">elasticity</span>
+  <span class="n">Procedure</span> <span class="o">=</span> <span class="s2">&quot;StressSolve&quot;</span> <span class="s2">&quot;StressSolver&quot;</span>
+  <span class="n">Calculate</span> <span class="n">Stresses</span> <span class="o">=</span> <span class="kc">True</span>
+  <span class="n">Variable</span> <span class="o">=</span> <span class="o">-</span><span class="n">dofs</span> <span class="mi">2</span> <span class="n">Displacement</span>
+  <span class="n">Exec</span> <span class="n">Solver</span> <span class="o">=</span> <span class="n">Always</span>
+  <span class="n">Stabilize</span> <span class="o">=</span> <span class="kc">True</span>
+  <span class="n">Bubbles</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="n">Lumped</span> <span class="n">Mass</span> <span class="n">Matrix</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="n">Optimize</span> <span class="n">Bandwidth</span> <span class="o">=</span> <span class="kc">True</span>
+  <span class="n">Steady</span> <span class="n">State</span> <span class="n">Convergence</span> <span class="n">Tolerance</span> <span class="o">=</span> <span class="mf">1.0e-5</span>
+  <span class="n">Nonlinear</span> <span class="n">System</span> <span class="n">Convergence</span> <span class="n">Tolerance</span> <span class="o">=</span> <span class="mf">1.0e-7</span>
+  <span class="n">Nonlinear</span> <span class="n">System</span> <span class="n">Max</span> <span class="n">Iterations</span> <span class="o">=</span> <span class="mi">20</span>
+  <span class="n">Nonlinear</span> <span class="n">System</span> <span class="n">Newton</span> <span class="n">After</span> <span class="n">Iterations</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="n">Nonlinear</span> <span class="n">System</span> <span class="n">Newton</span> <span class="n">After</span> <span class="n">Tolerance</span> <span class="o">=</span> <span class="mf">1.0e-3</span>
+  <span class="n">Nonlinear</span> <span class="n">System</span> <span class="n">Relaxation</span> <span class="n">Factor</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">Linear</span> <span class="n">System</span> <span class="n">Solver</span> <span class="o">=</span> <span class="n">Direct</span>
+  <span class="n">Linear</span> <span class="n">System</span> <span class="n">Direct</span> <span class="n">Method</span> <span class="o">=</span> <span class="n">Umfpack</span>
+<span class="n">End</span>
+
+<span class="n">Solver</span> <span class="mi">1</span>					<span class="c1"># Saving the results from node at point D</span>
+  <span class="n">Equation</span> <span class="o">=</span> <span class="n">SaveScalars</span>
+  <span class="n">Save</span> <span class="n">Points</span> <span class="o">=</span> <span class="mi">26</span>
+  <span class="n">Procedure</span> <span class="o">=</span> <span class="s2">&quot;SaveData&quot;</span> <span class="s2">&quot;SaveScalars&quot;</span>
+  <span class="n">Filename</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">dat</span>
+  <span class="n">Exec</span> <span class="n">Solver</span> <span class="o">=</span> <span class="n">After</span> <span class="n">Simulation</span>
+<span class="n">End</span>
+
+<span class="n">Equation</span> <span class="mi">1</span>					<span class="c1"># Setting active solvers</span>
+  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;STRESS&quot;</span>
+  <span class="n">Calculate</span> <span class="n">Stresses</span> <span class="o">=</span> <span class="kc">True</span>
+  <span class="n">Plane</span> <span class="n">Stress</span> <span class="o">=</span> <span class="kc">True</span>				<span class="c1"># Turning on plane stress simulation</span>
+  <span class="n">Active</span> <span class="n">Solvers</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">End</span>
+
+<span class="n">Equation</span> <span class="mi">2</span>
+  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;DATA&quot;</span>
+  <span class="n">Active</span> <span class="n">Solvers</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">End</span>
+
+<span class="n">Material</span> <span class="mi">1</span>					<span class="c1"># Defining the material</span>
+  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;STEEL&quot;</span>
+  <span class="n">Poisson</span> <span class="n">ratio</span> <span class="o">=</span> <span class="mf">0.3</span>
+  <span class="n">Porosity</span> <span class="n">Model</span> <span class="o">=</span> <span class="n">Always</span> <span class="n">saturated</span>
+  <span class="n">Youngs</span> <span class="n">modulus</span> <span class="o">=</span> <span class="mf">2.1e11</span>
+<span class="n">End</span>
+
+<span class="n">Boundary</span> <span class="n">Condition</span> <span class="mi">1</span>				<span class="c1"># Applying the boundary conditions</span>
+  <span class="n">Target</span> <span class="n">Boundaries</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">12</span>
+  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;AB&quot;</span>
+  <span class="n">Displacement</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">End</span>
+
+<span class="n">Boundary</span> <span class="n">Condition</span> <span class="mi">2</span>
+  <span class="n">Target</span> <span class="n">Boundaries</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">13</span>
+  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;CD&quot;</span>
+  <span class="n">Displacement</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">End</span>
+
+<span class="n">Boundary</span> <span class="n">Condition</span> <span class="mi">3</span>
+  <span class="n">Target</span> <span class="n">Boundaries</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">14</span>
+  <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;BC&quot;</span>
+  <span class="n">Normal</span> <span class="n">Force</span> <span class="o">=</span> <span class="mf">10e6</span>
+<span class="n">End</span>
+
+</pre></div>
+</div>
+<p>The simulation input file used in this study can be found on our <a class="reference external" href="https://github.com/spolanski/CoFEA/tree/master/benchmarks/04-eliptic-membrane/model_setup//Model_ElmerGUI">GitHub</a>!</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./benchmarks/004-eliptic-membrane"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+<div class="section">
+   
+</div>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="results.html" title="previous page">Results</a>
+    <a class='right-next' id="next-link" href="../005-hemispherical-shell-point-load/index.html" title="next page">Hemispherical shell point load</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By BlogTechniczny.pl<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
