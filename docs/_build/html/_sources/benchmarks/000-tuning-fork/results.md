@@ -30,6 +30,7 @@ A few conclusions can be derived from the presented study:
 |              4 |     1827.55 Hz     |  1825.55 Hz |   1825.63 Hz  | 1825.63 Hz | 1825.7 Hz |
 |              5 |     2788.66 Hz     |  2777.73 Hz |   2777.56 Hz  | 2777.56 Hz | 2781.3 Hz |
 
+<<<<<<< HEAD
 
 ```{jupyter-execute}
 :hide-code:
@@ -88,6 +89,15 @@ for n, label in enumerate(csv_file.columns[1:]):
 # modify the tickangle of the xaxis, resulting in rotated labels.
 # fig.update_layout(barmode='group', xaxis_tickangle=-45)
 fig.show()
+=======
+```{figure} ./code-comparison.png
+---
+width: 600px
+alt: FE codes comparison
+name: FE codes comparison
+---
+Comparison of FE codes for the tuning fork example
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
 ```
 
 ## Linear tetrahedral mesh
@@ -106,6 +116,7 @@ fig.show()
 | Code_Aster            |  441.16 Hz              |  440.29 Hz              |  440.00 Hz              |
 | Elmer                 |  441.26 Hz              |  440.30 Hz              |  440.00 Hz              |
 
+<<<<<<< HEAD
 ```{jupyter-execute}
 :hide-code:
 import plotly.graph_objects as go
@@ -178,6 +189,15 @@ for n, label in enumerate(columns[start_index:]):
 # modify the tickangle of the xaxis, resulting in rotated labels.
 fig.update_layout(barmode='group', xaxis_tickangle=-45)
 fig.show()
+=======
+```{figure} ./tet-comparison.png
+---
+width: 600px
+alt: Tetrahedral mesh comparison
+name: Tetrahedral mesh comparison
+---
+Graph representing results of the simulation with tetrahedral mesh 
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
 ```
 
 ## Linear hexahedral mesh
@@ -196,6 +216,7 @@ fig.show()
 | Code_Aster            |  441.10 Hz              |  440.49 Hz              |  440.09 Hz              |
 | Elmer                 |  441.10 Hz              |  440.49 Hz              |  440.09 Hz              |
 
+<<<<<<< HEAD
 ```{jupyter-execute}
 :hide-code:
 import plotly.graph_objects as go
@@ -269,3 +290,13 @@ for n, label in enumerate(columns[start_index:]):
 fig.update_layout(barmode='group', xaxis_tickangle=-45)
 fig.show()
 ```
+=======
+```{figure} ./hex-comparison.png
+---
+width: 600px
+alt: Hexahedral mesh comparison
+name: Hexahedral mesh comparison
+---
+Graph representing results of the simulation with hexahedral mesh 
+```
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491

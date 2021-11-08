@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+=======
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
 import numpy as np
 import pyvista as pv
 from ipywidgets import FloatSlider, FloatRangeSlider, Dropdown, Select, Box, AppLayout, jslink, Layout, VBox, HBox
@@ -36,4 +45,9 @@ AppLayout(
     pane_widths=[1, 0, 1],
     pane_heights=['80%','20%',0],
     footer=None,
+<<<<<<< HEAD
 )
+=======
+)
+
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491

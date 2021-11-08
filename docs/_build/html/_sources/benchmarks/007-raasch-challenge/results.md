@@ -2,17 +2,29 @@
 
 ## Conclusions
 ### Calculix
+<<<<<<< HEAD
 
 Some initial tests with the S4R elements revealed that Calculix is not able to capture the behaviour correctly (even for the fine mesh). However, it turns out that for the presented loadcase, the wrong displacement value was caused by the reduced integration scheme. Calculix is able to predict the correct response once the fully integrated elements are used.
 
 This study also revealed that it is not possible within the Calculix solver to directly impose a load distributed over an edge. However, one can use a third party software called [PrePoMax](http://lace.fs.uni-mb.si/wordpress/borovinsek/) that allows to define the surface traction load on an edge, which is converted into *CLOAD keyword afterwards.
+=======
+The shell implementation in Calculix did not allow to achieve the target solution. The target solution has been achieved using solid type of elements which proved that the input parameters are correct. A similar conclusion has been derived in the [Hemispherical shell point load](../005-hemispherical-shell-point-load/index) study.
+
+It is also not possible in Calculix to directly specify a load distributed over an edge. However, one can use a third party software called [PrePoMax](http://lace.fs.uni-mb.si/wordpress/borovinsek/) that allows to define the surface traction load on an edge, which is converted into *CLOAD keyword afterwards. The loading scenario was also approximated with the rigid-body constraint which resulted in the same, incorrect value of displacemt. The last test implies that the source of the error is directly related to the shell element implementation. The provided tests highlight the fact that the shell element in Calculix does not seem to capture the response from the structures with complex shapes.
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
 
 ```{figure} ./calculix.png
 ---
 width: 600px
+<<<<<<< HEAD
 name: S4R vs S4 elements in Calculix
 ---
 Difference between the results with S4R (left) and S4 (right) shell elements in Calculix
+=======
+name: Shell vs Solid in Calculix
+---
+Difference between the results with shell elements (left) and the solid elements (right)
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
 ```
 
 ### Code_Aster
@@ -38,7 +50,10 @@ It is worth mentioning that the current shell implementation in Elmer requires a
 
 |   Solver   | Coarse Mesh <br> linear / quadratic | Fine Mesh <br> linear / quadratic | Very Fine Mesh <br> linear / quadratic |
 |:----------:|:------------------------------:|:----------------------------:|:------------------------:|
+<<<<<<< HEAD
 |  Calculix  |          0.017 / 0.127   |         0.036 / 0.131    |           0.067 / 0.131      |
+=======
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
 | Code_Aster |          0.116 / 0.129         |         0.118 / 0.128        |           0.116 / 0.128          |
 |    Elmer   |          0.040 / -             |         0.055 / -            |           0.084 / -              |
 
@@ -50,6 +65,7 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 
+<<<<<<< HEAD
 # location of csv_file
 csv_file = pd.read_csv('benchmarks/007-raasch-challenge/raasch.csv')
 # name of the plot
@@ -63,6 +79,27 @@ layout = go.Layout(
     title=dict(
         text=plot_title,
         font=dict(size=20,),
+=======
+
+plot_title = 'Triangle mesh comparison'
+results = pd.read_csv('benchmarks/007-raasch-challenge/raasch.csv')
+
+lin_type = results['Mesh type'] == 'Lin-Tri'
+quad_type = results['Mesh type'] == 'Quad-Tri'
+mesh_type = results[lin_type | quad_type]
+zipped = zip(mesh_type['Mesh type'],mesh_type['Size'])
+labels = ["{} {}".format(i[0], i[1]) for i in zipped]
+code_aster_values = mesh_type['Code_Aster'].tolist()
+elmer_values = mesh_type['Elmer'].tolist()
+x = np.arange(len(labels))  # the label locations
+
+layout = go.Layout(
+    title=dict(
+        text=plot_title,
+        font=dict(
+            size=20,
+        ),
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
         y=0.95,
         x=0.5),
     xaxis=dict(
@@ -70,13 +107,22 @@ layout = go.Layout(
         showgrid=True  # Removes X-axis grid lines
     ),
     yaxis=dict(
+<<<<<<< HEAD
         title=y_axis_title,  
+=======
+        title="Displacement [m]",  
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
         linecolor="#BCCCDC",  # Sets color of Y-axis line
         showgrid=True,  # Removes Y-axis grid lines    
     )
 )
 
+<<<<<<< HEAD
 colours = px.colors.qualitative.T10
+=======
+
+colours = px.colors.qualitative.Vivid
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
 fig = go.Figure(layout=layout)
 
 fig.update_layout( # customize font and legend orientation & position
@@ -86,6 +132,7 @@ fig.update_layout( # customize font and legend orientation & position
     )
 )
 
+<<<<<<< HEAD
 if target_value:
     fig.add_shape( # add a horizontal "target" line
         type="line", line_color="black", line_width=3, opacity=1, line_dash="dot",
@@ -113,6 +160,28 @@ for n, label in enumerate(columns[start_index:]):
     ))
 
 # modify the tickangle of the xaxis, resulting in rotated labels.
+=======
+fig.add_shape( # add a horizontal "target" line
+    type="line", line_color="black", line_width=3, opacity=1, line_dash="dot",
+    x0=0, x1=1, xref="paper", y0=0.125, y1=0.125, yref="y"
+)
+
+
+fig.add_trace(go.Bar(
+    x=labels,
+    y=code_aster_values,
+    name='Code_Aster',
+    marker_color=colours[0]
+))
+fig.add_trace(go.Bar(
+    x=labels,
+    y=elmer_values,
+    name='Elmer',
+    marker_color=colours[1]
+))
+
+# Here we modify the tickangle of the xaxis, resulting in rotated labels.
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
 fig.update_layout(barmode='group', xaxis_tickangle=-45)
 fig.show()
 ```
@@ -121,7 +190,10 @@ fig.show()
 
 |   Solver   | Coarse Mesh <br> linear / quadratic | Fine Mesh <br> linear / quadratic | Very Fine Mesh <br> linear / quadratic |
 |:----------:|:--------------------------------:|:------------------------------:|:--------------------------:|
+<<<<<<< HEAD
 | Calculix   |           0.126 / 0.129      |          0.127 / 0.130     |            0.129 / 0.130       |
+=======
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
 | Code_Aster |           0.112 / 0.130          |          0.118 / 0.128         |            0.116 / 0.127           |
 |    Elmer   |           0.0304 / -             |          0.052 / -             |            0.125 / -               |
 
@@ -132,6 +204,7 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 
+<<<<<<< HEAD
 # location of csv_file
 csv_file = pd.read_csv('benchmarks/007-raasch-challenge/raasch.csv')
 # name of the plot
@@ -145,6 +218,27 @@ layout = go.Layout(
     title=dict(
         text=plot_title,
         font=dict(size=20,),
+=======
+
+plot_title = 'Quadrilateral mesh comparison'
+results = pd.read_csv('benchmarks/007-raasch-challenge/raasch.csv')
+
+lin_type = results['Mesh type'] == 'Lin-Quad'
+quad_type = results['Mesh type'] == 'Quad-Quad'
+mesh_type = results[lin_type | quad_type]
+zipped = zip(mesh_type['Mesh type'],mesh_type['Size'])
+labels = ["{} {}".format(i[0], i[1]) for i in zipped]
+code_aster_values = mesh_type['Code_Aster'].tolist()
+elmer_values = mesh_type['Elmer'].tolist()
+x = np.arange(len(labels))  # the label locations
+
+layout = go.Layout(
+    title=dict(
+        text=plot_title,
+        font=dict(
+            size=20,
+        ),
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
         y=0.95,
         x=0.5),
     xaxis=dict(
@@ -152,13 +246,22 @@ layout = go.Layout(
         showgrid=True  # Removes X-axis grid lines
     ),
     yaxis=dict(
+<<<<<<< HEAD
         title=y_axis_title,  
+=======
+        title="Displacement [m]",  
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
         linecolor="#BCCCDC",  # Sets color of Y-axis line
         showgrid=True,  # Removes Y-axis grid lines    
     )
 )
 
+<<<<<<< HEAD
 colours = px.colors.qualitative.T10
+=======
+
+colours = px.colors.qualitative.Vivid
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
 fig = go.Figure(layout=layout)
 
 fig.update_layout( # customize font and legend orientation & position
@@ -168,6 +271,7 @@ fig.update_layout( # customize font and legend orientation & position
     )
 )
 
+<<<<<<< HEAD
 if target_value:
     fig.add_shape( # add a horizontal "target" line
         type="line", line_color="black", line_width=3, opacity=1, line_dash="dot",
@@ -195,6 +299,27 @@ for n, label in enumerate(columns[start_index:]):
     ))
 
 # modify the tickangle of the xaxis, resulting in rotated labels.
+=======
+fig.add_shape( # add a horizontal "target" line
+    type="line", line_color="black", line_width=3, opacity=1, line_dash="dot",
+    x0=0, x1=1, xref="paper", y0=0.125, y1=0.125, yref="y"
+)
+
+fig.add_trace(go.Bar(
+    x=labels,
+    y=code_aster_values,
+    name='Code_Aster',
+    marker_color=colours[0]
+))
+fig.add_trace(go.Bar(
+    x=labels,
+    y=elmer_values,
+    name='Elmer',
+    marker_color=colours[1]
+))
+
+# Here we modify the tickangle of the xaxis, resulting in rotated labels.
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
 fig.update_layout(barmode='group', xaxis_tickangle=-45)
 fig.show()
 ```

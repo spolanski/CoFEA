@@ -35,6 +35,7 @@ Results obtained with Calculix software and quadratic hexahedral mesh
 | Code_Aster            | -5.51 MPa               |  -5.85 MPa              |
 | Elmer                 | -4.58 MPa               |  -5.50 MPa              |
 
+<<<<<<< HEAD
 ```{jupyter-execute}
 :hide-code:
 import plotly.graph_objects as go
@@ -107,6 +108,15 @@ for n, label in enumerate(columns[start_index:]):
 # modify the tickangle of the xaxis, resulting in rotated labels.
 fig.update_layout(barmode='group', xaxis_tickangle=-45)
 fig.show()
+=======
+```{figure} ./tet-comparison_thick_plate.png
+---
+width: 600px
+alt: Thick plate tetrahedral mesh comparison
+name: Thick plate tetrahedral mesh comparison
+---
+Graph representing results of the simulation with tetrahedral mesh
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
 ```
 
 ## Linear hexahedral mesh
@@ -125,6 +135,7 @@ fig.show()
 | Code_Aster            | -7.39 MPa               |  -5.66 MPa              |
 | Elmer                 | -5.56 MPa               |  -5.65 MPa              |
 
+<<<<<<< HEAD
 ```{jupyter-execute}
 :hide-code:
 import plotly.graph_objects as go
@@ -198,3 +209,13 @@ for n, label in enumerate(columns[start_index:]):
 fig.update_layout(barmode='group', xaxis_tickangle=-45)
 fig.show()
 ```
+=======
+```{figure} ./hex-comparison_thick_plate.png
+---
+width: 600px
+alt: Thick plate hexahedral mesh comparison
+name: Thick plate hexahedral mesh comparison
+---
+Graph representing results of the simulation with hexahedral mesh
+```
+>>>>>>> 8cbd91b276c79c45f606b00b49b9d2047080b491
