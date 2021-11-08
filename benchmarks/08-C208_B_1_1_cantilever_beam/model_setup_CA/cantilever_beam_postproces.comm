@@ -1,0 +1,367 @@
+POURSUITE(
+          PAR_LOT='NON',
+          LANG='IN',
+         );
+
+import numpy as np
+
+vari_elno_noeu = False
+epeq_elno_noeu = False
+sieq_elga_vmis = False
+sieq_noeu = False
+sigm_elno_noeu = False
+depl_noeu = True
+reaction = False
+
+if vari_elno_noeu:
+    results  = CALC_CHAMP(
+                		  reuse = results,
+                		  RESULTAT = results,
+            		      GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+            		      VARI_INTERNE = ('VARI_ELNO',));
+            		      
+            		      
+    pl_res = [None]*lpCal;
+    for i in range(lpCal):
+    	pl_res[i] = POST_CHAMP(
+        		    	       RESULTAT = results,
+        		    	       TOUT_ORDRE='OUI',
+        		    	       GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+        		    	       EXTR_COQUE = (
+                    					     _F(
+                    				  	        NOM_CHAM = ('VARI_ELNO',),
+                    				  	        NUME_COUCHE = i+1,
+                    				  	        NIVE_COUCHE = 'INF',
+                     			 	 	       ),
+                    			       	    ),
+            		  	      );
+    
+    
+    	pl_res[i] = CALC_CHAMP(
+        		    	       reuse = pl_res[i],
+        		    	       RESULTAT = pl_res[i],
+        		    	       GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+        		    	       VARI_INTERNE = 'VARI_NOEU',
+        		   	      );
+    
+    
+    	IMPR_RESU(
+                  FORMAT = 'MED',
+                  UNITE = 80,
+            	  RESU = (
+                          _F(
+                    		 MAILLAGE = qu9_mesh,
+                    		 RESULTAT = pl_res[i],		  
+                		     NOM_CHAM = ('VARI_NOEU', 'VARI_ELNO'),
+                		    ),
+                	     ),
+             	 );     
+                    	
+    tab      = MACR_LIGN_COUPE(
+                               RESULTAT = pl_res[0],
+                               NOM_CHAM = 'VARI_ELNO',
+                               INST = (0.978,),                   
+                               LIGN_COUPE = _F(
+                                               TYPE = 'SEGMENT',
+                                               NB_POINTS = 30,
+                                               COOR_ORIG = (32.2581, 480.0, 0.0),
+                                               COOR_EXTR = (32.2581, 0.0, 0.0),
+                                               DISTANCE_MAX = 0.01,       
+                                               NOM_CMP = 'V1'
+                                              ),       
+                              );
+    
+    IMPR_TABLE(
+               TABLE = tab,
+               UNITE = 50
+              )
+                   	
+                    		      
+
+if epeq_elno_noeu:
+
+    results  = CALC_CHAMP(
+                		  reuse = results,
+                		  RESULTAT = results,
+        		          INST = (0.978),
+            		      GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+            		      CRITERES = ('EPEQ_ELNO', )
+            		     );
+
+    res_epeq_elno = [None]*lpCal;
+
+    for i in range(lpCal):
+        res_epeq_elno[i] = POST_CHAMP(
+                		    	     RESULTAT = results,
+                		    	     TOUT_ORDRE = 'OUI',
+                		    	     GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+                		    	     EXTR_COQUE = _F(
+                            				  	     NOM_CHAM = ('EPEQ_ELNO', ),
+                            				  	     NUME_COUCHE = i+1,
+                            				  	     NIVE_COUCHE = 'MOY',
+                             			 	 	    ),
+                		  	   );            		     
+
+        res_epeq_elno[i] = CALC_CHAMP(
+                		    	      reuse = res_epeq_elno[i],
+                		    	      RESULTAT = res_epeq_elno[i],
+                		    	      GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+                		    	      CRITERES = ('EPEQ_NOEU'),
+                		   	         );
+
+        IMPR_RESU(
+                  FORMAT='MED',
+                  UNITE=80,
+            	  RESU = _F(
+                		    MAILLAGE = qu9_mesh,
+                		    RESULTAT = res_epeq_elno[i],		  
+                		    NOM_CHAM = ('EPEQ_ELNO', 'EPEQ_NOEU'),
+                		   ),
+             	 );                        		     
+
+    
+    tab      = MACR_LIGN_COUPE(
+                               RESULTAT = res_epeq_elno[int(ceil(lpCal/2))-1],
+                               NOM_CHAM = 'EPEQ_ELNO',
+                               INST = (0.978),
+                               LIGN_COUPE = _F(
+                                               TYPE = 'SEGMENT',
+                                               NB_POINTS = 60,
+                                               COOR_ORIG = (40.3226, 480.0, 0.0), 
+                                               COOR_EXTR = (40.3226, 0.0, 0.0),
+                                               DISTANCE_MAX = 0.1,       
+                                               NOM_CMP = 'PRIN_3'
+                                              ),       
+                              );
+    
+    IMPR_TABLE(
+               TABLE = tab,
+               UNITE = 50
+              )
+    
+
+if sieq_elga_vmis:
+
+    results  = CALC_CHAMP(
+                		  reuse = results,
+                		  RESULTAT = results,
+            		      GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+            		      CRITERES = ('SIEQ_ELGA', )
+            		     );
+
+
+    sieq_max = POST_CHAMP(
+            	    	  RESULTAT = results,
+        	    	      TOUT_ORDRE='OUI',
+        	    	      GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+        	    	      MIN_MAX_SP = (
+                    			        _F(
+                        			  	   NOM_CHAM=('SIEQ_ELGA',),	
+                        				   NOM_CMP=('VMIS'),
+                        			  	   TYPE_MAXI='MAXI',
+                        				   NUME_CHAM_RESU=1,
+                        		 	 	  ),
+                    	       	 	   ),
+                         );
+		   	      
+    IMPR_RESU(
+              FORMAT = 'MED',
+              UNITE = 80,
+        	  RESU = _F(
+            		    MAILLAGE = qu9_mesh,
+            		    RESULTAT = sieq_max,		  
+            		   ),
+         	 );
+ 	 
+
+if sieq_noeu: 
+
+    sig_res = [None]*lpCal;
+
+
+    results  = CALC_CHAMP(
+                		  reuse = results,
+                		  RESULTAT = results,
+            		      GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+            		      CRITERES = ('SIEQ_ELNO',)
+            		     );
+    
+    for i in np.arange(0,lpCal,1):	
+    
+        sig_res[i] = POST_CHAMP(
+            		    	    RESULTAT = results,
+            		    	    TOUT_ORDRE = 'OUI',
+            		    	    GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+            		    	    EXTR_COQUE = (
+                            				  _F(
+                            				  	 NOM_CHAM = ('SIEQ_ELNO',),
+                            				  	 NUME_COUCHE = i+1,
+                            				  	 NIVE_COUCHE = 'MOY',
+                             			 	 	),
+                    			       	 	 ),
+            		  	       );
+    
+        sig_res[i] = CALC_CHAMP(
+        		    	       reuse = sig_res[i],
+        		    	       RESULTAT = sig_res[i],
+        		    	       GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+        		    	       CRITERES = ('SIEQ_NOEU',),
+    		   	      );
+    
+    
+        IMPR_RESU(
+                  FORMAT = 'MED',
+                  UNITE = 80,
+            	  RESU = (
+                    	  _F(
+                    		 MAILLAGE = qu9_mesh ,
+                    		 RESULTAT = sig_res[i],		  
+                    		 NOM_CHAM = ('SIEQ_NOEU',),
+                    		),
+                    	 ),
+         	 );
+
+
+if sigm_elno_noeu: 
+
+    sig_res = [None]*lpCal;
+
+    results  = CALC_CHAMP(
+                		  reuse = results,
+                		  RESULTAT = results,
+            		      GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+            		      CONTRAINTE = ('SIGM_ELNO',)
+            		     );
+    
+    for i in np.arange(0,lpCal,1):	
+    
+        sig_res[i] = POST_CHAMP(
+            		    	    RESULTAT = results,
+            		    	    TOUT_ORDRE = 'OUI',
+            		    	    GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+            		    	    EXTR_COQUE = (
+                            				  _F(
+                            				  	 NOM_CHAM = ('SIGM_ELNO',),
+                            				  	 NUME_COUCHE = i+1,
+                            				  	 NIVE_COUCHE = 'MOY',
+                             			 	 	),
+                    			       	 	 ),
+            		  	       );
+    
+        sig_res[i] = CALC_CHAMP(
+        		    	       reuse = sig_res[i],
+        		    	       RESULTAT = sig_res[i],
+        		    	       GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+        		    	       CONTRAINTE = ('SIGM_NOEU',),
+    		   	      );
+    
+    
+        IMPR_RESU(
+                  FORMAT = 'MED',
+                  UNITE = 80,
+            	  RESU = (
+                    	  _F(
+                    		 MAILLAGE = qu9_mesh ,
+                    		 RESULTAT = sig_res[i],		  
+                    		 NOM_CHAM = ('SIGM_NOEU',),
+                    		),
+                    	 ),
+         	 );
+
+if depl_noeu:
+    
+    """
+    mesh_lin = CREA_MAILLAGE(
+                    		    MAILLAGE=qu4_mesh,
+                                        QUAD_LINE=(
+                    				 _F(
+                    				    TOUT='OUI',
+                    				   ),
+                    				),
+                    		   );
+    
+    MeshQ=CREA_MAILLAGE(
+    		    MAILLAGE=MeshQ1,
+                        LINE_QUAD=(
+    				 _F(
+    				    TOUT='OUI',
+    				   ),
+    				),
+    		   );
+    """
+    
+    mock_dep = AFFE_MODELE(
+                		   MAILLAGE = qu8_mesh,
+                           AFFE = _F(
+                    			     TOUT = 'OUI',
+                                     PHENOMENE = 'MECANIQUE',
+                                     MODELISATION = '3D',
+                			        ),
+                		  );
+    
+    
+    proj_res = PROJ_CHAMP(
+                		  RESULTAT = results,
+                          MODELE_1 = model,
+                          MODELE_2 = mock_dep,
+                		 );
+    
+    
+    IMPR_RESU(
+              FORMAT = 'MED',
+              UNITE = 80,
+        	  RESU = _F(
+            		    MAILLAGE = qu8_mesh,
+            		    RESULTAT = proj_res,		  
+            		    NOM_CHAM = ('DEPL'),
+            		   ),
+	         );
+    
+    
+    
+if reaction:
+    results  = CALC_CHAMP(
+                		  reuse = results,
+                		  RESULTAT = results,
+            		      GROUP_MA = ('vertical_plate', 'horizontal_plate'),
+            		      FORCE = 'REAC_NODA',
+            		     );
+    
+    
+    nod_for  = POST_RELEVE_T(
+                   		     ACTION = (
+                          			   _F(
+                        			      INTITULE = 'Rea', 
+                        			      OPERATION = 'EXTRACTION', 
+                        			      RESULTAT = results,
+                             		      NOM_CHAM = 'REAC_NODA', 
+                        			      RESULTANTE = ('DX','DY','DZ'), 
+                        			      GROUP_NO = ('restraint'),
+                        			     ),
+                           			  ),
+                		    );
+    
+    IMPR_TABLE(
+               TABLE = nod_for,
+               UNITE = 50
+              );
+    
+    nod_form = POST_RELEVE_T(
+                   		     ACTION = (
+                          			   _F(
+                        			      INTITULE = 'Rea', 
+                        			      OPERATION = 'MOYENNE_ARITH', 
+                        			      RESULTAT = results,
+                             		      NOM_CHAM = 'REAC_NODA', 
+                        			      #RESULTANTE = ('DX','DY','DZ',), 
+                        			      GROUP_NO = ('restraint'),
+                        			     ),
+                           			  ),
+                		    );
+    
+    IMPR_TABLE(
+               TABLE = nod_form,
+               UNITE = 50
+              );
+
+FIN();
