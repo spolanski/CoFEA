@@ -1,0 +1,10 @@
+<VTKFile type="vtkMultiBlockDataSet" version="1.0" byte_order="LittleEndian" header_type="UInt64">
+  <vtkMultiBlockDataSet>
+    <DataSet index="0" file="coarse-lin-hex/coarse-lin-hex_0_0.vtu"/>
+  </vtkMultiBlockDataSet>
+  <FieldData>
+    <DataArray type="Float64" Name="TimeValue" NumberOfTuples="1" format="binary" RangeMin="1" RangeMax="1">
+      CAAAAAAAAAAAAAAAAADwPw==
+    </DataArray>
+  </FieldData>
+</VTKFile>
