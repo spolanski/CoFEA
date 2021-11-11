@@ -82,4 +82,5 @@ benchmarks/002-cook-membrane/index
 benchmarks/004-eliptic-membrane/index
 benchmarks/005-hemispherical-shell-point-load/index
 benchmarks/007-raasch-challenge/index
+benchmarks/008-C208-B-1-1-cantilever-beam/index
 ```
