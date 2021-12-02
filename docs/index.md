@@ -37,7 +37,7 @@ If you would like to have a chat then you can send an email to cofea.project(at)
 You can also find us on the social media like [LinkedIn](https://www.linkedin.com/company/cofea-initiative) and [Twitter](https://twitter.com/_CoFEA_).
 
 # License
-Any technical content created for the purpose of the CoFEA Initiative is licencsed under Creative Commons BY-NC-SA 4.0 license. In simple terms, one can share and adapt the content under two conditions:
+Any technical content created for the purpose of the CoFEA Initiative is licensed under Creative Commons BY-NC-SA 4.0 license. In simple terms, one can share and adapt the content under two conditions:
 - if content is shared in any form one must give appropriate credit to CoFEA Initiative,
 - one must not redistribute the content commercially.
 
