@@ -4,13 +4,53 @@ plt.close('all')
 import pandas as pd
 import numpy as np
 
-def mesh_study():
+def mesh_study_tetrahedral():
     plot_title = 'Tetrahedral mesh comparison'
     file_name = 'tet-comparison.png'
     results = pd.read_csv('results.csv')
 
     lin_type = results['Mesh type'] == 'Linear-Tet'
     quad_type = results['Mesh type'] == 'Quad-Tet'
+    mesh_type = results[lin_type | quad_type]
+    zipped = zip(mesh_type['Mesh type'],mesh_type['Size'])
+    labels = ["{} {}mm".format(i[0], i[1]) for i in zipped]
+    ccx_values = mesh_type['Calculix'].tolist()
+    code_aster_values = mesh_type['Code_Aster'].tolist()
+    elmer_values = mesh_type['Elmer'].tolist()
+    getfem_values = mesh_type['GetFEM'].tolist()
+    x = np.arange(len(labels))  # the label locations
+
+    width = 0.2  # the width of the bars
+    # plt.style.use('seaborn-white') 
+    fig, ax = plt.subplots(figsize=(10,6))
+    ax.bar(x - 0.2, ccx_values, width, label='Calculix')
+    ax.bar(x, code_aster_values, width, label='Code_Aster')
+    ax.bar(x + 0.2, elmer_values, width, label='Elmer')
+    ax.bar(x + 0.4, getfem_values, width, label='GetFEM')
+
+    target_value_x = [-1.5 * width, len(mesh_type) - 1 + 2.5 * width]
+    ax.plot(target_value_x, 440.0 * np.ones_like(target_value_x), c='black',
+            ls=('dashed'), label='Target 440Hz')
+
+    ax.set_ylabel('Frequency [Hz]')
+    ax.set_title(plot_title)
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels)
+    ax.legend(facecolor='white', framealpha=1)
+    props = {"rotation" : 30}
+    plt.setp(ax.get_xticklabels(), **props)
+    fig.tight_layout()
+    plt.grid(color='gray', linestyle='-.', linewidth=0.5)
+    fig.savefig(file_name)
+    plt.show()
+
+def mesh_study_hexahedral():
+    plot_title = 'Hexahedral mesh comparison'
+    file_name = 'hex-comparison.png'
+    results = pd.read_csv('results.csv')
+
+    lin_type = results['Mesh type'] == 'Linear-Hex'
+    quad_type = results['Mesh type'] == 'Quad-Hex'
     mesh_type = results[lin_type | quad_type]
     zipped = zip(mesh_type['Mesh type'],mesh_type['Size'])
     labels = ["{} {}mm".format(i[0], i[1]) for i in zipped]
@@ -85,5 +125,6 @@ def code_comparison():
     plt.show()
     
 if __name__ == "__main__":
-    mesh_study()
+    mesh_study_tetrahedral()
+    mesh_study_hexahedral()
     code_comparison()

@@ -24,11 +24,11 @@ A few conclusions can be derived from the presented study:
 
 | Frequency      | Commercial code    | Calculix    | Code Aster    |  Elmer     |  MoFEM     |  GetFEM    |
 |----------------|:------------------:|:-----------:|:-------------:|:----------:|:----------:|:----------:|
-|              1 |      440.33 Hz     |  440.05 Hz  |   440.91 Hz   |  440.91 Hz |  441.0 Hz  |  439.87 Hz |
-|              2 |      675.80 Hz     |  673.51 Hz  |   673.57 Hz   |  673.57 Hz |  674.4 Hz  |  673.37 Hz |
-|              3 |     1689.51 Hz     |  1689.30 Hz |   1689.37 Hz  | 1689.37 Hz | 1690.3 Hz  | 1688.53 Hz |
-|              4 |     1827.55 Hz     |  1825.55 Hz |   1825.63 Hz  | 1825.63 Hz | 1825.7 Hz  | 1825.37 Hz |
-|              5 |     2788.66 Hz     |  2777.73 Hz |   2777.56 Hz  | 2777.56 Hz | 2781.3 Hz  | 2776.80 Hz |
+|              1 |      440.33 Hz     |  440.09 Hz  |   440.09 Hz   |  440.09 Hz |  441.0 Hz  |  439.87 Hz |
+|              2 |      675.80 Hz     |  673.56 Hz  |   673.57 Hz   |  673.57 Hz |  674.4 Hz  |  673.37 Hz |
+|              3 |     1689.51 Hz     |  1689.37 Hz |   1689.37 Hz  | 1689.37 Hz | 1690.3 Hz  | 1688.53 Hz |
+|              4 |     1827.55 Hz     |  1825.63 Hz |   1825.63 Hz  | 1825.63 Hz | 1825.7 Hz  | 1825.37 Hz |
+|              5 |     2788.66 Hz     |  2777.56 Hz |   2777.56 Hz  | 2777.56 Hz | 2781.3 Hz  | 2776.80 Hz |
 
 ```{figure} ./code-comparison.png
 ---
@@ -70,7 +70,7 @@ Graph representing results of the simulation with tetrahedral mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|
-| CalculiX              |  388.67 Hz              |  415.79 Hz              |  434.17 Hz                |
+| CalculiX              |  496.87 Hz              |  455.34 Hz              |  444.22 Hz                |
 | Code_Aster            |  496.87 Hz              |  455.34 Hz              |  444.22 Hz                |
 | Elmer                 |  496.87 Hz              |  455.34 Hz              |  444.22 Hz                |
 | GetFEM                |  496.88 Hz              |  455.35 Hz              |  444.23 Hz                |
@@ -79,7 +79,7 @@ Graph representing results of the simulation with tetrahedral mesh
 
 | Solver                |Mesh element size = 2mm  | Mesh element size = 1mm | Mesh element size = 0.5mm |
 |-----------------------|-----------------------  |-------------------------|---------------------------|
-| CalculiX              |  440.57 Hz              |  440.34 Hz              |  440.05 Hz                |
+| CalculiX              |  441.10 Hz              |  440.49 Hz              |  440.09 Hz                |
 | Code_Aster            |  441.10 Hz              |  440.49 Hz              |  440.09 Hz                |
 | Elmer                 |  441.10 Hz              |  440.49 Hz              |  440.09 Hz                |
 | GetFEM                |  436.32 Hz              |  439.97 Hz              |  439.87 Hz                |
