@@ -1,0 +1,51 @@
+*INCLUDE, INPUT=HertzBenchmarkbias2_out.inp
+*INCLUDE, INPUT=master.sur
+*INCLUDE, INPUT=slave.sur
+
+*MATERIAL,NAME=Steel
+*ELASTIC
+29000,0.3
+
+
+*SOLID SECTION,MATERIAL=Steel,ELSET=C3D8
+
+
+
+*BOUNDARY
+ux,1,1,0
+uy,2,2,0
+uz,3,3,0
+move_uz,3,3,-0.0125
+
+
+*CONTACT PAIR,INTERACTION=SI1,TYPE=SURFACE TO SURFACE
+Sslave,Smaster
+
+
+*SURFACE INTERACTION,NAME=SI1
+*SURFACE BEHAVIOR,PRESSURE-OVERCLOSURE=Linear
+290000
+
+*FRICTION
+0.25,29000
+
+
+
+
+
+*STEP,NLGEOM,100000
+*STATIC
+0.001,1,
+
+
+** boundary conditions (load)
+
+** output
+*NODE FILE
+U
+*EL FILE
+S
+*END STEP
+
+
+
